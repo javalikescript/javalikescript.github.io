@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>tools</title>
+<script type="text/javascript">
+//<!--
+const tools = {
+   generatePassword : function(length, characterSet) {
+    var oneByte = new Uint8Array(1);
+    const re = new RegExp('[' + characterSet + ']');
+    return Array.apply(null, {'length': length}).map(function () {
+      var result;
+      while (true) {
+        window.crypto.getRandomValues(oneByte);
+        result = String.fromCharCode(oneByte[0]);
+        if (re.test(result)) {
+          return result;
+        }
+      }
+    }, this).join('');
+  },
+  abtos : function(buffer) {
+    var chars = [];
+    new Uint8Array(buffer).forEach(function(b) {
+      chars.push(String.fromCharCode(b));
+    });
+    return chars.join('');
+  },
+  stoab : function(str) {
+    var len = str.length;
+    var buffer = new ArrayBuffer(len);
+    var ba = new Uint8Array(buffer);
+    for (var i = 0; i < len; i++) {
+      var b = str.charCodeAt(i);
+      if ((b < 0) || (b > 255)) {
+        throw new Error('Invalid character, outside byte range');
+      }
+      ba[i] = b;
+    }
+    return buffer;
+  },
+  atob : function(str) {
+    return window.atob(str.replace(/\s/g, ''));
+  },
+  wrap : function(text, size) {
+    var lines = [];
+    for (var i = 0; i < text.length; i += size) {
+      lines.push(text.substring(i, i + size));
+    }
+    return lines.join('\n');
+  },
+  btoa : function(str) {
+    //return window.btoa(str);
+    return this.wrap(window.btoa(str), 50);
+  },
+  // see https://www.w3.org/TR/WebCryptoAPI/
+  encrypt : async function(plainText, password, ivBase64) {
+    const ptUtf8 = new TextEncoder().encode(plainText);
+    const pwUtf8 = new TextEncoder().encode(password);
+    const pwHash = await crypto.subtle.digest('SHA-256', pwUtf8);
+    const iv = tools.stoab(tools.atob(ivBase64));
+    const alg = { name: 'AES-GCM', iv: iv };
+    const key = await crypto.subtle.importKey('raw', pwHash, alg, false, ['encrypt']);
+    const cipherTextBuffer = await crypto.subtle.encrypt(alg, key, ptUtf8);
+    return tools.btoa(tools.abtos(cipherTextBuffer));
+  },
+  decrypt : async function(cipherTextBase64, password, ivBase64) {
+    const pwUtf8 = new TextEncoder().encode(password);
+    const pwHash = await crypto.subtle.digest('SHA-256', pwUtf8);
+    const iv = tools.stoab(tools.atob(ivBase64));
+    const alg = { name: 'AES-GCM', iv: iv };
+    const key = await crypto.subtle.importKey('raw', pwHash, alg, false, ['decrypt']);
+    const cipherTextBuffer = tools.stoab(tools.atob(cipherTextBase64))
+    const plainTextBuffer = await crypto.subtle.decrypt(alg, key, cipherTextBuffer);
+    return new TextDecoder().decode(plainTextBuffer);
+  },
+  val : function(id, v) {
+    const el = document.getElementById(id);
+    if (el) {
+      if (v === undefined) {
+        return el.value;
+      }
+      if ((typeof v === 'object') && (typeof v.then === 'function')) {
+        v.then(function(r) {
+          el.value = r;
+        });
+      } else {
+        el.value = v;
+      }
+    }
+  },
+  ival : function(id, v) {
+    return parseInt(this.val(id, v), 10);
+  },
+  copy : function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.select();
+      document.execCommand('copy');
+    }
+  }
+};
+//-->
+</script>
+</head>
+  <body>
+    <p>Unix time</p>
+    <input type="button" value="now &#x23f2;" onclick="tools.val('timet', '' + (Math.floor(Date.now() / 1000)))" />
+    <input type="text" id="timet" size="15" onKeyup="compute()" />
+    <input type="button" value="compute &#x2192;" onclick="var d = new Date(tools.ival('timet') * 1000); tools.val('dateISO8601', d.toISOString()); tools.val('date', d.toLocaleString())" />
+    <input type="text" id="dateISO8601" size="20" readOnly="true" />
+    <input type="text" id="date" size="50" readOnly />
+    <hr/>
+    <p>Base64</p>
+    <input type="button" value="to &#x2192;" onclick="tools.val('base64Text', tools.btoa(tools.val('asciiText')))">
+    <input type="button" value="clear" onclick="tools.val('asciiText', ''); tools.val('base64Text', '')">
+    <input type="button" value="from &#x2190;" onclick="tools.val('asciiText', tools.atob(tools.val('base64Text')))">
+    <br />
+    <textarea id="asciiText" rows="5" cols="60"></textarea>
+    <textarea id="base64Text" rows="5" cols="60"></textarea>
+    <hr/>
+    <p>Password</p>
+    <input type="number" id="passwordLength" size="6" value="18" />
+    <input type="text" id="passwordCharacterSet" size="20" value="a-zA-Z0-9_-"/>
+    <input type="button" value="generate &#x2192;" onclick="tools.val('passwordValue', tools.generatePassword(tools.ival('passwordLength'), tools.val('passwordCharacterSet')))">
+    <input type="text" id="passwordValue" size="32" readOnly="true"/>
+    <hr/>
+    <p>Encryption (AES-GCM)</p>
+    <input type="number" id="keyLength" size="6" value="1024" />
+    <input type="button" value="generate key &#x1f511;" onclick="tools.val('key', tools.btoa(tools.abtos(crypto.getRandomValues(new Uint8Array(tools.ival('keyLength'))))))">
+    <input type="button" value="clear" onclick="tools.val('key', '')">
+    <input type="button" value="copy" onclick="tools.copy('key')">
+    <br />
+    <textarea id="key" rows="5" cols="60"></textarea>
+    <br />
+    <input type="password" id="password" size="32" />
+    <input type="button" value="encrypt &#x2192;" onclick="tools.val('cipherText', tools.encrypt(tools.val('plainText'), tools.val('password'), tools.val('key')))">
+    <input type="button" value="clear" onclick="tools.val('plainText', ''); tools.val('cipherText', '')">
+    <input type="button" value="decrypt &#x2190;" onclick="tools.val('plainText', tools.decrypt(tools.val('cipherText'), tools.val('password'), tools.val('key')))">
+    <br />
+    <textarea id="plainText" rows="5" cols="60"></textarea>
+    <textarea id="cipherText" rows="5" cols="60"></textarea>
+    <hr/>
+  </body>
+</html>
