@@ -4,7 +4,101 @@
 <script type="text/javascript">
 //<!--
 const tools = {
-   generatePassword : function(length, characterSet) {
+  val : function(id, v) {
+    const el = document.getElementById(id);
+    if (el) {
+      if (v === undefined) {
+        return el.value;
+      }
+      if ((typeof v === 'object') && (typeof v.then === 'function')) {
+        v.then(function(r) {
+          el.value = r;
+        });
+      } else {
+        el.value = v;
+      }
+    }
+  },
+  ival : function(id, v) {
+    return parseInt(this.val(id, v), 10);
+  },
+  copy : function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.select();
+      document.execCommand('copy');
+    }
+  },
+  readFile : function(file, asText, details) {
+    return new Promise(function(resolve, reject) {
+      var reader = new FileReader();
+      reader.onerror = function (e) {
+        reject();
+      }
+      reader.onload = function (e) {
+        try {
+          if (details) {
+            resolve({
+              name: file.name,
+              lastModified: file.lastModified,
+              size: file.size,
+              content: e.target.result
+            });
+          } else {
+            resolve(e.target.result);
+          }
+        } catch (e) {
+          reject(e);
+        }
+      };
+      if (asText) {
+        reader.readAsText(file);
+      } else {
+        reader.readAsBinaryString(file);
+      }
+    });
+  },
+  createBlob: function (data, type, charset) {
+    if (typeof type !== 'string') {
+      type = 'text/plain';
+    }
+    if (typeof charset === 'string') {
+      type = 'data:' + type + ';charset=' + charset;
+    }
+    var blobParts;
+    if (Array.isArray(data)) {
+      blobParts = data;
+    } else if (typeof data === 'string') {
+      blobParts = [data];
+    } else {
+      throw new Error('Invalid blob data');
+    }
+    return new window.Blob(blobParts, { type: type });
+  },
+  saveOrOpenBlob: function (blob, filename) {
+    if (window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
+      var blobUrl = window.URL.createObjectURL(blob);
+      var link = window.document.createElement('a');
+      if ('download' in link) {
+        link.setAttribute('download', filename);
+        link.setAttribute('href', blobUrl);
+        link.setAttribute('style', 'display:none');
+        document.body.appendChild(link);
+        try {
+          link.click();
+        } finally {
+          document.body.removeChild(link);
+        }
+      } else {
+        if (!window.open(blobUrl)) {
+          throw new Error("Could not save.");
+        }
+      }
+    }
+  },
+  generatePassword : function(length, characterSet) {
     var oneByte = new Uint8Array(1);
     const re = new RegExp('[' + characterSet + ']');
     return Array.apply(null, {'length': length}).map(function () {
@@ -72,48 +166,25 @@ const tools = {
     const cipherTextBuffer = tools.stoab(tools.atob(cipherTextBase64))
     const plainTextBuffer = await crypto.subtle.decrypt(alg, key, cipherTextBuffer);
     return new TextDecoder().decode(plainTextBuffer);
-  },
-  val : function(id, v) {
-    const el = document.getElementById(id);
-    if (el) {
-      if (v === undefined) {
-        return el.value;
-      }
-      if ((typeof v === 'object') && (typeof v.then === 'function')) {
-        v.then(function(r) {
-          el.value = r;
-        });
-      } else {
-        el.value = v;
-      }
-    }
-  },
-  ival : function(id, v) {
-    return parseInt(this.val(id, v), 10);
-  },
-  copy : function(id) {
-    const el = document.getElementById(id);
-    if (el) {
-      el.select();
-      document.execCommand('copy');
-    }
   }
 };
+
+var qrcode = null;
 //-->
 </script>
 </head>
   <body>
     <p>Unix time</p>
-    <input type="button" value="now &#x23f2;" onclick="tools.val('timet', '' + (Math.floor(Date.now() / 1000)))" />
+    <input type="button" value="&#x23f2; now" onclick="tools.val('timet', '' + (Math.floor(Date.now() / 1000)))" />
     <input type="text" id="timet" size="15" onKeyup="compute()" />
-    <input type="button" value="compute &#x2192;" onclick="var d = new Date(tools.ival('timet') * 1000); tools.val('dateISO8601', d.toISOString()); tools.val('date', d.toLocaleString())" />
+    <input type="button" value="&#x2192; compute" onclick="var d = new Date(tools.ival('timet') * 1000); tools.val('dateISO8601', d.toISOString()); tools.val('date', d.toLocaleString())" />
     <input type="text" id="dateISO8601" size="20" readOnly="true" />
     <input type="text" id="date" size="50" readOnly />
     <hr/>
     <p>Base64</p>
-    <input type="button" value="to &#x2192;" onclick="tools.val('base64Text', tools.btoa(tools.val('asciiText')))">
-    <input type="button" value="clear" onclick="tools.val('asciiText', ''); tools.val('base64Text', '')">
-    <input type="button" value="from &#x2190;" onclick="tools.val('asciiText', tools.atob(tools.val('base64Text')))">
+    <input type="button" value="&#x2192; to" onclick="tools.val('base64Text', tools.btoa(tools.val('asciiText')))" />
+    <input type="button" value="&#x1f5d1; clear" onclick="tools.val('asciiText', ''); tools.val('base64Text', '')" />
+    <input type="button" value="&#x2190; from" onclick="tools.val('asciiText', tools.atob(tools.val('base64Text')))" />
     <br />
     <textarea id="asciiText" rows="5" cols="60"></textarea>
     <textarea id="base64Text" rows="5" cols="60"></textarea>
@@ -121,21 +192,24 @@ const tools = {
     <p>Password</p>
     <input type="number" id="passwordLength" size="6" value="18" />
     <input type="text" id="passwordCharacterSet" size="20" value="a-zA-Z0-9_-"/>
-    <input type="button" value="generate &#x2192;" onclick="tools.val('passwordValue', tools.generatePassword(tools.ival('passwordLength'), tools.val('passwordCharacterSet')))">
+    <input type="button" value="&#x2192; generate" onclick="tools.val('passwordValue', tools.generatePassword(tools.ival('passwordLength'), tools.val('passwordCharacterSet')))" />
     <input type="text" id="passwordValue" size="32" readOnly="true"/>
     <hr/>
     <p>Encryption (AES-GCM)</p>
     <input type="number" id="keyLength" size="6" value="1024" />
-    <input type="button" value="generate key &#x1f511;" onclick="tools.val('key', tools.btoa(tools.abtos(crypto.getRandomValues(new Uint8Array(tools.ival('keyLength'))))))">
-    <input type="button" value="clear" onclick="tools.val('key', '')">
-    <input type="button" value="copy" onclick="tools.copy('key')">
+    <input type="button" value="&#x1f511; generate key" onclick="tools.val('key', tools.btoa(tools.abtos(crypto.getRandomValues(new Uint8Array(tools.ival('keyLength'))))))" />
+    <input type="button" value="&#x1f5d1; clear" onclick="tools.val('key', '')" />
+    <input type="file" id="file" hidden="true" onchange="tools.readFile(document.getElementById('file').files[0]).then(function(c) {tools.val('key', tools.btoa(c))})" />
+    <input type="button" value="&#x1f4c1; import" onclick="document.getElementById('file').click()" />
+    <input type="button" value="&#x1f4be; export" onclick="tools.saveOrOpenBlob(tools.createBlob(tools.val('key'), 'application/base64'), 'key.b64')" />
+    <input type="button" value="&#x1f4cb; copy" onclick="tools.copy('key')" />
     <br />
     <textarea id="key" rows="5" cols="60"></textarea>
     <br />
     <input type="password" id="password" size="32" />
-    <input type="button" value="encrypt &#x2192;" onclick="tools.val('cipherText', tools.encrypt(tools.val('plainText'), tools.val('password'), tools.val('key')))">
-    <input type="button" value="clear" onclick="tools.val('plainText', ''); tools.val('cipherText', '')">
-    <input type="button" value="decrypt &#x2190;" onclick="tools.val('plainText', tools.decrypt(tools.val('cipherText'), tools.val('password'), tools.val('key')))">
+    <input type="button" value="&#x2192; encrypt" onclick="tools.val('cipherText', tools.encrypt(tools.val('plainText'), tools.val('password'), tools.val('key')))" />
+    <input type="button" value="&#x1f5d1; clear" onclick="tools.val('plainText', ''); tools.val('cipherText', '')" />
+    <input type="button" value="&#x2190; decrypt" onclick="tools.val('plainText', tools.decrypt(tools.val('cipherText'), tools.val('password'), tools.val('key')))" />
     <br />
     <textarea id="plainText" rows="5" cols="60"></textarea>
     <textarea id="cipherText" rows="5" cols="60"></textarea>
