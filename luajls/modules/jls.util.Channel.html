@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua JLS 0.6</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>luajls</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_Channel">Class Channel </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/jls.io.File.html">jls.io.File</a></li>
+  <li><a href="../modules/jls.io.FileDescriptor.html">jls.io.FileDescriptor</a></li>
+  <li><a href="../modules/jls.io.Path.html">jls.io.Path</a></li>
+  <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
+  <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
+  <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
+  <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
+  <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
+  <li><a href="../modules/jls.lang.StringBuffer.html">jls.lang.StringBuffer</a></li>
+  <li><a href="../modules/jls.lang.Thread.html">jls.lang.Thread</a></li>
+  <li><a href="../modules/jls.lang.class.html">jls.lang.class</a></li>
+  <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
+  <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
+  <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
+  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
+  <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
+  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
+  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
+  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
+  <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
+  <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
+  <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
+  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
+  <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
+  <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
+  <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
+  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
+  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
+  <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
+  <li><strong>jls.util.Channel</strong></li>
+  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
+  <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
+  <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
+  <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
+  <li><a href="../modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></li>
+  <li><a href="../modules/jls.util.Map.html">jls.util.Map</a></li>
+  <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
+  <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
+  <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
+  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
+  <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
+  <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
+  <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
+  <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
+  <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
+  <li><a href="../modules/jls.util.xml.html">jls.util.xml</a></li>
+  <li><a href="../modules/jls.util.zip.Deflater.html">jls.util.zip.Deflater</a></li>
+  <li><a href="../modules/jls.util.zip.Inflater.html">jls.util.zip.Inflater</a></li>
+  <li><a href="../modules/jls.util.zip.ZipFile.html">jls.util.zip.ZipFile</a></li>
+  <li><a href="../modules/jls.util.zip.gzip.html">jls.util.zip.gzip</a></li>
+  <li><a href="../modules/jls.util.zip.tar.html">jls.util.zip.tar</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/manual.md.html">manual</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>jls.util.Channel</code></h1>
+<p>Provide the Channel class.</p>
+<p>Provides a local message passing interface suitable for process and thread event based message passing.</p>
+
+<p>The messages are sent and received as string on a channel.
+The goal is to abstract the message transport implementation, that can internally be a queue, a pipe or a socket.</p>
+
+<p>The channel resource is represented by an opaque string and can be generated automatically.
+Internally using URI with authentication keys, pipe://pub.priv@local/p12345 or tcp://pub.priv@localhost:12345.</p>
+
+<p>This interface is used for worker that abstract the thread.</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">local channelServer = Channel:new()
+channelServer:acceptAndClose():next(function(acceptedChannel)
+  acceptedChannel:receiveStart(function(message)
+    print(message)
+    acceptedChannel:close()
+  end)
+end)
+local channel = Channel:new()
+channelServer:bind():next(function()
+  local name = channelServer:getName() -- after bind the server provides a name for connection
+  return channel:connect(name)
+end):next(function()
+  channel:writeMessage(&apos;Hello&apos;)
+end)
+event:loop()
+</pre>
+    </ul>
+
+
+<h2><a href="#Class_Channel">Class Channel </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Channel:new">Channel:new ()</a></td>
+	<td class="summary">Creates a new Channel.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#channel:close">channel:close (callback)</a></td>
+	<td class="summary">Closes this channel.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#channel:onClose">channel:onClose ()</a></td>
+	<td class="summary">Returns a promise that resolves once the channel is closed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#channel:getName">channel:getName ()</a></td>
+	<td class="summary">Returns the name of this channel.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#channel:bind">channel:bind ([closeWithAccepted[, scheme]])</a></td>
+	<td class="summary">Binds this channel.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#channel:onAccept">channel:onAccept (ch)</a></td>
+	<td class="summary">Accepts a new channel.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#channel:connect">channel:connect (name)</a></td>
+	<td class="summary">Connects this channel to the specified name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#channel:receiveStart">channel:receiveStart (handleMessage)</a></td>
+	<td class="summary">Starts receiving messages on this channel.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#channel:receiveStop">channel:receiveStop ()</a></td>
+	<td class="summary">Stops receiving messages on this channel.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#channel:writeMessage">channel:writeMessage (payload[, messageType[, callback]])</a></td>
+	<td class="summary">Writes a message on this channel.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name="Class_Channel"></a>Class Channel </h2>
+
+          <div class="section-description">
+          The Channel class.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Channel:new"></a>
+    <strong>Channel:new ()</strong>
+    </dt>
+    <dd>
+    Creates a new Channel.
+ A channel can be a server using the bind method or a client using the connect method but not both.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "channel:close"></a>
+    <strong>channel:close (callback)</strong>
+    </dt>
+    <dd>
+    Closes this channel.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         an optional callback function to use in place of promise.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the channel is closed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "channel:onClose"></a>
+    <strong>channel:onClose ()</strong>
+    </dt>
+    <dd>
+    Returns a promise that resolves once the channel is closed.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the channel is closed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "channel:getName"></a>
+    <strong>channel:getName ()</strong>
+    </dt>
+    <dd>
+    Returns the name of this channel.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        the name of this channel.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "channel:bind"></a>
+    <strong>channel:bind ([closeWithAccepted[, scheme]])</strong>
+    </dt>
+    <dd>
+    Binds this channel.
+ When bound, the channel name can be used for connection.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">closeWithAccepted</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to indicate this channel shall be closed after all the accepted channels are closed.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">scheme</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the scheme to use.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the server channel is bound.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "channel:onAccept"></a>
+    <strong>channel:onAccept (ch)</strong>
+    </dt>
+    <dd>
+    Accepts a new channel.
+ This method should be overriden, the default implementation closes the channel.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ch</span>
+         the channel to accept.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "channel:connect"></a>
+    <strong>channel:connect (name)</strong>
+    </dt>
+    <dd>
+    Connects this channel to the specified name.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the name of the channel.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the channel is connected.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "channel:receiveStart"></a>
+    <strong>channel:receiveStart (handleMessage)</strong>
+    </dt>
+    <dd>
+    Starts receiving messages on this channel.
+ The handler will be called with the payload and the message type.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">handleMessage</span>
+            <span class="types"><span class="type">function</span></span>
+         a function that will be called when a message is received.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "channel:receiveStop"></a>
+    <strong>channel:receiveStop ()</strong>
+    </dt>
+    <dd>
+    Stops receiving messages on this channel.
+ This server channel shall not be used anymore.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "channel:writeMessage"></a>
+    <strong>channel:writeMessage (payload[, messageType[, callback]])</strong>
+    </dt>
+    <dd>
+    Writes a message on this channel.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">payload</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the message to send
+        </li>
+        <li><span class="parameter">messageType</span>
+            <span class="types"><span class="type">number</span></span>
+         the message type, default is Channel.MESSAGE<em>TYPE</em>USER.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         an optional callback function to use in place of promise.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the message has been sent.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

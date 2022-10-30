@@ -1,0 +1,495 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua JLS 0.6</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>luajls</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_Url">Class Url </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/jls.io.File.html">jls.io.File</a></li>
+  <li><a href="../modules/jls.io.FileDescriptor.html">jls.io.FileDescriptor</a></li>
+  <li><a href="../modules/jls.io.Path.html">jls.io.Path</a></li>
+  <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
+  <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
+  <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
+  <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
+  <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
+  <li><a href="../modules/jls.lang.StringBuffer.html">jls.lang.StringBuffer</a></li>
+  <li><a href="../modules/jls.lang.Thread.html">jls.lang.Thread</a></li>
+  <li><a href="../modules/jls.lang.class.html">jls.lang.class</a></li>
+  <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
+  <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
+  <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
+  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
+  <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
+  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
+  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
+  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
+  <li><strong>jls.net.Url</strong></li>
+  <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
+  <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
+  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
+  <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
+  <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
+  <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
+  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
+  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
+  <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
+  <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
+  <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
+  <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
+  <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
+  <li><a href="../modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></li>
+  <li><a href="../modules/jls.util.Map.html">jls.util.Map</a></li>
+  <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
+  <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
+  <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
+  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
+  <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
+  <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
+  <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
+  <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
+  <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
+  <li><a href="../modules/jls.util.xml.html">jls.util.xml</a></li>
+  <li><a href="../modules/jls.util.zip.Deflater.html">jls.util.zip.Deflater</a></li>
+  <li><a href="../modules/jls.util.zip.Inflater.html">jls.util.zip.Inflater</a></li>
+  <li><a href="../modules/jls.util.zip.ZipFile.html">jls.util.zip.ZipFile</a></li>
+  <li><a href="../modules/jls.util.zip.gzip.html">jls.util.zip.gzip</a></li>
+  <li><a href="../modules/jls.util.zip.tar.html">jls.util.zip.tar</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/manual.md.html">manual</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>jls.net.Url</code></h1>
+<p>Represents an Uniform Resource Locator.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Class_Url">Class Url </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Url:new">Url:new (protocol[, host[, port[, file]]])</a></td>
+	<td class="summary">Creates a new Url.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#url:getProtocol">url:getProtocol ()</a></td>
+	<td class="summary">Returns this Url scheme.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#url:getUserInfo">url:getUserInfo ()</a></td>
+	<td class="summary">Returns this Url userInfo.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#url:getHost">url:getHost ()</a></td>
+	<td class="summary">Returns this Url hostname.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#url:getPort">url:getPort ()</a></td>
+	<td class="summary">Returns this Url port.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#url:getPath">url:getPath ()</a></td>
+	<td class="summary">Returns this Url path.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#url:getQuery">url:getQuery ()</a></td>
+	<td class="summary">Returns this Url query.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#url:toString">url:toString ()</a></td>
+	<td class="summary">Returns the string value representing this Url.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Url.parse">Url.parse (sUrl)</a></td>
+	<td class="summary">Returns the Url corresponding to the specified string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Url.fromString">Url.fromString (sUrl)</a></td>
+	<td class="summary">Returns the Url corresponding to the specified string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Url.mapToQuery">Url.mapToQuery (keyValues[, query])</a></td>
+	<td class="summary">Returns the query representing the key value pairs including the question mark.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Url.format">Url.format (tUrl)</a></td>
+	<td class="summary">Returns the string value representing the specified Url.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name="Class_Url"></a>Class Url </h2>
+
+          <div class="section-description">
+          The Url class represents an Uniform Resource Locator.
+ see https://tools.ietf.org/html/rfc1738
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Url:new"></a>
+    <strong>Url:new (protocol[, host[, port[, file]]])</strong>
+    </dt>
+    <dd>
+    Creates a new Url.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">protocol</span>
+         The protocol or the Url as a string or the Url as a table.
+        </li>
+        <li><span class="parameter">host</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The host name.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">port</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The port number.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">file</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The file part of the Url.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a new Url
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> url = Url:new(<span class="string">'http://somehost:1234/some/path'</span>)
+url:getHost() <span class="comment">-- returns "somehost"</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "url:getProtocol"></a>
+    <strong>url:getProtocol ()</strong>
+    </dt>
+    <dd>
+    Returns this Url scheme.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        this Url scheme.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "url:getUserInfo"></a>
+    <strong>url:getUserInfo ()</strong>
+    </dt>
+    <dd>
+    Returns this Url userInfo.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        this Url userInfo.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "url:getHost"></a>
+    <strong>url:getHost ()</strong>
+    </dt>
+    <dd>
+    Returns this Url hostname.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        this Url hostname.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "url:getPort"></a>
+    <strong>url:getPort ()</strong>
+    </dt>
+    <dd>
+    Returns this Url port.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        this Url port.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "url:getPath"></a>
+    <strong>url:getPath ()</strong>
+    </dt>
+    <dd>
+    Returns this Url path.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        this Url path.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "url:getQuery"></a>
+    <strong>url:getQuery ()</strong>
+    </dt>
+    <dd>
+    Returns this Url query.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        this Url query.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "url:toString"></a>
+    <strong>url:toString ()</strong>
+    </dt>
+    <dd>
+    Returns the string value representing this Url.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the string value representing this Url.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Url.parse"></a>
+    <strong>Url.parse (sUrl)</strong>
+    </dt>
+    <dd>
+    Returns the Url corresponding to the specified string.
+ The table contains the keys: scheme, host, port, path, query, userinfo, username, password.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sUrl</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The string to parse.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        a table representing the Url or nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Url.fromString"></a>
+    <strong>Url.fromString (sUrl)</strong>
+    </dt>
+    <dd>
+    Returns the Url corresponding to the specified string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sUrl</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The Url as a string.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.net.Url</span></span>
+        the Url or nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Url.mapToQuery"></a>
+    <strong>Url.mapToQuery (keyValues[, query])</strong>
+    </dt>
+    <dd>
+    Returns the query representing the key value pairs including the question mark.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keyValues</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         the key value pairs.
+        </li>
+        <li><span class="parameter">query</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the base query to add key values.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the query representing the key value pairs.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Url.format"></a>
+    <strong>Url.format (tUrl)</strong>
+    </dt>
+    <dd>
+    Returns the string value representing the specified Url.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tUrl</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         The Url as a table.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the string value representing the Url.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

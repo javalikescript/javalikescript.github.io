@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua JLS 0.6</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>luajls</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_Event">Class Event </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/jls.io.File.html">jls.io.File</a></li>
+  <li><a href="../modules/jls.io.FileDescriptor.html">jls.io.FileDescriptor</a></li>
+  <li><a href="../modules/jls.io.Path.html">jls.io.Path</a></li>
+  <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
+  <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
+  <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
+  <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
+  <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
+  <li><a href="../modules/jls.lang.StringBuffer.html">jls.lang.StringBuffer</a></li>
+  <li><a href="../modules/jls.lang.Thread.html">jls.lang.Thread</a></li>
+  <li><a href="../modules/jls.lang.class.html">jls.lang.class</a></li>
+  <li><strong>jls.lang.event</strong></li>
+  <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
+  <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
+  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
+  <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
+  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
+  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
+  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
+  <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
+  <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
+  <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
+  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
+  <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
+  <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
+  <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
+  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
+  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
+  <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
+  <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
+  <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
+  <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
+  <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
+  <li><a href="../modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></li>
+  <li><a href="../modules/jls.util.Map.html">jls.util.Map</a></li>
+  <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
+  <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
+  <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
+  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
+  <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
+  <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
+  <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
+  <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
+  <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
+  <li><a href="../modules/jls.util.xml.html">jls.util.xml</a></li>
+  <li><a href="../modules/jls.util.zip.Deflater.html">jls.util.zip.Deflater</a></li>
+  <li><a href="../modules/jls.util.zip.Inflater.html">jls.util.zip.Inflater</a></li>
+  <li><a href="../modules/jls.util.zip.ZipFile.html">jls.util.zip.ZipFile</a></li>
+  <li><a href="../modules/jls.util.zip.gzip.html">jls.util.zip.gzip</a></li>
+  <li><a href="../modules/jls.util.zip.tar.html">jls.util.zip.tar</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/manual.md.html">manual</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>jls.lang.event</code></h1>
+<p>Returns the default event instance to execute asynchronous operations.</p>
+<p> The Event class coordinates distinct asynchronous operations using a single event loop.</p>
+
+
+<h2><a href="#Class_Event">Class Event </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Event:new">Event:new ()</a></td>
+	<td class="summary">Creates an Event.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#event:setTimeout">event:setTimeout (callback[, delayMs=0])</a></td>
+	<td class="summary">Registers a timer which executes a function once after the timer expires.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#event:clearTimeout">event:clearTimeout (timer)</a></td>
+	<td class="summary">Unregisters a timer.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#event:setInterval">event:setInterval (callback, delayMs)</a></td>
+	<td class="summary">Registers a timer which executes a function repeatedly with a fixed time delay between each execution.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#event:clearInterval">event:clearInterval (timer)</a></td>
+	<td class="summary">Unregisters a timer.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#event:loop">event:loop ()</a></td>
+	<td class="summary">Runs the event loop until there is no more registered event.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#event:stop">event:stop ()</a></td>
+	<td class="summary">Stops the event loop.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#event:loopAlive">event:loopAlive ()</a></td>
+	<td class="summary">Indicates whether or not this event has at least one registered event.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#event:runOnce">event:runOnce ()</a></td>
+	<td class="summary">Runs the event loop once.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#event:close">event:close ()</a></td>
+	<td class="summary">Closes this event.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name="Class_Event"></a>Class Event </h2>
+
+          <div class="section-description">
+          An Event class.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Event:new"></a>
+    <strong>Event:new ()</strong>
+    </dt>
+    <dd>
+    Creates an Event.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "event:setTimeout"></a>
+    <strong>event:setTimeout (callback[, delayMs=0])</strong>
+    </dt>
+    <dd>
+    Registers a timer which executes a function once after the timer expires.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         A function that is executed once after the timer expires.
+        </li>
+        <li><span class="parameter">delayMs</span>
+            <span class="types"><span class="type">number</span></span>
+         The time, in milliseconds, the timer should wait before the specified function is executed.
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        An opaque value identifying the timer that can be used to cancel it.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">event:setTimeout(<span class="keyword">function</span>()
+  <span class="comment">-- something that have to be done once in 1 second
+</span><span class="keyword">end</span>, <span class="number">1000</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "event:clearTimeout"></a>
+    <strong>event:clearTimeout (timer)</strong>
+    </dt>
+    <dd>
+    Unregisters a timer.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">timer</span>
+         the timer as returned by the setTimeout or setInterval method.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "event:setInterval"></a>
+    <strong>event:setInterval (callback, delayMs)</strong>
+    </dt>
+    <dd>
+    Registers a timer which executes a function repeatedly with a fixed time delay between each execution.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         A function that is executed repeatedly.
+        </li>
+        <li><span class="parameter">delayMs</span>
+            <span class="types"><span class="type">number</span></span>
+         The time, in milliseconds, the timer should wait between to execution.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        An opaque value identifying the timer that can be used to cancel it.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> intervalId
+intervalId = event:setInterval(<span class="keyword">function</span>()
+  <span class="comment">-- something that have to be done every 1 second
+</span>  intervalId:clearInterval(intervalId)
+<span class="keyword">end</span>, <span class="number">1000</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "event:clearInterval"></a>
+    <strong>event:clearInterval (timer)</strong>
+    </dt>
+    <dd>
+    Unregisters a timer.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">timer</span>
+         the timer as returned by the setTimeout or setInterval method.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "event:loop"></a>
+    <strong>event:loop ()</strong>
+    </dt>
+    <dd>
+    Runs the event loop until there is no more registered event.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "event:stop"></a>
+    <strong>event:stop ()</strong>
+    </dt>
+    <dd>
+    Stops the event loop.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "event:loopAlive"></a>
+    <strong>event:loopAlive ()</strong>
+    </dt>
+    <dd>
+    Indicates whether or not this event has at least one registered event.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true when this event has something to do.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "event:runOnce"></a>
+    <strong>event:runOnce ()</strong>
+    </dt>
+    <dd>
+    Runs the event loop once.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "event:close"></a>
+    <strong>event:close ()</strong>
+    </dt>
+    <dd>
+    Closes this event.
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua JLS 0.6</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>luajls</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Tables">Tables</a></li>
+<li><a href="#Class_Logger">Class Logger </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/jls.io.File.html">jls.io.File</a></li>
+  <li><a href="../modules/jls.io.FileDescriptor.html">jls.io.FileDescriptor</a></li>
+  <li><a href="../modules/jls.io.Path.html">jls.io.Path</a></li>
+  <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
+  <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
+  <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
+  <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
+  <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
+  <li><a href="../modules/jls.lang.StringBuffer.html">jls.lang.StringBuffer</a></li>
+  <li><a href="../modules/jls.lang.Thread.html">jls.lang.Thread</a></li>
+  <li><a href="../modules/jls.lang.class.html">jls.lang.class</a></li>
+  <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
+  <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
+  <li><strong>jls.lang.logger</strong></li>
+  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
+  <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
+  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
+  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
+  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
+  <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
+  <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
+  <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
+  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
+  <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
+  <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
+  <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
+  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
+  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
+  <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
+  <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
+  <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
+  <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
+  <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
+  <li><a href="../modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></li>
+  <li><a href="../modules/jls.util.Map.html">jls.util.Map</a></li>
+  <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
+  <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
+  <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
+  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
+  <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
+  <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
+  <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
+  <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
+  <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
+  <li><a href="../modules/jls.util.xml.html">jls.util.xml</a></li>
+  <li><a href="../modules/jls.util.zip.Deflater.html">jls.util.zip.Deflater</a></li>
+  <li><a href="../modules/jls.util.zip.Inflater.html">jls.util.zip.Inflater</a></li>
+  <li><a href="../modules/jls.util.zip.ZipFile.html">jls.util.zip.ZipFile</a></li>
+  <li><a href="../modules/jls.util.zip.gzip.html">jls.util.zip.gzip</a></li>
+  <li><a href="../modules/jls.util.zip.tar.html">jls.util.zip.tar</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/manual.md.html">manual</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>jls.lang.logger</code></h1>
+<p>Returns the default logger implementation.</p>
+<p>A Logger object is used to record events during the execution of Lua modules.
+This default implementation provides a simple way for module owner to expose debugging information and for module user to access this information.
+This default implementation could be configured to redirect log messages to another logging facility.</p>
+
+<p>The default log level is warning.
+The default formatting consists in prefixing the message by the date time as ISO 8601 and the log level.
+The default writing consists in printing the log message to the standard error stream, adding a new line and flushing.</p>
+
+<p>The JLS_LOGGER_LEVEL environment variable could be used to indicate the log level to use.</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">local logger = require(&apos;jls.lang.logger&apos;)
+logger:info(&apos;Some usefull information message&apos;)
+
+if logger:isLoggable(logger.FINE) then
+  logger:fine(&apos;Some fine message&apos;)
+end
+</pre>
+    </ul>
+
+
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#LEVEL">LEVEL</a></td>
+	<td class="summary">The available log levels.</td>
+	</tr>
+</table>
+<h2><a href="#Class_Logger">Class Logger </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Logger:new">Logger:new (level)</a></td>
+	<td class="summary">Creates a new logger with the specified level.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:getLevel">logger:getLevel ()</a></td>
+	<td class="summary">Returns the log level for this logger.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:setLevel">logger:setLevel (level)</a></td>
+	<td class="summary">Sets the log level for this logger.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:isLoggable">logger:isLoggable (level)</a></td>
+	<td class="summary">Tells wether or not a message of the specified level will be logged by this logger.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:log">logger:log (level, message)</a></td>
+	<td class="summary">Logs the specified message with the specified level.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:error">logger:error (message)</a></td>
+	<td class="summary">Logs the specified message with the ERROR level.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:warn">logger:warn (message)</a></td>
+	<td class="summary">Logs the specified message with the WARN level.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:info">logger:info (message)</a></td>
+	<td class="summary">Logs the specified message with the INFO level.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:config">logger:config (message)</a></td>
+	<td class="summary">Logs the specified message with the CONFIG level.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:debug">logger:debug (message)</a></td>
+	<td class="summary">Logs the specified message with the DEBUG level.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:fine">logger:fine (message)</a></td>
+	<td class="summary">Logs the specified message with the FINE level.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:finer">logger:finer (message)</a></td>
+	<td class="summary">Logs the specified message with the FINER level.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:finest">logger:finest (message)</a></td>
+	<td class="summary">Logs the specified message with the FINEST level.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "LEVEL"></a>
+    <strong>LEVEL</strong>
+    </dt>
+    <dd>
+    The available log levels.
+ The level fields are also provided as shortcut to the default implementation.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">ERROR</span>
+        The error level is the highest level
+        </li>
+        <li><span class="parameter">WARN</span>
+        The warning level
+        </li>
+        <li><span class="parameter">INFO</span>
+        The information level
+        </li>
+        <li><span class="parameter">CONFIG</span>
+        The configuration level
+        </li>
+        <li><span class="parameter">FINE</span>
+        The fine level
+        </li>
+        <li><span class="parameter">FINER</span>
+        The finer level
+        </li>
+        <li><span class="parameter">FINEST</span>
+        The finest level
+        </li>
+        <li><span class="parameter">DEBUG</span>
+        The debug level Do not use, shall be removed
+        </li>
+        <li><span class="parameter">ALL</span>
+        The all level is the lowest level
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Class_Logger"></a>Class Logger </h2>
+
+          <div class="section-description">
+          A Logger class.
+ A Logger object is used to log messages for a specific system or application component.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Logger:new"></a>
+    <strong>Logger:new (level)</strong>
+    </dt>
+    <dd>
+    Creates a new logger with the specified level.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">level</span>
+         The log level.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a new logger
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> console = <span class="global">require</span>(<span class="string">'jls.lang.logger'</span>):getClass():new()
+console:info(<span class="string">'Some usefull information message'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "logger:getLevel"></a>
+    <strong>logger:getLevel ()</strong>
+    </dt>
+    <dd>
+    Returns the log level for this logger.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the log level for this logger.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:setLevel"></a>
+    <strong>logger:setLevel (level)</strong>
+    </dt>
+    <dd>
+    Sets the log level for this logger.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">level</span>
+         The log level.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:isLoggable"></a>
+    <strong>logger:isLoggable (level)</strong>
+    </dt>
+    <dd>
+    Tells wether or not a message of the specified level will be logged by this logger.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">level</span>
+            <span class="types"><span class="type">number</span></span>
+         The log level to check.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if a message of the specified level will be logged by this logger.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:log"></a>
+    <strong>logger:log (level, message)</strong>
+    </dt>
+    <dd>
+    Logs the specified message with the specified level.
+ When message is a string then additional arguments are formatted using string.format
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">level</span>
+         The log level.
+        </li>
+        <li><span class="parameter">message</span>
+         The log message.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:error"></a>
+    <strong>logger:error (message)</strong>
+    </dt>
+    <dd>
+    Logs the specified message with the ERROR level.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         The log message.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:warn"></a>
+    <strong>logger:warn (message)</strong>
+    </dt>
+    <dd>
+    Logs the specified message with the WARN level.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         The log message.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:info"></a>
+    <strong>logger:info (message)</strong>
+    </dt>
+    <dd>
+    Logs the specified message with the INFO level.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         The log message.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:config"></a>
+    <strong>logger:config (message)</strong>
+    </dt>
+    <dd>
+    Logs the specified message with the CONFIG level.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         The log message.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:debug"></a>
+    <strong>logger:debug (message)</strong>
+    </dt>
+    <dd>
+    Logs the specified message with the DEBUG level.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         The log message.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:fine"></a>
+    <strong>logger:fine (message)</strong>
+    </dt>
+    <dd>
+    Logs the specified message with the FINE level.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         The log message.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:finer"></a>
+    <strong>logger:finer (message)</strong>
+    </dt>
+    <dd>
+    Logs the specified message with the FINER level.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         The log message.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:finest"></a>
+    <strong>logger:finest (message)</strong>
+    </dt>
+    <dd>
+    Logs the specified message with the FINEST level.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+         The log message.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

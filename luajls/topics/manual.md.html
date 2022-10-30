@@ -1,0 +1,1000 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua JLS 0.6</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>luajls</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Audience">Audience </a></li>
+<li><a href="#Overview">Overview </a></li>
+<li><a href="#General_Considerations">General Considerations </a></li>
+<li><a href="#Namespace_and_Modules">Namespace and Modules </a></li>
+<li><a href="#Object_Oriented_Programming">Object-Oriented Programming </a></li>
+<li><a href="#Concurrent_Programming">Concurrent Programming </a></li>
+<li><a href="#Event_Loop">Event Loop </a></li>
+<li><a href="#File_System">File System </a></li>
+<li><a href="#Network_Socket">Network Socket </a></li>
+<li><a href="#Hypertext_Transfer_Protocol__HTTP_">Hypertext Transfer Protocol (HTTP) </a></li>
+<li><a href="#Process">Process </a></li>
+<li><a href="#Thread">Thread </a></li>
+<li><a href="#Inter_Process_Communication">Inter-Process Communication </a></li>
+<li><a href="#Basic_Classes">Basic Classes </a></li>
+<li><a href="#Data_Exchange_Formats">Data Exchange Formats </a></li>
+<li><a href="#User_Interface">User Interface </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><strong>manual</strong></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/jls.io.File.html">jls.io.File</a></li>
+  <li><a href="../modules/jls.io.FileDescriptor.html">jls.io.FileDescriptor</a></li>
+  <li><a href="../modules/jls.io.Path.html">jls.io.Path</a></li>
+  <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
+  <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
+  <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
+  <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
+  <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
+  <li><a href="../modules/jls.lang.StringBuffer.html">jls.lang.StringBuffer</a></li>
+  <li><a href="../modules/jls.lang.Thread.html">jls.lang.Thread</a></li>
+  <li><a href="../modules/jls.lang.class.html">jls.lang.class</a></li>
+  <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
+  <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
+  <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
+  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
+  <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
+  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
+  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
+  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
+  <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
+  <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
+  <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
+  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
+  <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
+  <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
+  <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
+  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
+  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
+  <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
+  <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
+  <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
+  <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
+  <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
+  <li><a href="../modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></li>
+  <li><a href="../modules/jls.util.Map.html">jls.util.Map</a></li>
+  <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
+  <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
+  <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
+  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
+  <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
+  <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
+  <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
+  <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
+  <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
+  <li><a href="../modules/jls.util.xml.html">jls.util.xml</a></li>
+  <li><a href="../modules/jls.util.zip.Deflater.html">jls.util.zip.Deflater</a></li>
+  <li><a href="../modules/jls.util.zip.Inflater.html">jls.util.zip.Inflater</a></li>
+  <li><a href="../modules/jls.util.zip.ZipFile.html">jls.util.zip.ZipFile</a></li>
+  <li><a href="../modules/jls.util.zip.gzip.html">jls.util.zip.gzip</a></li>
+  <li><a href="../modules/jls.util.zip.tar.html">jls.util.zip.tar</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Introduction</h1>
+
+<p><a name="Audience"></a></p>
+<h2>Audience</h2>
+
+<p>This document is intended for Lua users wanting to use and understand the luajls library, more broadly to people developping standalone Lua application.
+It is presumed that the reader has a good knowledge of Lua, please consult the Lua <a href="https://www.lua.org/manual/5.4/manual.html">reference manual</a> and <a href="https://www.lua.org/pil/">Programming in Lua</a> to learn details regarding Lua itself.</p>
+
+
+<p><a name="Overview"></a></p>
+<h2>Overview</h2>
+
+<p>luajls is a set of Lua modules for developing stand-alone <a href="https://www.lua.org/">Lua</a> applications.</p>
+
+<p>The modules provide general-purpose functions such as class definition and promise, to operating system abstractions such as file system and network access. The modules support asynchronous I/O based on an event loop.</p>
+
+<p>The modules expose an API to abstract the host platform and general purpose libraries such as <em>SSL</em>, <em>JSON</em>, <em>XML</em>, <em>ZIP</em>.
+The main targeted OSes are <em>Linux</em> and <em>Windows</em>.</p>
+
+<p>The only required dependency is Lua 5.4</p>
+
+<p>Optional dependencies are C and Lua modules such as <em>luafilesystem</em>, <em>luasocket</em>, <em>luv</em>, <em>lua-openssl</em>, <em>lua-cjson</em>.
+By example, the file system manipulation requires one of the <em>luafilesystem</em> or the <em>luv</em> dependent module.</p>
+
+<p>The recommended dependency is <em>luv</em> as you will have access to the <em>io</em>, <em>lang</em> and <em>net</em> packages.</p>
+
+<p>See <a href="https://github.com/javalikescript/luajls">Lua JLS repository</a>
+and the <a href="https://github.com/javalikescript/luaclibs">Lua C libraries repository</a></p>
+
+
+<p><a name="General_Considerations"></a></p>
+<h2>General Considerations</h2>
+
+<h3>Motivations and Reasoning</h3>
+
+<p>The motivation is to facilitate the development of complex standalone applications.</p>
+
+<p>Building standalone application requires to use operating system features such as file system, network, timers, processes, theads, inter-process communication, webview. Features that are not available in the Lua standard libraries.</p>
+
+<p>There are plenty of valuable C modules for various tasks such as <em>LuaFileSystem</em>, <em>luasocket</em> and <em>luv</em>, even the Lua standard libraries provide some operating system features.
+Building upon a specific module may restrict the usage and portability. The idea is to abstract dependent external modules and to provide at least 2 implementations including a pure Lua one if possible.
+Accessing OS features is not enough, a higher level language is required to provide complex features such as HTTP client and server, Worker.</p>
+
+<p>The luajls module library exposes a set of APIs. These APIs are inspired by JavaScript and Java due to their similarity and their large usage.
+The goal is to facilitate the learning and also the usage in combination with JavaScript for example when using an HTTP server or a WebView.
+The goal is to expose already existing, well-known APIs for example the handling of asynchronous tasks uses the Promise/A+ specification which is now part of JavaScript.
+The APIs support asynchronous operations to ease the development with complex features such as an HTTP server or a graphical user interface.</p>
+
+
+<h3>Main Principles</h3>
+
+<p>This set of modules or libraries are meant to be simple, composable.
+The conventions are meant to organize and help understanting these libraries.</p>
+
+<p>When the implementation is based on a dependent Lua module, its name is suffixed by a minus <code>&apos;-&apos;</code> character followed by the dependent Lua module name.
+By example, to provide the file system API luajls could use the <em>luafilesystem</em>, named <em>lfs</em>, or the <em>luv</em> dependency.
+There are two corresponding bridge implementations <em>fs-lfs</em> and <em>fs-luv</em> exposing the same API.
+The main module named <em>fs</em> will load the first available module.</p>
+
+
+<h3>Name Convention</h3>
+
+<p>The library uses the following naming convention:</p>
+
+<ul>
+    <li>Classes are nouns in upper camel case,
+    such as <em>Vehicle</em>, <em>Bus</em></li>
+    <li>Methods are verbs in lower camel case,
+    such as <em>getColor</em>, <em>setRegistrationYear</em></li>
+    <li>Instances, variables and package names are also written in lower camel case,
+    such as <em>myCar</em>, <em>aBus</em></li>
+    <li>Constants are written in uppercase characters separated by underscores,
+    such as *MAX_HEIGHT*</li>
+    <li>Private fields and methods starts with an underscore,
+    such as *_internal*</li>
+    <li>Acronyms are treated as normal words,
+    such as <em>Html</em>, <em>Url</em></li>
+</ul>
+
+<p>Source code is indented using 2 spaces.</p>
+
+
+<h1>Basic Concepts</h1>
+
+<p>This section introduces basic concepts used in the luajls library.</p>
+
+<p><a name="Namespace_and_Modules"></a></p>
+<h2>Namespace and Modules</h2>
+
+<p>The library is available under the <em>jls</em> namespace to avoid conflicts, the modules are under packages for organizational purpose to allow the use of small modules without polluting a single directory.</p>
+
+<p>The following packages are available.</p>
+
+<ul>
+    <li><em>jls.lang</em>
+    Base modules including class definition, module loading, logging, event loop, promise, process, thread</li>
+    <li><em>jls.io</em>
+    File system manipulation, file I/O, pipe, serial, streams</li>
+    <li><em>jls.net</em>
+    Network modules including TCP and UDP socket, HTTP, MQTT, WebSocket</li>
+    <li><em>jls.util</em>
+    Utility modules for List, Map, date and time, JSON and XML formats, deflate, ZIP file, worker and WebView</li>
+</ul>
+
+
+<p><a name="Object_Oriented_Programming"></a></p>
+<h2>Object-Oriented Programming</h2>
+
+<p>The API is mainly exposed via classes, a required class module could be instanciated using the method <em>new</em>.</p>
+
+
+<pre>
+<span class="keyword">local</span> Path = <span class="global">require</span>(<span class="string">'jls.io.Path'</span>)
+<span class="keyword">local</span> configPath = Path:new(<span class="string">'work/config.json'</span>)
+<span class="global">print</span>(configPath:getName()) <span class="comment">-- prints 'config.json'</span>
+</pre>
+
+
+<p>A class can exposed fields and methods which are not shared with the instance prototype.</p>
+
+
+<pre>
+<span class="keyword">local</span> Url = <span class="global">require</span>(<span class="string">'jls.net.Url'</span>)
+<span class="keyword">local</span> urlTable = Url.parse(<span class="string">'http://www.lua.org/'</span>)
+<span class="global">print</span>(urlTable.host) <span class="comment">-- prints 'www.lua.org'</span>
+</pre>
+
+
+<p>A class can implement an <em>initialize</em> method that will be called for new instances.
+A class can implement prototype methods shared among all its instances.</p>
+
+
+<pre>
+<span class="keyword">local</span> class = <span class="global">require</span>(<span class="string">'jls.lang.class'</span>)
+<span class="keyword">local</span> Person = class.create(<span class="keyword">function</span>(person)
+  <span class="keyword">function</span> person:initialize(name)
+    self.name = name
+  <span class="keyword">end</span>
+  <span class="keyword">function</span> person:getName()
+    <span class="keyword">return</span> self.name
+  <span class="keyword">end</span>
+<span class="keyword">end</span>)
+<span class="keyword">local</span> luke = Person:new(<span class="string">'Luke'</span>)
+<span class="global">print</span>(luke:getName()) <span class="comment">-- prints 'Luke'</span>
+</pre>
+
+
+<p>A class can inherit from another class, prototype methods are inherited by the subclasses.
+You could create a class that inherit another class by providing this super class to the <em>create</em> method.</p>
+
+
+<pre>
+<span class="keyword">local</span> class = <span class="global">require</span>(<span class="string">'jls.lang.class'</span>)
+<span class="keyword">local</span> Vehicle = class.create()
+<span class="keyword">local</span> Car = class.create(Vehicle)
+<span class="keyword">local</span> car = Car:new()
+<span class="global">print</span>(Vehicle:isInstance(car)) <span class="comment">-- prints true</span>
+</pre>
+
+
+<p><a name="Concurrent_Programming"></a></p>
+<h2>Concurrent Programming</h2>
+
+<p><a name="Event_Loop"></a></p>
+<h2>Event Loop</h2>
+
+<p>In order to deal with blocking I/O operations such as getting a network resource, luajls provides an event loop. Blocking operations take a callback function as argument that will be called when the operation completes or when data shall be processed.</p>
+
+<p>The callbacks use the error-first style, such as <code>function(err, value) ... end</code>, for both promise and stream more on that later.</p>
+
+<p>If you need to do something after 1 second, you could do it synchronously.</p>
+
+
+<pre>
+<span class="keyword">local</span> system = <span class="global">require</span>(<span class="string">'jls.lang.system'</span>)
+<span class="global">print</span>(<span class="string">'Do this first'</span>)
+system.sleep(<span class="number">1000</span>) <span class="comment">-- block
+</span><span class="global">print</span>(<span class="string">'Do that after 1 second'</span>)
+</pre>
+
+
+<p>It works fine, but you are limited to a single blocking operation, here you can only sleep.
+Using the event loop you could compose multiple asynchonous operations</p>
+
+
+<pre>
+<span class="keyword">local</span> event = <span class="global">require</span>(<span class="string">'jls.lang.event'</span>)
+event:setTimeout(<span class="keyword">function</span>()
+  <span class="global">print</span>(<span class="string">'Do that after 1 second'</span>)
+<span class="keyword">end</span>, <span class="number">1000</span>)
+<span class="global">print</span>(<span class="string">'Do this first'</span>)
+event:loop() <span class="comment">-- block</span>
+</pre>
+
+
+<p>So it is quite common to see Lua code ending with the event loop.</p>
+
+
+<h3>Promise</h3>
+
+<p>To synchronize the program execution when dealing with asynchronous operations, the library provides an implementation of Promise. This allows to simplify the writing and reading of asynchronous operations compared to callback function.</p>
+
+
+<pre>
+<span class="keyword">local</span> event = <span class="global">require</span>(<span class="string">'jls.lang.event'</span>)
+<span class="keyword">local</span> Promise = <span class="global">require</span>(<span class="string">'jls.lang.Promise'</span>)
+
+<span class="keyword">local</span> <span class="keyword">function</span> wait(millis)
+  <span class="keyword">return</span> Promise:new(<span class="keyword">function</span>(resolve, reject)
+    event:setTimeout(resolve, millis)
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>
+
+wait(<span class="number">1000</span>):<span class="global">next</span>(<span class="keyword">function</span>()
+  <span class="global">print</span>(<span class="string">'Do that after 1 second'</span>)
+  <span class="keyword">return</span> wait(<span class="number">1000</span>)
+<span class="keyword">end</span>):<span class="global">next</span>(<span class="keyword">function</span>()
+  <span class="global">print</span>(<span class="string">'Do that after another second'</span>)
+<span class="keyword">end</span>)
+event:loop()
+</pre>
+
+
+<p>You also benefits of the whole Promise API, such as executing multiple parallel promises.</p>
+
+
+<pre>
+<span class="keyword">local</span> event = <span class="global">require</span>(<span class="string">'jls.lang.event'</span>)
+<span class="keyword">local</span> Promise = <span class="global">require</span>(<span class="string">'jls.lang.Promise'</span>)
+
+<span class="keyword">local</span> <span class="keyword">function</span> wait(millis)
+  <span class="keyword">return</span> Promise:new(<span class="keyword">function</span>(resolve, reject)
+    event:setTimeout(resolve, millis)
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>
+
+Promise.all({wait(<span class="number">500</span>), wait(<span class="number">1000</span>)}):<span class="global">next</span>(<span class="keyword">function</span>()
+  <span class="global">print</span>(<span class="string">'Do that after 1 second'</span>) <span class="comment">-- after both promises are completed
+</span><span class="keyword">end</span>)
+
+Promise.race({wait(<span class="number">1500</span>), wait(<span class="number">1000</span>)}):<span class="global">next</span>(<span class="keyword">function</span>()
+  <span class="global">print</span>(<span class="string">'Do that after 1 second'</span>) <span class="comment">-- after the first completed promise
+</span><span class="keyword">end</span>)
+
+event:loop()
+</pre>
+
+
+
+<h3>Stream, Stream Handler</h3>
+
+<p>Some asynchronous operations let you read data, such as reading on a network socket.
+Luajls provide a stream handler class that will be called as soon as new data is available.
+The stream handler is an enhancement of the simple stream callback function.
+The stream handler interface could be used on files, pipes, network sockets.</p>
+
+
+<pre>
+<span class="keyword">local</span> StreamHandler = <span class="global">require</span>(<span class="string">'jls.io.StreamHandler'</span>)
+<span class="keyword">local</span> FileStreamHandler = <span class="global">require</span>(<span class="string">'jls.io.streams.FileStreamHandler'</span>)
+
+<span class="keyword">local</span> std = StreamHandler:new(<span class="keyword">function</span>(_, data)
+  <span class="keyword">if</span> data <span class="keyword">then</span>
+    <span class="global">io</span>.stdout:write(data)
+  <span class="keyword">end</span>
+<span class="keyword">end</span>, <span class="keyword">function</span>(_, err)
+  <span class="global">io</span>.stderr:write(err <span class="keyword">or</span> <span class="string">'Stream error'</span>)
+<span class="keyword">end</span>)
+
+FileStreamHandler.readAll(<span class="string">'./README.md'</span>, std)
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<p>A stream handler could be a simple callback function that will receive data or error.</p>
+
+
+<pre>
+<span class="keyword">local</span> StreamHandler = <span class="global">require</span>(<span class="string">'jls.io.StreamHandler'</span>)
+<span class="keyword">local</span> FileStreamHandler = <span class="global">require</span>(<span class="string">'jls.io.streams.FileStreamHandler'</span>)
+
+<span class="keyword">local</span> std = StreamHandler:new(<span class="keyword">function</span>(err, data)
+  <span class="keyword">if</span> err <span class="keyword">then</span>
+    <span class="global">io</span>.stderr:write(err <span class="keyword">or</span> <span class="string">'Stream error'</span>)
+  <span class="keyword">elseif</span> data <span class="keyword">then</span>
+    <span class="global">io</span>.stdout:write(data)
+  <span class="keyword">end</span>
+<span class="keyword">end</span>)
+
+FileStreamHandler.readAll(<span class="string">'./README.md'</span>, std)
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<h1>Data Storage</h1>
+
+<p><a name="File_System"></a></p>
+<h2>File System</h2>
+
+<p>This section introduces the main classes allowing to manipulate the file system.</p>
+
+<h3>Path</h3>
+
+<p>A path instance lets you manipulates paths in an OS independent manner.</p>
+
+
+<pre>
+<span class="keyword">local</span> Path = <span class="global">require</span>(<span class="string">'jls.io.Path'</span>)
+<span class="keyword">local</span> workPath = Path:new(<span class="string">'work'</span>)
+<span class="keyword">local</span> configPath = Path:new(workPath, <span class="string">'config.json'</span>)
+<span class="global">print</span>(configPath:getPathName()) <span class="comment">-- prints 'work/config.json'</span>
+</pre>
+
+
+<h3>File</h3>
+
+<p>A file adds the ability to interact with the file system, such as getting the file type or size, listing the files in a directory or deleting a file.</p>
+
+
+<pre>
+<span class="keyword">local</span> File = <span class="global">require</span>(<span class="string">'jls.io.File'</span>)
+<span class="keyword">local</span> dir = File:new(<span class="string">'.'</span>)
+<span class="keyword">for</span> _, file <span class="keyword">in</span> <span class="global">ipairs</span>(dir:listFiles()) <span class="keyword">do</span>
+  <span class="keyword">if</span> file:isFile() <span class="keyword">then</span>
+    <span class="global">print</span>(<span class="string">'The file "'</span>..file:getPath()..<span class="string">'" length is '</span>..<span class="global">tostring</span>(file:length()))
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+
+
+<h3>File I/O</h3>
+
+<p>A file descriptor allows to create, read from and write into a file.</p>
+
+
+<pre>
+<span class="keyword">local</span> FileDescriptor = <span class="global">require</span>(<span class="string">'jls.io.FileDescriptor'</span>)
+FileDescriptor.open(<span class="string">'./README.md'</span>, <span class="string">'r'</span>):<span class="global">next</span>(<span class="keyword">function</span>(fileDesc)
+  <span class="keyword">return</span> fileDesc:read(<span class="number">256</span>):<span class="global">next</span>(<span class="keyword">function</span>(data)
+    <span class="global">print</span>(data)
+    fileDesc:close()
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>)
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<p>The methods could also be used synchronously for the sake of simplicity and when the blocking time is small and event based operations inconvenient to use.</p>
+
+
+<pre>
+<span class="keyword">local</span> FileDescriptor = <span class="global">require</span>(<span class="string">'jls.io.FileDescriptor'</span>)
+<span class="keyword">local</span> fileDesc = FileDescriptor.openSync(<span class="string">'./README.md'</span>, <span class="string">'r'</span>)
+<span class="keyword">local</span> data = fileDesc:readSync(<span class="number">256</span>)
+<span class="global">print</span>(data)
+fileDesc:closeSync()
+</pre>
+
+
+
+<h1>Network Programming</h1>
+
+<p>This section introduces the main classes to interact with the network.</p>
+
+<p><a name="Network_Socket"></a></p>
+<h2>Network Socket</h2>
+
+<h3>Transmission Control Protocol (TCP)</h3>
+
+<p>The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite.
+The connection will resolve the specified address.</p>
+
+
+<pre>
+<span class="keyword">local</span> TcpClient = <span class="global">require</span>(<span class="string">'jls.net.TcpClient'</span>)
+<span class="keyword">local</span> client = TcpClient:new()
+client:connect(<span class="string">'www.lua.org'</span>, <span class="number">80</span>):<span class="global">next</span>(<span class="keyword">function</span>()
+  client:readStart(<span class="keyword">function</span>(err, data)
+    <span class="keyword">if</span> data <span class="keyword">then</span>
+      <span class="global">print</span>(<span class="string">'Received "'</span>..<span class="global">tostring</span>(data)..<span class="string">'"'</span>)
+    <span class="keyword">end</span>
+    client:readStop()
+    client:close()
+  <span class="keyword">end</span>)
+  client:write(<span class="string">'GET / HTTP/1.0\r\n\r\n'</span>)
+<span class="keyword">end</span>)
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<p>The TCP server lets you bind on a specific port and accept connections.</p>
+
+
+<pre>
+<span class="keyword">local</span> TcpServer = <span class="global">require</span>(<span class="string">'jls.net.TcpServer'</span>)
+<span class="keyword">local</span> server = TcpServer:new()
+server:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)
+<span class="keyword">function</span> server:onAccept(client)
+  <span class="global">print</span>(<span class="string">'client connected'</span>)
+  <span class="comment">-- read / write on client
+</span>  client:close()
+  server:close()
+<span class="keyword">end</span>
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<h3>User Datagram Protocol (UDP)</h3>
+
+
+<pre>
+<span class="keyword">local</span> UdpSocket = <span class="global">require</span>(<span class="string">'jls.net.UdpSocket'</span>)
+<span class="keyword">local</span> host, port = <span class="string">'225.0.0.37'</span>, <span class="number">12345</span>
+<span class="keyword">local</span> receiver = UdpSocket:new()
+<span class="keyword">local</span> sender = UdpSocket:new()
+receiver:bind(<span class="string">'0.0.0.0'</span>, port, {reuseaddr = <span class="keyword">true</span>})
+receiver:joinGroup(host, <span class="string">'0.0.0.0'</span>)
+receiver:receiveStart(<span class="keyword">function</span>(err, data)
+  <span class="global">print</span>(<span class="string">'received data:'</span>, data)
+  receiver:receiveStop()
+  receiver:close()
+<span class="keyword">end</span>)
+sender:send(<span class="string">'Hello'</span>, host, port):finally(<span class="keyword">function</span>()
+  sender:close()
+<span class="keyword">end</span>)
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<p><a name="Hypertext_Transfer_Protocol__HTTP_"></a></p>
+<h2>Hypertext Transfer Protocol (HTTP)</h2>
+
+<p>The library provides HTTP 1.1 client and server.</p>
+
+<h3>HTTP Client</h3>
+
+<p>The HTTP client lets you send HTTP requests.</p>
+
+
+<pre>
+<span class="keyword">local</span> HttpClient = <span class="global">require</span>(<span class="string">'jls.net.http.HttpClient'</span>)
+
+<span class="keyword">local</span> client = HttpClient:new({url = <span class="string">'http://www.lua.org/'</span>})
+client:connect():<span class="global">next</span>(<span class="keyword">function</span>()
+  <span class="keyword">return</span> client:sendReceive()
+<span class="keyword">end</span>):<span class="global">next</span>(<span class="keyword">function</span>(response)
+  client:close()
+  <span class="keyword">return</span> response:getBody()
+<span class="keyword">end</span>):<span class="global">next</span>(<span class="keyword">function</span>(body)
+  <span class="global">print</span>(<span class="string">'body size'</span>, #body)
+<span class="keyword">end</span>)
+
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<h3>HTTP Server</h3>
+
+<p>The HTTP server allows you to serve any kind of resource.</p>
+
+<p>You create a context associating a path to an handler.
+The path is where the resource will be accessible.
+The handler will be called each time the server has been contacted on the path.
+The path is a pattern and allows to capture part of the path.</p>
+
+
+<pre>
+<span class="keyword">local</span> HttpServer = <span class="global">require</span>(<span class="string">'jls.net.http.HttpServer'</span>)
+<span class="keyword">local</span> httpServer = HttpServer:new()
+httpServer:bind(<span class="string">'::'</span>, <span class="number">8080</span>)
+httpServer:createContext(<span class="string">'/'</span>, <span class="keyword">function</span>(httpExchange)
+  <span class="keyword">local</span> response = httpExchange:getResponse()
+  response:setBody(<span class="string">'It works !'</span>)
+<span class="keyword">end</span>)
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<p>The library provides basic HTTP handlers for various tasks, accessing files, proxy resources.
+A basic use case is to serve local files.</p>
+
+
+<pre>
+<span class="keyword">local</span> HttpServer = <span class="global">require</span>(<span class="string">'jls.net.http.HttpServer'</span>)
+<span class="keyword">local</span> FileHttpHandler = <span class="global">require</span>(<span class="string">'jls.net.http.handler.FileHttpHandler'</span>)
+<span class="keyword">local</span> httpServer = HttpServer:new()
+httpServer:bind(<span class="string">'::'</span>, <span class="number">8080</span>)
+httpServer:createContext(<span class="string">'/rest/(.*)'</span>, FileHttpHandler:new(<span class="string">'.'</span>, <span class="string">'rl'</span>))
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<p>Another use case is to expose a HTTP APIs.</p>
+
+
+<pre>
+<span class="keyword">local</span> HttpServer = <span class="global">require</span>(<span class="string">'jls.net.http.HttpServer'</span>)
+<span class="keyword">local</span> RestHttpHandler = <span class="global">require</span>(<span class="string">'jls.net.http.handler.RestHttpHandler'</span>)
+<span class="keyword">local</span> httpServer = HttpServer:new()
+httpServer:bind(<span class="string">'::'</span>, <span class="number">8080</span>)
+httpServer:createContext(<span class="string">'/(.*)'</span>, RestHttpHandler:new({
+  admin = {
+    stop = <span class="keyword">function</span>(httpExchange)
+      httpServer:close()
+      <span class="keyword">return</span> <span class="string">'Bye !'</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+}))
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<h3>WebSocket</h3>
+
+<p>WebSocket is a communication protocol, providing full-duplex communication over a TCP connection.</p>
+
+<p>A common usage is with an HTTP server.</p>
+
+
+<pre>
+<span class="keyword">local</span> HttpServer = <span class="global">require</span>(<span class="string">'jls.net.http.HttpServer'</span>)
+<span class="keyword">local</span> Map = <span class="global">require</span>(<span class="string">'jls.util.Map'</span>)
+<span class="keyword">local</span> WebSocketUpgradeHandler = <span class="global">require</span>(<span class="string">'jls.net.http.ws'</span>).WebSocketUpgradeHandler
+<span class="keyword">local</span> httpServer = HttpServer:new()
+httpServer:bind(<span class="string">'::'</span>, <span class="number">8080</span>)
+httpServer:createContext(<span class="string">'/ws/'</span>,  Map.assign(WebSocketUpgradeHandler:new(), {
+  onOpen = <span class="keyword">function</span>(_, webSocket)
+    <span class="keyword">function</span> webSocket:onTextMessage(payload)
+      webSocket:sendTextMessage(<span class="string">'You said '</span>..payload)
+    <span class="keyword">end</span>
+    webSocket:sendTextMessage(<span class="string">'Welcome'</span>)
+  <span class="keyword">end</span>
+}))
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<h1>Process and Thread</h1>
+
+<p><a name="Process"></a></p>
+<h2>Process</h2>
+
+<p>The library provides classes to launch and interact with processes.</p>
+
+
+<pre>
+<span class="keyword">local</span> ProcessBuilder = <span class="global">require</span>(<span class="string">'jls.lang.ProcessBuilder'</span>)
+<span class="keyword">local</span> pb = ProcessBuilder:new(<span class="string">'lua'</span>, <span class="string">'-e'</span>, <span class="string">'os.exit(11)'</span>)
+pb:start()
+</pre>
+
+
+<p>You could redirect the output to a file descriptor.</p>
+
+
+<pre>
+<span class="keyword">local</span> ProcessBuilder = <span class="global">require</span>(<span class="string">'jls.lang.ProcessBuilder'</span>)
+<span class="keyword">local</span> FileDescriptor = <span class="global">require</span>(<span class="string">'jls.io.FileDescriptor'</span>)
+<span class="keyword">local</span> pb = ProcessBuilder:new(<span class="string">'lua'</span>, <span class="string">'-e'</span>, <span class="string">'print("Hello")'</span>)
+<span class="keyword">local</span> fd = FileDescriptor.openSync(<span class="string">'output.tmp'</span>, <span class="string">'w'</span>)
+pb:redirectOutput(fd)
+<span class="keyword">local</span> ph = pb:start()
+fd:close()
+</pre>
+
+
+
+<p><a name="Thread"></a></p>
+<h2>Thread</h2>
+
+<p>A thread allows to execute a Lua function concurrently.
+Using threads allows to execute blocking or long processing operations without blocking the main thread.</p>
+
+<p>You could pass parameters to the thread function and retrieve the function return value.
+It is not possible to share variables with a thread, so you should take care to not use variable defined outside the thread function.</p>
+
+
+<pre>
+<span class="keyword">local</span> Thread = <span class="global">require</span>(<span class="string">'jls.lang.Thread'</span>)
+Thread:new(<span class="keyword">function</span>(value)
+  <span class="keyword">return</span> <span class="string">'Hi '</span>..<span class="global">tostring</span>(value)
+<span class="keyword">end</span>):start(<span class="string">'John'</span>):ended():<span class="global">next</span>(<span class="keyword">function</span>(res)
+  <span class="global">print</span>(<span class="string">'trhead return value:'</span>, res)
+<span class="keyword">end</span>)
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<p>The Worker class allows to process background tasks, on a dedicated thread.
+The two side of the worker can send and receive messages.</p>
+
+
+<pre>
+<span class="keyword">local</span> Worker = <span class="global">require</span>(<span class="string">'jls.util.Worker'</span>)
+<span class="keyword">local</span> worker = Worker:new(<span class="keyword">function</span>(w)
+  <span class="keyword">function</span> w:onMessage(message)
+    w:postMessage(<span class="string">'Hi '</span>..<span class="global">tostring</span>(message))
+  <span class="keyword">end</span>
+<span class="keyword">end</span>)
+<span class="keyword">function</span> worker:onMessage(message)
+  <span class="global">print</span>(<span class="string">'received from worker:'</span>, message)
+  self:close()
+<span class="keyword">end</span>
+worker:postMessage(<span class="string">'John'</span>)
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+
+<p><a name="Inter_Process_Communication"></a></p>
+<h2>Inter-Process Communication</h2>
+
+<h3>Pipe</h3>
+
+<p>A pipe allows to communicate between processes or threads.</p>
+
+<h4>Anonymous Pipe</h4>
+
+<p>You could redirect the process standard output to a pipe.</p>
+
+
+<pre>
+<span class="keyword">local</span> ProcessBuilder = <span class="global">require</span>(<span class="string">'jls.lang.ProcessBuilder'</span>)
+<span class="keyword">local</span> Pipe = <span class="global">require</span>(<span class="string">'jls.io.Pipe'</span>)
+<span class="keyword">local</span> pb = ProcessBuilder:new(<span class="string">'lua'</span>, <span class="string">'-e'</span>, <span class="string">'print("Hello")'</span>)
+<span class="keyword">local</span> p = Pipe:new()
+pb:redirectOutput(p)
+<span class="keyword">local</span> ph = pb:start()
+<span class="keyword">local</span> outputData
+p:readStart(<span class="keyword">function</span>(err, data)
+  <span class="keyword">if</span> data <span class="keyword">then</span>
+    <span class="global">print</span>(<span class="string">'Process output:'</span>, data)
+  <span class="keyword">else</span>
+    p:close()
+  <span class="keyword">end</span>
+<span class="keyword">end</span>)
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<h4>Named Pipe</h4>
+
+<p>Named pipes are only available with the <em>luv</em> module.</p>
+
+
+<pre>
+<span class="keyword">local</span> Pipe = <span class="global">require</span>(<span class="string">'jls.io.Pipe'</span>)
+<span class="keyword">local</span> pipeName = Pipe.normalizePipeName(<span class="string">'test'</span>)
+<span class="keyword">local</span> p = Pipe:new()
+<span class="keyword">function</span> p:onAccept(pb)
+  <span class="keyword">local</span> status, err = pb:readStart(<span class="keyword">function</span>(err, data)
+    <span class="keyword">if</span> data <span class="keyword">then</span>
+      pb:write(<span class="string">'Hi '</span>..<span class="global">tostring</span>(data))
+    <span class="keyword">else</span>
+      pb:close()
+      p:close()
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>
+p:bind(pipeName):<span class="global">next</span>(<span class="keyword">function</span>()
+  <span class="keyword">local</span> pc = Pipe:new()
+  pc:connect(pipeName):<span class="global">next</span>(<span class="keyword">function</span>()
+    <span class="keyword">local</span> status, err = pc:readStart(<span class="keyword">function</span>(err, data)
+      <span class="global">print</span>(<span class="string">'Pipe client received:'</span>, data)
+      pc:close()
+    <span class="keyword">end</span>)
+    pc:write(<span class="string">'John'</span>)
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>)
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+<h3>Message Passing</h3>
+
+<p>The Channel class provides a local message passing interface suitable for process and thread event based message passing.</p>
+
+<p>The messages are sent and received as string on a channel.
+The goal is to abstract the message transport implementation, that can internally be a queue, a pipe or a socket.</p>
+
+<p>The channel resource is represented by an opaque string and can be generated automatically.
+Internally using URI with authentication keys, pipe://pub.priv@local/p12345 or tcp://pub.priv@localhost:12345.</p>
+
+<p>This interface is used for worker that abstract the thread.</p>
+
+
+<pre>
+<span class="keyword">local</span> channelServer = Channel:new()
+channelServer:acceptAndClose():<span class="global">next</span>(<span class="keyword">function</span>(acceptedChannel)
+  acceptedChannel:receiveStart(<span class="keyword">function</span>(message)
+    <span class="global">print</span>(message)
+    acceptedChannel:close()
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>)
+<span class="keyword">local</span> channel = Channel:new()
+channelServer:bind():<span class="global">next</span>(<span class="keyword">function</span>()
+  <span class="keyword">local</span> name = channelServer:getName() <span class="comment">-- after bind the server provides a name for the connection
+</span>  <span class="keyword">return</span> channel:connect(name)
+<span class="keyword">end</span>):<span class="global">next</span>(<span class="keyword">function</span>()
+  channel:writeMessage(<span class="string">'Hello'</span>)
+<span class="keyword">end</span>)
+event:loop()
+</pre>
+
+
+
+<h1>Utilities</h1>
+
+<p>The library comes with various utilities.</p>
+
+<p><a name="Basic_Classes"></a></p>
+<h2>Basic Classes</h2>
+
+<p>This section presents the classes that extend the Lua basic types.</p>
+
+<h3>StringBuffer</h3>
+
+<p>The StringBuffer class represents a mutable string, optimizing the addition of strings in a buffer by avoiding the use of intermediary concatenated string.</p>
+
+
+<pre>
+<span class="keyword">local</span> StringBuffer = <span class="global">require</span>(<span class="string">'jls.lang.StringBuffer'</span>)
+<span class="keyword">local</span> buffer = StringBuffer:new(<span class="string">'a'</span>, <span class="string">'b'</span>)
+buffer:append(<span class="string">'c'</span>, <span class="string">'d'</span>)
+<span class="global">print</span>(buffer:toString())
+<span class="comment">-- prints 'abcd'</span>
+</pre>
+
+
+<h3>Table List</h3>
+
+<p>The List and Map classes are drop in replacements for table, adding instance methods.</p>
+
+
+<pre>
+<span class="keyword">local</span> List = <span class="global">require</span>(<span class="string">'jls.util.List'</span>)
+<span class="keyword">local</span> list = List:new(<span class="string">'a'</span>, <span class="string">'b'</span>)
+<span class="keyword">local</span> newList = list:map(<span class="keyword">function</span>(v, i)
+  <span class="keyword">return</span> v..<span class="global">tostring</span>(i)
+<span class="keyword">end</span>)
+<span class="comment">-- {'a1', 'b2'}</span>
+</pre>
+
+
+<h3>Table Map</h3>
+
+<p>The List and Map classes are compatibles with Lua tables, so the class methods can be used directly with Lua tables.</p>
+
+
+<pre>
+<span class="keyword">local</span> Map = <span class="global">require</span>(<span class="string">'jls.util.Map'</span>)
+<span class="keyword">for</span> k, v <span class="keyword">in</span> Map.spairs({a = <span class="number">1</span>, c = <span class="number">3</span>, b = <span class="number">2</span>}) <span class="keyword">do</span>
+  <span class="global">print</span>(k, v)
+<span class="keyword">end</span>
+</pre>
+
+
+<h3>Date and Time</h3>
+
+<p>The LocalDateTime class deals with date and time without considering the time zone.</p>
+
+
+<pre>
+<span class="keyword">local</span> LocalDateTime = <span class="global">require</span>(<span class="string">'jls.util.LocalDateTime'</span>)
+<span class="keyword">local</span> localDateTime = LocalDateTime:new(<span class="number">2001</span>, <span class="number">10</span>, <span class="number">21</span>, <span class="number">13</span>, <span class="number">30</span>, <span class="number">0</span>)
+<span class="global">print</span>(localDateTime:toISOString())
+<span class="comment">-- prints '2001-10-21T13:30:00.000'</span>
+</pre>
+
+
+<p>The Date class represents a date in the default or UTC time zone.</p>
+
+
+<pre>
+<span class="keyword">local</span> Date = <span class="global">require</span>(<span class="string">'jls.util.Date'</span>)
+<span class="keyword">local</span> date = Date:new()
+<span class="global">print</span>(date:toLocalDateTime():toISOString())
+<span class="comment">-- prints the current date in ISO format</span>
+</pre>
+
+
+
+<p><a name="Data_Exchange_Formats"></a></p>
+<h2>Data Exchange Formats</h2>
+
+<p>The library contains various data exchange formats, such as JSON and XML.</p>
+
+<h3>JavaScript Object Notation (JSON)</h3>
+
+<p>The <em>json</em> module allows to serialize a Lua table into a string and materialize from.</p>
+
+
+<pre>
+<span class="keyword">local</span> json = <span class="global">require</span>(<span class="string">'jls.util.json'</span>)
+<span class="global">print</span>(json.stringify({aString = <span class="string">'Hi'</span>, anInteger = <span class="number">321</span>, aNumber = <span class="number">3.21</span>, aBoolean = <span class="keyword">false</span>}))
+<span class="comment">-- prints '{"aBoolean":false,"aNumber":3.21,"aString":"Hi","anInteger":321}'
+</span>
+<span class="keyword">local</span> t = json.parse(<span class="string">'{"aBoolean":false,"aNumber":3.21,"aString":"Hi","anInteger":321}'</span>)
+<span class="comment">-- t contains the expected table </span>
+</pre>
+
+
+<h3>Extensible Markup Language (XML)</h3>
+
+<p>The XML nodes are represented using table for elements and string for texts.
+The table is used as an array to store the XML node children.
+The table has the properties 'name' and optionally 'attr' to store
+the node name and the node attributes using a table with key value pairs.</p>
+
+
+<pre>
+<span class="keyword">local</span> xml = <span class="global">require</span>(<span class="string">'jls.util.xml'</span>)
+<span class="global">print</span>(xml.encode({name = <span class="string">'a'</span>, {name = <span class="string">'b'</span>, attr = {c = <span class="string">'c'</span>}, <span class="string">'A value'</span>}}))
+<span class="comment">-- prints '&lt;a&gt;&lt;b c="c"&gt;A value&lt;/b&gt;&lt;/a&gt;'
+</span>
+<span class="keyword">local</span> t = xml.decode(<span class="string">'&lt;a&gt;&lt;b c="c"&gt;A value&lt;/b&gt;&lt;/a&gt;'</span>)
+<span class="comment">-- t contains {name = 'a', {name = 'b', attr = {c = 'c'}, 'A value'}}</span>
+</pre>
+
+
+<p><a name="User_Interface"></a></p>
+<h2>User Interface</h2>
+
+<p>The library does not provide native nor toolkit based user interfaces.</p>
+
+<h3>WebView</h3>
+
+<p>The WebView class allow to display HTML content in a window.</p>
+
+<p>The WebView highly depends on the underlying OS.
+Opening multiple WebView windows is not supported.</p>
+
+<p>A webview requires a thread to run its own event loop, which is not compatible with the base event loop.
+This class provide helpers to start webview in a dedicated thread so that the base event loop can be used.</p>
+
+<p>You could use the WebView with a synchronous callback for simple use cases.
+As soon as you need to tackle more complex use cases you will need threads and communication.
+The recommended way is to use an HTTP server as it is the default way to do web application.</p>
+
+
+<pre>
+<span class="keyword">local</span> WebView = <span class="global">require</span>(<span class="string">'jls.util.WebView'</span>)
+<span class="keyword">local</span> FileHttpHandler = <span class="global">require</span>(<span class="string">'jls.net.http.handler.FileHttpHandler'</span>)
+WebView.open(<span class="string">'http://localhost:0/index.html'</span>):<span class="global">next</span>(<span class="keyword">function</span>(webview)
+  <span class="keyword">local</span> httpServer = webview:getHttpServer()
+  httpServer:createContext(<span class="string">'/(.*)'</span>, FileHttpHandler:new(<span class="string">'htdocs'</span>))
+<span class="keyword">end</span>)
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
+</pre>
+
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

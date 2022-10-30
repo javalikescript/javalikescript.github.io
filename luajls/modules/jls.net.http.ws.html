@@ -1,0 +1,507 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua JLS 0.6</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>luajls</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_WebSocketBase">Class WebSocketBase </a></li>
+<li><a href="#Class_WebSocket">Class WebSocket </a></li>
+<li><a href="#Class_WebSocketUpgradeHandler">Class WebSocketUpgradeHandler </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/jls.io.File.html">jls.io.File</a></li>
+  <li><a href="../modules/jls.io.FileDescriptor.html">jls.io.FileDescriptor</a></li>
+  <li><a href="../modules/jls.io.Path.html">jls.io.Path</a></li>
+  <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
+  <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
+  <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
+  <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
+  <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
+  <li><a href="../modules/jls.lang.StringBuffer.html">jls.lang.StringBuffer</a></li>
+  <li><a href="../modules/jls.lang.Thread.html">jls.lang.Thread</a></li>
+  <li><a href="../modules/jls.lang.class.html">jls.lang.class</a></li>
+  <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
+  <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
+  <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
+  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
+  <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
+  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
+  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
+  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
+  <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
+  <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
+  <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
+  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
+  <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
+  <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
+  <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
+  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
+  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
+  <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
+  <li><strong>jls.net.http.ws</strong></li>
+  <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
+  <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
+  <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
+  <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
+  <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
+  <li><a href="../modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></li>
+  <li><a href="../modules/jls.util.Map.html">jls.util.Map</a></li>
+  <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
+  <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
+  <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
+  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
+  <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
+  <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
+  <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
+  <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
+  <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
+  <li><a href="../modules/jls.util.xml.html">jls.util.xml</a></li>
+  <li><a href="../modules/jls.util.zip.Deflater.html">jls.util.zip.Deflater</a></li>
+  <li><a href="../modules/jls.util.zip.Inflater.html">jls.util.zip.Inflater</a></li>
+  <li><a href="../modules/jls.util.zip.ZipFile.html">jls.util.zip.ZipFile</a></li>
+  <li><a href="../modules/jls.util.zip.gzip.html">jls.util.zip.gzip</a></li>
+  <li><a href="../modules/jls.util.zip.tar.html">jls.util.zip.tar</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/manual.md.html">manual</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>jls.net.http.ws</code></h1>
+<p>This module provide classes to work with WebSocket.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#upgradeHandler">upgradeHandler (exchange)</a></td>
+	<td class="summary">WebSocket HTTP upgrade handler.</td>
+	</tr>
+</table>
+<h2><a href="#Class_WebSocketBase">Class WebSocketBase </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#WebSocketBase:new">WebSocketBase:new ([client])</a></td>
+	<td class="summary">Creates a new WebSocket.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webSocketBase:close">webSocketBase:close (callback)</a></td>
+	<td class="summary">Closes this WebSocket.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webSocketBase:onError">webSocketBase:onError (reason)</a></td>
+	<td class="summary">Called when this WebSocket has been closed due to an error,
+ such as when some data couldn't be received or sent.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webSocketBase:onTextMessage">webSocketBase:onTextMessage (message)</a></td>
+	<td class="summary">Called when a text message is received on this WebSocket.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webSocketBase:onBinaryMessage">webSocketBase:onBinaryMessage (message)</a></td>
+	<td class="summary">Called when a binary message is received on this WebSocket.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webSocketBase:onClose">webSocketBase:onClose ()</a></td>
+	<td class="summary">Called when this WebSocket has been closed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webSocketBase:readStop">webSocketBase:readStop ()</a></td>
+	<td class="summary">Stops receiving messages on this WebSocket.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webSocketBase:readStart">webSocketBase:readStart ()</a></td>
+	<td class="summary">Starts receiving messages on this WebSocket.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webSocketBase:sendTextMessage">webSocketBase:sendTextMessage (message, callback)</a></td>
+	<td class="summary">Sends a message on this WebSocket.</td>
+	</tr>
+</table>
+<h2><a href="#Class_WebSocket">Class WebSocket </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#WebSocket:new">WebSocket:new (url)</a></td>
+	<td class="summary">Creates a new WebSocket.</td>
+	</tr>
+</table>
+<h2><a href="#Class_WebSocketUpgradeHandler">Class WebSocketUpgradeHandler </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#WebSocketUpgradeHandler:new">WebSocketUpgradeHandler:new ([protocol])</a></td>
+	<td class="summary">Creates a new WebSocketUpgradeHandler.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "upgradeHandler"></a>
+    <strong>upgradeHandler (exchange)</strong>
+    </dt>
+    <dd>
+    WebSocket HTTP upgrade handler.
+ The open attribute must be set to a function that will be called with the new accepted WebSockets.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">exchange</span>
+         the HTTP exchange to handle.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Class_WebSocketBase"></a>Class WebSocketBase </h2>
+
+          <div class="section-description">
+          The WebSocketBase class represents the base class for WebSocket.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "WebSocketBase:new"></a>
+    <strong>WebSocketBase:new ([client])</strong>
+    </dt>
+    <dd>
+    Creates a new WebSocket.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">client</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to indicate that the websocket is the client.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webSocketBase:close"></a>
+    <strong>webSocketBase:close (callback)</strong>
+    </dt>
+    <dd>
+    Closes this WebSocket.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         an optional callback function to use in place of promise.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the WebSocket is closed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webSocketBase:onError"></a>
+    <strong>webSocketBase:onError (reason)</strong>
+    </dt>
+    <dd>
+    Called when this WebSocket has been closed due to an error,
+ such as when some data couldn't be received or sent.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">reason</span>
+         the error reason.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webSocketBase:onTextMessage"></a>
+    <strong>webSocketBase:onTextMessage (message)</strong>
+    </dt>
+    <dd>
+    Called when a text message is received on this WebSocket.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the text message.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webSocketBase:onBinaryMessage"></a>
+    <strong>webSocketBase:onBinaryMessage (message)</strong>
+    </dt>
+    <dd>
+    Called when a binary message is received on this WebSocket.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the binary message.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webSocketBase:onClose"></a>
+    <strong>webSocketBase:onClose ()</strong>
+    </dt>
+    <dd>
+    Called when this WebSocket has been closed.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webSocketBase:readStop"></a>
+    <strong>webSocketBase:readStop ()</strong>
+    </dt>
+    <dd>
+    Stops receiving messages on this WebSocket.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webSocketBase:readStart"></a>
+    <strong>webSocketBase:readStart ()</strong>
+    </dt>
+    <dd>
+    Starts receiving messages on this WebSocket.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webSocketBase:sendTextMessage"></a>
+    <strong>webSocketBase:sendTextMessage (message, callback)</strong>
+    </dt>
+    <dd>
+    Sends a message on this WebSocket.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the message to send.
+        </li>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         an optional callback function to use in place of promise.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the data has been written.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Class_WebSocket"></a>Class WebSocket </h2>
+
+          <div class="section-description">
+          The WebSocket class enables to send and receive messages.
+see https://tools.ietf.org/html/rfc6455
+          </div>
+            <h3>Usage:</h3>
+            <pre class="example"><span class="keyword">local</span> event = <span class="global">require</span>(<span class="string">'jls.lang.event'</span>)
+<span class="keyword">local</span> ws = <span class="global">require</span>(<span class="string">'jls.net.http.ws'</span>)
+<span class="keyword">local</span> webSocket = ws.WebSocket:new(<span class="string">'ws://localhost/ws/'</span>)
+webSocket:open():<span class="global">next</span>(<span class="keyword">function</span>()
+  <span class="keyword">function</span> webSocket:onTextMessage(payload)
+    webSocket:close()
+  <span class="keyword">end</span>
+  webSocket:readStart()
+  webSocket:sendTextMessage(<span class="string">'Hello'</span>)
+<span class="keyword">end</span>)
+event:loop()</pre>
+    <dl class="function">
+    <dt>
+    <a name = "WebSocket:new"></a>
+    <strong>WebSocket:new (url)</strong>
+    </dt>
+    <dd>
+    Creates a new WebSocket.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">url</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         A table describing the client options.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a new WebSocket
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Class_WebSocketUpgradeHandler"></a>Class WebSocketUpgradeHandler </h2>
+
+          <div class="section-description">
+          An HTTP handler to upgrade the connection and accept web sockets.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "WebSocketUpgradeHandler:new"></a>
+    <strong>WebSocketUpgradeHandler:new ([protocol])</strong>
+    </dt>
+    <dd>
+    Creates a new WebSocketUpgradeHandler.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">protocol</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The protocol.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a new WebSocketUpgradeHandler
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

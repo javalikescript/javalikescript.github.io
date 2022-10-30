@@ -1,0 +1,604 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua JLS 0.6</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>luajls</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_File">Class File </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>jls.io.File</strong></li>
+  <li><a href="../modules/jls.io.FileDescriptor.html">jls.io.FileDescriptor</a></li>
+  <li><a href="../modules/jls.io.Path.html">jls.io.Path</a></li>
+  <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
+  <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
+  <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
+  <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
+  <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
+  <li><a href="../modules/jls.lang.StringBuffer.html">jls.lang.StringBuffer</a></li>
+  <li><a href="../modules/jls.lang.Thread.html">jls.lang.Thread</a></li>
+  <li><a href="../modules/jls.lang.class.html">jls.lang.class</a></li>
+  <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
+  <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
+  <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
+  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
+  <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
+  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
+  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
+  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
+  <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
+  <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
+  <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
+  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
+  <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
+  <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
+  <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
+  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
+  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
+  <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
+  <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
+  <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
+  <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
+  <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
+  <li><a href="../modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></li>
+  <li><a href="../modules/jls.util.Map.html">jls.util.Map</a></li>
+  <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
+  <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
+  <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
+  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
+  <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
+  <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
+  <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
+  <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
+  <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
+  <li><a href="../modules/jls.util.xml.html">jls.util.xml</a></li>
+  <li><a href="../modules/jls.util.zip.Deflater.html">jls.util.zip.Deflater</a></li>
+  <li><a href="../modules/jls.util.zip.Inflater.html">jls.util.zip.Inflater</a></li>
+  <li><a href="../modules/jls.util.zip.ZipFile.html">jls.util.zip.ZipFile</a></li>
+  <li><a href="../modules/jls.util.zip.gzip.html">jls.util.zip.gzip</a></li>
+  <li><a href="../modules/jls.util.zip.tar.html">jls.util.zip.tar</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/manual.md.html">manual</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>jls.io.File</code></h1>
+<p>Provide file system abstraction.</p>
+<p>A File extends <a href="../modules/jls.io.Path.html">Path</a> by adding file system manipulation, such as deleting, renaming, listing.</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">local dir = File:new(&apos;work&apos;)
+for _, file in ipairs(dir:listFiles()) do
+  if file:isFile() then
+    print(&apos;The file &quot;&apos;..file:getPath()..&apos;&quot; length is &apos;..tostring(file:length()))
+  end
+end
+</pre>
+    </ul>
+
+
+<h2><a href="#Class_File">Class File </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#File:new">File:new ([parent], path)</a></td>
+	<td class="summary">Creates a new File with the specified name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:getPath">file:getPath ()</a></td>
+	<td class="summary">Returns the path of the file as a string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:getParentFile">file:getParentFile ()</a></td>
+	<td class="summary">Returns the parent of this file entry as a File.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:exists">file:exists ()</a></td>
+	<td class="summary">Indicates whether or not this file exists.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:isFile">file:isFile ()</a></td>
+	<td class="summary">Indicates whether or not this file entry is a file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:isDirectory">file:isDirectory ()</a></td>
+	<td class="summary">Indicates whether or not this file entry is a directory.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:length">file:length ()</a></td>
+	<td class="summary">Returns the length of the file entry represented by this file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:lastModified">file:lastModified ()</a></td>
+	<td class="summary">Returns last modified time of the file entry represented by this file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:setLastModified">file:setLastModified (time)</a></td>
+	<td class="summary">Sets the last modified time of the file entry represented by this file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:mkdir">file:mkdir ()</a></td>
+	<td class="summary">Creates the directory named by this file entry.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:renameTo">file:renameTo (dest)</a></td>
+	<td class="summary">Renames this file entry.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:delete">file:delete ()</a></td>
+	<td class="summary">Deletes this file entry.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:list">file:list ()</a></td>
+	<td class="summary">Returns an array of strings naming the file system entries in the directory represented by this file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:listFiles">file:listFiles ([filter])</a></td>
+	<td class="summary">Returns an array of files in the directory represented by this file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:readAll">file:readAll (maxSize)</a></td>
+	<td class="summary">Returns the content of this file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#file:write">file:write (data, append)</a></td>
+	<td class="summary">Writes the specified data into this file.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name="Class_File"></a>Class File </h2>
+
+          <div class="section-description">
+          A File class.
+ A File instance represents a file or a directory.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "File:new"></a>
+    <strong>File:new ([parent], path)</strong>
+    </dt>
+    <dd>
+    Creates a new File with the specified name.
+ See <a href="../modules/jls.io.Path.html">Path</a>
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">parent</span>
+         The optional parent as a string, <a href="../modules/jls.io.File.html">File</a> or <a href="../modules/jls.io.Path.html">Path</a>.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">path</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the file.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a new File
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> workingDirectory = File:new(<span class="string">'work'</span>)
+<span class="keyword">local</span> configurationPath = File:new(workingDirectory, <span class="string">'configuration.json'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "file:getPath"></a>
+    <strong>file:getPath ()</strong>
+    </dt>
+    <dd>
+    Returns the path of the file as a string.
+ The result is normalized with the OS separator.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        the path of the file.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> configurationPath = File:new(<span class="string">'work/configuration.json'</span>)
+configurationPath:getPath() <span class="comment">-- returns 'work/configuration.json'</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "file:getParentFile"></a>
+    <strong>file:getParentFile ()</strong>
+    </dt>
+    <dd>
+    Returns the parent of this file entry as a File.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the parent of this file as a File.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> configurationPath = File:new(<span class="string">'work/configuration.json'</span>)
+configurationPath:getParentFile():getName() <span class="comment">-- returns 'work'</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "file:exists"></a>
+    <strong>file:exists ()</strong>
+    </dt>
+    <dd>
+    Indicates whether or not this file exists.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true when this file exists, false otherwise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:isFile"></a>
+    <strong>file:isFile ()</strong>
+    </dt>
+    <dd>
+    Indicates whether or not this file entry is a file.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true when this file entry exists and is a file, false otherwise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:isDirectory"></a>
+    <strong>file:isDirectory ()</strong>
+    </dt>
+    <dd>
+    Indicates whether or not this file entry is a directory.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true when this file entry exists and is a directory, false otherwise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:length"></a>
+    <strong>file:length ()</strong>
+    </dt>
+    <dd>
+    Returns the length of the file entry represented by this file.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        the size of this file entry or 0.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:lastModified"></a>
+    <strong>file:lastModified ()</strong>
+    </dt>
+    <dd>
+    Returns last modified time of the file entry represented by this file.
+ The time is given as the number of milliseconds since the Epoch, 1970-01-01 00:00:00 +0000 (UTC).
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        the last modified time of this file entry or 0.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:setLastModified"></a>
+    <strong>file:setLastModified (time)</strong>
+    </dt>
+    <dd>
+    Sets the last modified time of the file entry represented by this file.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">time</span>
+            <span class="types"><span class="type">number</span></span>
+         the last modified time or nil to set the current time.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:mkdir"></a>
+    <strong>file:mkdir ()</strong>
+    </dt>
+    <dd>
+    Creates the directory named by this file entry.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if the directory is created.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:renameTo"></a>
+    <strong>file:renameTo (dest)</strong>
+    </dt>
+    <dd>
+    Renames this file entry.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dest</span>
+         the new name of this file as a File or a string.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if the file is renamed.
+ In case of error, it returns nil, plus a string describing the error and the error code.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:delete"></a>
+    <strong>file:delete ()</strong>
+    </dt>
+    <dd>
+    Deletes this file entry.
+ This file may points to a file or an empty directory.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if the file entry is deleted.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:list"></a>
+    <strong>file:list ()</strong>
+    </dt>
+    <dd>
+    Returns an array of strings naming the file system entries in the directory represented by this file.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        An array of strings naming the file system entries or nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:listFiles"></a>
+    <strong>file:listFiles ([filter])</strong>
+    </dt>
+    <dd>
+    Returns an array of files in the directory represented by this file.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">filter</span>
+            <span class="types"><span class="type">function</span></span>
+         a filter function that will be called on each file.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        An array of files or nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:readAll"></a>
+    <strong>file:readAll (maxSize)</strong>
+    </dt>
+    <dd>
+    Returns the content of this file.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">maxSize</span>
+            <span class="types"><span class="type">number</span></span>
+         the maximum file size to read
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        the content of this file or nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "file:write"></a>
+    <strong>file:write (data, append)</strong>
+    </dt>
+    <dd>
+    Writes the specified data into this file.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+         the data to write as a string or an array of string
+        </li>
+        <li><span class="parameter">append</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to indicate that the data should be appended to this file
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

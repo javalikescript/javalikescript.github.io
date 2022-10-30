@@ -1,0 +1,627 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua JLS 0.6</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>luajls</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_WebView">Class WebView </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/jls.io.File.html">jls.io.File</a></li>
+  <li><a href="../modules/jls.io.FileDescriptor.html">jls.io.FileDescriptor</a></li>
+  <li><a href="../modules/jls.io.Path.html">jls.io.Path</a></li>
+  <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
+  <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
+  <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
+  <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
+  <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
+  <li><a href="../modules/jls.lang.StringBuffer.html">jls.lang.StringBuffer</a></li>
+  <li><a href="../modules/jls.lang.Thread.html">jls.lang.Thread</a></li>
+  <li><a href="../modules/jls.lang.class.html">jls.lang.class</a></li>
+  <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
+  <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
+  <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
+  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
+  <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
+  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
+  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
+  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
+  <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
+  <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
+  <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
+  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
+  <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
+  <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
+  <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
+  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
+  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
+  <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
+  <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
+  <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
+  <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
+  <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
+  <li><a href="../modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></li>
+  <li><a href="../modules/jls.util.Map.html">jls.util.Map</a></li>
+  <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
+  <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
+  <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
+  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
+  <li><strong>jls.util.WebView</strong></li>
+  <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
+  <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
+  <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
+  <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
+  <li><a href="../modules/jls.util.xml.html">jls.util.xml</a></li>
+  <li><a href="../modules/jls.util.zip.Deflater.html">jls.util.zip.Deflater</a></li>
+  <li><a href="../modules/jls.util.zip.Inflater.html">jls.util.zip.Inflater</a></li>
+  <li><a href="../modules/jls.util.zip.ZipFile.html">jls.util.zip.ZipFile</a></li>
+  <li><a href="../modules/jls.util.zip.gzip.html">jls.util.zip.gzip</a></li>
+  <li><a href="../modules/jls.util.zip.tar.html">jls.util.zip.tar</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/manual.md.html">manual</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>jls.util.WebView</code></h1>
+<p>Provide WebView class.</p>
+<p>This class allow to display HTML content in a window.</p>
+
+<p>The WebView highly depends on the underlying OS.
+Opening multiple WebView windows is not supported.</p>
+
+<p>A webview requires a thread to run its own event loop, which is not compatible with the base event loop.
+This class provide helpers to start webview in a dedicated thread so that the base event loop can be used.</p>
+
+
+<h2><a href="#Class_WebView">Class WebView </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#WebView:new">WebView:new (url[, title[, width[, height[, resizable[, debug]]]]])</a></td>
+	<td class="summary">Creates a new WebView.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webView:loop">webView:loop ([mode])</a></td>
+	<td class="summary">Processes the webview event loop.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webView:callback">webView:callback (cb)</a></td>
+	<td class="summary">Registers the specified function to be called from the web page.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webView:eval">webView:eval (js)</a></td>
+	<td class="summary">Evaluates the specified JavaScript code in the web page.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webView:fullscreen">webView:fullscreen (fullscreen)</a></td>
+	<td class="summary">Sets the webview fullscreen.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webView:title">webView:title (title)</a></td>
+	<td class="summary">Sets the webview title.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webView:terminate">webView:terminate ()</a></td>
+	<td class="summary">Terminates the webview.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webView:getChannel">webView:getChannel ()</a></td>
+	<td class="summary">Returns the channel associated to this webview or nil.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webView:getThread">webView:getThread ()</a></td>
+	<td class="summary">Returns the thread associated to this webview or nil.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#webView:getHttpServer">webView:getHttpServer ()</a></td>
+	<td class="summary">Returns the HTTP server associated to this webview or nil.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#WebView:openSync">WebView:openSync (url[, title[, width[, height[, resizable[, debug[, fn[, data]]]]]]])</a></td>
+	<td class="summary">Opens the specified URL in a new window and returns when the window has been closed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#WebView:open">WebView:open (url[, title[, width[, height[, resizable[, debug[, fn[, data]]]]]]])</a></td>
+	<td class="summary">Opens the specified URL in a new window.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#WebView:toDataUrl">WebView:toDataUrl (content[, mediaType])</a></td>
+	<td class="summary">Returns an URL representing the specified content.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name="Class_WebView"></a>Class WebView </h2>
+
+          <div class="section-description">
+          The WebView class.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "WebView:new"></a>
+    <strong>WebView:new (url[, title[, width[, height[, resizable[, debug]]]]])</strong>
+    </dt>
+    <dd>
+    Creates a new WebView.
+The URL accepts the data, file and http schemes.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">url</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the URL of the resource to be viewed.
+        </li>
+        <li><span class="parameter">title</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the title of the window.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">width</span>
+            <span class="types"><span class="type">number</span></span>
+         the width of the opened window.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">height</span>
+            <span class="types"><span class="type">number</span></span>
+         the height of the opened window.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">resizable</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true if the opened window could be resized.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">debug</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to enable devtools.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> WebView = <span class="global">require</span>(<span class="string">'jls.util.WebView'</span>)
+<span class="keyword">local</span> webview = WebView:new(WebView.toDataUrl(<span class="string">'&lt;html&gt;&lt;body&gt;It works!&lt;/body&gt;&lt;/thread&gt;'</span>))
+webview:loop()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "webView:loop"></a>
+    <strong>webView:loop ([mode])</strong>
+    </dt>
+    <dd>
+    Processes the webview event loop.
+ This function will block.
+ If you need to use the event loop in a callback then use the open function.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the loop mode, default, once or nowait.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webView:callback"></a>
+    <strong>webView:callback (cb)</strong>
+    </dt>
+    <dd>
+    Registers the specified function to be called from the web page.
+ The JavaScript syntax is window.external.invoke("string value");
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cb</span>
+            <span class="types"><span class="type">function</span></span>
+         The callback to register.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webView:eval"></a>
+    <strong>webView:eval (js)</strong>
+    </dt>
+    <dd>
+    Evaluates the specified JavaScript code in the web page.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">js</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The JavaScript code to evaluate.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webView:fullscreen"></a>
+    <strong>webView:fullscreen (fullscreen)</strong>
+    </dt>
+    <dd>
+    Sets the webview fullscreen.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fullscreen</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to switch the webview to fullscreen.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webView:title"></a>
+    <strong>webView:title (title)</strong>
+    </dt>
+    <dd>
+    Sets the webview title.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">title</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The webview title to set.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webView:terminate"></a>
+    <strong>webView:terminate ()</strong>
+    </dt>
+    <dd>
+    Terminates the webview.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webView:getChannel"></a>
+    <strong>webView:getChannel ()</strong>
+    </dt>
+    <dd>
+    Returns the channel associated to this webview or nil.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.util.Channel</span></span>
+        the channel associated to this webview or nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webView:getThread"></a>
+    <strong>webView:getThread ()</strong>
+    </dt>
+    <dd>
+    Returns the thread associated to this webview or nil.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.util.Thread</span></span>
+        the thread associated to this webview or nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "webView:getHttpServer"></a>
+    <strong>webView:getHttpServer ()</strong>
+    </dt>
+    <dd>
+    Returns the HTTP server associated to this webview or nil.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.net.http.HttpServer</span></span>
+        the HTTP server associated to this webview or nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "WebView:openSync"></a>
+    <strong>WebView:openSync (url[, title[, width[, height[, resizable[, debug[, fn[, data]]]]]]])</strong>
+    </dt>
+    <dd>
+    Opens the specified URL in a new window and returns when the window has been closed.
+Passing a function will block the event loop not this function.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">url</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the URL of the resource to be viewed.
+        </li>
+        <li><span class="parameter">title</span>
+         the title of the window or a table containing the options.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">width</span>
+            <span class="types"><span class="type">number</span></span>
+         the width of the opened window.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">height</span>
+            <span class="types"><span class="type">number</span></span>
+         the height of the opened window.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">resizable</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true if the opened window could be resized.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">debug</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to enable devtools.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">fn</span>
+            <span class="types"><span class="type">function</span></span>
+         a function to be called in a dedicated thread, requires the event loop.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the data to be passed to the function as a string.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolve when the webview is closed or nil.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> WebView = <span class="global">require</span>(<span class="string">'jls.util.WebView'</span>)
+WebView.openSync(<span class="string">'https://www.lua.org/'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "WebView:open"></a>
+    <strong>WebView:open (url[, title[, width[, height[, resizable[, debug[, fn[, data]]]]]]])</strong>
+    </dt>
+    <dd>
+    Opens the specified URL in a new window.
+Opening a webview in a dedicated thread may not be supported on all platform.
+You could specify an HTTP URL with a port to 0 to indicate that an HTTP server should be started on a random port.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">url</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the URL of the resource to be viewed.
+        </li>
+        <li><span class="parameter">title</span>
+         the title of the window or a table containing the options.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">width</span>
+            <span class="types"><span class="type">number</span></span>
+         the width of the opened window.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">height</span>
+            <span class="types"><span class="type">number</span></span>
+         the height of the opened window.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">resizable</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true if the opened window could be resized.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">debug</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to enable devtools.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">fn</span>
+            <span class="types"><span class="type">function</span></span>
+         a function to be called in the webview context or true to indicate that no callback will be used.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the data to be passed to the function as a string.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolve when the webview is available.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> WebView = <span class="global">require</span>(<span class="string">'jls.util.WebView'</span>)
+<span class="keyword">local</span> FileHttpHandler = <span class="global">require</span>(<span class="string">'jls.net.http.handler.FileHttpHandler'</span>)
+WebView.open(<span class="string">'http://localhost:0/index.html'</span>, {
+  contexts = {
+    [<span class="string">'/(.*)'</span>] = FileHttpHandler:new(<span class="string">'htdocs'</span>)
+  }
+}):<span class="global">next</span>(<span class="keyword">function</span>(webview)
+  <span class="keyword">local</span> httpServer = webview:getHttpServer()
+  <span class="global">print</span>(<span class="string">'HTTP Server bound on port '</span>..<span class="global">tostring</span>(<span class="global">select</span>(<span class="number">2</span>, httpServer:getAddress())))
+<span class="keyword">end</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "WebView:toDataUrl"></a>
+    <strong>WebView:toDataUrl (content[, mediaType])</strong>
+    </dt>
+    <dd>
+    Returns an URL representing the specified content.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">content</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the HTML content to convert.
+        </li>
+        <li><span class="parameter">mediaType</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the media type, default is text/html.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        an URL representing the specified content.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> url = WebView.toDataUrl(<span class="string">'&lt;html&gt;&lt;body&gt;Hello&lt;/body&gt;&lt;/thread&gt;'</span>))</pre>
+    </ul>
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

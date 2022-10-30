@@ -1,0 +1,650 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua JLS 0.6</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>luajls</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_List">Class List </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/jls.io.File.html">jls.io.File</a></li>
+  <li><a href="../modules/jls.io.FileDescriptor.html">jls.io.FileDescriptor</a></li>
+  <li><a href="../modules/jls.io.Path.html">jls.io.Path</a></li>
+  <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
+  <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
+  <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
+  <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
+  <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
+  <li><a href="../modules/jls.lang.StringBuffer.html">jls.lang.StringBuffer</a></li>
+  <li><a href="../modules/jls.lang.Thread.html">jls.lang.Thread</a></li>
+  <li><a href="../modules/jls.lang.class.html">jls.lang.class</a></li>
+  <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
+  <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
+  <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
+  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
+  <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
+  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
+  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
+  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
+  <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
+  <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
+  <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
+  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
+  <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
+  <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
+  <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
+  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
+  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
+  <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
+  <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
+  <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
+  <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
+  <li><strong>jls.util.List</strong></li>
+  <li><a href="../modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></li>
+  <li><a href="../modules/jls.util.Map.html">jls.util.Map</a></li>
+  <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
+  <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
+  <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
+  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
+  <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
+  <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
+  <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
+  <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
+  <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
+  <li><a href="../modules/jls.util.xml.html">jls.util.xml</a></li>
+  <li><a href="../modules/jls.util.zip.Deflater.html">jls.util.zip.Deflater</a></li>
+  <li><a href="../modules/jls.util.zip.Inflater.html">jls.util.zip.Inflater</a></li>
+  <li><a href="../modules/jls.util.zip.ZipFile.html">jls.util.zip.ZipFile</a></li>
+  <li><a href="../modules/jls.util.zip.gzip.html">jls.util.zip.gzip</a></li>
+  <li><a href="../modules/jls.util.zip.tar.html">jls.util.zip.tar</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/manual.md.html">manual</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>jls.util.List</code></h1>
+<p>Represents a list.</p>
+<p> The functions could be used for Lua tables.</p>
+
+
+<h2><a href="#Class_List">Class List </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#List:new">List:new ([...])</a></td>
+	<td class="summary">Creates a new List.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#list:add">list:add (value[, ...])</a></td>
+	<td class="summary">Adds a new element at the end of this list.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#list:remove">list:remove (index)</a></td>
+	<td class="summary">Removes the element at the specified index.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#list:removeFirst">list:removeFirst (value)</a></td>
+	<td class="summary">Removes the first specified value from this list.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#list:removeLast">list:removeLast (value)</a></td>
+	<td class="summary">Removes the last specified value from this list.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#list:removeAll">list:removeAll (value)</a></td>
+	<td class="summary">Removes the specified value from this list.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#list:insert">list:insert (index, value)</a></td>
+	<td class="summary">Inserts a new element to this list at the specified index.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#list:size">list:size ()</a></td>
+	<td class="summary">Returns the size of this list.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#list:join">list:join ([sep[, i[, j]]])</a></td>
+	<td class="summary">Returns a string by concatenating all the values of the specified list.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List.removeFirst">List.removeFirst (list, value)</a></td>
+	<td class="summary">Removes the first specified value from the specified list.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List.removeLast">List.removeLast (list, value)</a></td>
+	<td class="summary">Removes the last specified value from the specified list.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List.removeAll">List.removeAll (list, value)</a></td>
+	<td class="summary">Removes the specified value from the specified list.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List.join">List.join (list[, sep[, i[, j]]])</a></td>
+	<td class="summary">Returns a string by concatenating all the values of the specified list.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List.isName">List.isName (value)</a></td>
+	<td class="summary">Returns true when the specified value is a Lua name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List.isList">List.isList (t[, withHoles[, acceptEmpty]])</a></td>
+	<td class="summary">Returns true when the specified table is a list.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name="Class_List"></a>Class List </h2>
+
+          <div class="section-description">
+          A List class.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "List:new"></a>
+    <strong>List:new ([...])</strong>
+    </dt>
+    <dd>
+    Creates a new List.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         The values to add to the list.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "list:add"></a>
+    <strong>list:add (value[, ...])</strong>
+    </dt>
+    <dd>
+    Adds a new element at the end of this list.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+         The element to add at the end of this list.
+        </li>
+        <li><span class="parameter">...</span>
+         Additional values to add.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.util.List</span></span>
+        this list.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "list:remove"></a>
+    <strong>list:remove (index)</strong>
+    </dt>
+    <dd>
+    Removes the element at the specified index.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">index</span>
+            <span class="types"><span class="type">integer</span></span>
+         The index of the element to remove.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The value of the removed element.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "list:removeFirst"></a>
+    <strong>list:removeFirst (value)</strong>
+    </dt>
+    <dd>
+    Removes the first specified value from this list.
+ The matching values are found using equality (==)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+         The value to remove from the list.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if a value has been removed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "list:removeLast"></a>
+    <strong>list:removeLast (value)</strong>
+    </dt>
+    <dd>
+    Removes the last specified value from this list.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+         The value to remove from the list.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if a value has been removed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "list:removeAll"></a>
+    <strong>list:removeAll (value)</strong>
+    </dt>
+    <dd>
+    Removes the specified value from this list.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+         The value to remove from the list.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "list:insert"></a>
+    <strong>list:insert (index, value)</strong>
+    </dt>
+    <dd>
+    Inserts a new element to this list at the specified index.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">index</span>
+            <span class="types"><span class="type">integer</span></span>
+         The index where to insert the element.
+        </li>
+        <li><span class="parameter">value</span>
+         The element to insert to this list.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.util.List</span></span>
+        this list.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "list:size"></a>
+    <strong>list:size ()</strong>
+    </dt>
+    <dd>
+    Returns the size of this list.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+        the size of this list.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "list:join"></a>
+    <strong>list:join ([sep[, i[, j]]])</strong>
+    </dt>
+    <dd>
+    Returns a string by concatenating all the values of the specified list.
+ tostring() is used to get the string of a value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sep</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         An optional separator to add between values.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">i</span>
+            <span class="types"><span class="type">integer</span></span>
+         The index of the first value, default is 1.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">j</span>
+            <span class="types"><span class="type">integer</span></span>
+         The index of the last value, default is #list.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        a string with all values joined.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List.removeFirst"></a>
+    <strong>List.removeFirst (list, value)</strong>
+    </dt>
+    <dd>
+    Removes the first specified value from the specified list.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">list</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         The list from which to remove the value.
+        </li>
+        <li><span class="parameter">value</span>
+         The value to remove from the list.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if a value has been removed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List.removeLast"></a>
+    <strong>List.removeLast (list, value)</strong>
+    </dt>
+    <dd>
+    Removes the last specified value from the specified list.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">list</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         The list from which to remove the value.
+        </li>
+        <li><span class="parameter">value</span>
+         The value to remove from the list.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if a value has been removed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List.removeAll"></a>
+    <strong>List.removeAll (list, value)</strong>
+    </dt>
+    <dd>
+    Removes the specified value from the specified list.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">list</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         The list from which to remove the value.
+        </li>
+        <li><span class="parameter">value</span>
+         The value to remove from the list.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List.join"></a>
+    <strong>List.join (list[, sep[, i[, j]]])</strong>
+    </dt>
+    <dd>
+    Returns a string by concatenating all the values of the specified list.
+ tostring() is used to get the string of a value.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">list</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         The list of values to concatenate.
+        </li>
+        <li><span class="parameter">sep</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         An optional separator to add between values.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">i</span>
+            <span class="types"><span class="type">integer</span></span>
+         The index of the first value, default is 1.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">j</span>
+            <span class="types"><span class="type">integer</span></span>
+         The index of the last value, default is #list.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        a string with all values joined.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List.isName"></a>
+    <strong>List.isName (value)</strong>
+    </dt>
+    <dd>
+    Returns true when the specified value is a Lua name.
+ Names in Lua are any string of letters, digits, and underscores, not beginning with a digit and not being a reserved word.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The string value to check.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true when the specified value is a Lua name.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List.isList"></a>
+    <strong>List.isList (t[, withHoles[, acceptEmpty]])</strong>
+    </dt>
+    <dd>
+    Returns true when the specified table is a list.
+ A list has continuous integer keys starting at 1.
+ A list may have a field "n" giving the size of the list as an integer.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">t</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         The table to check.
+        </li>
+        <li><span class="parameter">withHoles</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to indicate that the list may have holes.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">acceptEmpty</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to indicate that the list could be empty.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">boolean</span></span>
+        true when the specified table is a list.</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        the number of fields in the table or the number of elements in the list.</li>
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

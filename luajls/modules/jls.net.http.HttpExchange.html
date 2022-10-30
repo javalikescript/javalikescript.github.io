@@ -1,0 +1,586 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Lua JLS 0.6</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>luajls</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_HttpExchange">Class HttpExchange </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/jls.io.File.html">jls.io.File</a></li>
+  <li><a href="../modules/jls.io.FileDescriptor.html">jls.io.FileDescriptor</a></li>
+  <li><a href="../modules/jls.io.Path.html">jls.io.Path</a></li>
+  <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
+  <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
+  <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
+  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
+  <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
+  <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
+  <li><a href="../modules/jls.lang.StringBuffer.html">jls.lang.StringBuffer</a></li>
+  <li><a href="../modules/jls.lang.Thread.html">jls.lang.Thread</a></li>
+  <li><a href="../modules/jls.lang.class.html">jls.lang.class</a></li>
+  <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
+  <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
+  <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
+  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
+  <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
+  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
+  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
+  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
+  <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
+  <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
+  <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
+  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
+  <li><strong>jls.net.http.HttpExchange</strong></li>
+  <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
+  <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
+  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
+  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
+  <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
+  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
+  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
+  <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
+  <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
+  <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
+  <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
+  <li><a href="../modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></li>
+  <li><a href="../modules/jls.util.Map.html">jls.util.Map</a></li>
+  <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
+  <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
+  <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
+  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
+  <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
+  <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
+  <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
+  <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
+  <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
+  <li><a href="../modules/jls.util.xml.html">jls.util.xml</a></li>
+  <li><a href="../modules/jls.util.zip.Deflater.html">jls.util.zip.Deflater</a></li>
+  <li><a href="../modules/jls.util.zip.Inflater.html">jls.util.zip.Inflater</a></li>
+  <li><a href="../modules/jls.util.zip.ZipFile.html">jls.util.zip.ZipFile</a></li>
+  <li><a href="../modules/jls.util.zip.gzip.html">jls.util.zip.gzip</a></li>
+  <li><a href="../modules/jls.util.zip.tar.html">jls.util.zip.tar</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/manual.md.html">manual</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>jls.net.http.HttpExchange</code></h1>
+<p>The HttpExchange class wraps the HTTP request and response.</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Class_HttpExchange">Class HttpExchange </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:getContext">httpExchange:getContext ()</a></td>
+	<td class="summary">Returns the HTTP context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:getRequest">httpExchange:getRequest ()</a></td>
+	<td class="summary">Returns the HTTP request.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:getResponse">httpExchange:getResponse ()</a></td>
+	<td class="summary">Returns the HTTP response.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:getRequestMethod">httpExchange:getRequestMethod ()</a></td>
+	<td class="summary">Returns the HTTP request method.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:getRequestHeaders">httpExchange:getRequestHeaders ()</a></td>
+	<td class="summary">Returns the HTTP request headers.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:getRequestArguments">httpExchange:getRequestArguments ()</a></td>
+	<td class="summary">Returns the captured values of the request target path using the context path.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:getRequestPath">httpExchange:getRequestPath ()</a></td>
+	<td class="summary">Returns the request path as replaced by the context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:onRequestBody">httpExchange:onRequestBody ([buffer])</a></td>
+	<td class="summary">Returns a promise that resolves once the request body is available.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:onClose">httpExchange:onClose ()</a></td>
+	<td class="summary">Returns a promise that resolves once the exchange is closed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:setResponseStatusCode">httpExchange:setResponseStatusCode (statusCode[, reasonPhrase[, body]])</a></td>
+	<td class="summary">Sets the status code for the response.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HttpExchange.ok">HttpExchange.ok (httpExchange[, body[, contentType]])</a></td>
+	<td class="summary">Updates the response with the OK status code, 200.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HttpExchange.badRequest">HttpExchange.badRequest (httpExchange[, reasonPhrase])</a></td>
+	<td class="summary">Updates the response with the status code Bad Request, 400.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HttpExchange.forbidden">HttpExchange.forbidden (httpExchange[, reasonPhrase])</a></td>
+	<td class="summary">Updates the response with the status code Forbidden, 403.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HttpExchange.notFound">HttpExchange.notFound (httpExchange)</a></td>
+	<td class="summary">Updates the response with the status code Not Found, 404.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HttpExchange.methodNotAllowed">HttpExchange.methodNotAllowed (httpExchange)</a></td>
+	<td class="summary">Updates the response with the status code Method Not Allowed, 405.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HttpExchange.internalServerError">HttpExchange.internalServerError (httpExchange)</a></td>
+	<td class="summary">Updates the response with the status code Internal Server Error, 500.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name="Class_HttpExchange"></a>Class HttpExchange </h2>
+
+          <div class="section-description">
+          The HttpExchange class wraps the HTTP request and response.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "httpExchange:getContext"></a>
+    <strong>httpExchange:getContext ()</strong>
+    </dt>
+    <dd>
+    Returns the HTTP context.
+ Only available during the request handling
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">HttpContext</span></span>
+        the HTTP context.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpExchange:getRequest"></a>
+    <strong>httpExchange:getRequest ()</strong>
+    </dt>
+    <dd>
+    Returns the HTTP request.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">HttpRequest</span></span>
+        the HTTP request.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpExchange:getResponse"></a>
+    <strong>httpExchange:getResponse ()</strong>
+    </dt>
+    <dd>
+    Returns the HTTP response.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">HttpResponse</span></span>
+        the HTTP response.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpExchange:getRequestMethod"></a>
+    <strong>httpExchange:getRequestMethod ()</strong>
+    </dt>
+    <dd>
+    Returns the HTTP request method.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        the HTTP method.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpExchange:getRequestHeaders"></a>
+    <strong>httpExchange:getRequestHeaders ()</strong>
+    </dt>
+    <dd>
+    Returns the HTTP request headers.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">HttpHeaders</span></span>
+        the HTTP request.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpExchange:getRequestArguments"></a>
+    <strong>httpExchange:getRequestArguments ()</strong>
+    </dt>
+    <dd>
+    Returns the captured values of the request target path using the context path.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        the first captured value, nil if there is no captured value.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpExchange:getRequestPath"></a>
+    <strong>httpExchange:getRequestPath ()</strong>
+    </dt>
+    <dd>
+    Returns the request path as replaced by the context.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        the request path.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpExchange:onRequestBody"></a>
+    <strong>httpExchange:onRequestBody ([buffer])</strong>
+    </dt>
+    <dd>
+    Returns a promise that resolves once the request body is available.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">buffer</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to indicate that the request body must be bufferred.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the request body is available.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpExchange:onClose"></a>
+    <strong>httpExchange:onClose ()</strong>
+    </dt>
+    <dd>
+    Returns a promise that resolves once the exchange is closed.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the exchange is closed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpExchange:setResponseStatusCode"></a>
+    <strong>httpExchange:setResponseStatusCode (statusCode[, reasonPhrase[, body]])</strong>
+    </dt>
+    <dd>
+    Sets the status code for the response.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">statusCode</span>
+            <span class="types"><span class="type">number</span></span>
+         the status code.
+        </li>
+        <li><span class="parameter">reasonPhrase</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the reason phrase.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">body</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the response body.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HttpExchange.ok"></a>
+    <strong>HttpExchange.ok (httpExchange[, body[, contentType]])</strong>
+    </dt>
+    <dd>
+    Updates the response with the OK status code, 200.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">httpExchange</span>
+            <span class="types"><a class="type" href="../modules/jls.net.http.HttpExchange.html#HttpExchange">HttpExchange</a></span>
+         ongoing HTTP exchange
+        </li>
+        <li><span class="parameter">body</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the response content.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">contentType</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the response content type.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HttpExchange.badRequest"></a>
+    <strong>HttpExchange.badRequest (httpExchange[, reasonPhrase])</strong>
+    </dt>
+    <dd>
+    Updates the response with the status code Bad Request, 400.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">httpExchange</span>
+            <span class="types"><a class="type" href="../modules/jls.net.http.HttpExchange.html#HttpExchange">HttpExchange</a></span>
+         ongoing HTTP exchange
+        </li>
+        <li><span class="parameter">reasonPhrase</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the response reason phrase.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HttpExchange.forbidden"></a>
+    <strong>HttpExchange.forbidden (httpExchange[, reasonPhrase])</strong>
+    </dt>
+    <dd>
+    Updates the response with the status code Forbidden, 403.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">httpExchange</span>
+            <span class="types"><a class="type" href="../modules/jls.net.http.HttpExchange.html#HttpExchange">HttpExchange</a></span>
+         ongoing HTTP exchange
+        </li>
+        <li><span class="parameter">reasonPhrase</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the response reason phrase.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HttpExchange.notFound"></a>
+    <strong>HttpExchange.notFound (httpExchange)</strong>
+    </dt>
+    <dd>
+    Updates the response with the status code Not Found, 404.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">httpExchange</span>
+            <span class="types"><a class="type" href="../modules/jls.net.http.HttpExchange.html#HttpExchange">HttpExchange</a></span>
+         ongoing HTTP exchange
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HttpExchange.methodNotAllowed"></a>
+    <strong>HttpExchange.methodNotAllowed (httpExchange)</strong>
+    </dt>
+    <dd>
+    Updates the response with the status code Method Not Allowed, 405.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">httpExchange</span>
+            <span class="types"><a class="type" href="../modules/jls.net.http.HttpExchange.html#HttpExchange">HttpExchange</a></span>
+         ongoing HTTP exchange
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HttpExchange.internalServerError"></a>
+    <strong>HttpExchange.internalServerError (httpExchange)</strong>
+    </dt>
+    <dd>
+    Updates the response with the status code Internal Server Error, 500.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">httpExchange</span>
+            <span class="types"><a class="type" href="../modules/jls.net.http.HttpExchange.html#HttpExchange">HttpExchange</a></span>
+         ongoing HTTP exchange
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
