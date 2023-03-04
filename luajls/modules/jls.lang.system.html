@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.6</title>
+    <title>Lua JLS 0.7</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -46,12 +46,7 @@
   <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
   <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
   <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.Exception.html">jls.lang.Exception</a></li>
   <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
   <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
   <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
@@ -61,36 +56,21 @@
   <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
   <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
   <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
-  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
   <li><strong>jls.lang.system</strong></li>
-  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
-  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
-  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.TcpSocket.html">jls.net.TcpSocket</a></li>
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
-  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
-  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
   <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
-  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
-  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
-  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
-  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
-  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -99,9 +79,9 @@
   <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
   <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
   <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
-  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
   <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
@@ -131,50 +111,62 @@ Operation such as the exit method and the garbage collection.</p>
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#currentTime">currentTime ()</a></td>
+	<td class="name" nowrap><a href="#system.currentTime">system.currentTime ()</a></td>
 	<td class="summary">Returns the current time in seconds.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#currentTimeMillis">currentTimeMillis ()</a></td>
+	<td class="name" nowrap><a href="#system.currentTimeMillis">system.currentTimeMillis ()</a></td>
 	<td class="summary">Returns the current time in milliseconds.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#sleep">sleep (millis)</a></td>
+	<td class="name" nowrap><a href="#system.sleep">system.sleep (millis)</a></td>
 	<td class="summary">Causes the program to sleep.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#exit">exit (code)</a></td>
-	<td class="summary">Terminates the program and returns a value to the OS.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#getenv">getenv (name)</a></td>
+	<td class="name" nowrap><a href="#system.getenv">system.getenv (name)</a></td>
 	<td class="summary">Gets a specific environnement property.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#getArguments">getArguments ()</a></td>
+	<td class="name" nowrap><a href="#system.getArguments">system.getArguments ()</a></td>
 	<td class="summary">Returns the arguments used when calling the Lua standalone executable.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#gc">gc ()</a></td>
+	<td class="name" nowrap><a href="#system.exec">system.exec (command, env, dir)</a></td>
+	<td class="summary">Executes the specified command and arguments in a separate process with the specified environment and working directory.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#system.execute">system.execute (command[, anyCode[, callback]])</a></td>
+	<td class="summary">Executes the specified command line in a separate thread.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#system.exit">system.exit (code)</a></td>
+	<td class="summary">Terminates the program and returns a value to the OS.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#system.gc">system.gc ()</a></td>
 	<td class="summary">Runs the garbage collector.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#system.halt">system.halt (code)</a></td>
+	<td class="summary">Forcibly terminates the program and returns a value to the OS.</td>
 	</tr>
 </table>
 <h2><a href="#Fields">Fields</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#lineSeparator">lineSeparator</a></td>
+	<td class="name" nowrap><a href="#system.lineSeparator">system.lineSeparator</a></td>
 	<td class="summary">The Operating System (OS) line separator, '\n' on Unix and '\r\n' on Windows.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#input">input</a></td>
+	<td class="name" nowrap><a href="#system.input">system.input</a></td>
 	<td class="summary">The standard input stream file descriptor.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#output">output</a></td>
+	<td class="name" nowrap><a href="#system.output">system.output</a></td>
 	<td class="summary">The standard output stream file descriptor.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#error">error</a></td>
+	<td class="name" nowrap><a href="#system.error">system.error</a></td>
 	<td class="summary">The standard error stream file descriptor.</td>
 	</tr>
 </table>
@@ -187,13 +179,14 @@ Operation such as the exit method and the garbage collection.</p>
 
     <dl class="function">
     <dt>
-    <a name = "currentTime"></a>
-    <strong>currentTime ()</strong>
+    <a name = "system.currentTime"></a>
+    <strong>system.currentTime ()</strong>
     </dt>
     <dd>
     Returns the current time in seconds.
  The time is given as the number of seconds since the Epoch, 1970-01-01 00:00:00 +0000 (UTC).
 
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -207,12 +200,13 @@ Operation such as the exit method and the garbage collection.</p>
 
 </dd>
     <dt>
-    <a name = "currentTimeMillis"></a>
-    <strong>currentTimeMillis ()</strong>
+    <a name = "system.currentTimeMillis"></a>
+    <strong>system.currentTimeMillis ()</strong>
     </dt>
     <dd>
     Returns the current time in milliseconds.
 
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -226,12 +220,13 @@ Operation such as the exit method and the garbage collection.</p>
 
 </dd>
     <dt>
-    <a name = "sleep"></a>
-    <strong>sleep (millis)</strong>
+    <a name = "system.sleep"></a>
+    <strong>system.sleep (millis)</strong>
     </dt>
     <dd>
     Causes the program to sleep.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -246,32 +241,13 @@ Operation such as the exit method and the garbage collection.</p>
 
 </dd>
     <dt>
-    <a name = "exit"></a>
-    <strong>exit (code)</strong>
-    </dt>
-    <dd>
-    Terminates the program and returns a value to the OS.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">code</span>
-         The exit code to return to the OS.
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "getenv"></a>
-    <strong>getenv (name)</strong>
+    <a name = "system.getenv"></a>
+    <strong>system.getenv (name)</strong>
     </dt>
     <dd>
     Gets a specific environnement property.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -291,18 +267,19 @@ Operation such as the exit method and the garbage collection.</p>
 
 </dd>
     <dt>
-    <a name = "getArguments"></a>
-    <strong>getArguments ()</strong>
+    <a name = "system.getArguments"></a>
+    <strong>system.getArguments ()</strong>
     </dt>
     <dd>
     Returns the arguments used when calling the Lua standalone executable.
 
+    </ul>
 
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
         The arguments.
     </ol>
 
@@ -311,13 +288,132 @@ Operation such as the exit method and the garbage collection.</p>
 
 </dd>
     <dt>
-    <a name = "gc"></a>
-    <strong>gc ()</strong>
+    <a name = "system.exec"></a>
+    <strong>system.exec (command, env, dir)</strong>
+    </dt>
+    <dd>
+    Executes the specified command and arguments in a separate process with the specified environment and working directory.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">command</span>
+         Array of strings specifying the command-line arguments.
+ The first argument is the name of the executable file.
+        </li>
+        <li><span class="parameter">env</span>
+         Array of key=values specifying the environment strings.
+ If undefined, the new process inherits the environment of the parent process.
+        </li>
+        <li><span class="parameter">dir</span>
+         The working directory of the subprocess, or undefined
+ if the subprocess should inherit the working directory of the current process.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.ProcessHandle</span></span>
+        a handle of the new process
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "system.execute"></a>
+    <strong>system.execute (command[, anyCode[, callback]])</strong>
+    </dt>
+    <dd>
+    Executes the specified command line in a separate thread.
+ The promise will be rejected if the process exit code is not zero.
+ The error is a table with a code and a kind fields.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">command</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The command-line to execute.
+        </li>
+        <li><span class="parameter">anyCode</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to resolve the promise with any exit code.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         an optional callback function to use in place of promise.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the command has been executed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "system.exit"></a>
+    <strong>system.exit (code)</strong>
+    </dt>
+    <dd>
+    Terminates the program and returns a value to the OS.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">code</span>
+         The exit code to return to the OS.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "system.gc"></a>
+    <strong>system.gc ()</strong>
     </dt>
     <dd>
     Runs the garbage collector.
 
+    </ul>
 
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "system.halt"></a>
+    <strong>system.halt (code)</strong>
+    </dt>
+    <dd>
+    Forcibly terminates the program and returns a value to the OS.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">code</span>
+         The exit code to return to the OS.
+        </li>
+    </ul>
 
 
 
@@ -329,12 +425,13 @@ Operation such as the exit method and the garbage collection.</p>
 
     <dl class="function">
     <dt>
-    <a name = "lineSeparator"></a>
-    <strong>lineSeparator</strong>
+    <a name = "system.lineSeparator"></a>
+    <strong>system.lineSeparator</strong>
     </dt>
     <dd>
     The Operating System (OS) line separator, '\n' on Unix and '\r\n' on Windows.
 
+    </ul>
 
 
 
@@ -343,12 +440,13 @@ Operation such as the exit method and the garbage collection.</p>
 
 </dd>
     <dt>
-    <a name = "input"></a>
-    <strong>input</strong>
+    <a name = "system.input"></a>
+    <strong>system.input</strong>
     </dt>
     <dd>
     The standard input stream file descriptor.
 
+    </ul>
 
 
 
@@ -357,12 +455,13 @@ Operation such as the exit method and the garbage collection.</p>
 
 </dd>
     <dt>
-    <a name = "output"></a>
-    <strong>output</strong>
+    <a name = "system.output"></a>
+    <strong>system.output</strong>
     </dt>
     <dd>
     The standard output stream file descriptor.
 
+    </ul>
 
 
 
@@ -371,12 +470,13 @@ Operation such as the exit method and the garbage collection.</p>
 
 </dd>
     <dt>
-    <a name = "error"></a>
-    <strong>error</strong>
+    <a name = "system.error"></a>
+    <strong>system.error</strong>
     </dt>
     <dd>
     The standard error stream file descriptor.
 
+    </ul>
 
 
 
@@ -391,7 +491,7 @@ Operation such as the exit method and the garbage collection.</p>
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

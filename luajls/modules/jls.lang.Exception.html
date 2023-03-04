@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.6</title>
+    <title>Lua JLS 0.7</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -33,7 +33,7 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Class_RangeStreamHandler">Class RangeStreamHandler </a></li>
+<li><a href="#Class_Exception">Class Exception </a></li>
 </ul>
 
 
@@ -45,12 +45,7 @@
   <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
   <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
   <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
-  <li><strong>jls.io.streams.RangeStreamHandler</strong></li>
+  <li><strong>jls.lang.Exception</strong></li>
   <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
   <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
   <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
@@ -60,36 +55,21 @@
   <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
   <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
   <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
-  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
   <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
-  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
-  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
-  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.TcpSocket.html">jls.net.TcpSocket</a></li>
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
-  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
-  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
   <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
-  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
-  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
-  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
-  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
-  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -98,9 +78,9 @@
   <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
   <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
   <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
-  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
   <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
@@ -121,18 +101,32 @@
 
 <div id="content">
 
-<h1>Module <code>jls.io.streams.RangeStreamHandler</code></h1>
-<p>This class allows to restrict the stream to pass to the wrapped handler to a specified range.</p>
-<p>
-
-</p>
+<h1>Module <code>jls.lang.Exception</code></h1>
+<p>Represents an abnormal event.</p>
+<p> An exception instance captures the error message and the associated stack.</p>
 
 
-<h2><a href="#Class_RangeStreamHandler">Class RangeStreamHandler </a></h2>
+<h2><a href="#Class_Exception">Class Exception </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#RangeStreamHandler:new">RangeStreamHandler:new (handler[, offset[, length]])</a></td>
-	<td class="summary">Creates a <a href="../modules/jls.io.StreamHandler.html">StreamHandler</a> with a range.</td>
+	<td class="name" nowrap><a href="#StringBuffer:new">StringBuffer:new ([message[, cause[, stack[, name]]]])</a></td>
+	<td class="summary">Creates a new Exception.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#exception:getMessage">exception:getMessage ()</a></td>
+	<td class="summary">Returns the message of this exception.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#exception:getCause">exception:getCause ()</a></td>
+	<td class="summary">Returns the cause of this exception.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#exception:getStackTrace">exception:getStackTrace ()</a></td>
+	<td class="summary">Returns the stack of this exception.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Exception.pcall">Exception.pcall (fn[, ...])</a></td>
+	<td class="summary">Calls the specified function with the given arguments in protected mode.</td>
 	</tr>
 </table>
 
@@ -140,40 +134,139 @@
 <br/>
 
 
-    <h2 class="section-header has-description"><a name="Class_RangeStreamHandler"></a>Class RangeStreamHandler </h2>
+    <h2 class="section-header has-description"><a name="Class_Exception"></a>Class Exception </h2>
 
           <div class="section-description">
-          A RangeStreamHandler class.
- This class allows to restrict the stream to pass to the wrapped handler to a specified range.
+          The Exception class.
           </div>
     <dl class="function">
     <dt>
-    <a name = "RangeStreamHandler:new"></a>
-    <strong>RangeStreamHandler:new (handler[, offset[, length]])</strong>
+    <a name = "StringBuffer:new"></a>
+    <strong>StringBuffer:new ([message[, cause[, stack[, name]]]])</strong>
     </dt>
     <dd>
-    Creates a <a href="../modules/jls.io.StreamHandler.html">StreamHandler</a> with a range.
- The data in the range will be pass to the wrapped handler.
+    Creates a new Exception.
+ The stack trace and the name will be generated automatically.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">handler</span>
-            <span class="types"><span class="type">StreamHandler</span></span>
-         the handler to wrap
-        </li>
-        <li><span class="parameter">offset</span>
-            <span class="types"><span class="type">number</span></span>
-         the offset of the range, default is 0
+        <li><span class="parameter">message</span>
+         the exception message.
          (<em>optional</em>)
         </li>
-        <li><span class="parameter">length</span>
-            <span class="types"><span class="type">number</span></span>
-         the length of the range
+        <li><span class="parameter">cause</span>
+         the exception cause.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">stack</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the exception stack.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the exception name.
          (<em>optional</em>)
         </li>
     </ul>
 
+
+
+
+
+</dd>
+    <dt>
+    <a name = "exception:getMessage"></a>
+    <strong>exception:getMessage ()</strong>
+    </dt>
+    <dd>
+    Returns the message of this exception.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the message of this exception possibly nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "exception:getCause"></a>
+    <strong>exception:getCause ()</strong>
+    </dt>
+    <dd>
+    Returns the cause of this exception.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the cause of this exception if any or nil.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "exception:getStackTrace"></a>
+    <strong>exception:getStackTrace ()</strong>
+    </dt>
+    <dd>
+    Returns the stack of this exception.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        the stack of this exception.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Exception.pcall"></a>
+    <strong>Exception.pcall (fn[, ...])</strong>
+    </dt>
+    <dd>
+    Calls the specified function with the given arguments in protected mode.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fn</span>
+            <span class="types"><span class="type">function</span></span>
+         the function to call in protected mode.
+        </li>
+        <li><span class="parameter">...</span>
+         the arguments to call the function with.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">boolean</span></span>
+        true if the call succeeds without errors.</li>
+        <li>
+        the returned values of the call or the Exception in case of error.</li>
+    </ol>
 
 
 
@@ -186,7 +279,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

@@ -33,7 +33,7 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Class_MessageDigest">Class MessageDigest </a></li>
+<li><a href="#Functions">Functions</a></li>
 </ul>
 
 
@@ -75,12 +75,12 @@
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
   <li><a href="../modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></li>
   <li><a href="../modules/jls.util.Map.html">jls.util.Map</a></li>
-  <li><strong>jls.util.MessageDigest</strong></li>
+  <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
   <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
   <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
-  <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
+  <li><strong>jls.util.ast</strong></li>
   <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
@@ -101,32 +101,36 @@
 
 <div id="content">
 
-<h1>Module <code>jls.util.MessageDigest</code></h1>
-<p>Provide MessageDigest class.</p>
-<p> Available algorithms are sha1, md5, Crc32.</p>
+<h1>Module <code>jls.util.ast</code></h1>
+<p>Abstract Syntax Tree (AST) utility module.</p>
+<p> This module allows to parse Lua into AST, manipulate AST and to generate Lua from AST.</p>
+
+<p> The AST is represented using Lua table.</p>
+
+<p> The types are: <code>assignment</code>, <code>binary</code>, <code>block</code>, <code>break</code>, <code>call</code>, <code>declaration</code>, <code>for</code>, <code>function</code>, <code>goto</code>, <code>identifier</code>, <code>if</code>, <code>label</code>, <code>literal</code>, <code>lookup</code>, <code>repeat</code>, <code>return</code>, <a href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a>, <code>unary</code>, <code>vararg</code>, <code>while</code></p>
+
+<p> The operators are: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>^</code>, <code>%</code>, <code>&amp;</code>, <code>~</code>, <code>|</code>, <code>&gt;&gt;</code>, <code>&lt;&lt;</code>, <code>..</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>~=</code>, <code>and</code>, <code>or</code>, <code>-</code>, <code>not</code>, <code>#</code>, <code>~</code></p>
+
+<p> The table fields are: <code>adjustToOne</code>, <code>arguments</code>, <code>attribute</code>, <code>body</code>, <code>bodyFalse</code>, <code>bodyTrue</code>, <code>callee</code>, <code>condition</code>, <code>declaration</code>, <code>expression</code>, <code>fields</code>, <code>kind</code>, <code>label</code>, <code>left</code>, <code>member</code>, <code>method</code>, <code>name</code>, <code>names</code>, <code>object</code>, <code>operator</code>, <code>parameters</code>, <code>right</code>, <code>statements</code>, <code>targets</code>, <a href="https://www.lua.org/manual/5.4/manual.html#pdf-type">type</a>, <code>value</code>, <code>values</code></p>
 
 
-<h2><a href="#Class_MessageDigest">Class MessageDigest </a></h2>
+<h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#MessageDigest:new">MessageDigest:new (alg)</a></td>
-	<td class="summary">Creates a new MessageDigest.</td>
+	<td class="name" nowrap><a href="#ast.parse">ast.parse (lua[, verbose])</a></td>
+	<td class="summary">Returns the AST representing the specified Lua code.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#messageDigest:reset">messageDigest:reset ()</a></td>
-	<td class="summary">Resets this MessageDigest.</td>
+	<td class="name" nowrap><a href="#ast.parseExpression">ast.parseExpression (lua[, verbose])</a></td>
+	<td class="summary">Returns the AST representing the specified Lua expression.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#messageDigest:update">messageDigest:update (m)</a></td>
-	<td class="summary">Updates the digest using the specified string.</td>
+	<td class="name" nowrap><a href="#ast.traverse">ast.traverse (tree, callback[, context])</a></td>
+	<td class="summary">Walks through the specified AST calling the callback function for each node.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#messageDigest:finish">messageDigest:finish ([m])</a></td>
-	<td class="summary">Completes and returns the digest.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#messageDigest:digest">messageDigest:digest (m)</a></td>
-	<td class="summary">Returns the digest using the specified string.</td>
+	<td class="name" nowrap><a href="#ast.generate">ast.generate (tree)</a></td>
+	<td class="summary">Returns the Lua code representing the specified AST.</td>
 	</tr>
 </table>
 
@@ -134,96 +138,27 @@
 <br/>
 
 
-    <h2 class="section-header has-description"><a name="Class_MessageDigest"></a>Class MessageDigest </h2>
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
 
-          <div class="section-description">
-          The MessageDigest class.
- The MessageDigest class provides access to algorithms that compute message digest or hash from any string or message.
-          </div>
     <dl class="function">
     <dt>
-    <a name = "MessageDigest:new"></a>
-    <strong>MessageDigest:new (alg)</strong>
+    <a name = "ast.parse"></a>
+    <strong>ast.parse (lua[, verbose])</strong>
     </dt>
     <dd>
-    Creates a new MessageDigest.
+    Returns the AST representing the specified Lua code.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">alg</span>
+        <li><span class="parameter">lua</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         The name of the algorithm.
+         the Lua code to parse.
         </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        a new MessageDigest
-    </ol>
-
-
-
-    <h3>Usage:</h3>
-    <ul>
-        <pre class="example"><span class="keyword">local</span> md = MessageDigest:new(<span class="string">'md5'</span>)
-md:digest(<span class="string">'The quick brown fox jumps over the lazy dog'</span>)</pre>
-    </ul>
-
-</dd>
-    <dt>
-    <a name = "messageDigest:reset"></a>
-    <strong>messageDigest:reset ()</strong>
-    </dt>
-    <dd>
-    Resets this MessageDigest.
-
-    </ul>
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "messageDigest:update"></a>
-    <strong>messageDigest:update (m)</strong>
-    </dt>
-    <dd>
-    Updates the digest using the specified string.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">m</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         a message to update the digest.
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "messageDigest:finish"></a>
-    <strong>messageDigest:finish ([m])</strong>
-    </dt>
-    <dd>
-    Completes and returns the digest.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">m</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         a message to update the digest.
+        <li><span class="parameter">verbose</span>
+            <span class="types"><span class="type">boolean</span></span>
+         whether or not to include extra information such as the line number.
          (<em>optional</em>)
         </li>
     </ul>
@@ -231,8 +166,8 @@ md:digest(<span class="string">'The quick brown fox jumps over the lazy dog'</sp
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the message digest result.
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+        the AST representing the Lua.
     </ol>
 
 
@@ -240,19 +175,89 @@ md:digest(<span class="string">'The quick brown fox jumps over the lazy dog'</sp
 
 </dd>
     <dt>
-    <a name = "messageDigest:digest"></a>
-    <strong>messageDigest:digest (m)</strong>
+    <a name = "ast.parseExpression"></a>
+    <strong>ast.parseExpression (lua[, verbose])</strong>
     </dt>
     <dd>
-    Returns the digest using the specified string.
+    Returns the AST representing the specified Lua expression.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">m</span>
+        <li><span class="parameter">lua</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         a message to compute the digest.
+         the Lua expression to parse.
+        </li>
+        <li><span class="parameter">verbose</span>
+            <span class="types"><span class="type">boolean</span></span>
+         whether or not to include extra information such as the line number.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+        the AST representing the Lua.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ast.traverse"></a>
+    <strong>ast.traverse (tree, callback[, context])</strong>
+    </dt>
+    <dd>
+    Walks through the specified AST calling the callback function for each node.
+ The function is called with the AST node, if the return value is a table then it will replace the current AST node.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tree</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         the AST to walk through.
+        </li>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         the callback function, will be called with the node and the context.
+        </li>
+        <li><span class="parameter">context</span>
+         an optional context to pass to the callback function.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+        the AST.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ast.generate"></a>
+    <strong>ast.generate (tree)</strong>
+    </dt>
+    <dd>
+    Returns the Lua code representing the specified AST.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tree</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         the AST.
         </li>
     </ul>
 
@@ -260,7 +265,7 @@ md:digest(<span class="string">'The quick brown fox jumps over the lazy dog'</sp
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the message digest result.
+        the Lua code representing the AST.
     </ol>
 
 

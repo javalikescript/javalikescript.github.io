@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.6</title>
+    <title>Lua JLS 0.7</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -45,12 +45,7 @@
   <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
   <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
   <li><strong>jls.io.StreamHandler</strong></li>
-  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.Exception.html">jls.lang.Exception</a></li>
   <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
   <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
   <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
@@ -60,36 +55,21 @@
   <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
   <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
   <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
-  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
   <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
-  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
-  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
-  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.TcpSocket.html">jls.net.TcpSocket</a></li>
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
-  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
-  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
   <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
-  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
-  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
-  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
-  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
-  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -98,9 +78,9 @@
   <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
   <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
   <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
-  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
   <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
@@ -122,13 +102,13 @@
 <div id="content">
 
 <h1>Module <code>jls.io.StreamHandler</code></h1>
-<p>Base stream handler class.</p>
+<p>Provides stream handler class and utility functions.</p>
 <p>A stream handler provides a way to deal with an input stream asynchronously.
 Basicaly it consists in a function that will be called when data is available.
 If the stream ends then the data function is called with no data allowing to execute specific steps.
 If the stream has an issue then the error function is called.</p>
 
-<p>Streams classes are mainly used by <a href="../modules/jls.net.TcpClient.html#">TCP</a> <a href="../modules/jls.net.UdpSocket.html#">UDP</a> protocols.</p>
+<p>Streams classes are mainly used by <a href="../modules/jls.net.TcpSocket.html#">TCP</a> and <a href="../modules/jls.net.UdpSocket.html#">UDP</a> protocols.</p>
     <h3>Usage:</h3>
     <ul>
         <pre class="example">local std = StreamHandler:new(function(_, data)
@@ -158,7 +138,7 @@ end)
 	<td class="summary">Creates a stream handler.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#streamHandler:onData">streamHandler:onData (data)</a></td>
+	<td class="name" nowrap><a href="#streamHandler:onData">streamHandler:onData (data, ...)</a></td>
 	<td class="summary">The specified data is available for this stream.</td>
 	</tr>
 	<tr>
@@ -190,6 +170,34 @@ end)
 	<td class="summary">Creates a stream handler with two handlers.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#StreamHandler.block">StreamHandler.block ([handler[, size]])</a></td>
+	<td class="summary">Creates a BlockStreamHandler that allows to pass fixed size blocks to the wrapped handler.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#StreamHandler.buffer">StreamHandler.buffer ([handler])</a></td>
+	<td class="summary">Creates a BufferedStreamHandler that allows to buffer the stream to pass to the wrapped handler.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#StreamHandler.chunk">StreamHandler.chunk ([handler], pattern[, plain[, limit]])</a></td>
+	<td class="summary">Creates a ChunkedStreamHandler that allows to buffer a stream and to call a sub handler depending on specified limit or pattern.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#StreamHandler.delay">StreamHandler.delay (...)</a></td>
+	<td class="summary">Creates a DelayedStreamHandler that allows to buffer a stream while the sub handler is not available.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#StreamHandler.file">StreamHandler.file (file[, overwrite])</a></td>
+	<td class="summary">Creates a FileStreamHandler that allows to write a stream into and from a file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#StreamHandler.promise">StreamHandler.promise ([handler])</a></td>
+	<td class="summary">Creates a PromiseStreamHandler that provides a promise that resolves once the stream is closed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#StreamHandler.range">StreamHandler.range ([handler[, offset[, length]]])</a></td>
+	<td class="summary">Creates a RangeStreamHandler that allows to restrict the stream to pass to the wrapped handler to a specified range.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#StreamHandler.std">StreamHandler.std</a></td>
 	<td class="summary">The standard stream writing data to standard output and error to standard error.</td>
 	</tr>
@@ -218,6 +226,7 @@ end)
     Creates a stream handler.
  The optional functions take two parameters, the stream and the data or the error
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -240,16 +249,20 @@ end)
 </dd>
     <dt>
     <a name = "streamHandler:onData"></a>
-    <strong>streamHandler:onData (data)</strong>
+    <strong>streamHandler:onData (data, ...)</strong>
     </dt>
     <dd>
     The specified data is available for this stream.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
          the new data to process, nil to indicate the end of the stream.
+        </li>
+        <li><span class="parameter">...</span>
+         the optional parameters
         </li>
     </ul>
 
@@ -270,6 +283,7 @@ end)
     <dd>
     The specified error occured on this stream.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -291,6 +305,7 @@ end)
     Closes this stream handler.
  Do nothing by default. Must support to be called multiple times.
 
+    </ul>
 
 
 
@@ -307,6 +322,7 @@ end)
  The callback function has two arguments: the error and the data.
  The data could be nil indicating the end of the stream.
 
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -327,6 +343,7 @@ end)
     <dd>
     Returns a callback function.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -358,6 +375,7 @@ end)
     <dd>
     Returns a StreamHandler.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -385,6 +403,7 @@ end)
     Fills the specified stream handler with the specified data.
  This is shortcut for sh:onData(data); sh:onData(nil)
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -393,7 +412,7 @@ end)
          the StreamHandler to fill.
         </li>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the data to process.
         </li>
     </ul>
@@ -415,6 +434,7 @@ end)
     <dd>
     Creates a stream handler with two handlers.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -440,12 +460,250 @@ end)
 
 </dd>
     <dt>
+    <a name = "StreamHandler.block"></a>
+    <strong>StreamHandler.block ([handler[, size]])</strong>
+    </dt>
+    <dd>
+    Creates a BlockStreamHandler that allows to pass fixed size blocks to the wrapped handler.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">handler</span>
+            <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+         the handler to wrap
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">size</span>
+            <span class="types"><span class="type">number</span></span>
+         the block size, default to 512
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+        a StreamHandler.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "StreamHandler.buffer"></a>
+    <strong>StreamHandler.buffer ([handler])</strong>
+    </dt>
+    <dd>
+    Creates a BufferedStreamHandler that allows to buffer the stream to pass to the wrapped handler.
+ The data will be pass to the wrapped handler once.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">handler</span>
+            <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+         the handler to wrap
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+        a StreamHandler.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "StreamHandler.chunk"></a>
+    <strong>StreamHandler.chunk ([handler], pattern[, plain[, limit]])</strong>
+    </dt>
+    <dd>
+    Creates a ChunkedStreamHandler that allows to buffer a stream and to call a sub handler depending on specified limit or pattern.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">handler</span>
+            <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+         the handler to wrap
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">pattern</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the pattern to use to split the buffered data to the wrapped handler
+        </li>
+        <li><span class="parameter">plain</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to use the pattern as a plain string
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">limit</span>
+            <span class="types"><span class="type">number</span></span>
+         the max size to buffer waiting for a pattern
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+        a StreamHandler.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "StreamHandler.delay"></a>
+    <strong>StreamHandler.delay (...)</strong>
+    </dt>
+    <dd>
+    Creates a DelayedStreamHandler that allows to buffer a stream while the sub handler is not available.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+        a StreamHandler.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "StreamHandler.file"></a>
+    <strong>StreamHandler.file (file[, overwrite])</strong>
+    </dt>
+    <dd>
+    Creates a FileStreamHandler that allows to write a stream into and from a file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">file</span>
+            <span class="types"><span class="type">jls.io.File</span></span>
+         The file to create
+        </li>
+        <li><span class="parameter">overwrite</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to indicate that existing file must be re created
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+        a StreamHandler.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "StreamHandler.promise"></a>
+    <strong>StreamHandler.promise ([handler])</strong>
+    </dt>
+    <dd>
+    Creates a PromiseStreamHandler that provides a promise that resolves once the stream is closed.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">handler</span>
+            <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+         the handler to wrap
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+        a StreamHandler.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "StreamHandler.range"></a>
+    <strong>StreamHandler.range ([handler[, offset[, length]]])</strong>
+    </dt>
+    <dd>
+    Creates a RangeStreamHandler that allows to restrict the stream to pass to the wrapped handler to a specified range.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">handler</span>
+            <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+         the handler to wrap
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">offset</span>
+            <span class="types"><span class="type">number</span></span>
+         the offset of the range, default is 0
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">length</span>
+            <span class="types"><span class="type">number</span></span>
+         the length of the range
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+        a StreamHandler.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "StreamHandler.std"></a>
     <strong>StreamHandler.std</strong>
     </dt>
     <dd>
     The standard stream writing data to standard output and error to standard error.
 
+    </ul>
 
 
 
@@ -460,6 +718,7 @@ end)
     <dd>
     A null stream.
 
+    </ul>
 
 
 
@@ -474,7 +733,7 @@ end)
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

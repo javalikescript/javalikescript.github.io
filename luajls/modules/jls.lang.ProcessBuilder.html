@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.6</title>
+    <title>Lua JLS 0.7</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -45,12 +45,7 @@
   <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
   <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
   <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.Exception.html">jls.lang.Exception</a></li>
   <li><strong>jls.lang.ProcessBuilder</strong></li>
   <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
   <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
@@ -60,36 +55,21 @@
   <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
   <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
   <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
-  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
   <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
-  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
-  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
-  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.TcpSocket.html">jls.net.TcpSocket</a></li>
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
-  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
-  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
   <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
-  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
-  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
-  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
-  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
-  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -98,9 +78,9 @@
   <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
   <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
   <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
-  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
   <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
@@ -122,8 +102,8 @@
 <div id="content">
 
 <h1>Module <code>jls.lang.ProcessBuilder</code></h1>
-<p>This class enables to create a native process.</p>
-<p>Note: The only full implementation is based on libuv</p>
+<p>Enables to create a native process.</p>
+<p>Note: The full implementation is only available with libuv</p>
 
 
 <h2><a href="#Class_ProcessBuilder">Class ProcessBuilder </a></h2>
@@ -199,11 +179,12 @@
     <dd>
     Creates a new ProcessBuilder.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">...</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the process executable path and arguments
         </li>
     </ul>
@@ -231,11 +212,12 @@ pb:start()</pre>
     Sets the process executable path and arguments.
  With no parameter the function returns the process executable path and arguments.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">...</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the process executable path and arguments as strings
         </li>
     </ul>
@@ -257,12 +239,13 @@ pb:start()</pre>
     <dd>
     Returns the process working directory.
 
+    </ul>
 
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
         the process working directory or nil.
     </ol>
 
@@ -277,11 +260,12 @@ pb:start()</pre>
     <dd>
     Sets the process working directory.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">dir</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the process working directory.
         </li>
     </ul>
@@ -303,12 +287,13 @@ pb:start()</pre>
     <dd>
     Returns the process environment.
 
+    </ul>
 
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
         the process environment.
     </ol>
 
@@ -323,11 +308,12 @@ pb:start()</pre>
     <dd>
     Sets the process environment.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">env</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          the process environment.
         </li>
     </ul>
@@ -349,6 +335,7 @@ pb:start()</pre>
     <dd>
     Returns the process standard input redirection.
 
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -368,6 +355,7 @@ pb:start()</pre>
     <dd>
     Redirects the process standard input.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -398,6 +386,7 @@ pb:start()</pre>
     <dd>
     Returns the process standard output redirection.
 
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -418,6 +407,7 @@ pb:start()</pre>
     Redirects the process standard output.
  If not provided, the standard output will be discarded, redirected to null.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -439,7 +429,8 @@ pb:start()</pre>
     <ul>
         <pre class="example"><span class="keyword">local</span> fd = FileDescriptor.openSync(tmpFile, <span class="string">'w'</span>)
 <span class="keyword">local</span> pb = ProcessBuilder:new({<span class="string">'lua'</span>, <span class="string">'-e'</span>, <span class="string">'io.write("Hello")'</span>})
-pb:setRedirectOutput(fd)</pre>
+pb:setRedirectOutput(fd)
+pb:setRedirectError(system.<span class="global">error</span>) <span class="comment">-- use standard error</span></pre>
     </ul>
 
 </dd>
@@ -450,6 +441,7 @@ pb:setRedirectOutput(fd)</pre>
     <dd>
     Returns the process standard error redirection.
 
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -469,6 +461,7 @@ pb:setRedirectOutput(fd)</pre>
     <dd>
     Redirects the process standard error.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -501,6 +494,7 @@ pb:setRedirectError(pipe)</pre>
     <dd>
     Starts this ProcessBuilder.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -529,7 +523,7 @@ pb:setRedirectError(pipe)</pre>
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

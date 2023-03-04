@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.6</title>
+    <title>Lua JLS 0.7</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -33,7 +33,7 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Class_TcpClient">Class TcpClient </a></li>
+<li><a href="#Class_TcpSocket">Class TcpSocket </a></li>
 </ul>
 
 
@@ -45,12 +45,7 @@
   <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
   <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
   <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.Exception.html">jls.lang.Exception</a></li>
   <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
   <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
   <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
@@ -60,36 +55,21 @@
   <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
   <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
   <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
-  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
   <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
-  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
-  <li><strong>jls.net.TcpClient</strong></li>
-  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><strong>jls.net.TcpSocket</strong></li>
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
-  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
-  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
   <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
-  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
-  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
-  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
-  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
-  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -98,9 +78,9 @@
   <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
   <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
   <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
-  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
   <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
@@ -121,16 +101,16 @@
 
 <div id="content">
 
-<h1>Module <code>jls.net.TcpClient</code></h1>
-<p>Provide TCP client socket class.</p>
+<h1>Module <code>jls.net.TcpSocket</code></h1>
+<p>Represents a TCP socket.</p>
 <p>The network operations are only provided as asynchronous operations and thus
 should be used together with an <a href="../modules/jls.lang.event.html#">event</a> loop.</p>
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">local TcpClient = require(&apos;jls.net.TcpClient&apos;)
+        <pre class="example">local TcpSocket = require(&apos;jls.net.TcpSocket&apos;)
 local event = require(&apos;jls.lang.event&apos;)
 
-local client = TcpClient:new()
+local client = TcpSocket:new()
 client:connect(&apos;127.0.0.1&apos;, 8080):next(function(err)
   client:readStart(function(err, data)
     if data then
@@ -146,31 +126,55 @@ event:loop()
     </ul>
 
 
-<h2><a href="#Class_TcpClient">Class TcpClient </a></h2>
+<h2><a href="#Class_TcpSocket">Class TcpSocket </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#tcpClient:connect">tcpClient:connect (addr, port, callback)</a></td>
+	<td class="name" nowrap><a href="#tcpSocket:getLocalName">tcpSocket:getLocalName ()</a></td>
+	<td class="summary">Returns the local name of this TCP socket.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tcpSocket:getRemoteName">tcpSocket:getRemoteName ()</a></td>
+	<td class="summary">Returns the remote name of this TCP socket.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tcpSocket:isClosed">tcpSocket:isClosed ()</a></td>
+	<td class="summary">Tells whether or not this TCP socket is closed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tcpSocket:close">tcpSocket:close (callback)</a></td>
+	<td class="summary">Closes this TCP socket.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tcpSocket:connect">tcpSocket:connect (addr, port, callback)</a></td>
 	<td class="summary">Connects this client to the specified address and port number.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#tcpClient:write">tcpClient:write (data, callback)</a></td>
+	<td class="name" nowrap><a href="#tcpSocket:write">tcpSocket:write (data, callback)</a></td>
 	<td class="summary">Writes data on this client.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#tcpClient:readStart">tcpClient:readStart (stream)</a></td>
+	<td class="name" nowrap><a href="#tcpSocket:readStart">tcpSocket:readStart (sh)</a></td>
 	<td class="summary">Starts reading data on this client.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#tcpClient:readStop">tcpClient:readStop ()</a></td>
+	<td class="name" nowrap><a href="#tcpSocket:readStop">tcpSocket:readStop ()</a></td>
 	<td class="summary">Stops reading data on this client.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#tcpClient:setTcpNoDelay">tcpClient:setTcpNoDelay (on)</a></td>
+	<td class="name" nowrap><a href="#tcpSocket:setTcpNoDelay">tcpSocket:setTcpNoDelay (on)</a></td>
 	<td class="summary">Enables or disables TCP no delay.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#tcpClient:setKeepAlive">tcpClient:setKeepAlive (on, delay)</a></td>
+	<td class="name" nowrap><a href="#tcpSocket:setKeepAlive">tcpSocket:setKeepAlive (on, delay)</a></td>
 	<td class="summary">Enables or disables keep alive.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tcpSocket:bind">tcpSocket:bind (node, port[, backlog[, callback]])</a></td>
+	<td class="summary">Binds this server to the specified address and port number.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tcpSocket:onAccept">tcpSocket:onAccept (client)</a></td>
+	<td class="summary">Accepts a new TCP client.</td>
 	</tr>
 </table>
 
@@ -178,25 +182,118 @@ event:loop()
 <br/>
 
 
-    <h2 class="section-header has-description"><a name="Class_TcpClient"></a>Class TcpClient </h2>
+    <h2 class="section-header has-description"><a name="Class_TcpSocket"></a>Class TcpSocket </h2>
 
           <div class="section-description">
-          The TcpClient class.
- A TCP Client allows to read and write on a stream connection.
+          The TcpSocket class.
+ A TCP Client allows to read and write on a TCP connection.
+ A TCP Server allows to listen and accept TCP connections.
           </div>
     <dl class="function">
     <dt>
-    <a name = "tcpClient:connect"></a>
-    <strong>tcpClient:connect (addr, port, callback)</strong>
+    <a name = "tcpSocket:getLocalName"></a>
+    <strong>tcpSocket:getLocalName ()</strong>
+    </dt>
+    <dd>
+    Returns the local name of this TCP socket.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        the local name of this TCP socket.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tcpSocket:getRemoteName"></a>
+    <strong>tcpSocket:getRemoteName ()</strong>
+    </dt>
+    <dd>
+    Returns the remote name of this TCP socket.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        the remote name of this TCP socket.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tcpSocket:isClosed"></a>
+    <strong>tcpSocket:isClosed ()</strong>
+    </dt>
+    <dd>
+    Tells whether or not this TCP socket is closed.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if the TCP socket is closed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tcpSocket:close"></a>
+    <strong>tcpSocket:close (callback)</strong>
+    </dt>
+    <dd>
+    Closes this TCP socket.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         an optional callback function to use in place of promise.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the socket is closed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tcpSocket:connect"></a>
+    <strong>tcpSocket:connect (addr, port, callback)</strong>
     </dt>
     <dd>
     Connects this client to the specified address and port number.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">addr</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the address, the address could be an IP address or a host name.
         </li>
         <li><span class="parameter">port</span>
@@ -220,24 +317,25 @@ event:loop()
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example"><span class="keyword">local</span> s = TcpClient:new()
+        <pre class="example"><span class="keyword">local</span> s = TcpSocket:new()
 s:connect(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)</pre>
     </ul>
 
 </dd>
     <dt>
-    <a name = "tcpClient:write"></a>
-    <strong>tcpClient:write (data, callback)</strong>
+    <a name = "tcpSocket:write"></a>
+    <strong>tcpSocket:write (data, callback)</strong>
     </dt>
     <dd>
     Writes data on this client.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         the data to write.
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the data to write, could be a table of string.
         </li>
         <li><span class="parameter">callback</span>
             <span class="types"><span class="type">function</span></span>
@@ -256,7 +354,7 @@ s:connect(<span class="string">'127.0.0.1'</span>, <span class="number">80</span
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example"><span class="keyword">local</span> s = TcpClient:new()
+        <pre class="example"><span class="keyword">local</span> s = TcpSocket:new()
 s:connect(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>):<span class="global">next</span>(<span class="keyword">function</span>()
   s:write(<span class="string">'Hello'</span>)
 <span class="keyword">end</span>)</pre>
@@ -264,17 +362,18 @@ s:connect(<span class="string">'127.0.0.1'</span>, <span class="number">80</span
 
 </dd>
     <dt>
-    <a name = "tcpClient:readStart"></a>
-    <strong>tcpClient:readStart (stream)</strong>
+    <a name = "tcpSocket:readStart"></a>
+    <strong>tcpSocket:readStart (sh)</strong>
     </dt>
     <dd>
     Starts reading data on this client.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">stream</span>
-         the stream reader, could be a function or a StreamHandler.
+        <li><span class="parameter">sh</span>
+         the stream handler, could be a function or a StreamHandler.
         </li>
     </ul>
 
@@ -283,7 +382,7 @@ s:connect(<span class="string">'127.0.0.1'</span>, <span class="number">80</span
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example"><span class="keyword">local</span> s = TcpClient:new()
+        <pre class="example"><span class="keyword">local</span> s = TcpSocket:new()
 s:connect(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>):<span class="global">next</span>(<span class="keyword">function</span>()
   s:readStart(<span class="keyword">function</span>(err, data)
     <span class="global">print</span>(<span class="string">'received'</span>, err, data)
@@ -293,12 +392,13 @@ s:connect(<span class="string">'127.0.0.1'</span>, <span class="number">80</span
 
 </dd>
     <dt>
-    <a name = "tcpClient:readStop"></a>
-    <strong>tcpClient:readStop ()</strong>
+    <a name = "tcpSocket:readStop"></a>
+    <strong>tcpSocket:readStop ()</strong>
     </dt>
     <dd>
     Stops reading data on this client.
 
+    </ul>
 
 
 
@@ -307,12 +407,13 @@ s:connect(<span class="string">'127.0.0.1'</span>, <span class="number">80</span
 
 </dd>
     <dt>
-    <a name = "tcpClient:setTcpNoDelay"></a>
-    <strong>tcpClient:setTcpNoDelay (on)</strong>
+    <a name = "tcpSocket:setTcpNoDelay"></a>
+    <strong>tcpSocket:setTcpNoDelay (on)</strong>
     </dt>
     <dd>
     Enables or disables TCP no delay.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -328,12 +429,13 @@ s:connect(<span class="string">'127.0.0.1'</span>, <span class="number">80</span
 
 </dd>
     <dt>
-    <a name = "tcpClient:setKeepAlive"></a>
-    <strong>tcpClient:setKeepAlive (on, delay)</strong>
+    <a name = "tcpSocket:setKeepAlive"></a>
+    <strong>tcpSocket:setKeepAlive (on, delay)</strong>
     </dt>
     <dd>
     Enables or disables keep alive.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -352,6 +454,82 @@ s:connect(<span class="string">'127.0.0.1'</span>, <span class="number">80</span
 
 
 </dd>
+    <dt>
+    <a name = "tcpSocket:bind"></a>
+    <strong>tcpSocket:bind (node, port[, backlog[, callback]])</strong>
+    </dt>
+    <dd>
+    Binds this server to the specified address and port number.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">node</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the address, the address could be an IP address or a host name.
+        </li>
+        <li><span class="parameter">port</span>
+            <span class="types"><span class="type">number</span></span>
+         the port number, 0 to let the system automatically choose a port.
+        </li>
+        <li><span class="parameter">backlog</span>
+            <span class="types"><span class="type">number</span></span>
+         the accept queue size, default is 32.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         an optional callback function to use in place of promise.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the server is bound.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> s = TcpSocket:new()
+s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "tcpSocket:onAccept"></a>
+    <strong>tcpSocket:onAccept (client)</strong>
+    </dt>
+    <dd>
+    Accepts a new TCP client.
+ This method should be overriden, the default implementation closes the client.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">client</span>
+         the TCP client to accept.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> s = TcpSocket:new()
+<span class="keyword">function</span> s:onAccept(client)
+  client:close()
+<span class="keyword">end</span></pre>
+    </ul>
+
+</dd>
 </dl>
 
 
@@ -359,7 +537,7 @@ s:connect(<span class="string">'127.0.0.1'</span>, <span class="number">80</span
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

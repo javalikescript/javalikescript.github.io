@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.6</title>
+    <title>Lua JLS 0.7</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -45,12 +45,7 @@
   <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
   <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
   <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.Exception.html">jls.lang.Exception</a></li>
   <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
   <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
   <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
@@ -60,36 +55,21 @@
   <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
   <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
   <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
-  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
   <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
-  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
-  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
-  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.TcpSocket.html">jls.net.TcpSocket</a></li>
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
-  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
-  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
   <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
-  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
-  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
-  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
-  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
-  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -98,9 +78,9 @@
   <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
   <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
   <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
-  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
   <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
@@ -122,7 +102,7 @@
 <div id="content">
 
 <h1>Module <code>jls.io.FileDescriptor</code></h1>
-<p>Provide OS file descriptor abstraction.</p>
+<p>Provides OS file descriptor abstraction.</p>
 <p>A FileDescriptor enables to manipulate files, reading from and writing to.</p>
 
 <p>The method are provided both as synchronous and asynchronous.
@@ -151,16 +131,16 @@ end)
 <h2><a href="#Class_FileDescriptor">Class FileDescriptor </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#fileDescriptor:closeSync">fileDescriptor:closeSync ()</a></td>
-	<td class="summary">Closes this file descriptor.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#fileDescriptor:flushSync">fileDescriptor:flushSync ()</a></td>
-	<td class="summary">Flushes all modified data of this file descriptor to the storage device.</td>
+	<td class="name" nowrap><a href="#fileDescriptor:read">fileDescriptor:read (size, offset[, callback])</a></td>
+	<td class="summary">Reads the specified data from this file descriptor.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#fileDescriptor:readSync">fileDescriptor:readSync (size, offset)</a></td>
 	<td class="summary">Reads the specified data from this file descriptor.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fileDescriptor:write">fileDescriptor:write (data, offset[, callback])</a></td>
+	<td class="summary">Writes the specified data to this file descriptor.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#fileDescriptor:writeSync">fileDescriptor:writeSync (data, offset)</a></td>
@@ -171,16 +151,16 @@ end)
 	<td class="summary">Closes this file descriptor.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#fileDescriptor:closeSync">fileDescriptor:closeSync ()</a></td>
+	<td class="summary">Closes this file descriptor.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#fileDescriptor:flush">fileDescriptor:flush ([callback])</a></td>
 	<td class="summary">Flushes all modified data of this file descriptor to the storage device.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#fileDescriptor:read">fileDescriptor:read (size, offset[, callback])</a></td>
-	<td class="summary">Reads the specified data from this file descriptor.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#fileDescriptor:write">fileDescriptor:write (data, offset[, callback])</a></td>
-	<td class="summary">Writes the specified data to this file descriptor.</td>
+	<td class="name" nowrap><a href="#fileDescriptor:flushSync">fileDescriptor:flushSync ()</a></td>
+	<td class="summary">Flushes all modified data of this file descriptor to the storage device.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#FileDescriptor.openSync">FileDescriptor.openSync (path, mode)</a></td>
@@ -204,141 +184,13 @@ end)
           </div>
     <dl class="function">
     <dt>
-    <a name = "fileDescriptor:closeSync"></a>
-    <strong>fileDescriptor:closeSync ()</strong>
-    </dt>
-    <dd>
-    Closes this file descriptor.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "fileDescriptor:flushSync"></a>
-    <strong>fileDescriptor:flushSync ()</strong>
-    </dt>
-    <dd>
-    Flushes all modified data of this file descriptor to the storage device.
-
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "fileDescriptor:readSync"></a>
-    <strong>fileDescriptor:readSync (size, offset)</strong>
-    </dt>
-    <dd>
-    Reads the specified data from this file descriptor.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">size</span>
-            <span class="types"><span class="type">number</span></span>
-         The size of the data to read.
-        </li>
-        <li><span class="parameter">offset</span>
-            <span class="types"><span class="type">number</span></span>
-         The optional position at which the read is to be performed,
- -1 or nil for the current file descriptor position.
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        the data as a string, could be less than the specified size,
- nil if the end of file is reached.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "fileDescriptor:writeSync"></a>
-    <strong>fileDescriptor:writeSync (data, offset)</strong>
-    </dt>
-    <dd>
-    Writes the specified data to this file descriptor.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">data</span>
-         The data to write as a string or an array of string.
-        </li>
-        <li><span class="parameter">offset</span>
-            <span class="types"><span class="type">number</span></span>
-         The optional position at which the write is to be performed,
- -1 or nil for the current file descriptor position.
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "fileDescriptor:close"></a>
-    <strong>fileDescriptor:close ([callback])</strong>
-    </dt>
-    <dd>
-    Closes this file descriptor.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">callback</span>
-            <span class="types"><span class="type">function</span></span>
-         The optional callback.
-         (<em>optional</em>)
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "fileDescriptor:flush"></a>
-    <strong>fileDescriptor:flush ([callback])</strong>
-    </dt>
-    <dd>
-    Flushes all modified data of this file descriptor to the storage device.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">callback</span>
-            <span class="types"><span class="type">function</span></span>
-         The optional callback.
-         (<em>optional</em>)
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
     <a name = "fileDescriptor:read"></a>
     <strong>fileDescriptor:read (size, offset[, callback])</strong>
     </dt>
     <dd>
     Reads the specified data from this file descriptor.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -380,12 +232,46 @@ end)
 
 </dd>
     <dt>
+    <a name = "fileDescriptor:readSync"></a>
+    <strong>fileDescriptor:readSync (size, offset)</strong>
+    </dt>
+    <dd>
+    Reads the specified data from this file descriptor.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">size</span>
+            <span class="types"><span class="type">number</span></span>
+         The size of the data to read.
+        </li>
+        <li><span class="parameter">offset</span>
+            <span class="types"><span class="type">number</span></span>
+         The optional position at which the read is to be performed,
+ -1 or nil for the current file descriptor position.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the data as a string, could be less than the specified size,
+ nil if the end of file is reached.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "fileDescriptor:write"></a>
     <strong>fileDescriptor:write (data, offset[, callback])</strong>
     </dt>
     <dd>
     Writes the specified data to this file descriptor.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -407,8 +293,120 @@ end)
     <h3>Returns:</h3>
     <ol>
 
-        a promise that resolves once the data has been wrote.
+        a Promise or nil if a callback has been specified.
     </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fileDescriptor:writeSync"></a>
+    <strong>fileDescriptor:writeSync (data, offset)</strong>
+    </dt>
+    <dd>
+    Writes the specified data to this file descriptor.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+         The data to write as a string or an array of string.
+        </li>
+        <li><span class="parameter">offset</span>
+            <span class="types"><span class="type">number</span></span>
+         The optional position at which the write is to be performed,
+ -1 or nil for the current file descriptor position.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fileDescriptor:close"></a>
+    <strong>fileDescriptor:close ([callback])</strong>
+    </dt>
+    <dd>
+    Closes this file descriptor.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         The optional callback.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a Promise or nil if a callback has been specified.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fileDescriptor:closeSync"></a>
+    <strong>fileDescriptor:closeSync ()</strong>
+    </dt>
+    <dd>
+    Closes this file descriptor.
+
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fileDescriptor:flush"></a>
+    <strong>fileDescriptor:flush ([callback])</strong>
+    </dt>
+    <dd>
+    Flushes all modified data of this file descriptor to the storage device.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         The optional callback.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a Promise or nil if a callback has been specified.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fileDescriptor:flushSync"></a>
+    <strong>fileDescriptor:flushSync ()</strong>
+    </dt>
+    <dd>
+    Flushes all modified data of this file descriptor to the storage device.
+
+    </ul>
+
+
 
 
 
@@ -421,6 +419,7 @@ end)
     <dd>
     Returns a new FileDescriptor for the specified path name.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -428,7 +427,7 @@ end)
          The file path as a string or a <a href="../modules/jls.io.Path.html">Path</a>.
         </li>
         <li><span class="parameter">mode</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          The mode to be used to open the file 'r', 'w' or 'a' with an optional '+'.
         </li>
     </ul>
@@ -454,6 +453,7 @@ end)
     <dd>
     Returns a new FileDescriptor for the specified path name.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -461,7 +461,7 @@ end)
          The file path as a string or a <a href="../modules/jls.io.Path.html">Path</a>.
         </li>
         <li><span class="parameter">mode</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          The mode to be used to open the file, 'r' or 'w'.
         </li>
         <li><span class="parameter">callback</span>
@@ -488,7 +488,7 @@ end)
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

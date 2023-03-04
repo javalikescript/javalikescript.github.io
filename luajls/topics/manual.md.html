@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.6</title>
+    <title>Lua JLS 0.7</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -48,6 +48,7 @@
 <li><a href="#Inter_Process_Communication">Inter-Process Communication </a></li>
 <li><a href="#Basic_Classes">Basic Classes </a></li>
 <li><a href="#Data_Exchange_Formats">Data Exchange Formats </a></li>
+<li><a href="#Abstract_Syntax_Tree__AST_">Abstract Syntax Tree (AST) </a></li>
 <li><a href="#User_Interface">User Interface </a></li>
 </ul>
 
@@ -64,12 +65,7 @@
   <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
   <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
   <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.Exception.html">jls.lang.Exception</a></li>
   <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
   <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
   <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
@@ -79,36 +75,21 @@
   <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
   <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
   <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
-  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
   <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
-  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
-  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
-  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.TcpSocket.html">jls.net.TcpSocket</a></li>
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
-  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
-  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
   <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
-  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
-  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
-  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
-  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
-  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -117,9 +98,9 @@
   <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
   <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
   <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
-  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
   <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
@@ -151,7 +132,8 @@ It is presumed that the reader has a good knowledge of Lua, please consult the L
 
 <p>luajls is a set of Lua modules for developing stand-alone <a href="https://www.lua.org/">Lua</a> applications.</p>
 
-<p>The modules provide general-purpose functions such as class definition and promise, to operating system abstractions such as file system and network access. The modules support asynchronous I/O based on an event loop.</p>
+<p>The modules provide general-purpose functions such as class definition and promise, to operating system abstractions such as file system and network access.
+The modules support asynchronous I/O based on an event loop.</p>
 
 <p>The modules expose an API to abstract the host platform and general purpose libraries such as <em>SSL</em>, <em>JSON</em>, <em>XML</em>, <em>ZIP</em>.
 The main targeted OSes are <em>Linux</em> and <em>Windows</em>.</p>
@@ -161,7 +143,7 @@ The main targeted OSes are <em>Linux</em> and <em>Windows</em>.</p>
 <p>Optional dependencies are C and Lua modules such as <em>luafilesystem</em>, <em>luasocket</em>, <em>luv</em>, <em>lua-openssl</em>, <em>lua-cjson</em>.
 By example, the file system manipulation requires one of the <em>luafilesystem</em> or the <em>luv</em> dependent module.</p>
 
-<p>The recommended dependency is <em>luv</em> as you will have access to the <em>io</em>, <em>lang</em> and <em>net</em> packages.</p>
+<p>The recommended dependency is <em>luv</em> as it will provide you a uniform support of the <em>io</em>, <em>lang</em> and <em>net</em> packages.</p>
 
 <p>See <a href="https://github.com/javalikescript/luajls">Lua JLS repository</a>
 and the <a href="https://github.com/javalikescript/luaclibs">Lua C libraries repository</a></p>
@@ -238,8 +220,17 @@ The main module named <em>fs</em> will load the first available module.</p>
     <li><em>jls.net</em>
     Network modules including TCP and UDP socket, HTTP, MQTT, WebSocket</li>
     <li><em>jls.util</em>
-    Utility modules for List, Map, date and time, JSON and XML formats, deflate, ZIP file, worker and WebView</li>
+    utility modules for List and Map, date and time, JSON and XML formats, AST, deflate, ZIP and tar files, scheduling, worker and web view</li>
 </ul>
+
+<p>A <code>jls</code> module is provided to automatically load jls modules.</p>
+
+
+<pre>
+<span class="keyword">local</span> jls = <span class="global">require</span>(<span class="string">'jls'</span>)
+<span class="global">print</span>(jls.lang.system.currentTimeMillis()) <span class="comment">-- prints the current time in ms</span>
+</pre>
+
 
 
 <p><a name="Object_Oriented_Programming"></a></p>
@@ -297,6 +288,39 @@ You could create a class that inherit another class by providing this super clas
 </pre>
 
 
+<p>The class can be called directly to create a new instance.</p>
+
+<p>A class can implement:</p>
+
+<ul>
+    <li>an <em>equals</em> method that will be called to test equality using <code>==</code>,</li>
+    <li>a <em>length</em> method that will be called for the length operator <code>#</code>,</li>
+    <li>a <em>toString</em> method that will be called by <a href="https://www.lua.org/manual/5.4/manual.html#pdf-tostring">tostring</a>.</li>
+</ul>
+
+
+<pre>
+<span class="keyword">local</span> class = <span class="global">require</span>(<span class="string">'jls.lang.class'</span>)
+<span class="keyword">local</span> Person = class.create(<span class="keyword">function</span>(person)
+  <span class="keyword">function</span> person:initialize(name)
+    self.name = name
+  <span class="keyword">end</span>
+  <span class="keyword">function</span> person:equals(p)
+    <span class="keyword">return</span> self.name == p.name
+  <span class="keyword">end</span>
+  <span class="keyword">function</span> person:length()
+    <span class="keyword">return</span> #self.name
+  <span class="keyword">end</span>
+  <span class="keyword">function</span> person:toString()
+    <span class="keyword">return</span> self.name
+  <span class="keyword">end</span>
+<span class="keyword">end</span>)
+<span class="keyword">local</span> luke = Person(<span class="string">'Luke'</span>)
+<span class="global">print</span>(luke, #luke, luke == Person(<span class="string">'Luke'</span>)) <span class="comment">-- prints 'Luke 4 true'</span>
+</pre>
+
+
+
 <p><a name="Concurrent_Programming"></a></p>
 <h2>Concurrent Programming</h2>
 
@@ -333,6 +357,9 @@ event:loop() <span class="comment">-- block</span>
 
 
 <p>So it is quite common to see Lua code ending with the event loop.</p>
+
+<p>Waiting is a trivial example, one could think about 2 non cooperative blocking tasks
+such as downloading a file while processing another one.</p>
 
 
 <h3>Promise</h3>
@@ -411,14 +438,15 @@ FileStreamHandler.readAll(<span class="string">'./README.md'</span>, std)
 </pre>
 
 
-<p>A stream handler could be a simple callback function that will receive data or error.</p>
+<p>A stream handler could be a simple callback function that will receive data or error.
+The function could also receive extra arguments in case of success.</p>
 
 
 <pre>
 <span class="keyword">local</span> StreamHandler = <span class="global">require</span>(<span class="string">'jls.io.StreamHandler'</span>)
 <span class="keyword">local</span> FileStreamHandler = <span class="global">require</span>(<span class="string">'jls.io.streams.FileStreamHandler'</span>)
 
-<span class="keyword">local</span> std = StreamHandler:new(<span class="keyword">function</span>(err, data)
+<span class="keyword">local</span> std = StreamHandler:new(<span class="keyword">function</span>(err, data, ...)
   <span class="keyword">if</span> err <span class="keyword">then</span>
     <span class="global">io</span>.stderr:write(err <span class="keyword">or</span> <span class="string">'Stream error'</span>)
   <span class="keyword">elseif</span> data <span class="keyword">then</span>
@@ -506,13 +534,14 @@ fileDesc:closeSync()
 
 <h3>Transmission Control Protocol (TCP)</h3>
 
-<p>The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite.
+<p>The Transmission Control Protocol (TCP) is a connection-oriented communication protocol part of the Internet Protocol (IP) suite.
+A connection between client and server is established before data can be sent.
 The connection will resolve the specified address.</p>
 
 
 <pre>
-<span class="keyword">local</span> TcpClient = <span class="global">require</span>(<span class="string">'jls.net.TcpClient'</span>)
-<span class="keyword">local</span> client = TcpClient:new()
+<span class="keyword">local</span> TcpSocket = <span class="global">require</span>(<span class="string">'jls.net.TcpSocket'</span>)
+<span class="keyword">local</span> client = TcpSocket:new()
 client:connect(<span class="string">'www.lua.org'</span>, <span class="number">80</span>):<span class="global">next</span>(<span class="keyword">function</span>()
   client:readStart(<span class="keyword">function</span>(err, data)
     <span class="keyword">if</span> data <span class="keyword">then</span>
@@ -531,8 +560,8 @@ client:connect(<span class="string">'www.lua.org'</span>, <span class="number">8
 
 
 <pre>
-<span class="keyword">local</span> TcpServer = <span class="global">require</span>(<span class="string">'jls.net.TcpServer'</span>)
-<span class="keyword">local</span> server = TcpServer:new()
+<span class="keyword">local</span> TcpSocket = <span class="global">require</span>(<span class="string">'jls.net.TcpSocket'</span>)
+<span class="keyword">local</span> server = TcpSocket:new()
 server:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)
 <span class="keyword">function</span> server:onAccept(client)
   <span class="global">print</span>(<span class="string">'client connected'</span>)
@@ -546,6 +575,8 @@ server:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</sp
 
 <h3>User Datagram Protocol (UDP)</h3>
 
+<p>The User Datagram Protocol (UDP) is a connectionless communication protocol part of the Internet Protocol (IP) suite.</p>
+
 
 <pre>
 <span class="keyword">local</span> UdpSocket = <span class="global">require</span>(<span class="string">'jls.net.UdpSocket'</span>)
@@ -554,8 +585,8 @@ server:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</sp
 <span class="keyword">local</span> sender = UdpSocket:new()
 receiver:bind(<span class="string">'0.0.0.0'</span>, port, {reuseaddr = <span class="keyword">true</span>})
 receiver:joinGroup(host, <span class="string">'0.0.0.0'</span>)
-receiver:receiveStart(<span class="keyword">function</span>(err, data)
-  <span class="global">print</span>(<span class="string">'received data:'</span>, data)
+receiver:receiveStart(<span class="keyword">function</span>(err, data, addr)
+  <span class="global">print</span>(<span class="string">'received data:'</span>, data, <span class="string">'from:'</span>, addr.ip, addr.port)
   receiver:receiveStop()
   receiver:close()
 <span class="keyword">end</span>)
@@ -659,10 +690,10 @@ httpServer:createContext(<span class="string">'/(.*)'</span>, RestHttpHandler:ne
 <pre>
 <span class="keyword">local</span> HttpServer = <span class="global">require</span>(<span class="string">'jls.net.http.HttpServer'</span>)
 <span class="keyword">local</span> Map = <span class="global">require</span>(<span class="string">'jls.util.Map'</span>)
-<span class="keyword">local</span> WebSocketUpgradeHandler = <span class="global">require</span>(<span class="string">'jls.net.http.ws'</span>).WebSocketUpgradeHandler
+<span class="keyword">local</span> WebSocket = <span class="global">require</span>(<span class="string">'jls.net.http.WebSocket'</span>)
 <span class="keyword">local</span> httpServer = HttpServer:new()
 httpServer:bind(<span class="string">'::'</span>, <span class="number">8080</span>)
-httpServer:createContext(<span class="string">'/ws/'</span>,  Map.assign(WebSocketUpgradeHandler:new(), {
+httpServer:createContext(<span class="string">'/ws/'</span>,  Map.assign(WebSocket.UpgradeHandler:new(), {
   onOpen = <span class="keyword">function</span>(_, webSocket)
     <span class="keyword">function</span> webSocket:onTextMessage(payload)
       webSocket:sendTextMessage(<span class="string">'You said '</span>..payload)
@@ -881,9 +912,12 @@ buffer:append(<span class="string">'c'</span>, <span class="string">'d'</span>)
 </pre>
 
 
+<p>The List instances are fully compatible with Lua sequence table.
+The Map provides a <code>getTable()</code> method to access a fully compatible table map.</p>
+
 <h3>Table Map</h3>
 
-<p>The List and Map classes are compatibles with Lua tables, so the class methods can be used directly with Lua tables.</p>
+<p>The List and Map class methods can be used directly with Lua tables.</p>
 
 
 <pre>
@@ -915,6 +949,22 @@ buffer:append(<span class="string">'c'</span>, <span class="string">'d'</span>)
 <span class="keyword">local</span> date = Date:new()
 <span class="global">print</span>(date:toLocalDateTime():toISOString())
 <span class="comment">-- prints the current date in ISO format</span>
+</pre>
+
+
+<h3>Tables</h3>
+
+<p>The <em>tables</em> module contains helper functions to manipulate Lua deep tables.</p>
+
+<p>It allows to serialize a Lua table into a string and materialize from.</p>
+
+
+<pre>
+<span class="keyword">local</span> tables = <span class="global">require</span>(<span class="string">"jls.util.tables"</span>)
+<span class="global">print</span>(tables.stringify({a = <span class="string">"Hi"</span>}))
+<span class="comment">-- prints '{a="Hi",}'
+</span><span class="keyword">local</span> t = tables.parse(<span class="string">'{a="Hi",b=2,c=true}'</span>)
+<span class="comment">-- t is {a = "Hi", b = 2, c = true}</span>
 </pre>
 
 
@@ -957,6 +1007,22 @@ the node name and the node attributes using a table with key value pairs.</p>
 </pre>
 
 
+
+<p><a name="Abstract_Syntax_Tree__AST_"></a></p>
+<h2>Abstract Syntax Tree (AST)</h2>
+
+<p>The <em>ast</em> module allows to parse and generate Lua code.</p>
+
+
+<pre>
+<span class="keyword">local</span> ast = <span class="global">require</span>(<span class="string">'jls.util.ast'</span>)
+<span class="keyword">local</span> tree = ast.parse(<span class="string">"local a = 2 // 2"</span>)
+<span class="global">print</span>(ast.generate(tree))
+<span class="comment">-- prints 'local a=2//2;'</span>
+</pre>
+
+
+
 <p><a name="User_Interface"></a></p>
 <h2>User Interface</h2>
 
@@ -965,6 +1031,8 @@ the node name and the node attributes using a table with key value pairs.</p>
 <h3>WebView</h3>
 
 <p>The WebView class allow to display HTML content in a window.</p>
+
+<p>Many OSes come with a default webview allowing simplifying the creation of user interface.</p>
 
 <p>The WebView highly depends on the underlying OS.
 Opening multiple WebView windows is not supported.</p>
@@ -993,7 +1061,7 @@ WebView.open(<span class="string">'http://localhost:0/index.html'</span>):<span 
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

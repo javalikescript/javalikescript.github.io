@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.6</title>
+    <title>Lua JLS 0.7</title>
     <link rel="stylesheet" href="ldoc.css" type="text/css" />
 </head>
 <body>
@@ -38,12 +38,7 @@
   <li><a href="modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
   <li><a href="modules/jls.io.Serial.html">jls.io.Serial</a></li>
   <li><a href="modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
-  <li><a href="modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
-  <li><a href="modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
-  <li><a href="modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
-  <li><a href="modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
-  <li><a href="modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
-  <li><a href="modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="modules/jls.lang.Exception.html">jls.lang.Exception</a></li>
   <li><a href="modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
   <li><a href="modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
   <li><a href="modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
@@ -53,36 +48,21 @@
   <li><a href="modules/jls.lang.event.html">jls.lang.event</a></li>
   <li><a href="modules/jls.lang.loader.html">jls.lang.loader</a></li>
   <li><a href="modules/jls.lang.logger.html">jls.lang.logger</a></li>
-  <li><a href="modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
   <li><a href="modules/jls.lang.system.html">jls.lang.system</a></li>
-  <li><a href="modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
-  <li><a href="modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
-  <li><a href="modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="modules/jls.net.TcpSocket.html">jls.net.TcpSocket</a></li>
   <li><a href="modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="modules/jls.net.dns.html">jls.net.dns</a></li>
-  <li><a href="modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
-  <li><a href="modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
   <li><a href="modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
   <li><a href="modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
   <li><a href="modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
-  <li><a href="modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
-  <li><a href="modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
   <li><a href="modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
-  <li><a href="modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
-  <li><a href="modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
-  <li><a href="modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
-  <li><a href="modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
-  <li><a href="modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
-  <li><a href="modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
-  <li><a href="modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
-  <li><a href="modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="modules/jls.util.Channel.html">jls.util.Channel</a></li>
-  <li><a href="modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
   <li><a href="modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="modules/jls.util.List.html">jls.util.List</a></li>
@@ -91,9 +71,9 @@
   <li><a href="modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
   <li><a href="modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
   <li><a href="modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
-  <li><a href="modules/jls.util.Struct.html">jls.util.Struct</a></li>
   <li><a href="modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="modules/jls.util.ast.html">jls.util.ast</a></li>
   <li><a href="modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="modules/jls.util.strings.html">jls.util.strings</a></li>
@@ -165,19 +145,19 @@
 <table class="module_list">
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.io.File.html">jls.io.File</a></td>
-		<td class="summary">Provide file system abstraction.</td>
+		<td class="summary">Provides file system abstraction.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.io.FileDescriptor.html">jls.io.FileDescriptor</a></td>
-		<td class="summary">Provide OS file descriptor abstraction.</td>
+		<td class="summary">Provides OS file descriptor abstraction.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.io.Path.html">jls.io.Path</a></td>
-		<td class="summary">Provide a representation of a file system path name.</td>
+		<td class="summary">Provides a representation of a file system path name.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.io.Pipe.html">jls.io.Pipe</a></td>
-		<td class="summary">Provide pipe and named pipe abstraction.</td>
+		<td class="summary">Provides pipe and named pipe abstraction.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.io.Serial.html">jls.io.Serial</a></td>
@@ -185,35 +165,15 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></td>
-		<td class="summary">Base stream handler class.</td>
+		<td class="summary">Provides stream handler class and utility functions.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></td>
-		<td class="summary">Provide a block stream handler.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></td>
-		<td class="summary">Provide a simple buffered stream handler.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></td>
-		<td class="summary">This class allows to buffer a stream and to call a sub handler depending on specified limit or pattern.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></td>
-		<td class="summary">Provide a delayed stream handler.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></td>
-		<td class="summary">Provide a simple file stream handler.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></td>
-		<td class="summary">This class allows to restrict the stream to pass to the wrapped handler to a specified range.</td>
+		<td class="name"  nowrap><a href="modules/jls.lang.Exception.html">jls.lang.Exception</a></td>
+		<td class="summary">Represents an abnormal event.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></td>
-		<td class="summary">This class enables to create a native process.</td>
+		<td class="summary">Enables to create a native process.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></td>
@@ -241,35 +201,23 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.lang.loader.html">jls.lang.loader</a></td>
-		<td class="summary">This module contains helper functions to load Lua modules.</td>
+		<td class="summary">Contains helper functions to load Lua modules.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.lang.logger.html">jls.lang.logger</a></td>
 		<td class="summary">Returns the default logger implementation.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="modules/jls.lang.runtime.html">jls.lang.runtime</a></td>
-		<td class="summary">Provides interaction with the underlying OS runtime.</td>
-	</tr>
-	<tr>
 		<td class="name"  nowrap><a href="modules/jls.lang.system.html">jls.lang.system</a></td>
 		<td class="summary">Provides access to data and operations of the underlying OS.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.Tcp.html">jls.net.Tcp</a></td>
-		<td class="summary">TCP socket base class.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.TcpClient.html">jls.net.TcpClient</a></td>
-		<td class="summary">Provide TCP client socket class.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.TcpServer.html">jls.net.TcpServer</a></td>
-		<td class="summary">Provides TCP server socket class.</td>
+		<td class="name"  nowrap><a href="modules/jls.net.TcpSocket.html">jls.net.TcpSocket</a></td>
+		<td class="summary">Represents a TCP socket.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></td>
-		<td class="summary">Provide UDP socket.</td>
+		<td class="summary">Represents a UDP socket.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.Url.html">jls.net.Url</a></td>
@@ -277,23 +225,15 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.dns.html">jls.net.dns</a></td>
-		<td class="summary">Provide DNS related functions.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></td>
-		<td class="summary">A class that holds attributes.</td>
+		<td class="summary">Provides DNS related functions.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></td>
-		<td class="summary">An HTTP client implementation that enable to send <a href="modules/jls.net.http.HttpRequest.html#">request</a> and receive <a href="modules/jls.net.http.HttpResponse.html#">response</a>.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></td>
-		<td class="summary">The HttpContext class maps a path to a handler.</td>
+		<td class="summary">An HTTP client implementation that enable to send and receive <a href="modules/jls.net.http.HttpMessage.html#">message</a>.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></td>
-		<td class="summary">The HttpExchange class wraps the HTTP request and response.</td>
+		<td class="summary">Wraps the HTTP request and the associated response.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></td>
@@ -301,7 +241,7 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></td>
-		<td class="summary">Base HTTP handler class.</td>
+		<td class="summary">Provides HTTP handler class and utility functions.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></td>
@@ -309,63 +249,23 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></td>
-		<td class="summary">This class provides common behavior for HTTP message.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></td>
-		<td class="summary">This class represents an HTTP request.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></td>
-		<td class="summary">This class represents an HTTP response.</td>
+		<td class="summary">Represents an HTTP request or response.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></td>
 		<td class="summary">An HTTP server implementation that handles HTTP requests.</td>
 	</tr>
 	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></td>
-		<td class="summary">Provide a simple HTTP filter for basic authentication.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></td>
-		<td class="summary">Provide a simple HTTP handler for files.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></td>
-		<td class="summary">Provide a simple HTTP handler that proxies requests.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></td>
-		<td class="summary">Provide a simple REST HTTP handler based on a Lua table.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></td>
-		<td class="summary">Provide a simple HTTP handler for Lua tables.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></td>
-		<td class="summary">Provide an HTTP handler for the WebDAV protocol.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></td>
-		<td class="summary">Provide a simple HTTP handler for ZIP file.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.net.http.ws.html">jls.net.http.ws</a></td>
-		<td class="summary">This module provide classes to work with WebSocket.</td>
+		<td class="name"  nowrap><a href="modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></td>
+		<td class="summary">This module provides classes to work with WebSocket.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.mqtt.html">jls.net.mqtt</a></td>
-		<td class="summary">This module provide classes to work with MQTT.</td>
+		<td class="summary">This module provides classes to work with MQTT.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.Channel.html">jls.util.Channel</a></td>
 		<td class="summary">Provide the Channel class.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></td>
-		<td class="summary">Provide a simple scheduler for coroutines.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.Date.html">jls.util.Date</a></td>
@@ -397,19 +297,19 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></td>
-		<td class="summary">Provide the SerialWorker class.</td>
-	</tr>
-	<tr>
-		<td class="name"  nowrap><a href="modules/jls.util.Struct.html">jls.util.Struct</a></td>
-		<td class="summary">Provide Struct class.</td>
+		<td class="summary">Executes functions in a dedicated thread.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.WebView.html">jls.util.WebView</a></td>
-		<td class="summary">Provide WebView class.</td>
+		<td class="summary">Displays HTML content in a dedicated window.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.Worker.html">jls.util.Worker</a></td>
-		<td class="summary">Provide a Worker class.</td>
+		<td class="summary">Provides a way to process tasks in background.</td>
+	</tr>
+	<tr>
+		<td class="name"  nowrap><a href="modules/jls.util.ast.html">jls.util.ast</a></td>
+		<td class="summary">Abstract Syntax Tree (AST) utility module.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.codec.html">jls.util.codec</a></td>
@@ -464,7 +364,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

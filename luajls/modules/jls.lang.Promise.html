@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.6</title>
+    <title>Lua JLS 0.7</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -45,12 +45,7 @@
   <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
   <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
   <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.Exception.html">jls.lang.Exception</a></li>
   <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
   <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
   <li><strong>jls.lang.Promise</strong></li>
@@ -60,36 +55,21 @@
   <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
   <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
   <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
-  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
   <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
-  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
-  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
-  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.TcpSocket.html">jls.net.TcpSocket</a></li>
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
-  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
-  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
   <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
-  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
-  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
-  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
-  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
-  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -98,9 +78,9 @@
   <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
   <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
   <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
-  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
   <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
@@ -123,7 +103,9 @@
 
 <h1>Module <code>jls.lang.Promise</code></h1>
 <p>Represents the eventual result of an asynchronous operation.</p>
-<p> see https://promisesaplus.com/</p>
+<p> <strong>Note</strong>: The <em>then</em> method is replaced by <em>next</em>, because <em>then</em> is a reserved word in Lua.</p>
+
+<p> see <a href="https://promisesaplus.com/">Promises/A+</a></p>
 
 
 <h2><a href="#Class_Promise">Class Promise </a></h2>
@@ -133,7 +115,7 @@
 	<td class="summary">Creates a promise.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#promise:next">promise:next (onFulfilled, onRejected)</a></td>
+	<td class="name" nowrap><a href="#promise:next">promise:next (onFulfilled[, onRejected])</a></td>
 	<td class="summary">Appends fulfillment and rejection handlers to the promise, and returns
 a new promise resolving to the return value of the called handler,
 or to its original settled value if the promise was not handled.</td>
@@ -143,6 +125,11 @@ or to its original settled value if the promise was not handled.</td>
 	<td class="summary">Appends a rejection handler callback to the promise, and returns a new
  promise resolving to the return value of the callback if it is called,
  or to its original fulfillment value if the promise is instead fulfilled.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#promise:finally">promise:finally (onFinally)</a></td>
+	<td class="summary">Appends a handler callback to the promise for both fulfillment and rejection,
+ and returns an equivalent of the original promise.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#Promise.createWithCallback">Promise.createWithCallback ()</a></td>
@@ -195,10 +182,12 @@ or to its original settled value if the promise was not handled.</td>
     <dd>
     Creates a promise.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">executor</span>
+            <span class="types"><span class="type">function</span></span>
          A function that is passed with the arguments resolve and reject.
         </li>
     </ul>
@@ -216,7 +205,7 @@ or to its original settled value if the promise was not handled.</td>
 </dd>
     <dt>
     <a name = "promise:next"></a>
-    <strong>promise:next (onFulfilled, onRejected)</strong>
+    <strong>promise:next (onFulfilled[, onRejected])</strong>
     </dt>
     <dd>
     Appends fulfillment and rejection handlers to the promise, and returns
@@ -228,16 +217,20 @@ rejects, then returns a rejected Promise.
 If onFulfilled or onRejected returns a Promise which resolves,
 or returns any other value, then returns a resolved Promise.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">onFulfilled</span>
+            <span class="types"><span class="type">function</span></span>
          A Function called when the Promise is fulfilled.
  This function has one argument, the fulfillment value.
         </li>
         <li><span class="parameter">onRejected</span>
+            <span class="types"><span class="type">function</span></span>
          A Function called when the Promise is rejected.
  This function has one argument, the rejection reason.
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -260,11 +253,42 @@ or returns any other value, then returns a resolved Promise.
  promise resolving to the return value of the callback if it is called,
  or to its original fulfillment value if the promise is instead fulfilled.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">onRejected</span>
+            <span class="types"><span class="type">function</span></span>
          A Function called when the Promise is rejected.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        A new promise.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "promise:finally"></a>
+    <strong>promise:finally (onFinally)</strong>
+    </dt>
+    <dd>
+    Appends a handler callback to the promise for both fulfillment and rejection,
+ and returns an equivalent of the original promise.
+ In case of error or returning a rejected promise in the finally callback will reject the returned promise.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">onFinally</span>
+            <span class="types"><span class="type">function</span></span>
+         A Function called when the Promise is either fulfilled or rejected.
         </li>
     </ul>
 
@@ -285,6 +309,7 @@ or returns any other value, then returns a resolved Promise.
     <dd>
     Returns a new promise and its associated callback.
 
+    </ul>
 
 
 
@@ -305,11 +330,12 @@ or returns any other value, then returns a resolved Promise.
  iterable argument have fulfilled or rejects as soon as one of the
  promises in the iterable argument rejects.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">promises</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          The promises list.
         </li>
     </ul>
@@ -333,11 +359,13 @@ or returns any other value, then returns a resolved Promise.
  promises in the iterable fulfills or rejects, with the value or reason
  from that promise.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">promises</span>
-         The promises.
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         The promises list.
         </li>
     </ul>
 
@@ -358,6 +386,7 @@ or returns any other value, then returns a resolved Promise.
     <dd>
     Returns a Promise object that is rejected with the given reason.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -386,6 +415,7 @@ or returns any other value, then returns a resolved Promise.
  promise will "follow" that thenable, adopting its eventual state;
  otherwise the returned promise will be fulfilled with the value.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -412,6 +442,7 @@ or returns any other value, then returns a resolved Promise.
     Returns the specified callback if any or a callback and its associated promise.
  This function helps to create asynchronous functions with an optional ending callback parameter.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -445,6 +476,7 @@ or returns any other value, then returns a resolved Promise.
     <dd>
     Return true if the specified value is a promise.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -471,7 +503,7 @@ or returns any other value, then returns a resolved Promise.
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

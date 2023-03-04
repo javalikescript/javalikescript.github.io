@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.6</title>
+    <title>Lua JLS 0.7</title>
     <link rel="stylesheet" href="../ldoc.css" type="text/css" />
 </head>
 <body>
@@ -45,12 +45,7 @@
   <li><a href="../modules/jls.io.Pipe.html">jls.io.Pipe</a></li>
   <li><a href="../modules/jls.io.Serial.html">jls.io.Serial</a></li>
   <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BlockStreamHandler.html">jls.io.streams.BlockStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.BufferedStreamHandler.html">jls.io.streams.BufferedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.ChunkedStreamHandler.html">jls.io.streams.ChunkedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.DelayedStreamHandler.html">jls.io.streams.DelayedStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.FileStreamHandler.html">jls.io.streams.FileStreamHandler</a></li>
-  <li><a href="../modules/jls.io.streams.RangeStreamHandler.html">jls.io.streams.RangeStreamHandler</a></li>
+  <li><a href="../modules/jls.lang.Exception.html">jls.lang.Exception</a></li>
   <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
   <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
   <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
@@ -60,36 +55,21 @@
   <li><a href="../modules/jls.lang.event.html">jls.lang.event</a></li>
   <li><a href="../modules/jls.lang.loader.html">jls.lang.loader</a></li>
   <li><a href="../modules/jls.lang.logger.html">jls.lang.logger</a></li>
-  <li><a href="../modules/jls.lang.runtime.html">jls.lang.runtime</a></li>
   <li><a href="../modules/jls.lang.system.html">jls.lang.system</a></li>
-  <li><a href="../modules/jls.net.Tcp.html">jls.net.Tcp</a></li>
-  <li><a href="../modules/jls.net.TcpClient.html">jls.net.TcpClient</a></li>
-  <li><a href="../modules/jls.net.TcpServer.html">jls.net.TcpServer</a></li>
+  <li><a href="../modules/jls.net.TcpSocket.html">jls.net.TcpSocket</a></li>
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
-  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
-  <li><a href="../modules/jls.net.http.HttpContext.html">jls.net.http.HttpContext</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
   <li><a href="../modules/jls.net.http.HttpHandler.html">jls.net.http.HttpHandler</a></li>
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
-  <li><a href="../modules/jls.net.http.HttpRequest.html">jls.net.http.HttpRequest</a></li>
-  <li><a href="../modules/jls.net.http.HttpResponse.html">jls.net.http.HttpResponse</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
-  <li><a href="../modules/jls.net.http.filter.BasicAuthenticationHttpFilter.html">jls.net.http.filter.BasicAuthenticationHttpFilter</a></li>
-  <li><a href="../modules/jls.net.http.handler.FileHttpHandler.html">jls.net.http.handler.FileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ProxyHttpHandler.html">jls.net.http.handler.ProxyHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.RestHttpHandler.html">jls.net.http.handler.RestHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.TableHttpHandler.html">jls.net.http.handler.TableHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.WebDavHttpHandler.html">jls.net.http.handler.WebDavHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.handler.ZipFileHttpHandler.html">jls.net.http.handler.ZipFileHttpHandler</a></li>
-  <li><a href="../modules/jls.net.http.ws.html">jls.net.http.ws</a></li>
+  <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
-  <li><a href="../modules/jls.util.CoroutineScheduler.html">jls.util.CoroutineScheduler</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -98,9 +78,9 @@
   <li><a href="../modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></li>
   <li><a href="../modules/jls.util.Scheduler.html">jls.util.Scheduler</a></li>
   <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
-  <li><a href="../modules/jls.util.Struct.html">jls.util.Struct</a></li>
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
+  <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
   <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
@@ -123,43 +103,49 @@
 
 <h1>Module <code>jls.util.tables</code></h1>
 <p>Provide table helper functions.</p>
-<p>
-
-</p>
+<p> This module allows deep table manipulation.</p>
 
 
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#merge">merge (target, source, keep)</a></td>
+	<td class="name" nowrap><a href="#tables.parse">tables.parse (value)</a></td>
+	<td class="summary">Returns the value corresponding to the specifed string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tables.stringify">tables.stringify (value[, space[, lenient]])</a></td>
+	<td class="summary">Returns a string representing the specifed value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tables.merge">tables.merge (target, source, keep)</a></td>
 	<td class="summary">Copies the value from the source table into the target.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#compare">compare (oldTable, newTable)</a></td>
+	<td class="name" nowrap><a href="#tables.compare">tables.compare (oldTable, newTable)</a></td>
 	<td class="summary">Returns a table containing the differences between the two specified tables.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#patch">patch (oldTable, diff)</a></td>
+	<td class="name" nowrap><a href="#tables.patch">tables.patch (oldTable, diff)</a></td>
 	<td class="summary">Returns a table patched according to the specified differences.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#getPath">getPath (t, path, defaultValue[, separator])</a></td>
+	<td class="name" nowrap><a href="#tables.getPath">tables.getPath (t, path, defaultValue[, separator])</a></td>
 	<td class="summary">Returns the value at the specified path in the specified table.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#setPath">setPath (t, path, value[, separator])</a></td>
+	<td class="name" nowrap><a href="#tables.setPath">tables.setPath (t, path, value[, separator])</a></td>
 	<td class="summary">Sets the specified value at the specified path in the specified table.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#removePath">removePath (t, path[, separator])</a></td>
+	<td class="name" nowrap><a href="#tables.removePath">tables.removePath (t, path[, separator])</a></td>
 	<td class="summary">Removes the value at the specified path in the specified table.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#getSchemaValue">getSchemaValue (schema, value[, translateValues[, onError]])</a></td>
+	<td class="name" nowrap><a href="#tables.getSchemaValue">tables.getSchemaValue (schema, value[, populate[, onError]])</a></td>
 	<td class="summary">Returns the value validated by the JSON schema or nil.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#createArgumentTable">createArgumentTable (arguments[, options])</a></td>
+	<td class="name" nowrap><a href="#tables.createArgumentTable">tables.createArgumentTable (arguments[, options])</a></td>
 	<td class="summary">Returns a table containing an entry for each argument name.</td>
 	</tr>
 </table>
@@ -172,22 +158,87 @@
 
     <dl class="function">
     <dt>
-    <a name = "merge"></a>
-    <strong>merge (target, source, keep)</strong>
+    <a name = "tables.parse"></a>
+    <strong>tables.parse (value)</strong>
+    </dt>
+    <dd>
+    Returns the value corresponding to the specifed string.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the Lua value to parse as a string.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the value corresponding to the specifed string.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tables.stringify"></a>
+    <strong>tables.stringify (value[, space[, lenient]])</strong>
+    </dt>
+    <dd>
+    Returns a string representing the specifed value.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+         the value to convert.
+        </li>
+        <li><span class="parameter">space</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The indent value to use.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">lenient</span>
+            <span class="types"><span class="type">boolean</span></span>
+         whether or not be lenient.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        a string representing the specifed table value.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tables.merge"></a>
+    <strong>tables.merge (target, source, keep)</strong>
     </dt>
     <dd>
     Copies the value from the source table into the target.
  This is a deep copy, sub table are also merged.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">target</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          the table to copy.
         </li>
         <li><span class="parameter">source</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          a modified table.
         </li>
         <li><span class="parameter">keep</span>
@@ -199,7 +250,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
         the target table.
     </ol>
 
@@ -208,23 +259,24 @@
 
 </dd>
     <dt>
-    <a name = "compare"></a>
-    <strong>compare (oldTable, newTable)</strong>
+    <a name = "tables.compare"></a>
+    <strong>tables.compare (oldTable, newTable)</strong>
     </dt>
     <dd>
     Returns a table containing the differences between the two specified tables.
  The additions or modifications are availables, the same values are discarded
  and the deleted values are listed in a specific table entry named "_deleted".
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">oldTable</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          a base table.
         </li>
         <li><span class="parameter">newTable</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          a modified table.
         </li>
     </ul>
@@ -232,7 +284,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
         the differences or nil if there is no such difference.
     </ol>
 
@@ -241,21 +293,22 @@
 
 </dd>
     <dt>
-    <a name = "patch"></a>
-    <strong>patch (oldTable, diff)</strong>
+    <a name = "tables.patch"></a>
+    <strong>tables.patch (oldTable, diff)</strong>
     </dt>
     <dd>
     Returns a table patched according to the specified differences.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">oldTable</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          a base table.
         </li>
         <li><span class="parameter">diff</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          the differences to apply to the base table.
         </li>
     </ul>
@@ -263,7 +316,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
         the differences or nil if there is no such difference.
     </ol>
 
@@ -272,30 +325,31 @@
 
 </dd>
     <dt>
-    <a name = "getPath"></a>
-    <strong>getPath (t, path, defaultValue[, separator])</strong>
+    <a name = "tables.getPath"></a>
+    <strong>tables.getPath (t, path, defaultValue[, separator])</strong>
     </dt>
     <dd>
     Returns the value at the specified path in the specified table.
  A path consists in table keys separated by slashes.
  The key are considered as string, number or boolean. Table or userdata keys are not supported.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">t</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          a table.
         </li>
         <li><span class="parameter">path</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the path to look in the table.
         </li>
         <li><span class="parameter">defaultValue</span>
          the default value to return if there is no value for the path.
         </li>
         <li><span class="parameter">separator</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the path separator, default is /.
          (<em>optional</em>)
         </li>
@@ -312,28 +366,29 @@
 
 </dd>
     <dt>
-    <a name = "setPath"></a>
-    <strong>setPath (t, path, value[, separator])</strong>
+    <a name = "tables.setPath"></a>
+    <strong>tables.setPath (t, path, value[, separator])</strong>
     </dt>
     <dd>
     Sets the specified value at the specified path in the specified table.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">t</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          a table.
         </li>
         <li><span class="parameter">path</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the path to set in the table.
         </li>
         <li><span class="parameter">value</span>
          the value to set.
         </li>
         <li><span class="parameter">separator</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the path separator.
          (<em>optional</em>)
         </li>
@@ -350,25 +405,26 @@
 
 </dd>
     <dt>
-    <a name = "removePath"></a>
-    <strong>removePath (t, path[, separator])</strong>
+    <a name = "tables.removePath"></a>
+    <strong>tables.removePath (t, path[, separator])</strong>
     </dt>
     <dd>
     Removes the value at the specified path in the specified table.
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">t</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          a table.
         </li>
         <li><span class="parameter">path</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the path to remove in the table.
         </li>
         <li><span class="parameter">separator</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the path separator.
          (<em>optional</em>)
         </li>
@@ -385,24 +441,25 @@
 
 </dd>
     <dt>
-    <a name = "getSchemaValue"></a>
-    <strong>getSchemaValue (schema, value[, translateValues[, onError]])</strong>
+    <a name = "tables.getSchemaValue"></a>
+    <strong>tables.getSchemaValue (schema, value[, populate[, onError]])</strong>
     </dt>
     <dd>
     Returns the value validated by the JSON schema or nil.
  See https://json-schema.org/
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">schema</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          the JSON schema.
         </li>
         <li><span class="parameter">value</span>
          the value to get from.
         </li>
-        <li><span class="parameter">translateValues</span>
+        <li><span class="parameter">populate</span>
             <span class="types"><span class="type">boolean</span></span>
          true to parse string values and populate objects, default is false.
          (<em>optional</em>)
@@ -426,50 +483,51 @@
 
 </dd>
     <dt>
-    <a name = "createArgumentTable"></a>
-    <strong>createArgumentTable (arguments[, options])</strong>
+    <a name = "tables.createArgumentTable"></a>
+    <strong>tables.createArgumentTable (arguments[, options])</strong>
     </dt>
     <dd>
     Returns a table containing an entry for each argument name.
  An entry contains a string or a list of string.
  An argument name starts with a comma ('-').
 
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">arguments</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the command line containing the arguments.
         </li>
         <li><span class="parameter">options</span> the options.
         <ul>
         <li><span class="parameter">separator</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the path separator, default is the dot ('.').
          (<em>optional</em>)
         </li>
         <li><span class="parameter">emptyPath</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the path used for arguments without name, default is zero ('0').
          (<em>optional</em>)
         </li>
         <li><span class="parameter">defaultValues</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          the default values, could be a module name.
          (<em>optional</em>)
         </li>
         <li><span class="parameter">helpPath</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the path used to print the help from the schema.
          (<em>optional</em>)
         </li>
         <li><span class="parameter">help</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the help text to display.
          (<em>optional</em>)
         </li>
         <li><span class="parameter">configPath</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the path for a configuration file.
          (<em>optional</em>)
         </li>
@@ -479,7 +537,7 @@
          (<em>optional</em>)
         </li>
         <li><span class="parameter">schema</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          the schema to validate the argument table, could be a module name.
          (<em>optional</em>)
         </li>
@@ -489,7 +547,7 @@
          (<em>optional</em>)
         </li>
         <li><span class="parameter">argumentPattern</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the pattern used to match the argument name, default is '^-+(.+)$'.
          (<em>optional</em>)
         </li>
@@ -499,10 +557,10 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
         the arguments as a table.</li>
         <li>
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
         the custom arguments from command line and configuration file.</li>
     </ol>
 
@@ -517,7 +575,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2022-10-30 14:27:30 </i>
+<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
