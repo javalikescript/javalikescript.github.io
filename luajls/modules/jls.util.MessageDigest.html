@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
     <title>Lua JLS 0.7</title>
-    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
 
@@ -109,24 +109,28 @@
 <h2><a href="#Class_MessageDigest">Class MessageDigest </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#MessageDigest:new">MessageDigest:new (alg)</a></td>
-	<td class="summary">Creates a new MessageDigest.</td>
+	<td class="name" nowrap><a href="#messageDigest:update">messageDigest:update (m)</a></td>
+	<td class="summary">Updates the digest using the specified string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#messageDigest:digest">messageDigest:digest ()</a></td>
+	<td class="summary">Completes and returns the digest.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#messageDigest:reset">messageDigest:reset ()</a></td>
 	<td class="summary">Resets this MessageDigest.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#messageDigest:update">messageDigest:update (m)</a></td>
-	<td class="summary">Updates the digest using the specified string.</td>
+	<td class="name" nowrap><a href="#messageDigest:getAlgorithm">messageDigest:getAlgorithm ()</a></td>
+	<td class="summary">Returns the name of the algorithm.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#messageDigest:finish">messageDigest:finish ([m])</a></td>
-	<td class="summary">Completes and returns the digest.</td>
+	<td class="name" nowrap><a href="#MessageDigest.getMessageDigest">MessageDigest.getMessageDigest (alg)</a></td>
+	<td class="summary">Returns the MessageDigest corresponding to the specified algorithm.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#messageDigest:digest">messageDigest:digest (m)</a></td>
-	<td class="summary">Returns the digest using the specified string.</td>
+	<td class="name" nowrap><a href="#MessageDigest.getInstance">MessageDigest.getInstance (alg)</a></td>
+	<td class="summary">Creates a new MessageDigest.</td>
 	</tr>
 </table>
 
@@ -141,53 +145,6 @@
  The MessageDigest class provides access to algorithms that compute message digest or hash from any string or message.
           </div>
     <dl class="function">
-    <dt>
-    <a name = "MessageDigest:new"></a>
-    <strong>MessageDigest:new (alg)</strong>
-    </dt>
-    <dd>
-    Creates a new MessageDigest.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">alg</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         The name of the algorithm.
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        a new MessageDigest
-    </ol>
-
-
-
-    <h3>Usage:</h3>
-    <ul>
-        <pre class="example"><span class="keyword">local</span> md = MessageDigest:new(<span class="string">'md5'</span>)
-md:digest(<span class="string">'The quick brown fox jumps over the lazy dog'</span>)</pre>
-    </ul>
-
-</dd>
-    <dt>
-    <a name = "messageDigest:reset"></a>
-    <strong>messageDigest:reset ()</strong>
-    </dt>
-    <dd>
-    Resets this MessageDigest.
-
-    </ul>
-
-
-
-
-
-
-</dd>
     <dt>
     <a name = "messageDigest:update"></a>
     <strong>messageDigest:update (m)</strong>
@@ -205,34 +162,11 @@ md:digest(<span class="string">'The quick brown fox jumps over the lazy dog'</sp
         </li>
     </ul>
 
-
-
-
-
-</dd>
-    <dt>
-    <a name = "messageDigest:finish"></a>
-    <strong>messageDigest:finish ([m])</strong>
-    </dt>
-    <dd>
-    Completes and returns the digest.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">m</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         a message to update the digest.
-         (<em>optional</em>)
-        </li>
-    </ul>
-
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the message digest result.
+           <span class="types"><a class="type" href="../modules/jls.util.MessageDigest.html#MessageDigest">MessageDigest</a></span>
+        this message digest instance.
     </ol>
 
 
@@ -241,20 +175,13 @@ md:digest(<span class="string">'The quick brown fox jumps over the lazy dog'</sp
 </dd>
     <dt>
     <a name = "messageDigest:digest"></a>
-    <strong>messageDigest:digest (m)</strong>
+    <strong>messageDigest:digest ()</strong>
     </dt>
     <dd>
-    Returns the digest using the specified string.
+    Completes and returns the digest.
 
     </ul>
 
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">m</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         a message to compute the digest.
-        </li>
-    </ul>
 
     <h3>Returns:</h3>
     <ol>
@@ -265,6 +192,108 @@ md:digest(<span class="string">'The quick brown fox jumps over the lazy dog'</sp
 
 
 
+
+</dd>
+    <dt>
+    <a name = "messageDigest:reset"></a>
+    <strong>messageDigest:reset ()</strong>
+    </dt>
+    <dd>
+    Resets this MessageDigest.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.util.MessageDigest.html#MessageDigest">MessageDigest</a></span>
+        this message digest instance.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "messageDigest:getAlgorithm"></a>
+    <strong>messageDigest:getAlgorithm ()</strong>
+    </dt>
+    <dd>
+    Returns the name of the algorithm.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        the name of the algorithm.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MessageDigest.getMessageDigest"></a>
+    <strong>MessageDigest.getMessageDigest (alg)</strong>
+    </dt>
+    <dd>
+    Returns the MessageDigest corresponding to the specified algorithm.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The name of the algorithm.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The MessageDigest class
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MessageDigest.getInstance"></a>
+    <strong>MessageDigest.getInstance (alg)</strong>
+    </dt>
+    <dd>
+    Creates a new MessageDigest.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The name of the algorithm.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.util.MessageDigest.html#MessageDigest">MessageDigest</a></span>
+        a new MessageDigest
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> md = MessageDigest.getInstance(<span class="string">'md5'</span>)
+md:update(<span class="string">'The quick brown fox jumps over the lazy dog'</span>):digest()</pre>
+    </ul>
 
 </dd>
 </dl>
@@ -274,7 +303,6 @@ md:digest(<span class="string">'The quick brown fox jumps over the lazy dog'</sp
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

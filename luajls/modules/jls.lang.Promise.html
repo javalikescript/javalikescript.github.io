@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
     <title>Lua JLS 0.7</title>
-    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
 
@@ -132,10 +132,6 @@ or to its original settled value if the promise was not handled.</td>
  and returns an equivalent of the original promise.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Promise.createWithCallback">Promise.createWithCallback ()</a></td>
-	<td class="summary">Returns a new promise and its associated callback.</td>
-	</tr>
-	<tr>
 	<td class="name" nowrap><a href="#Promise.all">Promise.all (promises)</a></td>
 	<td class="summary">Returns a promise that either fulfills when all of the promises in the
  iterable argument have fulfilled or rejects as soon as one of the
@@ -156,12 +152,20 @@ or to its original settled value if the promise was not handled.</td>
 	<td class="summary">Returns a Promise object that is resolved with the given value.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Promise.ensureCallback">Promise.ensureCallback (callback)</a></td>
-	<td class="summary">Returns the specified callback if any or a callback and its associated promise.</td>
+	<td class="name" nowrap><a href="#Promise.async">Promise.async (fn[, ...])</a></td>
+	<td class="summary">Calls the specified function as a coroutine.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#Promise.isPromise">Promise.isPromise (promise)</a></td>
 	<td class="summary">Return true if the specified value is a promise.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Promise.createWithCallback">Promise.createWithCallback ()</a></td>
+	<td class="summary">Returns a new promise and its associated callback.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Promise.ensureCallback">Promise.ensureCallback (callback)</a></td>
+	<td class="summary">Returns the specified callback if any or a callback and its associated promise.</td>
 	</tr>
 </table>
 
@@ -237,6 +241,7 @@ or returns any other value, then returns a resolved Promise.
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
         A new promise.
     </ol>
 
@@ -266,6 +271,7 @@ or returns any other value, then returns a resolved Promise.
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
         A new promise.
     </ol>
 
@@ -295,30 +301,12 @@ or returns any other value, then returns a resolved Promise.
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
         A new promise.
     </ol>
 
 
 
-
-</dd>
-    <dt>
-    <a name = "Promise.createWithCallback"></a>
-    <strong>Promise.createWithCallback ()</strong>
-    </dt>
-    <dd>
-    Returns a new promise and its associated callback.
-
-    </ul>
-
-
-
-
-
-    <h3>Usage:</h3>
-    <ul>
-        <pre class="example"><span class="keyword">local</span> promise, cb = Promise.createWithCallback()</pre>
-    </ul>
 
 </dd>
     <dt>
@@ -343,6 +331,7 @@ or returns any other value, then returns a resolved Promise.
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
         A promise.
     </ol>
 
@@ -372,6 +361,7 @@ or returns any other value, then returns a resolved Promise.
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
         A promise.
     </ol>
 
@@ -398,6 +388,7 @@ or returns any other value, then returns a resolved Promise.
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
         A rejected promise.
     </ol>
 
@@ -427,6 +418,7 @@ or returns any other value, then returns a resolved Promise.
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
         A resolved promise.
     </ol>
 
@@ -435,37 +427,53 @@ or returns any other value, then returns a resolved Promise.
 
 </dd>
     <dt>
-    <a name = "Promise.ensureCallback"></a>
-    <strong>Promise.ensureCallback (callback)</strong>
+    <a name = "Promise.async"></a>
+    <strong>Promise.async (fn[, ...])</strong>
     </dt>
     <dd>
-    Returns the specified callback if any or a callback and its associated promise.
- This function helps to create asynchronous functions with an optional ending callback parameter.
+    Calls the specified function as a coroutine.
+The async and await functions allows asynchronous/non-blocking functions to be written in a traditional synchronous/blocking style.</p>
+
+<p>The function will be called with a corresponding <code>await</code> function as first argument.</p>
+
+<p>The <code>await</code> function waits for the Promise on which its is called then returns its fulfillment value
+or raises an error with the rejection reason if the promise is rejected.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">callback</span>
-         An optional existing callback or false to indicate that no promise is expected.
+        <li><span class="parameter">fn</span>
+            <span class="types"><span class="type">function</span></span>
+         the async function to call.
+        </li>
+        <li><span class="parameter">...</span>
+         the optional parameters to pass to the function after the <code>await</code> function.
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        a callback and an associated promise if necessary.
+           <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
+        a promise that resolves once the coroutine ends.
     </ol>
 
 
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example"><span class="keyword">function</span> readAsync(callback)
-  <span class="keyword">local</span> cb, promise = Promise.ensureCallback(callback)
-  <span class="comment">-- call cb(nil, value) on success or cb(reason) on error
-</span>  <span class="keyword">return</span> promise
-<span class="keyword">end</span></pre>
+        <pre class="example"><span class="keyword">local</span> Promise = <span class="global">require</span>(<span class="string">'jls.lang.Promise'</span>)
+<span class="keyword">local</span> HttpClient = <span class="global">require</span>(<span class="string">'jls.net.http.HttpClient'</span>)
+
+Promise.async(<span class="keyword">function</span>(await)
+  <span class="keyword">local</span> client = await(HttpClient:new({ url = <span class="string">'http://www.lua.org'</span> }):connect())
+  <span class="keyword">local</span> response = await(client:sendReceive())
+  <span class="global">print</span>(response:getStatusCode())
+<span class="keyword">end</span>):catch(<span class="global">error</span>)
+
+<span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()</pre>
     </ul>
 
 </dd>
@@ -496,6 +504,73 @@ or returns any other value, then returns a resolved Promise.
 
 
 </dd>
+    <dt>
+    <a name = "Promise.createWithCallback"></a>
+    <strong>Promise.createWithCallback ()</strong>
+    </dt>
+    <dd>
+    Returns a new promise and its associated callback.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
+        a new promise.</li>
+        <li>
+           <span class="types"><span class="type">function</span></span>
+        the associated callback.</li>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> promise, cb = Promise.createWithCallback()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Promise.ensureCallback"></a>
+    <strong>Promise.ensureCallback (callback)</strong>
+    </dt>
+    <dd>
+    Returns the specified callback if any or a callback and its associated promise.
+ This function helps to create asynchronous functions with an optional ending callback parameter.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callback</span>
+         An optional existing callback or false to indicate that no promise is expected.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">function</span></span>
+        the callback.</li>
+        <li>
+           <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
+        an associated promise if necessary.</li>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">function</span> readAsync(callback)
+  <span class="keyword">local</span> cb, promise = Promise.ensureCallback(callback)
+  <span class="comment">-- call cb(nil, value) on success or cb(reason) on error
+</span>  <span class="keyword">return</span> promise
+<span class="keyword">end</span></pre>
+    </ul>
+
+</dd>
 </dl>
 
 
@@ -503,7 +578,6 @@ or returns any other value, then returns a resolved Promise.
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

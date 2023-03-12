@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
     <title>Lua JLS 0.7</title>
-    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
 
@@ -131,28 +131,20 @@ end)
 	<td class="summary">Closes this request handler.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#HttpHandler.file">HttpHandler.file (rootFile[, permissions[, filename]])</a></td>
-	<td class="summary">Creates a FileHttpHandler.</td>
+	<td class="name" nowrap><a href="#HttpHandler.file">HttpHandler.file (dir[, permissions[, filename]])</a></td>
+	<td class="summary">Exposes a file system directory.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#HttpHandler.proxy">HttpHandler.proxy (...)</a></td>
-	<td class="summary">Creates a ProxyHttpHandler.</td>
+	<td class="name" nowrap><a href="#HttpHandler.proxy">HttpHandler.proxy ()</a></td>
+	<td class="summary">Proxies HTTP requests and responses.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#HttpHandler.rest">HttpHandler.rest (handlers)</a></td>
-	<td class="summary">Creates a RestHttpHandler.</td>
+	<td class="summary">Creates a REST like HTTP handler.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#HttpHandler.table">HttpHandler.table (table[, path[, editable]])</a></td>
-	<td class="summary">Creates a TableHttpHandler.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#HttpHandler.webDav">HttpHandler.webDav (...)</a></td>
-	<td class="summary">Creates a WebDavHttpHandler.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#HttpHandler.zipFile">HttpHandler.zipFile (zipFile)</a></td>
-	<td class="summary">Creates a ZipFileHttpHandler.</td>
+	<td class="summary">Exposes a table content throught HTTP REST APIs.</td>
 	</tr>
 </table>
 
@@ -236,27 +228,27 @@ end)
 </dd>
     <dt>
     <a name = "HttpHandler.file"></a>
-    <strong>HttpHandler.file (rootFile[, permissions[, filename]])</strong>
+    <strong>HttpHandler.file (dir[, permissions[, filename]])</strong>
     </dt>
     <dd>
-    Creates a FileHttpHandler.
+    Exposes a file system directory.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">rootFile</span>
+        <li><span class="parameter">dir</span>
             <span class="types"><span class="type">File</span></span>
-         the root File
+         the base directory or a ZIP file.
         </li>
         <li><span class="parameter">permissions</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         a string containing the granted permissions, 'rwxlcud' default is 'r'
+         a string containing the granted permissions, 'rwxlcud' default is 'r'.
          (<em>optional</em>)
         </li>
         <li><span class="parameter">filename</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the name of the file to use in case of GET request on a directory, default is 'index.html'
+         the name of the file to use in case of GET request on a directory, default is 'index.html'.
          (<em>optional</em>)
         </li>
     </ul>
@@ -274,21 +266,13 @@ end)
 </dd>
     <dt>
     <a name = "HttpHandler.proxy"></a>
-    <strong>HttpHandler.proxy (...)</strong>
+    <strong>HttpHandler.proxy ()</strong>
     </dt>
     <dd>
-    Creates a ProxyHttpHandler.
+    Proxies HTTP requests and responses.
 
     </ul>
 
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-
-
-
-        </li>
-    </ul>
 
     <h3>Returns:</h3>
     <ol>
@@ -306,7 +290,18 @@ end)
     <strong>HttpHandler.rest (handlers)</strong>
     </dt>
     <dd>
-    Creates a RestHttpHandler.
+    Creates a REST like HTTP handler. </p>
+
+<p>  The <code>handlers</code> consists in a deep table of functions representing the resource paths.
+  By default the request body is processed and the JSON value is available with the attribute <code>requestJson</code>.</p>
+
+<p>  The function returned value is used for the HTTP response.
+  A table will be returned as a JSON value.
+  The returned value could also be a <a href="../modules/jls.lang.Promise.html#">jls.lang.Promise</a>.</p>
+
+<p>  An empty string is used as table key for the root resource.
+  The special table key <code>{name}</code> is used to match any key and provide the value in the attribue <code>name</code>.
+
 
     </ul>
 
@@ -327,6 +322,33 @@ end)
 
 
 
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> users = {}
+httpServer:createContext(<span class="string">'/(.*)'</span>, HttpHandler.rest({
+  users = {
+    [<span class="string">''</span>] = <span class="keyword">function</span>(exchange)
+      <span class="keyword">return</span> users
+    <span class="keyword">end</span>,
+    <span class="comment">-- additional handler
+</span>    [<span class="string">'{+}?method=GET'</span>] = <span class="keyword">function</span>(exchange, userId)
+      exchange:setAttribute(<span class="string">'user'</span>, users[userId])
+    <span class="keyword">end</span>,
+    [<span class="string">'{userId}'</span>] = {
+      [<span class="string">'(user)?method=GET'</span>] = <span class="keyword">function</span>(exchange, user)
+        <span class="keyword">return</span> user
+      <span class="keyword">end</span>,
+      [<span class="string">'(userId, requestJson)?method=POST,PUT'</span>] = <span class="keyword">function</span>(exchange, userId, requestJson)
+        users[userId] = requestJson
+      <span class="keyword">end</span>,
+      <span class="comment">-- will be available at /rest/users/{userId}/greetings
+</span>      [<span class="string">'greetings(user)?method=GET'</span>] = <span class="keyword">function</span>(exchange, user)
+        <span class="keyword">return</span> <span class="string">'Hello '</span>..user.firstname
+      <span class="keyword">end</span>
+    },
+  }
+}))</pre>
+    </ul>
 
 </dd>
     <dt>
@@ -334,7 +356,9 @@ end)
     <strong>HttpHandler.table (table[, path[, editable]])</strong>
     </dt>
     <dd>
-    Creates a TableHttpHandler.
+    Exposes a table content throught HTTP REST APIs.
+ This handler allows to access and maintain a deep Lua table.
+ The GET response is a JSON with a 'value' key containing the table path value.
 
     </ul>
 
@@ -367,64 +391,6 @@ end)
 
 
 </dd>
-    <dt>
-    <a name = "HttpHandler.webDav"></a>
-    <strong>HttpHandler.webDav (...)</strong>
-    </dt>
-    <dd>
-    Creates a WebDavHttpHandler.
- See FileHttpHandler
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-
-
-
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="../modules/jls.net.http.HttpHandler.html#HttpHandler">HttpHandler</a></span>
-        a HttpHandler.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "HttpHandler.zipFile"></a>
-    <strong>HttpHandler.zipFile (zipFile)</strong>
-    </dt>
-    <dd>
-    Creates a ZipFileHttpHandler.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">zipFile</span>
-            <span class="types"><span class="type">jls.io.File</span></span>
-         the ZIP file.
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="../modules/jls.net.http.HttpHandler.html#HttpHandler">HttpHandler</a></span>
-        a HttpHandler.
-    </ol>
-
-
-
-
-</dd>
 </dl>
 
 
@@ -432,7 +398,6 @@ end)
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

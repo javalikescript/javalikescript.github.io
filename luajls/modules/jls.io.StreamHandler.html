@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
     <title>Lua JLS 0.7</title>
-    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
 
@@ -134,7 +134,7 @@ end)
 <h2><a href="#Class_StreamHandler">Class StreamHandler </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#StreamHandler:new">StreamHandler:new ([onDataOrCallback[, onError]])</a></td>
+	<td class="name" nowrap><a href="#StreamHandler:new">StreamHandler:new ([onData[, onError]])</a></td>
 	<td class="summary">Creates a stream handler.</td>
 	</tr>
 	<tr>
@@ -166,7 +166,7 @@ end)
 	<td class="summary">Fills the specified stream handler with the specified data.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#StreamHandler.tee">StreamHandler.tee (firstStream, secondStream)</a></td>
+	<td class="name" nowrap><a href="#StreamHandler.tee">StreamHandler.tee (first, second)</a></td>
 	<td class="summary">Creates a stream handler with two handlers.</td>
 	</tr>
 	<tr>
@@ -178,24 +178,16 @@ end)
 	<td class="summary">Creates a BufferedStreamHandler that allows to buffer the stream to pass to the wrapped handler.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#StreamHandler.chunk">StreamHandler.chunk ([handler], pattern[, plain[, limit]])</a></td>
-	<td class="summary">Creates a ChunkedStreamHandler that allows to buffer a stream and to call a sub handler depending on specified limit or pattern.</td>
+	<td class="name" nowrap><a href="#StreamHandler.fromFile">StreamHandler.fromFile (file, stream[, size])</a></td>
+	<td class="summary">Reads the specified file using the stream handler.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#StreamHandler.delay">StreamHandler.delay (...)</a></td>
-	<td class="summary">Creates a DelayedStreamHandler that allows to buffer a stream while the sub handler is not available.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#StreamHandler.file">StreamHandler.file (file[, overwrite])</a></td>
-	<td class="summary">Creates a FileStreamHandler that allows to write a stream into and from a file.</td>
+	<td class="name" nowrap><a href="#StreamHandler.toFile">StreamHandler.toFile (file[, overwrite])</a></td>
+	<td class="summary">Creates a FileStreamHandler that allows to write a stream into a file.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#StreamHandler.promise">StreamHandler.promise ([handler])</a></td>
-	<td class="summary">Creates a PromiseStreamHandler that provides a promise that resolves once the stream is closed.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#StreamHandler.range">StreamHandler.range ([handler[, offset[, length]]])</a></td>
-	<td class="summary">Creates a RangeStreamHandler that allows to restrict the stream to pass to the wrapped handler to a specified range.</td>
+	<td class="summary">Returns a Promise that resolves once the stream ends.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#StreamHandler.std">StreamHandler.std</a></td>
@@ -203,7 +195,7 @@ end)
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#StreamHandler.null">StreamHandler.null</a></td>
-	<td class="summary">A null stream.</td>
+	<td class="summary">The null stream.</td>
 	</tr>
 </table>
 
@@ -220,17 +212,18 @@ end)
     <dl class="function">
     <dt>
     <a name = "StreamHandler:new"></a>
-    <strong>StreamHandler:new ([onDataOrCallback[, onError]])</strong>
+    <strong>StreamHandler:new ([onData[, onError]])</strong>
     </dt>
     <dd>
     Creates a stream handler.
- The optional functions take two parameters, the stream and the data or the error
+ The optional functions will be called with two parameters, this stream and the data or the error.
+ The callback function will be called with two parameters, the error or nil and the data.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">onDataOrCallback</span>
+        <li><span class="parameter">onData</span>
             <span class="types"><span class="type">function</span></span>
          a function to use when receiving data or callback if onError is not specified.
          (<em>optional</em>)
@@ -429,7 +422,7 @@ end)
 </dd>
     <dt>
     <a name = "StreamHandler.tee"></a>
-    <strong>StreamHandler.tee (firstStream, secondStream)</strong>
+    <strong>StreamHandler.tee (first, second)</strong>
     </dt>
     <dd>
     Creates a stream handler with two handlers.
@@ -438,13 +431,13 @@ end)
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">firstStream</span>
+        <li><span class="parameter">first</span>
             <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
-         The first stream handlers.
+         The first stream handler.
         </li>
-        <li><span class="parameter">secondStream</span>
+        <li><span class="parameter">second</span>
             <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
-         The second stream handlers.
+         The second stream handler.
         </li>
     </ul>
 
@@ -524,33 +517,25 @@ end)
 
 </dd>
     <dt>
-    <a name = "StreamHandler.chunk"></a>
-    <strong>StreamHandler.chunk ([handler], pattern[, plain[, limit]])</strong>
+    <a name = "StreamHandler.fromFile"></a>
+    <strong>StreamHandler.fromFile (file, stream[, size])</strong>
     </dt>
     <dd>
-    Creates a ChunkedStreamHandler that allows to buffer a stream and to call a sub handler depending on specified limit or pattern.
+    Reads the specified file using the stream handler.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">handler</span>
-            <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
-         the handler to wrap
-         (<em>optional</em>)
+        <li><span class="parameter">file</span>
+         The file to read.
         </li>
-        <li><span class="parameter">pattern</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the pattern to use to split the buffered data to the wrapped handler
+        <li><span class="parameter">stream</span>
+         The stream handler to use with the file content.
         </li>
-        <li><span class="parameter">plain</span>
-            <span class="types"><span class="type">boolean</span></span>
-         true to use the pattern as a plain string
-         (<em>optional</em>)
-        </li>
-        <li><span class="parameter">limit</span>
+        <li><span class="parameter">size</span>
             <span class="types"><span class="type">number</span></span>
-         the max size to buffer waiting for a pattern
+         The read block size.
          (<em>optional</em>)
         </li>
     </ul>
@@ -558,8 +543,7 @@ end)
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
-        a StreamHandler.
+        a promise that resolves once the file has been fully read.
     </ol>
 
 
@@ -567,40 +551,11 @@ end)
 
 </dd>
     <dt>
-    <a name = "StreamHandler.delay"></a>
-    <strong>StreamHandler.delay (...)</strong>
+    <a name = "StreamHandler.toFile"></a>
+    <strong>StreamHandler.toFile (file[, overwrite])</strong>
     </dt>
     <dd>
-    Creates a DelayedStreamHandler that allows to buffer a stream while the sub handler is not available.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">...</span>
-
-
-
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
-        a StreamHandler.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "StreamHandler.file"></a>
-    <strong>StreamHandler.file (file[, overwrite])</strong>
-    </dt>
-    <dd>
-    Creates a FileStreamHandler that allows to write a stream into and from a file.
+    Creates a FileStreamHandler that allows to write a stream into a file.
 
     </ul>
 
@@ -608,7 +563,7 @@ end)
     <ul>
         <li><span class="parameter">file</span>
             <span class="types"><span class="type">jls.io.File</span></span>
-         The file to create
+         The file to write to
         </li>
         <li><span class="parameter">overwrite</span>
             <span class="types"><span class="type">boolean</span></span>
@@ -633,7 +588,7 @@ end)
     <strong>StreamHandler.promise ([handler])</strong>
     </dt>
     <dd>
-    Creates a PromiseStreamHandler that provides a promise that resolves once the stream is closed.
+    Returns a Promise that resolves once the stream ends.
 
     </ul>
 
@@ -648,48 +603,12 @@ end)
 
     <h3>Returns:</h3>
     <ol>
-
+        <li>
+           <span class="types"><span class="type">jls.lang.Promise</span></span>
+        a promise that resolves once the stream ends.</li>
+        <li>
            <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
-        a StreamHandler.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "StreamHandler.range"></a>
-    <strong>StreamHandler.range ([handler[, offset[, length]]])</strong>
-    </dt>
-    <dd>
-    Creates a RangeStreamHandler that allows to restrict the stream to pass to the wrapped handler to a specified range.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">handler</span>
-            <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
-         the handler to wrap
-         (<em>optional</em>)
-        </li>
-        <li><span class="parameter">offset</span>
-            <span class="types"><span class="type">number</span></span>
-         the offset of the range, default is 0
-         (<em>optional</em>)
-        </li>
-        <li><span class="parameter">length</span>
-            <span class="types"><span class="type">number</span></span>
-         the length of the range
-         (<em>optional</em>)
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
-        a StreamHandler.
+        a StreamHandler.</li>
     </ol>
 
 
@@ -716,7 +635,7 @@ end)
     <strong>StreamHandler.null</strong>
     </dt>
     <dd>
-    A null stream.
+    The null stream.
 
     </ul>
 
@@ -733,7 +652,6 @@ end)
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2023-03-04 12:25:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
