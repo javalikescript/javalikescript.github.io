@@ -70,6 +70,7 @@
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.Codec.html">jls.util.Codec</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><strong>jls.util.List</strong></li>
@@ -81,7 +82,6 @@
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
   <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
-  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
   <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
@@ -141,6 +141,10 @@
 	<td class="summary">Returns the size of this list.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#list:map">list:map (f)</a></td>
+	<td class="summary">Returns a list containing the result of the function called on each element.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#list:join">list:join ([sep[, i[, j]]])</a></td>
 	<td class="summary">Returns a string by concatenating all the values of the specified list.</td>
 	</tr>
@@ -159,6 +163,10 @@
 	<tr>
 	<td class="name" nowrap><a href="#List.join">List.join (list[, sep[, i[, j]]])</a></td>
 	<td class="summary">Returns a string by concatenating all the values of the specified list.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List.map">List.map ([d], t, f)</a></td>
+	<td class="summary">Returns a table containing the result of the function called on each element of the source table.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#List.isList">List.isList (t[, withHoles[, acceptEmpty]])</a></td>
@@ -385,6 +393,34 @@
 
 </dd>
     <dt>
+    <a name = "list:map"></a>
+    <strong>list:map (f)</strong>
+    </dt>
+    <dd>
+    Returns a list containing the result of the function called on each element.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">f</span>
+            <span class="types"><span class="type">function</span></span>
+         The function to call on each element.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">jls.util.List</span></span>
+        the new list.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "list:join"></a>
     <strong>list:join ([sep[, i[, j]]])</strong>
     </dt>
@@ -549,6 +585,43 @@
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
         a string with all values joined.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List.map"></a>
+    <strong>List.map ([d], t, f)</strong>
+    </dt>
+    <dd>
+    Returns a table containing the result of the function called on each element of the source table.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">d</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         the destination table, if missing then a new table will be returned.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">t</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         the table containing the elements to map.
+        </li>
+        <li><span class="parameter">f</span>
+            <span class="types"><span class="type">function</span></span>
+         the function to call on each element.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+        the destination table.
     </ol>
 
 

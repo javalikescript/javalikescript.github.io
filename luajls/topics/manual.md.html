@@ -38,9 +38,10 @@
 <li><a href="#General_Considerations">General Considerations </a></li>
 <li><a href="#Namespace_and_Modules">Namespace and Modules </a></li>
 <li><a href="#Object_Oriented_Programming">Object-Oriented Programming </a></li>
+<li><a href="#Exception">Exception </a></li>
 <li><a href="#Concurrent_Programming">Concurrent Programming </a></li>
-<li><a href="#Event_Loop">Event Loop </a></li>
 <li><a href="#File_System">File System </a></li>
+<li><a href="#Data_Transformation">Data Transformation </a></li>
 <li><a href="#Network_Socket">Network Socket </a></li>
 <li><a href="#Hypertext_Transfer_Protocol__HTTP_">Hypertext Transfer Protocol (HTTP) </a></li>
 <li><a href="#Process">Process </a></li>
@@ -90,6 +91,7 @@
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.Codec.html">jls.util.Codec</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -101,7 +103,6 @@
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
   <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
-  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
   <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
@@ -321,11 +322,45 @@ You could create a class that inherit another class by providing this super clas
 
 
 
+<p><a name="Exception"></a></p>
+<h2>Exception</h2>
+
+<p>The exception class groups the error message and the associated stack.
+It provides a common way to deal with errors.
+Promise and EventPublisher call functions and wrap Lua error in Exception.</p>
+
+
+<pre>
+<span class="keyword">local</span> Exception = <span class="global">require</span>(<span class="string">'jls.lang.Exception'</span>)
+<span class="keyword">local</span> e = Exception(<span class="string">'ouch'</span>)
+<span class="global">print</span>(<span class="string">'message:'</span>, e:getMessage()) <span class="comment">-- prints 'ouch'
+</span><span class="global">print</span>(e) <span class="comment">--[[ prints the name, the message and the stack trace:
+jls.lang.Exception: ouch
+stack traceback:
+        (command line):2: in main chunk
+        [C]: in ?
+]]</span>
+e:throw() <span class="comment">-- raise the error e</span>
+</pre>
+
+
+<p>For example, a promise needs to call the fulfillment and rejection handlers in protected mode and properly reject in case of error.
+At this time, we do not know if the caller is interested by the stack or just the error message.
+With the exception, the caller could later decide to use only the error message or to print the stack trace.</p>
+
+<p>The <code>Exception.getMessage</code> function unwraps, if necessary, the error message.</p>
+
+<p>The <code>Exception.pcall</code> function is similar to the Lua function, except that it returns an exception instance.</p>
+
+<p>An exception may have a cause, allowing to preserve this information when you do not want to rethrow the exception.</p>
+
+<p>Additionnaly, it is possible to create specialized sub class of exception.</p>
+
+
 <p><a name="Concurrent_Programming"></a></p>
 <h2>Concurrent Programming</h2>
 
-<p><a name="Event_Loop"></a></p>
-<h2>Event Loop</h2>
+<h3>Event Loop</h3>
 
 <p>In order to deal with blocking I/O operations such as getting a network resource, luajls provides an event loop. Blocking operations take a callback function as argument that will be called when the operation completes or when data shall be processed.</p>
 
@@ -387,30 +422,6 @@ event:loop()
 </pre>
 
 
-<p>The <code>async</code> and <code>await</code> functions allows asynchronous/non-blocking functions to be written in a traditional synchronous/blocking style.</p>
-
-
-<pre>
-<span class="keyword">local</span> event = <span class="global">require</span>(<span class="string">'jls.lang.event'</span>)
-<span class="keyword">local</span> Promise = <span class="global">require</span>(<span class="string">'jls.lang.Promise'</span>)
-
-<span class="keyword">local</span> <span class="keyword">function</span> incrementLater(n, millis)
-  <span class="keyword">return</span> Promise:new(<span class="keyword">function</span>(resolve, reject)
-    event:setTimeout(<span class="keyword">function</span>()
-      resolve(n + <span class="number">1</span>)
-    <span class="keyword">end</span>, millis <span class="keyword">or</span> <span class="number">0</span>)
-  <span class="keyword">end</span>)
-<span class="keyword">end</span>
-
-Promise.async(<span class="keyword">function</span>(await)
-  <span class="keyword">local</span> n = await(incrementLater(<span class="number">0</span>, <span class="number">1000</span>)) <span class="comment">-- returns 1 after 1 second
-</span>  <span class="global">print</span>(await(incrementLater(n, <span class="number">1000</span>))) <span class="comment">-- prints 2 after another second
-</span><span class="keyword">end</span>):catch(<span class="global">error</span>)
-
-event:loop()
-</pre>
-
-
 <p>You also benefits of the whole Promise API, such as executing multiple parallel promises.</p>
 
 
@@ -431,6 +442,33 @@ Promise.all({wait(<span class="number">500</span>), wait(<span class="number">10
 Promise.race({wait(<span class="number">1500</span>), wait(<span class="number">1000</span>)}):<span class="global">next</span>(<span class="keyword">function</span>()
   <span class="global">print</span>(<span class="string">'Do that after 1 second'</span>) <span class="comment">-- after the first completed promise
 </span><span class="keyword">end</span>)
+
+event:loop()
+</pre>
+
+
+
+<h3>Async/Await</h3>
+
+<p>The <code>async</code> and <code>await</code> functions allows asynchronous/non-blocking functions to be written in a traditional synchronous/blocking style.</p>
+
+
+<pre>
+<span class="keyword">local</span> event = <span class="global">require</span>(<span class="string">'jls.lang.event'</span>)
+<span class="keyword">local</span> Promise = <span class="global">require</span>(<span class="string">'jls.lang.Promise'</span>)
+
+<span class="keyword">local</span> <span class="keyword">function</span> incrementLater(n, millis)
+  <span class="keyword">return</span> Promise:new(<span class="keyword">function</span>(resolve, reject)
+    event:setTimeout(<span class="keyword">function</span>()
+      resolve(n + <span class="number">1</span>)
+    <span class="keyword">end</span>, millis <span class="keyword">or</span> <span class="number">0</span>)
+  <span class="keyword">end</span>)
+<span class="keyword">end</span>
+
+Promise.async(<span class="keyword">function</span>(await)
+  <span class="keyword">local</span> n = await(incrementLater(<span class="number">0</span>, <span class="number">1000</span>)) <span class="comment">-- returns 1 after 1 second
+</span>  <span class="global">print</span>(await(incrementLater(n, <span class="number">1000</span>))) <span class="comment">-- prints 2 after another second
+</span><span class="keyword">end</span>):catch(<span class="global">error</span>)
 
 event:loop()
 </pre>
@@ -483,7 +521,8 @@ FileStreamHandler.readAll(<span class="string">'./README.md'</span>, std)
 </pre>
 
 
-<h1>Data Storage</h1>
+
+<h1>Data Storage and Transformation</h1>
 
 <p><a name="File_System"></a></p>
 <h2>File System</h2>
@@ -549,6 +588,37 @@ fileDesc:closeSync()
 
 
 
+<p><a name="Data_Transformation"></a></p>
+<h2>Data Transformation</h2>
+
+<h3>Codec</h3>
+
+<p>The codec class allows to encode or decode a string into another string.
+The codec also provides a encoding/decoding stream handlers.
+The available codec are Base64, Hexadecimal(hex), cipher, deflate and GZip.</p>
+
+
+<pre>
+<span class="keyword">local</span> codec = Codec.getInstance(<span class="string">'Base64'</span>)
+<span class="global">print</span>(codec:encode(<span class="string">'Hello !'</span>)) <span class="comment">-- prints 'SGVsbG8gIQ=='</span>
+</pre>
+
+
+
+<h3>Message Digest</h3>
+
+<p>The message digest class allows to transform a string into a string with a fixed size.
+You provide the input string by successive calls to update then get the output string by calling digest.
+The available hash algorithms are MD5, SHA-1, CRC32.</p>
+
+
+<pre>
+<span class="keyword">local</span> md = MessageDigest.getInstance(<span class="string">'MD5'</span>)
+md:update(<span class="string">'The quick brown fox jumps over the lazy dog'</span>):digest()
+</pre>
+
+
+
 <h1>Network Programming</h1>
 
 <p>This section introduces the main classes to interact with the network.</p>
@@ -595,6 +665,7 @@ server:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</sp
 <span class="keyword">end</span>
 <span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
 </pre>
+
 
 
 <h3>User Datagram Protocol (UDP)</h3>
@@ -648,6 +719,7 @@ client:connect():<span class="global">next</span>(<span class="keyword">function
 </pre>
 
 
+
 <h3>HTTP Server</h3>
 
 <p>The HTTP server allows you to serve any kind of resource.</p>
@@ -676,10 +748,10 @@ A basic use case is to serve local files.</p>
 
 <pre>
 <span class="keyword">local</span> HttpServer = <span class="global">require</span>(<span class="string">'jls.net.http.HttpServer'</span>)
-<span class="keyword">local</span> FileHttpHandler = <span class="global">require</span>(<span class="string">'jls.net.http.handler.FileHttpHandler'</span>)
+<span class="keyword">local</span> HttpHandler = <span class="global">require</span>(<span class="string">'jls.net.http.HttpHandler'</span>)
 <span class="keyword">local</span> httpServer = HttpServer:new()
 httpServer:bind(<span class="string">'::'</span>, <span class="number">8080</span>)
-httpServer:createContext(<span class="string">'/rest/(.*)'</span>, FileHttpHandler:new(<span class="string">'.'</span>, <span class="string">'rl'</span>))
+httpServer:createContext(<span class="string">'/rest/(.*)'</span>, HttpHandler.file(<span class="string">'.'</span>, <span class="string">'rl'</span>))
 <span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
 </pre>
 
@@ -689,10 +761,10 @@ httpServer:createContext(<span class="string">'/rest/(.*)'</span>, FileHttpHandl
 
 <pre>
 <span class="keyword">local</span> HttpServer = <span class="global">require</span>(<span class="string">'jls.net.http.HttpServer'</span>)
-<span class="keyword">local</span> RestHttpHandler = <span class="global">require</span>(<span class="string">'jls.net.http.handler.RestHttpHandler'</span>)
+<span class="keyword">local</span> HttpHandler = <span class="global">require</span>(<span class="string">'jls.net.http.HttpHandler'</span>)
 <span class="keyword">local</span> httpServer = HttpServer:new()
 httpServer:bind(<span class="string">'::'</span>, <span class="number">8080</span>)
-httpServer:createContext(<span class="string">'/(.*)'</span>, RestHttpHandler:new({
+httpServer:createContext(<span class="string">'/(.*)'</span>, HttpHandler.rest({
   admin = {
     stop = <span class="keyword">function</span>(httpExchange)
       httpServer:close()
@@ -702,6 +774,7 @@ httpServer:createContext(<span class="string">'/(.*)'</span>, RestHttpHandler:ne
 }))
 <span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()
 </pre>
+
 
 
 <h3>WebSocket</h3>

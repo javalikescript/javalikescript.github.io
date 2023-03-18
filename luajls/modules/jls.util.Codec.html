@@ -33,7 +33,7 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_Codec">Class Codec </a></li>
 </ul>
 
 
@@ -70,6 +70,7 @@
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><strong>jls.util.Codec</strong></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><a href="../modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -81,7 +82,6 @@
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
   <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
-  <li><strong>jls.util.codec</strong></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
   <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
@@ -101,32 +101,40 @@
 
 <div id="content">
 
-<h1>Module <code>jls.util.codec</code></h1>
-<p>Provide codec functions.</p>
-<p> Available algorithms are base64, deflate, gzip, hex.</p>
+<h1>Module <code>jls.util.Codec</code></h1>
+<p>Provide encoders/decoders.</p>
+<p> Available codecs are base64, deflate, gzip, hex.</p>
 
 
-<h2><a href="#Functions">Functions</a></h2>
+<h2><a href="#Class_Codec">Class Codec </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#codec.getCodec">codec.getCodec (alg)</a></td>
-	<td class="summary">Returns a codec.</td>
+	<td class="name" nowrap><a href="#codec:decode">codec:decode (value)</a></td>
+	<td class="summary">Decodes the specified string.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#codec.decode">codec.decode (alg, data)</a></td>
-	<td class="summary">Returns the decoded data.</td>
+	<td class="name" nowrap><a href="#codec:encode">codec:encode (value)</a></td>
+	<td class="summary">Encodes the specified string.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#codec.encode">codec.encode (alg, data)</a></td>
-	<td class="summary">Returns the encoded data.</td>
+	<td class="name" nowrap><a href="#codec:decodeStream">codec:decodeStream (sh)</a></td>
+	<td class="summary">Returns a decoding <a href="../modules/jls.io.StreamHandler.html#">jls.io.StreamHandler</a>.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#codec.decodeStream">codec.decodeStream (alg, sh)</a></td>
-	<td class="summary">Returns an decoding <a href="../modules/jls.io.StreamHandler.html#">jls.io.StreamHandler</a>.</td>
+	<td class="name" nowrap><a href="#codec:encodeStream">codec:encodeStream (sh)</a></td>
+	<td class="summary">Returns a encoding <a href="../modules/jls.io.StreamHandler.html#">jls.io.StreamHandler</a>.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#codec.encodeStream">codec.encodeStream (alg, sh)</a></td>
-	<td class="summary">Returns an encoding <a href="../modules/jls.io.StreamHandler.html#">jls.io.StreamHandler</a>.</td>
+	<td class="name" nowrap><a href="#codec:getName">codec:getName ()</a></td>
+	<td class="summary">Returns the name of the codec.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Codec.getCodec">Codec.getCodec (name)</a></td>
+	<td class="summary">Returns the Codec class corresponding to the specified name.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Codec.getInstance">Codec.getInstance (name)</a></td>
+	<td class="summary">Returns a new Codec.</td>
 	</tr>
 </table>
 
@@ -134,54 +142,27 @@
 <br/>
 
 
-    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+    <h2 class="section-header has-description"><a name="Class_Codec"></a>Class Codec </h2>
 
+          <div class="section-description">
+          The Codec class.
+ The Codec decodes or encodes a string or a stream.
+          </div>
     <dl class="function">
     <dt>
-    <a name = "codec.getCodec"></a>
-    <strong>codec.getCodec (alg)</strong>
+    <a name = "codec:decode"></a>
+    <strong>codec:decode (value)</strong>
     </dt>
     <dd>
-    Returns a codec.
+    Decodes the specified string.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">alg</span>
+        <li><span class="parameter">value</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the name of the encoding or decoding algorithm
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        the codec
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "codec.decode"></a>
-    <strong>codec.decode (alg, data)</strong>
-    </dt>
-    <dd>
-    Returns the decoded data.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">alg</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the name of the decoding algorithm
-        </li>
-        <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the data to decode
+         the data to decode.
         </li>
     </ul>
 
@@ -189,7 +170,7 @@
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the decoded data
+        the decoded string.
     </ol>
 
 
@@ -197,23 +178,19 @@
 
 </dd>
     <dt>
-    <a name = "codec.encode"></a>
-    <strong>codec.encode (alg, data)</strong>
+    <a name = "codec:encode"></a>
+    <strong>codec:encode (value)</strong>
     </dt>
     <dd>
-    Returns the encoded data.
+    Encodes the specified string.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">alg</span>
+        <li><span class="parameter">value</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the name of the encoding algorithm
-        </li>
-        <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the data to encode
+         the data to encode.
         </li>
     </ul>
 
@@ -221,7 +198,7 @@
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the encoded data
+        the encoded string.
     </ol>
 
 
@@ -229,20 +206,17 @@
 
 </dd>
     <dt>
-    <a name = "codec.decodeStream"></a>
-    <strong>codec.decodeStream (alg, sh)</strong>
+    <a name = "codec:decodeStream"></a>
+    <strong>codec:decodeStream (sh)</strong>
     </dt>
     <dd>
-    Returns an decoding <a href="../modules/jls.io.StreamHandler.html#">jls.io.StreamHandler</a>.
+    Returns a decoding <a href="../modules/jls.io.StreamHandler.html#">jls.io.StreamHandler</a>.
+ The default implentation consists in using the decode method.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">alg</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the name of the decoding algorithm
-        </li>
         <li><span class="parameter">sh</span>
             <span class="types"><span class="type">StreamHandler</span></span>
          the wrapped stream that will handle the decoded data
@@ -261,20 +235,17 @@
 
 </dd>
     <dt>
-    <a name = "codec.encodeStream"></a>
-    <strong>codec.encodeStream (alg, sh)</strong>
+    <a name = "codec:encodeStream"></a>
+    <strong>codec:encodeStream (sh)</strong>
     </dt>
     <dd>
-    Returns an encoding <a href="../modules/jls.io.StreamHandler.html#">jls.io.StreamHandler</a>.
+    Returns a encoding <a href="../modules/jls.io.StreamHandler.html#">jls.io.StreamHandler</a>.
+ The default implentation consists in using the encode method.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">alg</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the name of the encoding algorithm
-        </li>
         <li><span class="parameter">sh</span>
             <span class="types"><span class="type">StreamHandler</span></span>
          the wrapped stream that will handle the encoded data
@@ -290,6 +261,87 @@
 
 
 
+
+</dd>
+    <dt>
+    <a name = "codec:getName"></a>
+    <strong>codec:getName ()</strong>
+    </dt>
+    <dd>
+    Returns the name of the codec.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        the name of the codec.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Codec.getCodec"></a>
+    <strong>Codec.getCodec (name)</strong>
+    </dt>
+    <dd>
+    Returns the Codec class corresponding to the specified name.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The name of the codec.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The Codec class
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Codec.getInstance"></a>
+    <strong>Codec.getInstance (name)</strong>
+    </dt>
+    <dd>
+    Returns a new Codec.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The name of the codec.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.util.Codec.html#Codec">Codec</a></span>
+        a new Codec
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> codec = Codec.getInstance(<span class="string">'Base64'</span>)
+codec:encode(<span class="string">'Hello !'</span>)</pre>
+    </ul>
 
 </dd>
 </dl>

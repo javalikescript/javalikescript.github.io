@@ -70,6 +70,7 @@
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
+  <li><a href="../modules/jls.util.Codec.html">jls.util.Codec</a></li>
   <li><a href="../modules/jls.util.Date.html">jls.util.Date</a></li>
   <li><strong>jls.util.EventPublisher</strong></li>
   <li><a href="../modules/jls.util.List.html">jls.util.List</a></li>
@@ -81,7 +82,6 @@
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
   <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
-  <li><a href="../modules/jls.util.codec.html">jls.util.codec</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
   <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
@@ -119,15 +119,27 @@
 	<td class="summary">Unsubscribes all the events.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#eventPublisher:subscribeEvent">eventPublisher:subscribeEvent (name, fn)</a></td>
+	<td class="name" nowrap><a href="#eventPublisher:subscribeEvent">eventPublisher:subscribeEvent (name, handler)</a></td>
 	<td class="summary">Subscribes to the specified event name with the specified function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#eventPublisher:subscribeEventOnce">eventPublisher:subscribeEventOnce (name, fn)</a></td>
+	<td class="summary">Subscribes once to the specified event name with the specified function.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#eventPublisher:eventNames">eventPublisher:eventNames ()</a></td>
+	<td class="summary">Returns the subscribed event names.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#eventPublisher:subscriptionCount">eventPublisher:subscriptionCount (name)</a></td>
+	<td class="summary">Returns the number of handlers for the specified event name.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#eventPublisher:unsubscribeEvent">eventPublisher:unsubscribeEvent (name, key)</a></td>
 	<td class="summary">Unsubscribes the specified event name.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#eventPublisher:publishEvent">eventPublisher:publishEvent (name)</a></td>
+	<td class="name" nowrap><a href="#eventPublisher:publishEvent">eventPublisher:publishEvent (name[, ...])</a></td>
 	<td class="summary">Publishes the specified event name.</td>
 	</tr>
 </table>
@@ -180,13 +192,44 @@
 </dd>
     <dt>
     <a name = "eventPublisher:subscribeEvent"></a>
-    <strong>eventPublisher:subscribeEvent (name, fn)</strong>
+    <strong>eventPublisher:subscribeEvent (name, handler)</strong>
     </dt>
     <dd>
     Subscribes to the specified event name with the specified function.
  Registers an event handler/listener.
  When the handler raises an error, the 'error' event is published,
  if there is no handler then the error is propagated.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the event name
+        </li>
+        <li><span class="parameter">handler</span>
+         the function to call when the event is published
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        an opaque key that could be used to unsubscribe
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "eventPublisher:subscribeEventOnce"></a>
+    <strong>eventPublisher:subscribeEventOnce (name, fn)</strong>
+    </dt>
+    <dd>
+    Subscribes once to the specified event name with the specified function.
+ On the first publication, the subscription will be removed prior to call the handler.
 
     </ul>
 
@@ -206,6 +249,55 @@
     <ol>
 
         an opaque key that could be used to unsubscribe
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "eventPublisher:eventNames"></a>
+    <strong>eventPublisher:eventNames ()</strong>
+    </dt>
+    <dd>
+    Returns the subscribed event names.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+        the event names
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "eventPublisher:subscriptionCount"></a>
+    <strong>eventPublisher:subscriptionCount (name)</strong>
+    </dt>
+    <dd>
+    Returns the number of handlers for the specified event name.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the event name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        the number of handlers
     </ol>
 
 
@@ -239,11 +331,11 @@
 </dd>
     <dt>
     <a name = "eventPublisher:publishEvent"></a>
-    <strong>eventPublisher:publishEvent (name)</strong>
+    <strong>eventPublisher:publishEvent (name[, ...])</strong>
     </dt>
     <dd>
     Publishes the specified event name.
- Fires an event
+ Calls each subscribed handler for the event name in the subscription order.
 
     </ul>
 
@@ -252,6 +344,10 @@
         <li><span class="parameter">name</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the event name
+        </li>
+        <li><span class="parameter">...</span>
+         the optional parameters to pass to the handler.
+         (<em>optional</em>)
         </li>
     </ul>
 
