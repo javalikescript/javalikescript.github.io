@@ -109,7 +109,7 @@
 <h2><a href="#Class_Exception">Class Exception </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#StringBuffer:new">StringBuffer:new ([message[, cause[, stack[, name]]]])</a></td>
+	<td class="name" nowrap><a href="#Exception:new">Exception:new ([message[, cause[, stack[, name]]]])</a></td>
 	<td class="summary">Creates a new Exception.</td>
 	</tr>
 	<tr>
@@ -123,6 +123,10 @@
 	<tr>
 	<td class="name" nowrap><a href="#exception:getStackTrace">exception:getStackTrace ()</a></td>
 	<td class="summary">Returns the stack of this exception.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Exception.getMessage">Exception.getMessage (e)</a></td>
+	<td class="summary">Returns the message of the specified value if it is an exception or the specified value itself.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#Exception.pcall">Exception.pcall (fn[, ...])</a></td>
@@ -141,8 +145,8 @@
           </div>
     <dl class="function">
     <dt>
-    <a name = "StringBuffer:new"></a>
-    <strong>StringBuffer:new ([message[, cause[, stack[, name]]]])</strong>
+    <a name = "Exception:new"></a>
+    <strong>Exception:new ([message[, cause[, stack[, name]]]])</strong>
     </dt>
     <dd>
     Creates a new Exception.
@@ -235,6 +239,32 @@
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
         the stack of this exception.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Exception.getMessage"></a>
+    <strong>Exception.getMessage (e)</strong>
+    </dt>
+    <dd>
+    Returns the message of the specified value if it is an exception or the specified value itself.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">e</span>
+         the exception or error message.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the message of the exception possibly nil.
     </ol>
 
 

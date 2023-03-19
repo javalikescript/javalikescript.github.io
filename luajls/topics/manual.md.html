@@ -457,17 +457,15 @@ event:loop()
 <span class="keyword">local</span> event = <span class="global">require</span>(<span class="string">'jls.lang.event'</span>)
 <span class="keyword">local</span> Promise = <span class="global">require</span>(<span class="string">'jls.lang.Promise'</span>)
 
-<span class="keyword">local</span> <span class="keyword">function</span> incrementLater(n, millis)
-  <span class="keyword">return</span> Promise:new(<span class="keyword">function</span>(resolve, reject)
-    event:setTimeout(<span class="keyword">function</span>()
-      resolve(n + <span class="number">1</span>)
-    <span class="keyword">end</span>, millis <span class="keyword">or</span> <span class="number">0</span>)
+<span class="keyword">local</span> <span class="keyword">function</span> incrementLater(n, millis) <span class="comment">-- asynchronous function that return a promise that will resolve after a timeout
+</span>  <span class="keyword">return</span> Promise:new(<span class="keyword">function</span>(resolve)
+    event:setTimeout(resolve, millis <span class="keyword">or</span> <span class="number">0</span>, n + <span class="number">1</span>)
   <span class="keyword">end</span>)
 <span class="keyword">end</span>
 
-Promise.async(<span class="keyword">function</span>(await)
-  <span class="keyword">local</span> n = await(incrementLater(<span class="number">0</span>, <span class="number">1000</span>)) <span class="comment">-- returns 1 after 1 second
-</span>  <span class="global">print</span>(await(incrementLater(n, <span class="number">1000</span>))) <span class="comment">-- prints 2 after another second
+Promise.async(<span class="keyword">function</span>(await) <span class="comment">-- async itself is asynchronous and return a promise
+</span>  <span class="keyword">local</span> n = await(incrementLater(<span class="number">1</span>, <span class="number">1000</span>)) <span class="comment">-- await will block then return 2 after 1 second
+</span>  <span class="global">print</span>(await(incrementLater(n, <span class="number">1000</span>))) <span class="comment">-- prints 3 after another second
 </span><span class="keyword">end</span>):catch(<span class="global">error</span>)
 
 event:loop()
