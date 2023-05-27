@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cypher</title>
+<style>
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+body {
+  font-family: system-ui, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.4rem;
+}
+p {
+  font-size: 1.6rem;
+}
+button {
+  font-size: 1.2rem;
+}
+button, input, textarea {
+  border-radius: .5rem;
+  border-width: 1px;
+  box-shadow: none;
+}
+input[readonly='true'], textarea {
+  width: 99%;
+}
+input[readonly='true'], textarea[readonly='true'] {
+  color: #777;
+}
+</style>
+<script type="text/javascript">
+//<!--
+const tools = {
+  val : function(id, v) {
+    const el = document.getElementById(id);
+    if (el) {
+      if (v === undefined) {
+        return el.value;
+      }
+      if ((typeof v === 'object') && (typeof v.then === 'function')) {
+        v.then(function(r) {
+          el.value = r;
+        });
+      } else {
+        el.value = v;
+      }
+    }
+  },
+  ival : function(id, v) {
+    return parseInt(this.val(id, v), 10);
+  },
+  copy : function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.select();
+      document.execCommand('copy');
+    }
+  },
+  generatePassword : function(length, characterSet) {
+    var oneByte = new Uint8Array(1);
+    const re = new RegExp('[' + characterSet + ']');
+    return Array.apply(null, {'length': length}).map(function () {
+      var result;
+      while (true) {
+        window.crypto.getRandomValues(oneByte);
+        result = String.fromCharCode(oneByte[0]);
+        if (re.test(result)) {
+          return result;
+        }
+      }
+    }, this).join('');
+  },
+  // array buffer to binary string
+  abtob : function(buffer) {
+    var chars = [];
+    new Uint8Array(buffer).forEach(function(b) {
+      chars.push(String.fromCharCode(b));
+    });
+    return chars.join('');
+  },
+  // binary string to array buffer
+  btoab : function(str) {
+    var buffer = new ArrayBuffer(str.length);
+    var ba = new Uint8Array(buffer);
+    for (var i = 0; i < str.length; i++) {
+      var b = str.charCodeAt(i);
+      if (b > 255) {
+        throw new Error('Invalid character, outside byte range');
+      }
+      ba[i] = b;
+    }
+    return buffer;
+  },
+  // ascii base64 to binary string
+  atob : function(str) {
+    return window.atob(str.replace(/\s/g, ''));
+  },
+  // binary string to ascii base64
+  btoa : function(str) {
+    return window.btoa(str);
+  },
+  // string to array buffer
+  stoab : function(str) {
+    return new TextEncoder().encode(str);
+  },
+  // array buffer to string
+  abtos : function(buffer) {
+    return new TextDecoder().decode(buffer);
+  },
+  ascii : function(str) {
+    return str.replace(/[^\x00-\x7F]/g, '');
+  },
+  // string to binary string
+  stob : function(str) {
+    return this.abtob(new TextEncoder().encode(str));
+  },
+  // binary string to string
+  btos : function(bstr) {
+    return new TextDecoder().decode(this.btoab(bstr));
+  },
+  abconcat : function() {
+    var args = Array.from(arguments);
+    var size = args.reduce(function(s, arg) {
+      return s + arg.byteLength;
+    }, 0);
+    var a = new Uint8Array(size);
+    size = 0;
+    args.forEach(function(arg) {
+      a.set(new Uint8Array(arg), size);
+      size += arg.byteLength;
+    });
+    return a.buffer;
+  },
+  // see https://www.w3.org/TR/WebCryptoAPI/
+  encrypt : async function(plainText, plainKey) {
+    if (!(window.crypto && window.crypto.subtle)) {
+      return '/!\\ No crypto available';
+    }
+    try {
+      const keyHash = await window.crypto.subtle.digest('SHA-256', this.stoab(plainKey));
+      const iv = window.crypto.getRandomValues(new Uint8Array(12)); // never reuse the same IV with the same key
+      const alg = { name: 'AES-GCM', iv: iv };
+      const key = await window.crypto.subtle.importKey('raw', keyHash, alg, false, ['encrypt']);
+      const ptUtf8 = new TextEncoder().encode(plainText);
+      const cipherTextBuffer = await window.crypto.subtle.encrypt(alg, key, ptUtf8);
+      return this.btoa(this.abtob(this.abconcat(iv, cipherTextBuffer)));
+    } catch (e) {
+      return '/!\\ Failed';
+    }
+  },
+  decrypt : async function(cipherTextBase64, plainKey) {
+    if (!(window.crypto && window.crypto.subtle)) {
+      return '/!\\ No crypto available';
+    }
+    try {
+      const keyHash = await window.crypto.subtle.digest('SHA-256', this.stoab(plainKey));
+      const cipherTextBuffer = this.btoab(this.atob(cipherTextBase64))
+      const iv = cipherTextBuffer.slice(0, 12);
+      const alg = { name: 'AES-GCM', iv: iv };
+      const key = await window.crypto.subtle.importKey('raw', keyHash, alg, false, ['decrypt']);
+      const plainTextBuffer = await window.crypto.subtle.decrypt(alg, key, cipherTextBuffer.slice(12));
+      return new TextDecoder().decode(plainTextBuffer);
+    } catch (e) {
+      return '/!\\ Failed';
+    }
+  }
+};
+//-->
+</script>
+</head>
+  <body>
+    <p>Encryption/Decryption (AES-GCM)</p>
+    <span>&#x1f511; key:</span>
+    <input type="password" id="password" title="Secret Key" size="32" />
+    <br />
+    <textarea id="input" rows="8" autocomplete="off" spellcheck="false"></textarea>
+    <br />
+    <button onclick="tools.val('output', tools.encrypt(tools.val('input'), tools.val('password')))">&#x1f512; encrypt</button>
+    <button onclick="tools.val('output', tools.decrypt(tools.val('input'), tools.val('password')))">&#x1f513; decrypt</button>
+    <button onclick="tools.val('password', ''); tools.val('input', ''); tools.val('output', '')">&#x1f5d1; clear</button>
+    <button onclick="tools.copy('output')">&#x1f4cb; copy</button>
+    <br />
+    <textarea id="output" rows="8" readonly="true"></textarea>
+    <br />
+    <p>Password Generation</p>
+    <input type="number" id="passwordLength" title="Length" size="6" value="18" />
+    <input type="text" id="passwordCharacterSet" title="Character Set" size="20" value="a-zA-Z0-9_-"/>
+    <button onclick="tools.val('passwordValue', tools.generatePassword(tools.ival('passwordLength'), tools.val('passwordCharacterSet')))">&#x1f504; generate</button>
+    <button onclick="tools.copy('passwordValue')">&#x1f4cb; copy</button>
+    <input type="text" id="passwordValue" readOnly="true"/>
+    <br />
+  </body>
+</html>
