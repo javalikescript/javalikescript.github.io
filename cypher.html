@@ -59,19 +59,69 @@ const tools = {
       document.execCommand('copy');
     }
   },
+  readFile : function(file) {
+    return new Promise(function(resolve, reject) {
+      var reader = new FileReader();
+      reader.onerror = reject;
+      reader.onload = function (e) {
+        try {
+          resolve(e.target.result);
+        } catch (e) {
+          reject(e);
+        }
+      };
+      reader.readAsBinaryString(file);
+    });
+  },
+  createBlob: function (data, type, charset) {
+    if (typeof type !== 'string') {
+      type = 'text/plain';
+    }
+    if (typeof charset === 'string') {
+      type = 'data:' + type + ';charset=' + charset;
+    }
+    console.log('createBlob()', data);
+    return new window.Blob([data], { type: type });
+  },
+  saveOrOpenBlob: function (blob, filename) {
+    if (window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
+      var blobUrl = window.URL.createObjectURL(blob);
+      var link = window.document.createElement('a');
+      if ('download' in link) {
+        link.setAttribute('download', filename);
+        link.setAttribute('href', blobUrl);
+        link.setAttribute('style', 'display:none');
+        document.body.appendChild(link);
+        try {
+          link.click();
+        } finally {
+          document.body.removeChild(link);
+        }
+      } else {
+        if (!window.open(blobUrl)) {
+          throw new Error("Could not save.");
+        }
+      }
+    }
+  },
   generatePassword : function(length, characterSet) {
-    var oneByte = new Uint8Array(1);
+    const oneByte = new Uint8Array(1);
     const re = new RegExp('[' + characterSet + ']');
-    return Array.apply(null, {'length': length}).map(function () {
+    const chars = [];
+    while (--length >= 0) {
       var result;
       while (true) {
         window.crypto.getRandomValues(oneByte);
         result = String.fromCharCode(oneByte[0]);
         if (re.test(result)) {
-          return result;
+          chars.push(result);
+          break;
         }
       }
-    }, this).join('');
+    }
+    return chars.join('');
   },
   // array buffer to binary string
   abtob : function(buffer) {
@@ -182,6 +232,9 @@ const tools = {
     <button onclick="tools.val('output', tools.decrypt(tools.val('input'), tools.val('password')))">&#x1f513; decrypt</button>
     <button onclick="tools.val('password', ''); tools.val('input', ''); tools.val('output', '')">&#x1f5d1; clear</button>
     <button onclick="tools.copy('output')">&#x1f4cb; copy</button>
+    <input type="file" id="file" hidden="true" onchange="tools.readFile(document.getElementById('file').files[0]).then(function(c) {tools.val('input', tools.btoa(c))})" />
+    <button onclick="document.getElementById('file').click()">&#x1f4c1; import</button>
+    <button onclick="tools.saveOrOpenBlob(tools.createBlob(tools.atob(tools.val('output')), 'application/base64'), 'clear.bin')">&#x1f4be; export</button>
     <br />
     <textarea id="output" rows="8" readonly="true"></textarea>
     <br />
