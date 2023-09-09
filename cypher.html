@@ -16,6 +16,9 @@ body {
 p {
   font-size: 1.6rem;
 }
+label {
+  font-size: 1.2rem;
+}
 button {
   font-size: 1.2rem;
 }
@@ -24,11 +27,21 @@ button, input, textarea {
   border-width: 1px;
   box-shadow: none;
 }
+input[type='checkbox'] {
+  vertical-align: bottom;
+}
 input[readonly='true'], textarea {
   width: 99%;
 }
-input[readonly='true'], textarea[readonly='true'] {
+[readonly='true']:not(.hide-text) {
   color: #777;
+}
+.hide-text {
+  color: transparent;
+  text-shadow: 0 0 5px #777;
+}
+.hide {
+  visibility: hidden;
 }
 </style>
 <script type="text/javascript">
@@ -38,25 +51,54 @@ const tools = {
     const el = document.getElementById(id);
     if (el) {
       if (v === undefined) {
+        if (el.type === 'checkbox') {
+          return el.checked;
+        }
         return el.value;
       }
-      if ((typeof v === 'object') && (typeof v.then === 'function')) {
-        v.then(function(r) {
-          el.value = r;
-        });
-      } else {
-        el.value = v;
-      }
+      el.value = v;
     }
   },
   ival : function(id, v) {
     return parseInt(this.val(id, v), 10);
   },
-  copy : function(id) {
+  enableClass : function(id, classname, enable) {
     const el = document.getElementById(id);
     if (el) {
+      if (enable) {
+        el.classList.add(classname);
+      } else {
+        el.classList.remove(classname);
+      }
+    }
+  },
+  clipboard : function(v) {
+    if (navigator.clipboard && navigator.clipboard.readText && navigator.clipboard.writeText) {
+      if (v === undefined) {
+        return navigator.clipboard.readText();
+      }
+      return navigator.clipboard.writeText(v);
+    }
+    const el = document.createElement('textarea');
+    document.body.appendChild(el);
+    el.focus();
+    try {
+      if (v === undefined) {
+        if (!document.execCommand('paste')) {
+          throw 'fail to paste from the clipboard';
+        }
+        return Promise.resolve(el.value);
+      }
+      el.value = v;
       el.select();
-      document.execCommand('copy');
+      if (!document.execCommand('copy')) {
+        throw 'fail to copy to the clipboard';
+      }
+      return Promise.resolve();
+    } catch (e) {
+      return Promise.reject(e);
+    } finally {
+      document.body.removeChild(el);
     }
   },
   readFile : function(file) {
@@ -80,7 +122,6 @@ const tools = {
     if (typeof charset === 'string') {
       type = 'data:' + type + ';charset=' + charset;
     }
-    console.log('createBlob()', data);
     return new window.Blob([data], { type: type });
   },
   saveOrOpenBlob: function (blob, filename) {
@@ -105,23 +146,6 @@ const tools = {
         }
       }
     }
-  },
-  generatePassword : function(length, characterSet) {
-    const oneByte = new Uint8Array(1);
-    const re = new RegExp('[' + characterSet + ']');
-    const chars = [];
-    while (--length >= 0) {
-      var result;
-      while (true) {
-        window.crypto.getRandomValues(oneByte);
-        result = String.fromCharCode(oneByte[0]);
-        if (re.test(result)) {
-          chars.push(result);
-          break;
-        }
-      }
-    }
-    return chars.join('');
   },
   // array buffer to binary string
   abtob : function(buffer) {
@@ -218,6 +242,74 @@ const tools = {
     }
   }
 };
+
+function generatePassword(length, characterSet) {
+  const oneByte = new Uint8Array(1);
+  const re = new RegExp('[' + characterSet + ']');
+  const chars = [];
+  while (--length >= 0) {
+    var result;
+    while (true) {
+      window.crypto.getRandomValues(oneByte);
+      result = String.fromCharCode(oneByte[0]);
+      if (re.test(result)) {
+        chars.push(result);
+        break;
+      }
+    }
+  }
+  return chars.join('');
+}
+let fileContentCallback;
+function onFileChange() {
+  const cb = fileContentCallback;
+  fileContentCallback = undefined;
+  if (typeof cb === 'function') {
+    tools.readFile(document.getElementById('file').files[0]).then(cb);
+  }
+}
+function readFile() {
+  return new Promise(function(resolve) {
+    fileContentCallback = resolve;
+    document.getElementById('file').click();
+  });
+}
+function showPassword(id, show) {
+  const el = document.getElementById(id);
+  el.type = show ? 'text' : 'password';
+}
+function showContent(checked) {
+  tools.enableClass('input', 'hide-text', !checked)
+  tools.enableClass('output', 'hide-text', !checked)
+}
+function useFile(checked) {
+  tools.enableClass('input', 'hide', checked);
+  tools.enableClass('output', 'hide', checked);
+}
+function clearAll() {
+  ['password', 'input', 'output'].forEach(function(n) {
+    tools.val(n, '');
+  })
+}
+async function crypt(plainKey, decrypt) {
+  let c;
+  if (tools.val('use-file')) {
+    c = await readFile();
+  } else {
+    c = tools.val('input');
+  }
+  let r;
+  if (decrypt) {
+    r = await tools.decrypt(c, plainKey);
+  } else {
+    r = await tools.encrypt(c, plainKey);
+  }
+  if (tools.val('use-file')) {
+    tools.saveOrOpenBlob(tools.createBlob(r, 'application/base64'), 'clear.bin');
+  } else {
+    tools.val('output', r);
+  }
+}
 //-->
 </script>
 </head>
@@ -225,25 +317,40 @@ const tools = {
     <p>Encryption/Decryption (AES-GCM)</p>
     <span>&#x1f511; key:</span>
     <input type="password" id="password" title="Secret Key" size="32" />
+    <button onclick="tools.val('password', generatePassword(tools.ival('passwordLength'), tools.val('passwordCharacterSet')))">&#x1f504; generate</button>
+    <button onclick="tools.clipboard(tools.val('password'))" title="Copy the password to the clipboard">&#x1f4cb; copy</button>
     <br />
-    <textarea id="input" rows="8" autocomplete="off" spellcheck="false"></textarea>
+    <textarea id="input" class="hide-text" rows="8" autocomplete="off" spellcheck="false"></textarea>
     <br />
-    <button onclick="tools.val('output', tools.encrypt(tools.val('input'), tools.val('password')))">&#x1f512; encrypt</button>
-    <button onclick="tools.val('output', tools.decrypt(tools.val('input'), tools.val('password')))">&#x1f513; decrypt</button>
-    <button onclick="tools.val('password', ''); tools.val('input', ''); tools.val('output', '')">&#x1f5d1; clear</button>
-    <button onclick="tools.copy('output')">&#x1f4cb; copy</button>
-    <input type="file" id="file" hidden="true" onchange="tools.readFile(document.getElementById('file').files[0]).then(function(c) {tools.val('input', tools.btoa(c))})" />
-    <button onclick="document.getElementById('file').click()">&#x1f4c1; import</button>
-    <button onclick="tools.saveOrOpenBlob(tools.createBlob(tools.atob(tools.val('output')), 'application/base64'), 'clear.bin')">&#x1f4be; export</button>
+    <button onclick="crypt(tools.val('password'), true)">&#x1f513; decrypt</button>
+    <button onclick="crypt(tools.val('password'), false)">&#x1f512; encrypt</button>
+    <button onclick="tools.clipboard(tools.val('output'))" title="Copy the result to the clipboard">&#x1f4cb; copy</button>
+    <input type="file" id="file" hidden="true" onchange="onFileChange()" />
     <br />
-    <textarea id="output" rows="8" readonly="true"></textarea>
+    <textarea id="output" class="hide-text" rows="8" readonly="true"></textarea>
     <br />
-    <p>Password Generation</p>
-    <input type="number" id="passwordLength" title="Length" size="6" value="18" />
-    <input type="text" id="passwordCharacterSet" title="Character Set" size="20" value="a-zA-Z0-9_-"/>
-    <button onclick="tools.val('passwordValue', tools.generatePassword(tools.ival('passwordLength'), tools.val('passwordCharacterSet')))">&#x1f504; generate</button>
-    <button onclick="tools.copy('passwordValue')">&#x1f4cb; copy</button>
-    <input type="text" id="passwordValue" readOnly="true"/>
+    <br />
+    <p>Options</p>
+    <label>key length</label>
+    <input type="number" id="passwordLength" title="Key generation length" size="6" value="18" />
+    <label>using</label>
+    <input type="text" id="passwordCharacterSet" title="Key generation character set" size="20" value="a-zA-Z0-9_-"/>
+    <input type="checkbox" id="show-password" name="show-password" onchange="showPassword('password', this.checked)"/>
+    <label for="show-password">show key</label>
+    <input type="checkbox" id="show-content" name="show-content" onchange="showContent(this.checked)"/>
+    <label for="show-content">show content</label>
+    <input type="checkbox" id="use-file" name="use-file" onchange="useFile(this.checked)"/>
+    <label for="use-file">use file</label>
+    <br />
+    <br />
+    <button onclick="clearAll()" title="clear">&#x1f5d1; clear</button>
     <br />
   </body>
+<script type="text/javascript">
+//<!--
+if (window.location.hash) {
+  tools.val('input', window.location.hash.substring(1));
+}
+//-->
+</script>
 </html>
