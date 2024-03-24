@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -61,6 +61,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -68,6 +69,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><strong>jls.net.http.HttpServer</strong></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -147,16 +149,20 @@
 	<td class="summary">Returns the context path.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#httpContext:getBasePath">httpContext:getBasePath ()</a></td>
+	<td class="summary">Returns a path that match this context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpContext:setBasePath">httpContext:setBasePath (basePath)</a></td>
+	<td class="summary">Sets the base path, default is guessed from the context path.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#httpContext:setPathReplacement">httpContext:setPathReplacement (repl)</a></td>
 	<td class="summary">Sets the path replacement, default is '%1'.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#httpContext:getArguments">httpContext:getArguments (path)</a></td>
 	<td class="summary">Returns the captured values of the specified path.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#httpContext:replacePath">httpContext:replacePath (path)</a></td>
-	<td class="summary">Returns the target path of the specified path.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#HttpServer.HttpContext">HttpServer.HttpContext</a></td>
@@ -184,8 +190,8 @@ httpServer:bind(hostname, port):<span class="global">next</span>(<span class="ke
 <span class="keyword">end</span>, <span class="keyword">function</span>(err) <span class="comment">-- could failed if address is in use or hostname cannot be resolved
 </span>  <span class="global">print</span>(<span class="string">'Cannot bind HTTP server, '</span>..<span class="global">tostring</span>(err))
 <span class="keyword">end</span>)
-httpServer:createContext(<span class="string">'/'</span>, <span class="keyword">function</span>(httpExchange)
-  <span class="keyword">local</span> response = httpExchange:getResponse()
+httpServer:createContext(<span class="string">'/'</span>, <span class="keyword">function</span>(exchange)
+  <span class="keyword">local</span> response = exchange:getResponse()
   response:setBody(<span class="string">'It works !'</span>)
 <span class="keyword">end</span>)
 event:loop()</pre>
@@ -197,6 +203,7 @@ event:loop()</pre>
     <dd>
     Creates a new HTTP server.
 
+    </ul>
     </ul>
 
 
@@ -220,6 +227,7 @@ event:loop()</pre>
  You could use the <a href="../modules/jls.util.strings.html#">jls.util.strings</a>.escape() function.
  The path is absolute and starts with a slash '/'.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -253,6 +261,7 @@ event:loop()</pre>
  It could be a mix of contexts or pair of path, handler to create.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -279,6 +288,7 @@ event:loop()</pre>
     <dd>
     Binds this server to the specified address and port number.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -330,6 +340,7 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
  This method will close the pending client connections and contexts.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -359,6 +370,7 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
     The default not found handler.
 
     </ul>
+    </ul>
 
 
 
@@ -383,6 +395,7 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
  The handler will be called when the request headers have been received if specified.
  The handler will be called when the body has been received if no response has been set.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -412,6 +425,7 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
     Returns the context path.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -426,12 +440,62 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
 
 </dd>
     <dt>
+    <a name = "httpContext:getBasePath"></a>
+    <strong>httpContext:getBasePath ()</strong>
+    </dt>
+    <dd>
+    Returns a path that match this context.
+
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        the base path
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpContext:setBasePath"></a>
+    <strong>httpContext:setBasePath (basePath)</strong>
+    </dt>
+    <dd>
+    Sets the base path, default is guessed from the context path.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">basePath</span>
+         the base path
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        this context
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "httpContext:setPathReplacement"></a>
     <strong>httpContext:setPathReplacement (repl)</strong>
     </dt>
     <dd>
     Sets the path replacement, default is '%1'.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -459,35 +523,6 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
     Returns the captured values of the specified path.
 
     </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">path</span>
-
-
-
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the first captured value, nil if there is no captured value.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "httpContext:replacePath"></a>
-    <strong>httpContext:replacePath (path)</strong>
-    </dt>
-    <dd>
-    Returns the target path of the specified path.
- It consists in the first captured value, or the
-
     </ul>
 
     <h3>Parameters:</h3>
@@ -503,7 +538,7 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the first captured value, nil if there is no captured value.
+        the first captured value or the whole path, nil if the path does not match.
     </ol>
 
 
@@ -517,6 +552,7 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
     <dd>
     The HttpContext class.
 
+    </ul>
     </ul>
 
 

@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><strong>jls.net.http.HttpExchange</strong></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -111,16 +113,12 @@
 <h2><a href="#Class_HttpExchange">Class HttpExchange </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#httpExchange:setAttribute">httpExchange:setAttribute (name, value)</a></td>
-	<td class="summary">Sets the specified value for the specified name.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#httpExchange:getAttribute">httpExchange:getAttribute (name)</a></td>
-	<td class="summary">Returns the value for the specified name.</td>
-	</tr>
-	<tr>
 	<td class="name" nowrap><a href="#httpExchange:getContext">httpExchange:getContext ()</a></td>
 	<td class="summary">Returns the HTTP context.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:getSession">httpExchange:getSession ()</a></td>
+	<td class="summary">Returns the HTTP session.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#httpExchange:getRequest">httpExchange:getRequest ()</a></td>
@@ -147,8 +145,8 @@
 	<td class="summary">Returns the request path as replaced by the context.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#httpExchange:onRequestBody">httpExchange:onRequestBody ([buffer])</a></td>
-	<td class="summary">Returns a promise that resolves once the request body is available.</td>
+	<td class="name" nowrap><a href="#httpExchange:getSearchParams">httpExchange:getSearchParams ()</a></td>
+	<td class="summary">Returns the request query parameters as a table.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#httpExchange:onClose">httpExchange:onClose ()</a></td>
@@ -157,6 +155,10 @@
 	<tr>
 	<td class="name" nowrap><a href="#httpExchange:setResponseStatusCode">httpExchange:setResponseStatusCode (status[, reason[, body]])</a></td>
 	<td class="summary">Sets the status code for the response.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpExchange:applyKeepAlive">httpExchange:applyKeepAlive ()</a></td>
+	<td class="summary">Applies the connection header and returns true if keep alive applies.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#HttpExchange.ok">HttpExchange.ok (exchange[, body[, contentType]])</a></td>
@@ -192,60 +194,9 @@
 
           <div class="section-description">
           The HttpExchange class wraps the HTTP request and response.
+ This class inherits from <a href="../modules/jls.net.http.HttpHeaders.html">HttpHeaders</a>.
           </div>
     <dl class="function">
-    <dt>
-    <a name = "httpExchange:setAttribute"></a>
-    <strong>httpExchange:setAttribute (name, value)</strong>
-    </dt>
-    <dd>
-    Sets the specified value for the specified name.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the attribute name
-        </li>
-        <li><span class="parameter">value</span>
-         the attribute value
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "httpExchange:getAttribute"></a>
-    <strong>httpExchange:getAttribute (name)</strong>
-    </dt>
-    <dd>
-    Returns the value for the specified name.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the attribute name
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        the attribute value
-    </ol>
-
-
-
-
-</dd>
     <dt>
     <a name = "httpExchange:getContext"></a>
     <strong>httpExchange:getContext ()</strong>
@@ -254,6 +205,7 @@
     Returns the HTTP context.
  Only available during the request handling
 
+    </ul>
     </ul>
 
 
@@ -269,12 +221,35 @@
 
 </dd>
     <dt>
+    <a name = "httpExchange:getSession"></a>
+    <strong>httpExchange:getSession ()</strong>
+    </dt>
+    <dd>
+    Returns the HTTP session.
+
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">HttpSession</span></span>
+        the HTTP session.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "httpExchange:getRequest"></a>
     <strong>httpExchange:getRequest ()</strong>
     </dt>
     <dd>
     Returns the HTTP request.
 
+    </ul>
     </ul>
 
 
@@ -297,6 +272,7 @@
     Returns the HTTP response.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -317,6 +293,7 @@
     <dd>
     Returns the HTTP request method.
 
+    </ul>
     </ul>
 
 
@@ -339,6 +316,7 @@
     Returns the HTTP request headers.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -359,6 +337,7 @@
     <dd>
     Returns the captured values of the request target path using the context path.
 
+    </ul>
     </ul>
 
 
@@ -381,6 +360,7 @@
     Returns the request path as replaced by the context.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -395,28 +375,21 @@
 
 </dd>
     <dt>
-    <a name = "httpExchange:onRequestBody"></a>
-    <strong>httpExchange:onRequestBody ([buffer])</strong>
+    <a name = "httpExchange:getSearchParams"></a>
+    <strong>httpExchange:getSearchParams ()</strong>
     </dt>
     <dd>
-    Returns a promise that resolves once the request body is available.
+    Returns the request query parameters as a table.
 
     </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">buffer</span>
-            <span class="types"><span class="type">boolean</span></span>
-         true to indicate that the request body must be bufferred.
-         (<em>optional</em>)
-        </li>
     </ul>
+
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">jls.lang.Promise</span></span>
-        a promise that resolves once the request body is available.
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+        the query parameters.
     </ol>
 
 
@@ -430,6 +403,7 @@
     <dd>
     Returns a promise that resolves once the exchange is closed.
 
+    </ul>
     </ul>
 
 
@@ -451,6 +425,7 @@
     <dd>
     Sets the status code for the response.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -477,12 +452,37 @@
 
 </dd>
     <dt>
+    <a name = "httpExchange:applyKeepAlive"></a>
+    <strong>httpExchange:applyKeepAlive ()</strong>
+    </dt>
+    <dd>
+    Applies the connection header and returns true if keep alive applies.
+ Use the response connection header if any or the request one if any
+ otherwise default to close in version 1.0 and keep-alive in 1.1.
+
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true if keep alive applies to the response
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "HttpExchange.ok"></a>
     <strong>HttpExchange.ok (exchange[, body[, contentType]])</strong>
     </dt>
     <dd>
     Updates the response with the OK status code, 200.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -516,6 +516,7 @@
     Updates the response with the status code Bad Request, 400.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -542,6 +543,7 @@
     <dd>
     Updates the response with the status code Forbidden, 403.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -570,6 +572,7 @@
     Updates the response with the status code Not Found, 404.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -592,6 +595,7 @@
     Updates the response with the status code Method Not Allowed, 405.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -613,6 +617,7 @@
     <dd>
     Updates the response with the status code Internal Server Error, 500.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

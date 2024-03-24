@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -125,10 +127,6 @@
 	<td class="summary">Returns a funtion that will try to require the specified Lua module only once.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#lazyFunction">lazyFunction (providerFn)</a></td>
-	<td class="summary">Builds a function by requiring its dependencies on first call.</td>
-	</tr>
-	<tr>
 	<td class="name" nowrap><a href="#lazyMethod">lazyMethod (m, key, providerFn)</a></td>
 	<td class="summary">Adds a method by requiring its dependencies on first call.</td>
 	</tr>
@@ -152,6 +150,10 @@
 	<td class="name" nowrap><a href="#load">load (name[, path[, try[, asRequire]]])</a></td>
 	<td class="summary">Loads a module using a specific path.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#loadResource">loadResource (name[, try])</a></td>
+	<td class="summary">Loads a resource.</td>
+	</tr>
 </table>
 
 <br/>
@@ -168,6 +170,7 @@
     <dd>
     Requires the specified Lua module.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -195,6 +198,7 @@
     <dd>
     Requires the specified Lua modules.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -228,6 +232,7 @@
     Returns the specified Lua module if already loaded.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -255,6 +260,7 @@
     Returns a funtion that will try to require the specified Lua module only once.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -276,40 +282,15 @@
 
 </dd>
     <dt>
-    <a name = "lazyFunction"></a>
-    <strong>lazyFunction (providerFn)</strong>
-    </dt>
-    <dd>
-    Builds a function by requiring its dependencies on first call.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">providerFn</span>
-            <span class="types"><span class="type">function</span></span>
-         A function which will be called only once with the loaded modules or nil values when modules are not found.
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">funtion</span></span>
-        the function returned by the providerFn parameter.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
     <a name = "lazyMethod"></a>
     <strong>lazyMethod (m, key, providerFn)</strong>
     </dt>
     <dd>
     Adds a method by requiring its dependencies on first call.
+ Lazy method allows cycling dependencies.
+ The module method will be replaced on the first call, caching the boot method works but is not recommended.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -351,6 +332,7 @@ If no module could be loaded then an error is raised.
 If there is only one module then the base module shall be the same.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -380,6 +362,7 @@ If there is only one module then the base module shall be the same.
     <dd>
     Requires the Lua object specified by its path.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -415,6 +398,7 @@ If there is only one module then the base module shall be the same.
  This is not the opposite of the require and bad things could happen.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -436,6 +420,7 @@ If there is only one module then the base module shall be the same.
     <dd>
     Unloads all the specified Lua modules.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -462,6 +447,7 @@ If there is only one module then the base module shall be the same.
     <dd>
     Loads a module using a specific path.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -491,6 +477,43 @@ If there is only one module then the base module shall be the same.
     <ol>
 
         the loaded module or nil if an error occured
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "loadResource"></a>
+    <strong>loadResource (name[, try])</strong>
+    </dt>
+    <dd>
+    Loads a resource.
+ A resource is data accessible in the Lua path or in the table <code>package.resource</code>.
+ If no resource is found, or if there is any error loading the resource, then an error is raised.
+ If <code>package.resource[name]</code> returns a function, then it is called to get the resource with the name as parameter.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the name of the resource to load using slash as separator, for example "a/b.json"
+        </li>
+        <li><span class="parameter">try</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to return nil in place of raising an error
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        the resource
     </ol>
 
 

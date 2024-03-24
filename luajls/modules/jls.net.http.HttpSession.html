@@ -33,7 +33,7 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Class_ProcessHandle">Class ProcessHandle </a></li>
+<li><a href="#Class_HttpSession">Class HttpSession </a></li>
 </ul>
 
 
@@ -47,7 +47,7 @@
   <li><a href="../modules/jls.io.StreamHandler.html">jls.io.StreamHandler</a></li>
   <li><a href="../modules/jls.lang.Exception.html">jls.lang.Exception</a></li>
   <li><a href="../modules/jls.lang.ProcessBuilder.html">jls.lang.ProcessBuilder</a></li>
-  <li><strong>jls.lang.ProcessHandle</strong></li>
+  <li><a href="../modules/jls.lang.ProcessHandle.html">jls.lang.ProcessHandle</a></li>
   <li><a href="../modules/jls.lang.Promise.html">jls.lang.Promise</a></li>
   <li><a href="../modules/jls.lang.StringBuffer.html">jls.lang.StringBuffer</a></li>
   <li><a href="../modules/jls.lang.Thread.html">jls.lang.Thread</a></li>
@@ -68,7 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
-  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
+  <li><strong>jls.net.http.HttpSession</strong></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -103,42 +103,33 @@
 
 <div id="content">
 
-<h1>Module <code>jls.lang.ProcessHandle</code></h1>
-<p>Represents a native process.</p>
-<p>
+<h1>Module <code>jls.net.http.HttpSession</code></h1>
+<p>HTTP session class.</p>
+<p>A session is associated to the HTTP exchange.
+It can be used for tasks such as authentication, access control.</p>
 
-</p>
 
-
-<h2><a href="#Class_ProcessHandle">Class ProcessHandle </a></h2>
+<h2><a href="#Class_HttpSession">Class HttpSession </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#processHandle:getPid">processHandle:getPid ()</a></td>
-	<td class="summary">Returns the Process ID for this process.</td>
+	<td class="name" nowrap><a href="#HttpSession:new">HttpSession:new ()</a></td>
+	<td class="summary">Creates an HTTP session.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#processHandle:isAlive">processHandle:isAlive ()</a></td>
-	<td class="summary">Returns true if this process is alive.</td>
+	<td class="name" nowrap><a href="#httpSession:getId">httpSession:getId ()</a></td>
+	<td class="summary">Returns this session id.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#processHandle:ended">processHandle:ended ()</a></td>
-	<td class="summary">Returns a promise that resolves once this process is terminated.</td>
+	<td class="name" nowrap><a href="#httpSession:getCreationTime">httpSession:getCreationTime ()</a></td>
+	<td class="summary">Returns the creation time of this session.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#processHandle:destroy">processHandle:destroy ()</a></td>
-	<td class="summary">Destroys this process.</td>
+	<td class="name" nowrap><a href="#httpSession:getLastAccessTime">httpSession:getLastAccessTime ()</a></td>
+	<td class="summary">Returns the time where this session was last accessed.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ProcessHandle.of">ProcessHandle.of (pid)</a></td>
-	<td class="summary">Returns a new ProcessHandle with the specified Process ID.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#ProcessHandle.getCurrentPid">ProcessHandle.getCurrentPid ()</a></td>
-	<td class="summary">Returns the Process ID of the current process.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#ProcessHandle.getExecutablePath">ProcessHandle.getExecutablePath ()</a></td>
-	<td class="summary">Returns the current executable path.</td>
+	<td class="name" nowrap><a href="#httpSession:invalidate">httpSession:invalidate ()</a></td>
+	<td class="summary">Invalidates this session.</td>
 	</tr>
 </table>
 
@@ -146,39 +137,19 @@
 <br/>
 
 
-    <h2 class="section-header has-description"><a name="Class_ProcessHandle"></a>Class ProcessHandle </h2>
+    <h2 class="section-header has-description"><a name="Class_HttpSession"></a>Class HttpSession </h2>
 
           <div class="section-description">
-          A ProcessHandle class.
+          A HttpSession class.
+ The HttpSession class inherits from <a href="../modules/jls.net.http.Attributes.html">Attributes</a>.
           </div>
     <dl class="function">
     <dt>
-    <a name = "processHandle:getPid"></a>
-    <strong>processHandle:getPid ()</strong>
+    <a name = "HttpSession:new"></a>
+    <strong>HttpSession:new ()</strong>
     </dt>
     <dd>
-    Returns the Process ID for this process.
-
-    </ul>
-    </ul>
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-        the Process ID for this process.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "processHandle:isAlive"></a>
-    <strong>processHandle:isAlive ()</strong>
-    </dt>
-    <dd>
-    Returns true if this process is alive.
+    Creates an HTTP session.
 
     </ul>
     </ul>
@@ -190,99 +161,11 @@
 
 </dd>
     <dt>
-    <a name = "processHandle:ended"></a>
-    <strong>processHandle:ended ()</strong>
+    <a name = "httpSession:getId"></a>
+    <strong>httpSession:getId ()</strong>
     </dt>
     <dd>
-    Returns a promise that resolves once this process is terminated.
-
-    </ul>
-    </ul>
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">jls.lang.Promise</span></span>
-        a promise that resolves once this process is terminated.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "processHandle:destroy"></a>
-    <strong>processHandle:destroy ()</strong>
-    </dt>
-    <dd>
-    Destroys this process.
-
-    </ul>
-    </ul>
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ProcessHandle.of"></a>
-    <strong>ProcessHandle.of (pid)</strong>
-    </dt>
-    <dd>
-    Returns a new ProcessHandle with the specified Process ID.
-
-    </ul>
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">pid</span>
-            <span class="types"><span class="type">number</span></span>
-         the process identifier.
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        a new ProcessHandle with the specified Process ID.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ProcessHandle.getCurrentPid"></a>
-    <strong>ProcessHandle.getCurrentPid ()</strong>
-    </dt>
-    <dd>
-    Returns the Process ID of the current process.
-
-    </ul>
-    </ul>
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">number</span></span>
-        the Process ID of the current process.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ProcessHandle.getExecutablePath"></a>
-    <strong>ProcessHandle.getExecutablePath ()</strong>
-    </dt>
-    <dd>
-    Returns the current executable path.
+    Returns this session id.
 
     </ul>
     </ul>
@@ -292,8 +175,70 @@
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the current executable path.
+        the session id.
     </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpSession:getCreationTime"></a>
+    <strong>httpSession:getCreationTime ()</strong>
+    </dt>
+    <dd>
+    Returns the creation time of this session.
+ The time is given as the number of milliseconds since the Epoch, 1970-01-01 00:00:00 +0000 (UTC).
+
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        the creation time.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpSession:getLastAccessTime"></a>
+    <strong>httpSession:getLastAccessTime ()</strong>
+    </dt>
+    <dd>
+    Returns the time where this session was last accessed.
+ The time is given as the number of milliseconds since the Epoch, 1970-01-01 00:00:00 +0000 (UTC).
+
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        the last access time.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpSession:invalidate"></a>
+    <strong>httpSession:invalidate ()</strong>
+    </dt>
+    <dd>
+    Invalidates this session.
+
+    </ul>
+    </ul>
+
+
 
 
 

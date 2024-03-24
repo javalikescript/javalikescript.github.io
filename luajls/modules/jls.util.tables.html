@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -121,12 +123,21 @@
 	<td class="summary">Copies the value from the source table into the target.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#tables.compare">tables.compare (oldTable, newTable)</a></td>
+	<td class="name" nowrap><a href="#tables.compare">tables.compare (oldTable, newTable[, list])</a></td>
 	<td class="summary">Returns a table containing the differences between the two specified tables.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#tables.patch">tables.patch (oldTable, diff)</a></td>
 	<td class="summary">Returns a table patched according to the specified differences.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tables.get">tables.get (t, ...)</a></td>
+	<td class="summary">Returns the value at the indices in the deep table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tables.set">tables.set (t, value, ...)</a></td>
+	<td class="summary">Sets the value at the indices in the deep table
+ The intermediary indices are created if necessary.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#tables.getPath">tables.getPath (t, path, defaultValue[, separator])</a></td>
@@ -169,6 +180,7 @@
     Returns the value corresponding to the specifed string.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -194,7 +206,10 @@
     </dt>
     <dd>
     Returns a string representing the specifed value.
+ The value must be of type boolean, number, string or table.
+ Lenient mode allows to ignore cycles and invalid types.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -234,6 +249,7 @@
  This is a deep copy, sub table are also merged.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -264,13 +280,15 @@
 </dd>
     <dt>
     <a name = "tables.compare"></a>
-    <strong>tables.compare (oldTable, newTable)</strong>
+    <strong>tables.compare (oldTable, newTable[, list])</strong>
     </dt>
     <dd>
     Returns a table containing the differences between the two specified tables.
  The additions or modifications are availables, the same values are discarded
- and the deleted values are listed in a specific table entry named "_deleted".
+ and the deleted keys are listed in a specific table entry named "_deleted".
+ The list mode aims to be compatible with JSON by using string keys.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -282,6 +300,11 @@
         <li><span class="parameter">newTable</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          a modified table.
+        </li>
+        <li><span class="parameter">list</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to use strings for list keys and a specific table entry named "_list".
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -304,6 +327,7 @@
     Returns a table patched according to the specified differences.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -321,7 +345,81 @@
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-        the differences or nil if there is no such difference.
+        a new patched table.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tables.get"></a>
+    <strong>tables.get (t, ...)</strong>
+    </dt>
+    <dd>
+    Returns the value at the indices in the deep table
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">t</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         a table
+        </li>
+        <li><span class="parameter">...</span>
+         The indices to get the deep table value.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the value or nil if any intermediary index does not match a table.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> tables = <span class="global">require</span>(<span class="string">'jls.util.tables'</span>)
+tables.get({a = {b = <span class="string">'Hi'</span>}}, <span class="string">'a'</span>, <span class="string">'b'</span>) <span class="comment">-- Returns 'Hi'</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "tables.set"></a>
+    <strong>tables.set (t, value, ...)</strong>
+    </dt>
+    <dd>
+    Sets the value at the indices in the deep table
+ The intermediary indices are created if necessary.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">t</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         a table
+        </li>
+        <li><span class="parameter">value</span>
+         The value to set.
+        </li>
+        <li><span class="parameter">...</span>
+         The indices to set the deep table value.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+        the table or nil if any intermediary index does not match a table.</li>
+        <li>
+        the value or nil if any intermediary index does not match a table.</li>
     </ol>
 
 
@@ -335,8 +433,11 @@
     <dd>
     Returns the value at the specified path in the specified table.
  A path consists in table keys separated by slashes.
+ A key is interpreted as a boolean, a number then a string.
+ A key could be protected in brackets, without separator, ["1"] is interpreted as a string, not a number.
  The key are considered as string, number or boolean. Table or userdata keys are not supported.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -377,6 +478,7 @@
     Sets the specified value at the specified path in the specified table.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -416,6 +518,7 @@
     Removes the value at the specified path in the specified table.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -452,6 +555,7 @@
     Returns the value validated by the JSON schema or nil.
  See https://json-schema.org/
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -497,6 +601,7 @@
  An argument value could be prefixed by three commas to escape a starting comma, '---a' means '-a'.
  A missing argument value results in the value 'true', multiple argument values result in a table value.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -571,6 +676,7 @@
     <dd>
     Returns the argument value for the specified argument name.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

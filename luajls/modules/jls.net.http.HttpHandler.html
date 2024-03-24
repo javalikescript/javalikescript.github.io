@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -108,8 +110,8 @@ Basicaly it consists in a function that will be called when an HTTP request
 has been received but before the request body was consumed.</p>
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">local handler = HttpHandler:new(function(self, httpExchange)
-  local response = httpExchange:getResponse()
+        <pre class="example">local handler = HttpHandler:new(function(self, exchange)
+  local response = exchange:getResponse()
   response:setBody(&apos;It works !&apos;)
 end)
 </pre>
@@ -123,7 +125,7 @@ end)
 	<td class="summary">Creates an HTTP handler.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#httpHandler:handle">httpHandler:handle (httpExchange)</a></td>
+	<td class="name" nowrap><a href="#httpHandler:handle">httpHandler:handle (exchange)</a></td>
 	<td class="summary">Handles the request for the specified exchange.</td>
 	</tr>
 	<tr>
@@ -135,16 +137,20 @@ end)
 	<td class="summary">Exposes a file system directory.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#HttpHandler.htmlFile">HttpHandler.htmlFile (dir[, permissions[, filename]])</a></td>
+	<td class="summary">Exposes a file system directory.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#HttpHandler.proxy">HttpHandler.proxy ()</a></td>
 	<td class="summary">Proxies HTTP requests and responses.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#HttpHandler.rest">HttpHandler.rest (handlers)</a></td>
-	<td class="summary">Creates a REST like HTTP handler.</td>
+	<td class="name" nowrap><a href="#HttpHandler.router">HttpHandler.router (handlers)</a></td>
+	<td class="summary">Creates a router HTTP handler.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#HttpHandler.table">HttpHandler.table (table[, path[, editable]])</a></td>
-	<td class="summary">Exposes a table content throught HTTP REST APIs.</td>
+	<td class="summary">Exposes a table content throught HTTP APIs.</td>
 	</tr>
 </table>
 
@@ -167,6 +173,7 @@ end)
     Creates an HTTP handler.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -184,16 +191,17 @@ end)
 </dd>
     <dt>
     <a name = "httpHandler:handle"></a>
-    <strong>httpHandler:handle (httpExchange)</strong>
+    <strong>httpHandler:handle (exchange)</strong>
     </dt>
     <dd>
     Handles the request for the specified exchange.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">httpExchange</span>
+        <li><span class="parameter">exchange</span>
             <span class="types"><span class="type">HttpExchange</span></span>
          the HTTP exchange to handle
         </li>
@@ -219,6 +227,7 @@ end)
  Do nothing by default. Must support to be called multiple times.
 
     </ul>
+    </ul>
 
 
 
@@ -233,6 +242,46 @@ end)
     <dd>
     Exposes a file system directory.
 
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dir</span>
+            <span class="types"><span class="type">File</span></span>
+         the base directory or a ZIP file.
+        </li>
+        <li><span class="parameter">permissions</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         a string containing the granted permissions, 'rwxlcud' default is 'r'.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">filename</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the name of the file to use in case of GET request on a directory, default is 'index.html'.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.net.http.HttpHandler.html#HttpHandler">HttpHandler</a></span>
+        a HttpHandler.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HttpHandler.htmlFile"></a>
+    <strong>HttpHandler.htmlFile (dir[, permissions[, filename]])</strong>
+    </dt>
+    <dd>
+    Exposes a file system directory.
+
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -272,6 +321,7 @@ end)
     Proxies HTTP requests and responses.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -286,11 +336,12 @@ end)
 
 </dd>
     <dt>
-    <a name = "HttpHandler.rest"></a>
-    <strong>HttpHandler.rest (handlers)</strong>
+    <a name = "HttpHandler.router"></a>
+    <strong>HttpHandler.router (handlers)</strong>
     </dt>
     <dd>
-    Creates a REST like HTTP handler. </p>
+    Creates a router HTTP handler.
+  This handler helps to expose REST APIs.</p>
 
 <p>  The <code>handlers</code> consists in a deep table of functions representing the resource paths.
   By default the request body is processed and the JSON value is available with the attribute <code>requestJson</code>.</p>
@@ -304,12 +355,13 @@ end)
 
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">handlers</span>
             <span class="types"><a class="type" href="../modules/jls.net.http.HttpHandler.html#HttpHandler.table">table</a></span>
-         the REST path handlers as a Lua table.
+         the path handlers as a Lua table.
         </li>
     </ul>
 
@@ -325,7 +377,7 @@ end)
     <h3>Usage:</h3>
     <ul>
         <pre class="example"><span class="keyword">local</span> users = {}
-httpServer:createContext(<span class="string">'/(.*)'</span>, HttpHandler.rest({
+httpServer:createContext(<span class="string">'/(.*)'</span>, HttpHandler.router({
   users = {
     [<span class="string">''</span>] = <span class="keyword">function</span>(exchange)
       <span class="keyword">return</span> users
@@ -356,10 +408,11 @@ httpServer:createContext(<span class="string">'/(.*)'</span>, HttpHandler.rest({
     <strong>HttpHandler.table (table[, path[, editable]])</strong>
     </dt>
     <dd>
-    Exposes a table content throught HTTP REST APIs.
+    Exposes a table content throught HTTP APIs.
  This handler allows to access and maintain a deep Lua table.
  The GET response is a JSON with a 'value' key containing the table path value.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

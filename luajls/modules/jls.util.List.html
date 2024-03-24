@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -113,6 +115,10 @@
 	<td class="summary">Creates a new List.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#list:indexOf">list:indexOf (value)</a></td>
+	<td class="summary">Returns the index where the value is found or 0 if not present.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#list:add">list:add (value[, ...])</a></td>
 	<td class="summary">Adds a new element at the end of this list.</td>
 	</tr>
@@ -145,6 +151,10 @@
 	<td class="summary">Returns a list containing the result of the function called on each element.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#list:reduce">list:reduce (f[, value])</a></td>
+	<td class="summary">Returns the last result of the function called on each element.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#list:join">list:join ([sep[, i[, j]]])</a></td>
 	<td class="summary">Returns a string by concatenating all the values of the specified list.</td>
 	</tr>
@@ -167,6 +177,10 @@
 	<tr>
 	<td class="name" nowrap><a href="#List.map">List.map ([d], t, f)</a></td>
 	<td class="summary">Returns a table containing the result of the function called on each element of the source table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List.size">List.size (t[, withHoles[, useN]])</a></td>
+	<td class="summary">Returns the number of elements in the list or -1 if the specified table is not a list.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#List.isList">List.isList (t[, withHoles[, acceptEmpty]])</a></td>
@@ -192,6 +206,7 @@
     Creates a new List.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -207,12 +222,41 @@
 
 </dd>
     <dt>
+    <a name = "list:indexOf"></a>
+    <strong>list:indexOf (value)</strong>
+    </dt>
+    <dd>
+    Returns the index where the value is found or 0 if not present.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+         The element to look for.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        the index or 0 if not present.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "list:add"></a>
     <strong>list:add (value[, ...])</strong>
     </dt>
     <dd>
     Adds a new element at the end of this list.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -245,6 +289,7 @@
     Removes the element at the specified index.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -273,6 +318,7 @@
  The matching values are found using equality (==)
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -299,6 +345,7 @@
     <dd>
     Removes the last specified value from this list.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -327,6 +374,7 @@
     Removes the specified value from this list.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -347,6 +395,7 @@
     <dd>
     Inserts a new element to this list at the specified index.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -379,6 +428,7 @@
     Returns the size of this list.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -399,6 +449,7 @@
     <dd>
     Returns a list containing the result of the function called on each element.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -421,6 +472,39 @@
 
 </dd>
     <dt>
+    <a name = "list:reduce"></a>
+    <strong>list:reduce (f[, value])</strong>
+    </dt>
+    <dd>
+    Returns the last result of the function called on each element.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">f</span>
+            <span class="types"><span class="type">function</span></span>
+         The function to call on each element.
+ The function is called with the last result, element, index and the list.
+        </li>
+        <li><span class="parameter">value</span>
+         The initial value.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the last result of the function.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "list:join"></a>
     <strong>list:join ([sep[, i[, j]]])</strong>
     </dt>
@@ -428,6 +512,7 @@
     Returns a string by concatenating all the values of the specified list.
  tostring() is used to get the string of a value.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -468,6 +553,7 @@
     Removes the first specified value from the specified list.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -498,6 +584,7 @@
     <dd>
     Removes the last specified value from the specified list.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -530,6 +617,7 @@
     Removes the specified value from the specified list.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -555,6 +643,7 @@
     Returns a string by concatenating all the values of the specified list.
  tostring() is used to get the string of a value.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -599,6 +688,7 @@
     Returns a table containing the result of the function called on each element of the source table.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -629,6 +719,46 @@
 
 </dd>
     <dt>
+    <a name = "List.size"></a>
+    <strong>List.size (t[, withHoles[, useN]])</strong>
+    </dt>
+    <dd>
+    Returns the number of elements in the list or -1 if the specified table is not a list.
+ A list has continuous integer keys starting at 1.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">t</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         The table to get the size from.
+        </li>
+        <li><span class="parameter">withHoles</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to indicate that the list may have holes.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">useN</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to accept the field "n" as the number of elements.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        the number of elements in the list or -1.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "List.isList"></a>
     <strong>List.isList (t[, withHoles[, acceptEmpty]])</strong>
     </dt>
@@ -637,6 +767,7 @@
  A list has continuous integer keys starting at 1.
  A list may have a field "n" giving the size of the list as an integer.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -664,7 +795,7 @@
         true when the specified table is a list.</li>
         <li>
            <span class="types"><span class="type">number</span></span>
-        the number of fields in the table or the number of elements in the list.</li>
+        the number of elements in the list or -1.</li>
     </ol>
 
 

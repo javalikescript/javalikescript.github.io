@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -185,6 +187,7 @@ This class provide helpers to start webview in a dedicated thread so that the ba
 The URL accepts the data, file and http schemes.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -243,6 +246,7 @@ webview:loop()</pre>
  If you need to use the event loop in a callback then use the open function.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -267,6 +271,7 @@ webview:loop()</pre>
  The JavaScript syntax is window.external.invoke("string value");
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -288,6 +293,7 @@ webview:loop()</pre>
     <dd>
     Evaluates the specified JavaScript code in the web page.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -311,6 +317,7 @@ webview:loop()</pre>
     Sets the webview fullscreen.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -332,6 +339,7 @@ webview:loop()</pre>
     <dd>
     Sets the webview title.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -355,6 +363,7 @@ webview:loop()</pre>
     Terminates the webview.
 
     </ul>
+    </ul>
 
 
 
@@ -369,6 +378,7 @@ webview:loop()</pre>
     <dd>
     Returns the channel associated to this webview or nil.
 
+    </ul>
     </ul>
 
 
@@ -391,6 +401,7 @@ webview:loop()</pre>
     Returns the thread associated to this webview or nil.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -411,6 +422,7 @@ webview:loop()</pre>
     <dd>
     Returns the HTTP server associated to this webview or nil.
 
+    </ul>
     </ul>
 
 
@@ -433,6 +445,7 @@ webview:loop()</pre>
     Opens the specified URL in a new window and returns when the window has been closed.
 Passing a function will block the event loop not this function.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -506,6 +519,7 @@ WebView.openSync(<span class="string">'https://www.lua.org/'</span>)</pre>
 Opening a webview in a dedicated thread may not be supported on all platform.
 You could specify an HTTP URL with a port to 0 to indicate that an HTTP server should be started on a free port.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -600,6 +614,7 @@ WebView.open(<span class="string">'http://localhost:0/index.html'</span>, {
     <dd>
     Returns an URL representing the specified content.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

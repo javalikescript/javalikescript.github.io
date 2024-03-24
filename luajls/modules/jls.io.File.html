@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -204,6 +206,7 @@ end
  See <a href="../modules/jls.io.Path.html">Path</a>
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -241,6 +244,7 @@ end
  The result is normalized with the OS separator.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -267,6 +271,7 @@ configurationPath:getPath() <span class="comment">-- returns 'work/configuration
     Returns the parent of this file entry as a File.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -292,6 +297,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
     Indicates whether or not this file exists.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -312,6 +318,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
     <dd>
     Indicates whether or not this file entry is a file.
 
+    </ul>
     </ul>
 
 
@@ -334,6 +341,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
     Indicates whether or not this file entry is a directory.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -354,6 +362,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
     <dd>
     Returns the length of the file entry represented by this file.
 
+    </ul>
     </ul>
 
 
@@ -377,6 +386,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
  The time is given as the number of milliseconds since the Epoch, 1970-01-01 00:00:00 +0000 (UTC).
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -397,6 +407,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
     <dd>
     Sets the last modified time of the file entry represented by this file.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -420,6 +431,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
     Creates the directory named by this file entry.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -440,6 +452,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
     <dd>
     Renames this file entry.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -470,6 +483,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
  This file may points to a file or an empty directory.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -491,6 +505,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
     Returns an array of strings naming the file system entries in the directory represented by this file.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -511,6 +526,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
     <dd>
     Returns an array of files in the directory represented by this file.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -541,6 +557,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
     Returns the content of this file.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -568,6 +585,7 @@ configurationPath:getParentFile():getName() <span class="comment">-- returns 'wo
     <dd>
     Writes the specified data into this file.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

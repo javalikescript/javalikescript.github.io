@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><strong>jls.util.Channel</strong></li>
@@ -102,7 +104,7 @@
 <div id="content">
 
 <h1>Module <code>jls.util.Channel</code></h1>
-<p>Provide the Channel class.</p>
+<p>Allows to send and receive messages.</p>
 <p>Provides a local message passing interface suitable for process and thread event based message passing.</p>
 
 <p>The messages are sent and received as string on a channel.
@@ -140,7 +142,7 @@ event:loop()
 	<td class="summary">Creates a new Channel.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#channel:close">channel:close (callback)</a></td>
+	<td class="name" nowrap><a href="#channel:close">channel:close ([callback])</a></td>
 	<td class="summary">Closes this channel.</td>
 	</tr>
 	<tr>
@@ -196,6 +198,7 @@ event:loop()
  A channel can be a server using the bind method or a client using the connect method but not both.
 
     </ul>
+    </ul>
 
 
 
@@ -205,11 +208,12 @@ event:loop()
 </dd>
     <dt>
     <a name = "channel:close"></a>
-    <strong>channel:close (callback)</strong>
+    <strong>channel:close ([callback])</strong>
     </dt>
     <dd>
     Closes this channel.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -217,6 +221,7 @@ event:loop()
         <li><span class="parameter">callback</span>
             <span class="types"><span class="type">function</span></span>
          an optional callback function to use in place of promise.
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -239,6 +244,7 @@ event:loop()
     Returns a promise that resolves once the channel is closed.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -259,6 +265,7 @@ event:loop()
     <dd>
     Returns the name of this channel.
 
+    </ul>
     </ul>
 
 
@@ -281,6 +288,7 @@ event:loop()
     Binds this channel.
  When bound, the channel name can be used for connection.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -317,6 +325,7 @@ event:loop()
  This method should be overriden, the default implementation closes the channel.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -337,6 +346,7 @@ event:loop()
     <dd>
     Connects this channel to the specified name.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -367,6 +377,7 @@ event:loop()
  The handler will be called with the payload and the message type.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -390,6 +401,7 @@ event:loop()
  This server channel shall not be used anymore.
 
     </ul>
+    </ul>
 
 
 
@@ -404,6 +416,7 @@ event:loop()
     <dd>
     Writes a message on this channel.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

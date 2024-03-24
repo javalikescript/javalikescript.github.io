@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><strong>jls.net.http.WebSocket</strong></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -102,7 +104,7 @@
 <div id="content">
 
 <h1>Module <code>jls.net.http.WebSocket</code></h1>
-<p>This module provides classes to work with WebSocket.</p>
+<p>Provides WebSocket client and upgrade handler.</p>
 <p> see <a href="https://datatracker.ietf.org/doc/html/rfc6455">WebSocket Protocol</a></p>
 
 
@@ -117,7 +119,7 @@
 	<td class="summary">Connects this WebSocket to a server.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#webSocket:sendTextMessage">webSocket:sendTextMessage (message, callback)</a></td>
+	<td class="name" nowrap><a href="#webSocket:sendTextMessage">webSocket:sendTextMessage (message[, callback])</a></td>
 	<td class="summary">Sends a message on this WebSocket.</td>
 	</tr>
 	<tr>
@@ -146,7 +148,7 @@
 	<td class="summary">Called when this WebSocket has been closed.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#webSocket:close">webSocket:close (callback)</a></td>
+	<td class="name" nowrap><a href="#webSocket:close">webSocket:close ([callback])</a></td>
 	<td class="summary">Closes this WebSocket.</td>
 	</tr>
 	<tr>
@@ -194,6 +196,7 @@ event:loop()</pre>
     Creates a new WebSocket.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -221,6 +224,7 @@ event:loop()</pre>
     Connects this WebSocket to a server.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -236,11 +240,12 @@ event:loop()</pre>
 </dd>
     <dt>
     <a name = "webSocket:sendTextMessage"></a>
-    <strong>webSocket:sendTextMessage (message, callback)</strong>
+    <strong>webSocket:sendTextMessage (message[, callback])</strong>
     </dt>
     <dd>
     Sends a message on this WebSocket.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -252,6 +257,7 @@ event:loop()</pre>
         <li><span class="parameter">callback</span>
             <span class="types"><span class="type">function</span></span>
          an optional callback function to use in place of promise.
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -274,6 +280,7 @@ event:loop()</pre>
     Starts receiving messages on this WebSocket.
 
     </ul>
+    </ul>
 
 
 
@@ -288,6 +295,7 @@ event:loop()</pre>
     <dd>
     Stops receiving messages on this WebSocket.
 
+    </ul>
     </ul>
 
 
@@ -304,6 +312,7 @@ event:loop()</pre>
     Called when this WebSocket has been closed due to an error,
  such as when some data couldn't be received or sent.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -325,6 +334,7 @@ event:loop()</pre>
     <dd>
     Called when a text message is received on this WebSocket.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -348,6 +358,7 @@ event:loop()</pre>
     Called when a binary message is received on this WebSocket.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -370,6 +381,7 @@ event:loop()</pre>
     Called when this WebSocket has been closed.
 
     </ul>
+    </ul>
 
 
 
@@ -379,11 +391,12 @@ event:loop()</pre>
 </dd>
     <dt>
     <a name = "webSocket:close"></a>
-    <strong>webSocket:close (callback)</strong>
+    <strong>webSocket:close ([callback])</strong>
     </dt>
     <dd>
     Closes this WebSocket.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -391,6 +404,7 @@ event:loop()</pre>
         <li><span class="parameter">callback</span>
             <span class="types"><span class="type">function</span></span>
          an optional callback function to use in place of promise.
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -413,6 +427,7 @@ event:loop()</pre>
     Creates a new UpgradeHandler.
  An HTTP handler to upgrade the connection and accept web sockets.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -443,6 +458,7 @@ event:loop()</pre>
  The default implentation closes the WebSocket.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -468,6 +484,7 @@ event:loop()</pre>
     Returns true if the specified request can be upgraded.
  An HTTP handler to upgrade the connection and accept web sockets.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

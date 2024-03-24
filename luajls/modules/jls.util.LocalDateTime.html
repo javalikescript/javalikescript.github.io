@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -102,7 +104,7 @@
 <div id="content">
 
 <h1>Module <code>jls.util.LocalDateTime</code></h1>
-<p>Provide a simple LocalDateTime class.</p>
+<p>Represents a date time independent of any time zone.</p>
 <p>
 
 </p>
@@ -208,6 +210,7 @@
     Creates a new LocalDateTime.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -259,6 +262,7 @@
     Returns the year of this date.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -279,6 +283,7 @@
     <dd>
     Sets the year of this date.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -307,6 +312,7 @@
     Returns true is this date is in a leap year.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -328,6 +334,7 @@
     Returns the month of this date.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -348,6 +355,7 @@
     <dd>
     Sets the month of this date.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -376,6 +384,7 @@
     Returns the day of month of this date.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -396,6 +405,7 @@
     <dd>
     Sets the day of month of this date.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -424,6 +434,7 @@
     Returns the day of week of this date.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -445,6 +456,7 @@
     Returns the hour of this date.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -465,6 +477,7 @@
     <dd>
     Sets the hour of this date.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -493,6 +506,7 @@
     Returns the minute of this date.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -513,6 +527,7 @@
     <dd>
     Sets the minute of this date.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -541,6 +556,7 @@
     Returns the second of this date.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -561,6 +577,7 @@
     <dd>
     Sets the second of this date.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -589,6 +606,7 @@
     Returns the milli-second of this date.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -609,6 +627,7 @@
     <dd>
     Sets the milli-second of this date.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -637,6 +656,7 @@
     Adds year to this date.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -664,6 +684,7 @@
     Returns a negative, zero or positive value depending if this date
  is before, equal or after the specified date.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

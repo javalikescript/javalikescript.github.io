@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -53,6 +53,7 @@
   <li><a href="modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -60,6 +61,7 @@
   <li><a href="modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -229,6 +231,10 @@
 		<td class="summary">Provides DNS related functions.</td>
 	</tr>
 	<tr>
+		<td class="name"  nowrap><a href="modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></td>
+		<td class="summary">A class that holds attributes as key-value pairs.</td>
+	</tr>
+	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></td>
 		<td class="summary">An HTTP client implementation that enable to send and receive <a href="modules/jls.net.http.HttpMessage.html#">message</a>.</td>
 	</tr>
@@ -257,8 +263,12 @@
 		<td class="summary">An HTTP server implementation that handles HTTP requests.</td>
 	</tr>
 	<tr>
+		<td class="name"  nowrap><a href="modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></td>
+		<td class="summary">HTTP session class.</td>
+	</tr>
+	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></td>
-		<td class="summary">This module provides classes to work with WebSocket.</td>
+		<td class="summary">Provides WebSocket client and upgrade handler.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.net.mqtt.html">jls.net.mqtt</a></td>
@@ -266,19 +276,19 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.Channel.html">jls.util.Channel</a></td>
-		<td class="summary">Provide the Channel class.</td>
+		<td class="summary">Allows to send and receive messages.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.Codec.html">jls.util.Codec</a></td>
-		<td class="summary">Provide encoders/decoders.</td>
+		<td class="summary">Represents an encoder/decoder for string or stream.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.Date.html">jls.util.Date</a></td>
-		<td class="summary">Provide a simple Date class.</td>
+		<td class="summary">Represents a date time with a time zone or using UTC.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.EventPublisher.html">jls.util.EventPublisher</a></td>
-		<td class="summary">Provide EventPublisher class.</td>
+		<td class="summary">Allows to publish and subscribe to events.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.List.html">jls.util.List</a></td>
@@ -286,7 +296,7 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.LocalDateTime.html">jls.util.LocalDateTime</a></td>
-		<td class="summary">Provide a simple LocalDateTime class.</td>
+		<td class="summary">Represents a date time independent of any time zone.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.Map.html">jls.util.Map</a></td>
@@ -294,7 +304,7 @@
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.MessageDigest.html">jls.util.MessageDigest</a></td>
-		<td class="summary">Provide MessageDigest class.</td>
+		<td class="summary">Provide message digest algorithm functionality.</td>
 	</tr>
 	<tr>
 		<td class="name"  nowrap><a href="modules/jls.util.Scheduler.html">jls.util.Scheduler</a></td>

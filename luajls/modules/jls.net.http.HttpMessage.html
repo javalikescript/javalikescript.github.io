@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><strong>jls.net.http.HttpMessage</strong></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -115,16 +117,8 @@
 	<td class="summary">Creates a new Message.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#httpMessage:getLine">httpMessage:getLine ()</a></td>
-	<td class="summary">Returns the first line of this HTTP message.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#httpMessage:setLine">httpMessage:setLine (line)</a></td>
-	<td class="summary">Sets the first line of this HTTP message.</td>
-	</tr>
-	<tr>
 	<td class="name" nowrap><a href="#httpMessage:getVersion">httpMessage:getVersion ()</a></td>
-	<td class="summary">Returns the version of this HTTP message, default to <code>HTTP/1.0</code>.</td>
+	<td class="summary">Returns the version of this HTTP message, default to <code>HTTP/1.1</code>.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#httpMessage:setVersion">httpMessage:setVersion (version)</a></td>
@@ -175,8 +169,20 @@
 	<td class="summary">Sets the body of this HTTP message.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#httpMessage:onWriteBodyStreamHandler">httpMessage:onWriteBodyStreamHandler (callback)</a></td>
+	<td class="name" nowrap><a href="#httpMessage:onWriteBodyStreamHandler">httpMessage:onWriteBodyStreamHandler ([callback])</a></td>
 	<td class="summary">Sets a function that will be called when the body stream handler is available to receive data.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpMessage:consume">httpMessage:consume ()</a></td>
+	<td class="summary">Consumes the body.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpMessage:text">httpMessage:text ()</a></td>
+	<td class="summary">Reads the message body as text.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpMessage:json">httpMessage:json ()</a></td>
+	<td class="summary">Reads the message body as JSON.</td>
 	</tr>
 </table>
 
@@ -188,7 +194,7 @@
 
           <div class="section-description">
           The HttpMessage class represents the base class for HTTP request and HTTP response.
- The HttpMessage class inherits from <a href="../modules/jls.net.http.HttpHeaders.html">HttpHeaders</a>.
+ This class inherits from <a href="../modules/jls.net.http.HttpHeaders.html">HttpHeaders</a>.
           </div>
     <dl class="function">
     <dt>
@@ -199,50 +205,8 @@
     Creates a new Message.
 
     </ul>
-
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "httpMessage:getLine"></a>
-    <strong>httpMessage:getLine ()</strong>
-    </dt>
-    <dd>
-    Returns the first line of this HTTP message.
-
     </ul>
 
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the first line of this HTTP message.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "httpMessage:setLine"></a>
-    <strong>httpMessage:setLine (line)</strong>
-    </dt>
-    <dd>
-    Sets the first line of this HTTP message.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">line</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the first line.
-        </li>
-    </ul>
 
 
 
@@ -254,8 +218,9 @@
     <strong>httpMessage:getVersion ()</strong>
     </dt>
     <dd>
-    Returns the version of this HTTP message, default to <code>HTTP/1.0</code>.
+    Returns the version of this HTTP message, default to <code>HTTP/1.1</code>.
 
+    </ul>
     </ul>
 
 
@@ -277,6 +242,7 @@
     <dd>
     Sets the first line of this HTTP message.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -300,13 +266,17 @@
     Returns this HTTP response status code.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
     <ol>
-
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        the HTTP response status code.</li>
+        <li>
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the HTTP response status code.
+        the HTTP response reason phrase.</li>
     </ol>
 
 
@@ -320,6 +290,7 @@
     <dd>
     Returns this HTTP response reason phrase.
 
+    </ul>
     </ul>
 
 
@@ -341,6 +312,7 @@
     <dd>
     Sets the status code for the response.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -375,6 +347,7 @@
     Returns this HTTP request method, GET, POST.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -395,6 +368,7 @@
     <dd>
     Sets this HTTP request method.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -418,6 +392,7 @@
     Returns this HTTP request target.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -438,6 +413,7 @@
     <dd>
     Sets this HTTP request target.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -462,6 +438,7 @@
  The default value is the null stream handler.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -482,6 +459,7 @@
     <dd>
     Sets the stream handler associated to the body.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -505,6 +483,7 @@
     Returns the body of this HTTP message.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -526,6 +505,7 @@
     Sets the body of this HTTP message.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -542,7 +522,7 @@
 </dd>
     <dt>
     <a name = "httpMessage:onWriteBodyStreamHandler"></a>
-    <strong>httpMessage:onWriteBodyStreamHandler (callback)</strong>
+    <strong>httpMessage:onWriteBodyStreamHandler ([callback])</strong>
     </dt>
     <dd>
     Sets a function that will be called when the body stream handler is available to receive data.
@@ -550,15 +530,85 @@
  It is the caller's responsability to ensure that the content length or message headers are correctly set.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">callback</span>
             <span class="types"><span class="type">function</span></span>
          the function to call when the body stream handler is available.
+         (<em>optional</em>)
         </li>
     </ul>
 
+    <h3>Returns:</h3>
+    <ol>
+
+        a promise that resolves once the body stream handler is available.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpMessage:consume"></a>
+    <strong>httpMessage:consume ()</strong>
+    </dt>
+    <dd>
+    Consumes the body.
+
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a promise that resolves once the body has been received.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpMessage:text"></a>
+    <strong>httpMessage:text ()</strong>
+    </dt>
+    <dd>
+    Reads the message body as text.
+
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a promise that resolves to the body content as text.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "httpMessage:json"></a>
+    <strong>httpMessage:json ()</strong>
+    </dt>
+    <dd>
+    Reads the message body as JSON.
+
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a promise that resolves to the body content as JSON.
+    </ol>
 
 
 

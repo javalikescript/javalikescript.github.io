@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><strong>jls.net.http.HttpFilter</strong></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -114,12 +116,32 @@ It can be used for tasks such as authentication, access control, logging.</p>
 	<td class="summary">Creates an HTTP filter.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#httpFilter:doFilter">httpFilter:doFilter (httpExchange)</a></td>
+	<td class="name" nowrap><a href="#httpFilter:doFilter">httpFilter:doFilter (exchange)</a></td>
 	<td class="summary">Filters the specified exchange.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#httpFilter:close">httpFilter:close ()</a></td>
+	<td class="summary">Closes this filter.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HttpFilter.filter">HttpFilter.filter (exchange, filters)</a></td>
+	<td class="summary">Applies the specified filters in the specified order.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HttpFilter.multiple">HttpFilter.multiple (...)</a></td>
+	<td class="summary">Returns a filter applying all the specified filters.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#HttpFilter.basicAuth">HttpFilter.basicAuth (credentials[, realm])</a></td>
 	<td class="summary">Creates a basic authentication filter.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HttpFilter.session">HttpFilter.session ([maxAge[, idleTimeout]])</a></td>
+	<td class="summary">Returns a session filter.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HttpFilter.byPath">HttpFilter.byPath (filter[, patterns[, excludedPatterns]])</a></td>
+	<td class="summary">Returns a filter by path.</td>
 	</tr>
 </table>
 
@@ -141,6 +163,7 @@ It can be used for tasks such as authentication, access control, logging.</p>
     Creates an HTTP filter.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -158,17 +181,18 @@ It can be used for tasks such as authentication, access control, logging.</p>
 </dd>
     <dt>
     <a name = "httpFilter:doFilter"></a>
-    <strong>httpFilter:doFilter (httpExchange)</strong>
+    <strong>httpFilter:doFilter (exchange)</strong>
     </dt>
     <dd>
     Filters the specified exchange.
  Called when the request headers have been received.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">httpExchange</span>
+        <li><span class="parameter">exchange</span>
             <span class="types"><span class="type">HttpExchange</span></span>
          the HTTP exchange to filter
         </li>
@@ -186,12 +210,91 @@ It can be used for tasks such as authentication, access control, logging.</p>
 
 </dd>
     <dt>
+    <a name = "httpFilter:close"></a>
+    <strong>httpFilter:close ()</strong>
+    </dt>
+    <dd>
+    Closes this filter.
+ Do nothing by default. Must support to be called multiple times.
+
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HttpFilter.filter"></a>
+    <strong>HttpFilter.filter (exchange, filters)</strong>
+    </dt>
+    <dd>
+    Applies the specified filters in the specified order.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">exchange</span>
+            <span class="types"><span class="type">HttpExchange</span></span>
+         the HTTP exchange to filter
+        </li>
+        <li><span class="parameter">filters</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         the filters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        false to indicate the request must not handled.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HttpFilter.multiple"></a>
+    <strong>HttpFilter.multiple (...)</strong>
+    </dt>
+    <dd>
+    Returns a filter applying all the specified filters.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         the filters.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.net.http.HttpFilter.html#HttpFilter">HttpFilter</a></span>
+        a HttpFilter.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "HttpFilter.basicAuth"></a>
     <strong>HttpFilter.basicAuth (credentials[, realm])</strong>
     </dt>
     <dd>
     Creates a basic authentication filter.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -203,6 +306,82 @@ It can be used for tasks such as authentication, access control, logging.</p>
         <li><span class="parameter">realm</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          an optional message.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.net.http.HttpFilter.html#HttpFilter">HttpFilter</a></span>
+        a HttpFilter.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HttpFilter.session"></a>
+    <strong>HttpFilter.session ([maxAge[, idleTimeout]])</strong>
+    </dt>
+    <dd>
+    Returns a session filter.
+ This filter adds a session id cookie to the response and maintain the exchange session.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">maxAge</span>
+            <span class="types"><span class="type">number</span></span>
+         the session max age in seconds, default to 12 hours.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">idleTimeout</span>
+            <span class="types"><span class="type">number</span></span>
+         the session idle timeout in seconds, default to maxAge.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.net.http.HttpFilter.html#HttpFilter">HttpFilter</a></span>
+        a HttpFilter.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HttpFilter.byPath"></a>
+    <strong>HttpFilter.byPath (filter[, patterns[, excludedPatterns]])</strong>
+    </dt>
+    <dd>
+    Returns a filter by path.
+ This filter allows to restrict a filter to a set of allowed or excluded path patterns.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">filter</span>
+            <span class="types"><a class="type" href="../modules/jls.net.http.HttpFilter.html#HttpFilter">HttpFilter</a></span>
+         the filter to apply depending on the allowed/excluded patterns.
+        </li>
+        <li><span class="parameter">patterns</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         a list of allowed patterns.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">excludedPatterns</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         a list of excluded patterns.
          (<em>optional</em>)
         </li>
     </ul>

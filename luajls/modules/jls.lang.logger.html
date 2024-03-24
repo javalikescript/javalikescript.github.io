@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -61,6 +61,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -68,6 +69,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -109,13 +111,13 @@ This default implementation provides a simple way for module owner to expose deb
 This default implementation could be configured to redirect log messages to another logging facility.</p>
 
 <p>The default log level is warning.
-The default formatting consists in prefixing the message by the date time as ISO 8601 and the log level.
+The default formatting consists in prefixing the message by the date time as ISO 8601, the module name and the log level.
 The default writing consists in printing the log message to the standard error stream, adding a new line and flushing.</p>
 
 <p>The JLS_LOGGER_LEVEL environment variable could be used to indicate the log level to use.</p>
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">local logger = require(&apos;jls.lang.logger&apos;)
+        <pre class="example">local logger = require(&apos;jls.lang.logger&apos;):get(...) -- require will pass the module name
 logger:info(&apos;Some usefull information message&apos;)
 
 if logger:isLoggable(logger.FINE) then
@@ -135,8 +137,12 @@ end
 <h2><a href="#Class_Logger">Class Logger </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Logger:new">Logger:new (level)</a></td>
+	<td class="name" nowrap><a href="#Logger:new">Logger:new ([name[, level]])</a></td>
 	<td class="summary">Creates a new logger with the specified level.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:get">logger:get ([name])</a></td>
+	<td class="summary">Returns the logger for the specified name.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#logger:getLevel">logger:getLevel ()</a></td>
@@ -204,6 +210,7 @@ end
  The level fields are also provided as shortcut to the default implementation.
 
     </ul>
+    </ul>
 
     <h3>Fields:</h3>
     <ul>
@@ -251,17 +258,24 @@ end
     <dl class="function">
     <dt>
     <a name = "Logger:new"></a>
-    <strong>Logger:new (level)</strong>
+    <strong>Logger:new ([name[, level]])</strong>
     </dt>
     <dd>
     Creates a new logger with the specified level.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The module name
+         (<em>optional</em>)
+        </li>
         <li><span class="parameter">level</span>
-         The log level.
+         The log level
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -281,12 +295,47 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
 
 </dd>
     <dt>
+    <a name = "logger:get"></a>
+    <strong>logger:get ([name])</strong>
+    </dt>
+    <dd>
+    Returns the logger for the specified name.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The module name
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        a logger
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> console = <span class="global">require</span>(<span class="string">'jls.lang.logger'</span>):get(...)
+console:info(<span class="string">'Some usefull information message'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "logger:getLevel"></a>
     <strong>logger:getLevel ()</strong>
     </dt>
     <dd>
     Returns the log level for this logger.
 
+    </ul>
     </ul>
 
 
@@ -308,6 +357,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     Sets the log level for this logger.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -328,6 +378,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     <dd>
     Tells wether or not a message of the specified level will be logged by this logger.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -355,8 +406,12 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     </dt>
     <dd>
     Logs the specified message with the specified level.
- When message is a string then additional arguments are formatted using string.format
+ When the message is a string then additional arguments are formatted using <a href="https://www.lua.org/manual/5.4/manual.html#pdf-string.format">string.format</a>.
+ The specifier <code>t</code> or <code>T</code> stringifies the table argument.
+ The specifier <code>l</code> formats a string or a table argument to its size.
+ The specifier <code>x</code> or <code>X</code> formats a string argument to hexadecimal.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -382,6 +437,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     Logs the specified message with the ERROR level.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -402,6 +458,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     <dd>
     Logs the specified message with the WARN level.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -424,6 +481,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     Logs the specified message with the INFO level.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -444,6 +502,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     <dd>
     Logs the specified message with the CONFIG level.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -466,6 +525,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     Logs the specified message with the DEBUG level.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -486,6 +546,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     <dd>
     Logs the specified message with the FINE level.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -508,6 +569,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     Logs the specified message with the FINER level.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -528,6 +590,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     <dd>
     Logs the specified message with the FINEST level.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

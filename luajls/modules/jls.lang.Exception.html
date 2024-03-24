@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -132,6 +134,10 @@
 	<td class="name" nowrap><a href="#Exception.pcall">Exception.pcall (fn[, ...])</a></td>
 	<td class="summary">Calls the specified function with the given arguments in protected mode.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Exception.try">Exception.try (fn[, ...])</a></td>
+	<td class="summary">Calls the specified function with the given arguments in protected mode.</td>
+	</tr>
 </table>
 
 <br/>
@@ -153,6 +159,7 @@
  The stack is removed from the message.
  The stack trace and the name will be generated automatically.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -191,6 +198,7 @@
  The message is the error object passed to the error function.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -210,6 +218,7 @@
     <dd>
     Returns the cause of this exception.
 
+    </ul>
     </ul>
 
 
@@ -232,6 +241,7 @@
  A traceback of the call stack when this exception was created and thrown
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -252,6 +262,7 @@
     <dd>
     Returns the message of the specified value if it is an exception or the specified value itself.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -279,6 +290,7 @@
     Calls the specified function with the given arguments in protected mode.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -299,6 +311,38 @@
         true if the call succeeds without errors.</li>
         <li>
         the returned values of the call or the Exception in case of error.</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Exception.try"></a>
+    <strong>Exception.try (fn[, ...])</strong>
+    </dt>
+    <dd>
+    Calls the specified function with the given arguments in protected mode.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fn</span>
+            <span class="types"><span class="type">function</span></span>
+         the function to call in protected mode.
+        </li>
+        <li><span class="parameter">...</span>
+         the arguments to call the function with.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the returned values of the call or nil plus the Exception in case of error.
     </ol>
 
 

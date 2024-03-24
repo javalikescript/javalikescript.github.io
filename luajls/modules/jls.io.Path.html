@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -149,6 +151,10 @@ configurationPath:getParentPath():getName() -- returns &apos;work&apos;
 	<td class="name" nowrap><a href="#Path.separator">Path.separator</a></td>
 	<td class="summary">The Operating System (OS) specific separator, '/' on Unix and '\' on Windows.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Path.pathSeparator">Path.pathSeparator</a></td>
+	<td class="summary">The Operating System (OS) specific path separator, ':' on Unix and ';' on Windows.</td>
+	</tr>
 </table>
 
 <br/>
@@ -169,6 +175,7 @@ configurationPath:getParentPath():getName() -- returns &apos;work&apos;
     <dd>
     Creates a new Path representing the specified pathname.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -207,6 +214,7 @@ configurationPath:getParentPath():getName() -- returns &apos;work&apos;
  The name is the last last part of the path.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -234,6 +242,7 @@ configurationPath:getName() <span class="comment">-- returns 'configuration.json
  This is the creation value.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -259,6 +268,7 @@ configurationPath:getPathName() <span class="comment">-- returns 'work/configura
     <dd>
     Returns the string representation of this Path.
 
+    </ul>
     </ul>
 
 
@@ -286,6 +296,7 @@ configurationPath:toString() <span class="comment">-- returns 'work/configuratio
     Returns the parent path as a string.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -311,6 +322,7 @@ configurationPath:getParent() <span class="comment">-- returns 'work'</span></pr
     <dd>
     Returns the parent of this path as a Path.
 
+    </ul>
     </ul>
 
 
@@ -338,6 +350,7 @@ configurationPath:getParentPath():getName() <span class="comment">-- returns 'wo
     Indicates whether or not this path is absolute.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -358,6 +371,23 @@ configurationPath:getParentPath():getName() <span class="comment">-- returns 'wo
     <dd>
     The Operating System (OS) specific separator, '/' on Unix and '\' on Windows.
 
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Path.pathSeparator"></a>
+    <strong>Path.pathSeparator</strong>
+    </dt>
+    <dd>
+    The Operating System (OS) specific path separator, ':' on Unix and ';' on Windows.
+
+    </ul>
     </ul>
 
 

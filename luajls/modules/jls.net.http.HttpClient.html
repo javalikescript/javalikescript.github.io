@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><strong>jls.net.http.HttpClient</strong></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -115,16 +117,12 @@
 	<td class="summary">Creates a new HTTP client.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#httpClient:connect">httpClient:connect ()</a></td>
-	<td class="summary">Connects this HTTP client.</td>
+	<td class="name" nowrap><a href="#httpClient:fetch">httpClient:fetch (resource[, options])</a></td>
+	<td class="summary">Sends an HTTP request and receives a response.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#httpClient:close">httpClient:close ()</a></td>
+	<td class="name" nowrap><a href="#httpClient:close">httpClient:close ([callback])</a></td>
 	<td class="summary">Closes this HTTP client.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#httpClient:sendReceive">httpClient:sendReceive ()</a></td>
-	<td class="summary">Sends the request then receives the response.</td>
 	</tr>
 </table>
 
@@ -140,16 +138,13 @@
             <h3>Usage:</h3>
             <pre class="example"><span class="keyword">local</span> event = <span class="global">require</span>(<span class="string">'jls.lang.event'</span>)
 <span class="keyword">local</span> HttpClient = <span class="global">require</span>(<span class="string">'jls.net.http.HttpClient'</span>)
-<span class="keyword">local</span> httpClient = HttpClient:new({
-  url = <span class="string">'https://www.openssl.org/'</span>,
-  method = <span class="string">'GET'</span>,
-  headers = {}
-})
-httpClient:connect():<span class="global">next</span>(<span class="keyword">function</span>()
-  <span class="keyword">return</span> httpClient:sendReceive()
-<span class="keyword">end</span>):<span class="global">next</span>(<span class="keyword">function</span>(response)
+
+<span class="keyword">local</span> httpClient = HttpClient:new(<span class="string">'https://www.openssl.org/'</span>)
+httpClient:fetch(<span class="string">'/'</span>):<span class="global">next</span>(<span class="keyword">function</span>(response)
   <span class="global">print</span>(<span class="string">'status code is'</span>, response:getStatusCode())
-  <span class="global">print</span>(response:getBody())
+  <span class="keyword">return</span> response:text()
+<span class="keyword">end</span>):<span class="global">next</span>(<span class="keyword">function</span>(body)
+  <span class="global">print</span>(body)
   httpClient:close()
 <span class="keyword">end</span>)
 event:loop()</pre>
@@ -162,10 +157,11 @@ event:loop()</pre>
     Creates a new HTTP client.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">options</span> A table describing the client options.
+        <li><span class="parameter">options</span> A table describing the client options or the URL.
         <ul>
         <li><span class="parameter">url</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
@@ -181,34 +177,14 @@ event:loop()</pre>
          The request port number.
          (<em>optional</em>)
         </li>
-        <li><span class="parameter">target</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         The request target path.
-         (<em>optional</em>)
-        </li>
-        <li><span class="parameter">method</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         The HTTP method, default is GET.
-         (<em>optional</em>)
-        </li>
-        <li><span class="parameter">headers</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-         The HTTP request headers.
-         (<em>optional</em>)
-        </li>
-        <li><span class="parameter">body</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         The HTTP request body, default is empty body.
-         (<em>optional</em>)
-        </li>
-        <li><span class="parameter">followRedirect</span>
+        <li><span class="parameter">isSecure</span>
             <span class="types"><span class="type">boolean</span></span>
-         true to follow redirections.
+         true to use a secure client.
          (<em>optional</em>)
         </li>
-        <li><span class="parameter">maxRedirectCount</span>
-            <span class="types"><span class="type">number</span></span>
-         The maximum of redirections, default is 3.
+        <li><span class="parameter">secureContext</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         the secure context options.
          (<em>optional</em>)
         </li>
         </li></ul>
@@ -225,20 +201,51 @@ event:loop()</pre>
 
 </dd>
     <dt>
-    <a name = "httpClient:connect"></a>
-    <strong>httpClient:connect ()</strong>
+    <a name = "httpClient:fetch"></a>
+    <strong>httpClient:fetch (resource[, options])</strong>
     </dt>
     <dd>
-    Connects this HTTP client.
+    Sends an HTTP request and receives a response.
+ The response body must be consumed using its text(), json() or consume() method.
 
     </ul>
+    </ul>
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">resource</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The request target path.
+        </li>
+        <li><span class="parameter">options</span> A table describing the request options.
+        <ul>
+        <li><span class="parameter">method</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The HTTP method, default is GET.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">headers</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         The HTTP request headers.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">body</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The HTTP request body, default is empty body.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">redirect</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         How to handle a redirect: follow, error or manual.
+         (<em>optional</em>)
+        </li>
+        </li></ul>
+    </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">jls.lang.Promise</span></span>
-        a promise that resolves once this client is connected.
+        a promise that resolves to the HTTP <a href="../modules/jls.net.http.HttpMessage.html#">response</a>
     </ol>
 
 
@@ -247,40 +254,28 @@ event:loop()</pre>
 </dd>
     <dt>
     <a name = "httpClient:close"></a>
-    <strong>httpClient:close ()</strong>
+    <strong>httpClient:close ([callback])</strong>
     </dt>
     <dd>
     Closes this HTTP client.
 
     </ul>
+    </ul>
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">callback</span>
+            <span class="types"><span class="type">function</span></span>
+         an optional callback function to use in place of promise.
+         (<em>optional</em>)
+        </li>
+    </ul>
 
     <h3>Returns:</h3>
     <ol>
 
            <span class="types"><span class="type">jls.lang.Promise</span></span>
         a promise that resolves once the client is closed.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "httpClient:sendReceive"></a>
-    <strong>httpClient:sendReceive ()</strong>
-    </dt>
-    <dd>
-    Sends the request then receives the response.
-
-    </ul>
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">jls.lang.Promise</span></span>
-        a promise that resolves to the <a href="../modules/jls.net.http.HttpMessage.html">HttpMessage</a> received.
     </ol>
 
 

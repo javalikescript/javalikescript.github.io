@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -115,8 +117,8 @@
 	<td class="summary">Returns a list of strings split at each pattern.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#strings.cuts">strings.cuts (value, ...)</a></td>
-	<td class="summary">Returns a list of strings cut at each length.</td>
+	<td class="name" nowrap><a href="#strings.parts">strings.parts (value, pattern[, plain])</a></td>
+	<td class="summary">Returns an iterator function and the string value.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#strings.cut">strings.cut (size, value)</a></td>
@@ -164,6 +166,7 @@
     Returns a list of strings split at each pattern.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -193,12 +196,15 @@
 
 </dd>
     <dt>
-    <a name = "strings.cuts"></a>
-    <strong>strings.cuts (value, ...)</strong>
+    <a name = "strings.parts"></a>
+    <strong>strings.parts (value, pattern[, plain])</strong>
     </dt>
     <dd>
-    Returns a list of strings cut at each length.
+    Returns an iterator function and the string value.
+ When used in a for loop it will iterate over all values.
+ If the pattern is a number it will be used to cut the string in values of the same size.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -207,17 +213,24 @@
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          The string to split.
         </li>
-        <li><span class="parameter">...</span>
-            <span class="types"><span class="type">number</span></span>
-         The ordered lengths to cut.
+        <li><span class="parameter">pattern</span>
+         The pattern used to split the string.
+        </li>
+        <li><span class="parameter">plain</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to find the pattern as a plain string.
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-        a list of strings cut at each pattern.
+        <li>
+           <span class="types"><span class="type">function</span></span>
+        an iterator function</li>
+        <li>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        value The string to split</li>
     </ol>
 
 
@@ -231,6 +244,7 @@
     <dd>
     Returns a list of strings cut with the same size.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -263,6 +277,7 @@
     <dd>
     Returns true if the specified strings are equals case insensitive or both nil.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -299,6 +314,7 @@
  The result integer for a specific string may change in futur versions.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -328,6 +344,7 @@
  The most significant bit is set to 1 to indicate that another byte is used.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -355,6 +372,7 @@
     <dd>
     Returns the integer represented by the specified string
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -391,6 +409,7 @@
     <dd>
     Returns a string representing the specified integer in the specified radix.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -439,6 +458,7 @@
     <dd>
     Returns the pattern corresponding to the specified string with the magic characters ^$()%.[]*+-?  escaped.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -102,7 +104,7 @@
 <div id="content">
 
 <h1>Module <code>jls.util.Codec</code></h1>
-<p>Provide encoders/decoders.</p>
+<p>Represents an encoder/decoder for string or stream.</p>
 <p> Available codecs are base64, deflate, gzip, hex.</p>
 
 
@@ -157,6 +159,7 @@
     Decodes the specified string.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -173,6 +176,8 @@
         the decoded string.
     </ol>
 
+    <h3>Raises:</h3>
+    codec dependent message in case of decoding failure
 
 
 
@@ -184,6 +189,7 @@
     <dd>
     Encodes the specified string.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -201,6 +207,8 @@
         the encoded string.
     </ol>
 
+    <h3>Raises:</h3>
+    codec dependent message in case of encoding failure
 
 
 
@@ -213,6 +221,7 @@
     Returns a decoding <a href="../modules/jls.io.StreamHandler.html#">jls.io.StreamHandler</a>.
  The default implentation consists in using the decode method.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -243,6 +252,7 @@
  The default implentation consists in using the encode method.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -271,6 +281,7 @@
     Returns the name of the codec.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -291,6 +302,7 @@
     <dd>
     Returns the Codec class corresponding to the specified name.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -318,6 +330,7 @@
     <dd>
     Returns a new Codec.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -61,6 +61,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -68,6 +69,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -112,26 +114,30 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#encode">encode (value)</a></td>
+	<td class="name" nowrap><a href="#json.encode">json.encode (value)</a></td>
 	<td class="summary">Returns the JSON encoded string representing the specified value.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#decode">decode (jsonString)</a></td>
+	<td class="name" nowrap><a href="#json.decode">json.decode (value)</a></td>
 	<td class="summary">Returns the value representing the specified string.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#parse">parse (jsonString)</a></td>
+	<td class="name" nowrap><a href="#json.parse">json.parse (value)</a></td>
 	<td class="summary">Returns the value representing the specified string.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#stringify">stringify (value, space)</a></td>
+	<td class="name" nowrap><a href="#json.stringify">json.stringify (value[, space[, lenient]])</a></td>
 	<td class="summary">Returns the JSON encoded string representing the specified value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#json.require">json.require (name)</a></td>
+	<td class="summary">Loads the JSON resource for the specified name.</td>
 	</tr>
 </table>
 <h2><a href="#Fields">Fields</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#null">null</a></td>
+	<td class="name" nowrap><a href="#json.null">json.null</a></td>
 	<td class="summary">The opaque value representing null.</td>
 	</tr>
 </table>
@@ -144,18 +150,18 @@
 
     <dl class="function">
     <dt>
-    <a name = "encode"></a>
-    <strong>encode (value)</strong>
+    <a name = "json.encode"></a>
+    <strong>json.encode (value)</strong>
     </dt>
     <dd>
     Returns the JSON encoded string representing the specified value.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">value</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          The value to encode.
         </li>
     </ul>
@@ -163,6 +169,7 @@
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
         the encoded string.
     </ol>
 
@@ -176,17 +183,18 @@ json.encode({aString = <span class="string">'Hello world !'</span>}) <span class
 
 </dd>
     <dt>
-    <a name = "decode"></a>
-    <strong>decode (jsonString)</strong>
+    <a name = "json.decode"></a>
+    <strong>json.decode (value)</strong>
     </dt>
     <dd>
     Returns the value representing the specified string.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">jsonString</span>
+        <li><span class="parameter">value</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          The JSON string to decode.
         </li>
@@ -208,18 +216,19 @@ json.decode(<span class="string">'{"aString":"Hello world !"}'</span>) <span cla
 
 </dd>
     <dt>
-    <a name = "parse"></a>
-    <strong>parse (jsonString)</strong>
+    <a name = "json.parse"></a>
+    <strong>json.parse (value)</strong>
     </dt>
     <dd>
     Returns the value representing the specified string.
  Raises an error if the value cannot be parsed.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">jsonString</span>
+        <li><span class="parameter">value</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          The JSON string to parse.
         </li>
@@ -236,31 +245,68 @@ json.decode(<span class="string">'{"aString":"Hello world !"}'</span>) <span cla
 
 </dd>
     <dt>
-    <a name = "stringify"></a>
-    <strong>stringify (value, space)</strong>
+    <a name = "json.stringify"></a>
+    <strong>json.stringify (value[, space[, lenient]])</strong>
     </dt>
     <dd>
     Returns the JSON encoded string representing the specified value.
  When specifying space, the encoded string will includes new lines.
+ Invalid value will raise an error if lenient mode is not enabled.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">value</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          The value to to convert to a JSON encoded string.
         </li>
         <li><span class="parameter">space</span>
             <span class="types"><span class="type">number</span></span>
          The number of space characters to use as white space.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">lenient</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to convert invalid JSON keys or values using tostring.
+         (<em>optional</em>)
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
         the encoded string.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "json.require"></a>
+    <strong>json.require (name)</strong>
+    </dt>
+    <dd>
+    Loads the JSON resource for the specified name.
+ See <a href="../modules/jls.lang.loader.html#">loader</a> loadResource function.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the JSON name.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        the JSON value.
     </ol>
 
 
@@ -272,21 +318,15 @@ json.decode(<span class="string">'{"aString":"Hello world !"}'</span>) <span cla
 
     <dl class="function">
     <dt>
-    <a name = "null"></a>
-    <strong>null</strong>
+    <a name = "json.null"></a>
+    <strong>json.null</strong>
     </dt>
     <dd>
     The opaque value representing null.
 
     </ul>
-
-    <ul>
-        <li><span class="parameter">null</span>
-
-
-
-        </li>
     </ul>
+
 
 
 

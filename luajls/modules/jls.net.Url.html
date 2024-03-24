@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><strong>jls.net.Url</strong></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -151,8 +153,12 @@
 	<td class="summary">Returns the Url corresponding to the specified string.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Url.mapToQuery">Url.mapToQuery (keyValues[, query])</a></td>
-	<td class="summary">Returns the query representing the key value pairs including the question mark.</td>
+	<td class="name" nowrap><a href="#Url.mapToQuery">Url.mapToQuery (keyValues)</a></td>
+	<td class="summary">Returns the query representing the key value pairs.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Url.queryToMap">Url.queryToMap (query)</a></td>
+	<td class="summary">Returns the map containing the key value pairs from the specified query.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#Url.format">Url.format (tUrl)</a></td>
@@ -178,6 +184,7 @@
     <dd>
     Creates a new Url.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -225,6 +232,7 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
     Returns this Url scheme.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -244,6 +252,7 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
     <dd>
     Returns this Url userInfo.
 
+    </ul>
     </ul>
 
 
@@ -265,6 +274,7 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
     Returns this Url hostname.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -284,6 +294,7 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
     <dd>
     Returns this Url port.
 
+    </ul>
     </ul>
 
 
@@ -305,6 +316,7 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
     Returns this Url path.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -324,6 +336,7 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
     <dd>
     Returns this Url query.
 
+    </ul>
     </ul>
 
 
@@ -345,6 +358,7 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
     Returns the string value representing this Url.
 
     </ul>
+    </ul>
 
 
     <h3>Returns:</h3>
@@ -365,6 +379,7 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
     Returns the Url corresponding to the specified string.
  The table contains the keys: scheme, host, port, path, query, userinfo, username, password.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -394,6 +409,7 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
     Returns the Url corresponding to the specified string.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -416,11 +432,12 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
 </dd>
     <dt>
     <a name = "Url.mapToQuery"></a>
-    <strong>Url.mapToQuery (keyValues[, query])</strong>
+    <strong>Url.mapToQuery (keyValues)</strong>
     </dt>
     <dd>
-    Returns the query representing the key value pairs including the question mark.
+    Returns the query representing the key value pairs.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -429,17 +446,42 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          the key value pairs.
         </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        the query representing the key value pairs.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Url.queryToMap"></a>
+    <strong>Url.queryToMap (query)</strong>
+    </dt>
+    <dd>
+    Returns the map containing the key value pairs from the specified query.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
         <li><span class="parameter">query</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the base query to add key values.
-         (<em>optional</em>)
+         the query.
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        the query representing the key value pairs.
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+        the query map.
     </ol>
 
 
@@ -453,6 +495,7 @@ url:getHost() <span class="comment">-- returns "somehost"</span></pre>
     <dd>
     Returns the string value representing the specified Url.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

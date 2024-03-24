@@ -33,7 +33,7 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_Attributes">Class Attributes </a></li>
 </ul>
 
 
@@ -60,7 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
-  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
+  <li><strong>jls.net.http.Attributes</strong></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -83,7 +83,7 @@
   <li><a href="../modules/jls.util.SerialWorker.html">jls.util.SerialWorker</a></li>
   <li><a href="../modules/jls.util.WebView.html">jls.util.WebView</a></li>
   <li><a href="../modules/jls.util.Worker.html">jls.util.Worker</a></li>
-  <li><strong>jls.util.ast</strong></li>
+  <li><a href="../modules/jls.util.ast.html">jls.util.ast</a></li>
   <li><a href="../modules/jls.util.json.html">jls.util.json</a></li>
   <li><a href="../modules/jls.util.strings.html">jls.util.strings</a></li>
   <li><a href="../modules/jls.util.tables.html">jls.util.tables</a></li>
@@ -103,36 +103,28 @@
 
 <div id="content">
 
-<h1>Module <code>jls.util.ast</code></h1>
-<p>Abstract Syntax Tree (AST) utility module.</p>
-<p> This module allows to parse Lua into AST, manipulate AST and to generate Lua from AST.</p>
-
-<p> The AST is represented using Lua table.</p>
-
-<p> The types are: <code>assignment</code>, <code>binary</code>, <code>block</code>, <code>break</code>, <code>call</code>, <code>declaration</code>, <code>for</code>, <code>function</code>, <code>goto</code>, <code>identifier</code>, <code>if</code>, <code>label</code>, <code>literal</code>, <code>lookup</code>, <code>repeat</code>, <code>return</code>, <a href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a>, <code>unary</code>, <code>vararg</code>, <code>while</code></p>
-
-<p> The operators are: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>^</code>, <code>%</code>, <code>&amp;</code>, <code>~</code>, <code>|</code>, <code>&gt;&gt;</code>, <code>&lt;&lt;</code>, <code>..</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>~=</code>, <code>and</code>, <code>or</code>, <code>-</code>, <code>not</code>, <code>#</code>, <code>~</code></p>
-
-<p> The table fields are: <code>adjustToOne</code>, <code>arguments</code>, <code>attribute</code>, <code>body</code>, <code>bodyFalse</code>, <code>bodyTrue</code>, <code>callee</code>, <code>condition</code>, <code>declaration</code>, <code>expression</code>, <code>fields</code>, <code>kind</code>, <code>label</code>, <code>left</code>, <code>member</code>, <code>method</code>, <code>name</code>, <code>names</code>, <code>object</code>, <code>operator</code>, <code>parameters</code>, <code>right</code>, <code>statements</code>, <code>targets</code>, <a href="https://www.lua.org/manual/5.4/manual.html#pdf-type">type</a>, <code>value</code>, <code>values</code></p>
+<h1>Module <code>jls.net.http.Attributes</code></h1>
+<p>A class that holds attributes as key-value pairs.</p>
+<p> The attributes are stored in the table field "attributes".</p>
 
 
-<h2><a href="#Functions">Functions</a></h2>
+<h2><a href="#Class_Attributes">Class Attributes </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#ast.parse">ast.parse (lua[, verbose])</a></td>
-	<td class="summary">Returns the AST representing the specified Lua code.</td>
+	<td class="name" nowrap><a href="#Attributes:new">Attributes:new ()</a></td>
+	<td class="summary">Creates a new Attributes.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ast.parseExpression">ast.parseExpression (lua[, verbose])</a></td>
-	<td class="summary">Returns the AST representing the specified Lua expression.</td>
+	<td class="name" nowrap><a href="#attributes:setAttribute">attributes:setAttribute (name, value)</a></td>
+	<td class="summary">Sets the specified value for the specified name.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ast.traverse">ast.traverse (tree, callback[, context])</a></td>
-	<td class="summary">Walks through the specified AST calling the callback function for each node.</td>
+	<td class="name" nowrap><a href="#attributes:getAttribute">attributes:getAttribute (name)</a></td>
+	<td class="summary">Returns the value for the specified name.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ast.generate">ast.generate (tree)</a></td>
-	<td class="summary">Returns the Lua code representing the specified AST.</td>
+	<td class="name" nowrap><a href="#attributes:removeAttribute">attributes:removeAttribute (name)</a></td>
+	<td class="summary">Removes the value for the specified name.</td>
 	</tr>
 </table>
 
@@ -140,71 +132,76 @@
 <br/>
 
 
-    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+    <h2 class="section-header has-description"><a name="Class_Attributes"></a>Class Attributes </h2>
 
+          <div class="section-description">
+          A class that holds attributes.
+          </div>
     <dl class="function">
     <dt>
-    <a name = "ast.parse"></a>
-    <strong>ast.parse (lua[, verbose])</strong>
+    <a name = "Attributes:new"></a>
+    <strong>Attributes:new ()</strong>
     </dt>
     <dd>
-    Returns the AST representing the specified Lua code.
+    Creates a new Attributes.
+
+    </ul>
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "attributes:setAttribute"></a>
+    <strong>attributes:setAttribute (name, value)</strong>
+    </dt>
+    <dd>
+    Sets the specified value for the specified name.
 
     </ul>
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">lua</span>
+        <li><span class="parameter">name</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the Lua code to parse.
+         the attribute name
         </li>
-        <li><span class="parameter">verbose</span>
-            <span class="types"><span class="type">boolean</span></span>
-         whether or not to include extra information such as the line number.
-         (<em>optional</em>)
+        <li><span class="parameter">value</span>
+         the attribute value
         </li>
     </ul>
 
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-        the AST representing the Lua.
-    </ol>
 
 
 
 
 </dd>
     <dt>
-    <a name = "ast.parseExpression"></a>
-    <strong>ast.parseExpression (lua[, verbose])</strong>
+    <a name = "attributes:getAttribute"></a>
+    <strong>attributes:getAttribute (name)</strong>
     </dt>
     <dd>
-    Returns the AST representing the specified Lua expression.
+    Returns the value for the specified name.
 
     </ul>
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">lua</span>
+        <li><span class="parameter">name</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the Lua expression to parse.
-        </li>
-        <li><span class="parameter">verbose</span>
-            <span class="types"><span class="type">boolean</span></span>
-         whether or not to include extra information such as the line number.
-         (<em>optional</em>)
+         the attribute name
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-        the AST representing the Lua.
+        the attribute value
     </ol>
 
 
@@ -212,66 +209,27 @@
 
 </dd>
     <dt>
-    <a name = "ast.traverse"></a>
-    <strong>ast.traverse (tree, callback[, context])</strong>
+    <a name = "attributes:removeAttribute"></a>
+    <strong>attributes:removeAttribute (name)</strong>
     </dt>
     <dd>
-    Walks through the specified AST calling the callback function for each node.
- The function is called with the AST node, if the return value is a table then it will replace the current AST node.
+    Removes the value for the specified name.
 
     </ul>
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">tree</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-         the AST to walk through.
-        </li>
-        <li><span class="parameter">callback</span>
-            <span class="types"><span class="type">function</span></span>
-         the callback function, will be called with the node and the context.
-        </li>
-        <li><span class="parameter">context</span>
-         an optional context to pass to the callback function.
-         (<em>optional</em>)
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the attribute name
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-        the AST.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ast.generate"></a>
-    <strong>ast.generate (tree)</strong>
-    </dt>
-    <dd>
-    Returns the Lua code representing the specified AST.
-
-    </ul>
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">tree</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-         the AST.
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the Lua code representing the AST.
+        the attribute value
     </ol>
 
 

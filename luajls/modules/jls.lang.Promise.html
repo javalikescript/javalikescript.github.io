@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -103,9 +105,11 @@
 
 <h1>Module <code>jls.lang.Promise</code></h1>
 <p>Represents the eventual result of an asynchronous operation.</p>
-<p> <strong>Note</strong>: The <em>then</em> method is replaced by <em>next</em>, because <em>then</em> is a reserved word in Lua.</p>
+<p><strong>Notes</strong>:
+* The <em>then</em> method is replaced by <em>next</em>, because <em>then</em> is a reserved word in Lua.
+* The promises are not guaranteed to be asynchronous.</p>
 
-<p> see <a href="https://promisesaplus.com/">Promises/A+</a></p>
+<p>see <a href="https://promisesaplus.com/">Promises/A+</a></p>
 
 
 <h2><a href="#Class_Promise">Class Promise </a></h2>
@@ -187,6 +191,7 @@ or to its original settled value if the promise was not handled.</td>
     Creates a promise.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -221,6 +226,7 @@ rejects, then returns a rejected Promise.
 If onFulfilled or onRejected returns a Promise which resolves,
 or returns any other value, then returns a resolved Promise.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -259,6 +265,7 @@ or returns any other value, then returns a resolved Promise.
  or to its original fulfillment value if the promise is instead fulfilled.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -286,8 +293,10 @@ or returns any other value, then returns a resolved Promise.
     <dd>
     Appends a handler callback to the promise for both fulfillment and rejection,
  and returns an equivalent of the original promise.
- In case of error or returning a rejected promise in the finally callback will reject the returned promise.
+ In case of error or returning a rejected promise in the finally callback,
+ the returned promise will be rejected.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -319,6 +328,7 @@ or returns any other value, then returns a resolved Promise.
  promises in the iterable argument rejects.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -349,6 +359,7 @@ or returns any other value, then returns a resolved Promise.
  from that promise.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -376,6 +387,7 @@ or returns any other value, then returns a resolved Promise.
     <dd>
     Returns a Promise object that is rejected with the given reason.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -406,6 +418,7 @@ or returns any other value, then returns a resolved Promise.
  promise will "follow" that thenable, adopting its eventual state;
  otherwise the returned promise will be fulfilled with the value.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -438,7 +451,13 @@ The async and await functions allows asynchronous/non-blocking functions to be w
 
 <p>The <code>await</code> function waits for the Promise on which its is called then returns its fulfillment value
 or raises an error with the rejection reason if the promise is rejected.
+You could use the traditional <a href="https://www.lua.org/manual/5.4/manual.html#pdf-pcall">pcall</a> to handle an eventual await error.</p>
 
+<p>The <code>await</code> function can only be called on the <a href="../modules/jls.lang.Promise.html#Promise.async">async</a> function body not in a callback.</p>
+
+<p>Prior Lua 5.2 and LuaJIT you cannot yield when having a C function between yield and resume.
+
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -468,10 +487,11 @@ or raises an error with the rejection reason if the promise is rejected.
 <span class="keyword">local</span> HttpClient = <span class="global">require</span>(<span class="string">'jls.net.http.HttpClient'</span>)
 
 Promise.async(<span class="keyword">function</span>(await)
-  <span class="keyword">local</span> client = await(HttpClient:new({ url = <span class="string">'http://www.lua.org'</span> }):connect())
-  <span class="keyword">local</span> response = await(client:sendReceive())
+  <span class="keyword">local</span> client = HttpClient:new(<span class="string">'http://www.lua.org'</span>)
+  <span class="keyword">local</span> response = await(client:fetch(<span class="string">'/'</span>))
+  client:close()
   <span class="global">print</span>(response:getStatusCode())
-<span class="keyword">end</span>):catch(<span class="global">error</span>)
+<span class="keyword">end</span>)
 
 <span class="global">require</span>(<span class="string">'jls.lang.event'</span>):loop()</pre>
     </ul>
@@ -484,6 +504,7 @@ Promise.async(<span class="keyword">function</span>(await)
     <dd>
     Return true if the specified value is a promise.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -511,6 +532,7 @@ Promise.async(<span class="keyword">function</span>(await)
     <dd>
     Returns a new promise and its associated callback.
 
+    </ul>
     </ul>
 
 
@@ -540,6 +562,7 @@ Promise.async(<span class="keyword">function</span>(await)
     Returns the specified callback if any or a callback and its associated promise.
  This function helps to create asynchronous functions with an optional ending callback parameter.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>

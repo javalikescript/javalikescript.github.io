@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><strong>jls.net.dns</strong></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -118,6 +120,14 @@
 	<td class="name" nowrap><a href="#dns.getNameInfo">dns.getNameInfo (addr[, callback])</a></td>
 	<td class="summary">Lookups host name for a specified IP address.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dns.decodeMessage">dns.decodeMessage (data[, offset])</a></td>
+	<td class="summary">Decodes a multicast DNS message.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dns.encodeMessage">dns.encodeMessage (message)</a></td>
+	<td class="summary">Encodes a multicast DNS message.</td>
+	</tr>
 </table>
 
 <br/>
@@ -135,6 +145,7 @@
     Lookups address info for a specified hostname.
  The result consists in a table with an "addr" field containing the IP address.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -169,6 +180,7 @@
     Lookups host name for a specified IP address.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -188,6 +200,102 @@
 
            <span class="types"><span class="type">jls.lang.Promise</span></span>
         a promise that resolves to the host name.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dns.decodeMessage"></a>
+    <strong>dns.decodeMessage (data[, offset])</strong>
+    </dt>
+    <dd>
+    Decodes a multicast DNS message.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         the message as a string.
+        </li>
+        <li><span class="parameter">offset</span>
+            <span class="types"><span class="type">number</span></span>
+         the offset of the message in the data string, default to 1.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+        the decoded message as a table, see the encode function.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dns.encodeMessage"></a>
+    <strong>dns.encodeMessage (message)</strong>
+    </dt>
+    <dd>
+    Encodes a multicast DNS message. </p>
+
+<p> A question contains the fields: name, type, class, unicastResponse.</p>
+
+<p> A resource record (RR) contains the fields: name, type, class, cacheFlush, ttl, data, value.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span> the message as a table.
+        <ul>
+        <li><span class="parameter">flags</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         the flags as a table or an integer.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">number</span></span>
+         the message id.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">questions</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         the questions.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">answers</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         the RR answers.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">authorities</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         the RR authorities.
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">additionals</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         the RR additionals.
+         (<em>optional</em>)
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        the encoded message as a string.
     </ol>
 
 

@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
-    <title>Lua JLS 0.7</title>
+    <title>Lua JLS 0.8</title>
     <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
   <li><a href="../modules/jls.net.UdpSocket.html">jls.net.UdpSocket</a></li>
   <li><a href="../modules/jls.net.Url.html">jls.net.Url</a></li>
   <li><a href="../modules/jls.net.dns.html">jls.net.dns</a></li>
+  <li><a href="../modules/jls.net.http.Attributes.html">jls.net.http.Attributes</a></li>
   <li><a href="../modules/jls.net.http.HttpClient.html">jls.net.http.HttpClient</a></li>
   <li><a href="../modules/jls.net.http.HttpExchange.html">jls.net.http.HttpExchange</a></li>
   <li><a href="../modules/jls.net.http.HttpFilter.html">jls.net.http.HttpFilter</a></li>
@@ -67,6 +68,7 @@
   <li><a href="../modules/jls.net.http.HttpHeaders.html">jls.net.http.HttpHeaders</a></li>
   <li><a href="../modules/jls.net.http.HttpMessage.html">jls.net.http.HttpMessage</a></li>
   <li><a href="../modules/jls.net.http.HttpServer.html">jls.net.http.HttpServer</a></li>
+  <li><a href="../modules/jls.net.http.HttpSession.html">jls.net.http.HttpSession</a></li>
   <li><a href="../modules/jls.net.http.WebSocket.html">jls.net.http.WebSocket</a></li>
   <li><a href="../modules/jls.net.mqtt.html">jls.net.mqtt</a></li>
   <li><a href="../modules/jls.util.Channel.html">jls.util.Channel</a></li>
@@ -190,6 +192,10 @@ end)
 	<td class="summary">Returns a Promise that resolves once the stream ends.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#StreamHandler.promises">StreamHandler.promises ()</a></td>
+	<td class="summary">Creates a StreamHandler with a <code>read()</code> method.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#StreamHandler.std">StreamHandler.std</a></td>
 	<td class="summary">The standard stream writing data to standard output and error to standard error.</td>
 	</tr>
@@ -220,6 +226,7 @@ end)
  The callback function will be called with two parameters, the error or nil and the data.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -247,6 +254,7 @@ end)
     <dd>
     The specified data is available for this stream.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -277,6 +285,7 @@ end)
     The specified error occured on this stream.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -299,6 +308,7 @@ end)
  Do nothing by default. Must support to be called multiple times.
 
     </ul>
+    </ul>
 
 
 
@@ -315,6 +325,7 @@ end)
  The callback function has two arguments: the error and the data.
  The data could be nil indicating the end of the stream.
 
+    </ul>
     </ul>
 
 
@@ -336,6 +347,7 @@ end)
     <dd>
     Returns a callback function.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -369,6 +381,7 @@ end)
     Returns a StreamHandler.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -396,6 +409,7 @@ end)
     Fills the specified stream handler with the specified data.
  This is shortcut for sh:onData(data); sh:onData(nil)
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -428,6 +442,7 @@ end)
     Creates a stream handler with two handlers.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -459,6 +474,7 @@ end)
     <dd>
     Creates a BlockStreamHandler that allows to pass fixed size blocks to the wrapped handler.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -495,6 +511,7 @@ end)
  The data will be pass to the wrapped handler once.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -523,6 +540,7 @@ end)
     <dd>
     Reads the specified file using the stream handler.
 
+    </ul>
     </ul>
 
     <h3>Parameters:</h3>
@@ -558,6 +576,7 @@ end)
     Creates a FileStreamHandler that allows to write a stream into a file.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -591,6 +610,7 @@ end)
     Returns a Promise that resolves once the stream ends.
 
     </ul>
+    </ul>
 
     <h3>Parameters:</h3>
     <ul>
@@ -616,12 +636,37 @@ end)
 
 </dd>
     <dt>
+    <a name = "StreamHandler.promises"></a>
+    <strong>StreamHandler.promises ()</strong>
+    </dt>
+    <dd>
+    Creates a StreamHandler with a <code>read()</code> method.
+ Each call to <code>read</code> returns a promise that resolves to the next available data or nil if the stream ended.
+ The promise is rejected if there is an error or the stream ended.
+
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/jls.io.StreamHandler.html#StreamHandler">StreamHandler</a></span>
+        a StreamHandler.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "StreamHandler.std"></a>
     <strong>StreamHandler.std</strong>
     </dt>
     <dd>
     The standard stream writing data to standard output and error to standard error.
 
+    </ul>
     </ul>
 
 
@@ -637,6 +682,7 @@ end)
     <dd>
     The null stream.
 
+    </ul>
     </ul>
 
 
