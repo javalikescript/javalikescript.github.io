@@ -178,7 +178,7 @@
 
           <div class="section-description">
           An HTTP server.
-The basic HTTP 1.1 server implementation.
+The basic HTTP server implementation.
           </div>
             <h3>Usage:</h3>
             <pre class="example"><span class="keyword">local</span> event = <span class="global">require</span>(<span class="string">'jls.lang.event'</span>)
@@ -234,10 +234,10 @@ event:loop()</pre>
     <ul>
         <li><span class="parameter">path</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         The path of the context.
+         The path of the context
         </li>
         <li><span class="parameter">handler</span>
-         The <a href="../modules/jls.net.http.HttpHandler.html#">handler</a> or a handler function.
+         The <a href="../modules/jls.net.http.HttpHandler.html#">handler</a> or a handler function. <br/>
    The function takes one argument which is the <a href="../modules/jls.net.http.HttpExchange.html">HttpExchange</a> and will be called when the body is available.
         </li>
     </ul>
@@ -267,7 +267,7 @@ event:loop()</pre>
     <ul>
         <li><span class="parameter">contexts</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-         The contexts to add.
+         The contexts to add
         </li>
     </ul>
 
@@ -295,22 +295,22 @@ event:loop()</pre>
     <ul>
         <li><span class="parameter">node</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the address, the address could be an IP address or a host name.
+         the address, the address could be an IP address or a host name
          (<em>optional</em>)
         </li>
         <li><span class="parameter">port</span>
             <span class="types"><span class="type">number</span></span>
-         the port number, 0 to let the system automatically choose a port, default is 80.
+         the port number, 0 to let the system automatically choose a port, default is 80
          (<em>optional</em>)
         </li>
         <li><span class="parameter">backlog</span>
             <span class="types"><span class="type">number</span></span>
-         the accept queue size, default is 32.
+         the accept queue size, default is 32
          (<em>optional</em>)
         </li>
         <li><span class="parameter">callback</span>
             <span class="types"><span class="type">function</span></span>
-         an optional callback function to use in place of promise.
+         an optional callback function to use in place of promise
          (<em>optional</em>)
         </li>
     </ul>
@@ -319,7 +319,7 @@ event:loop()</pre>
     <ol>
 
            <span class="types"><span class="type">jls.lang.Promise</span></span>
-        a promise that resolves once the server is bound.
+        a promise that resolves once the server is bound
     </ol>
 
 
@@ -346,7 +346,7 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
     <ul>
         <li><span class="parameter">callback</span>
             <span class="types"><span class="type">function</span></span>
-         an optional callback function to use in place of promise.
+         an optional callback function to use in place of promise
          (<em>optional</em>)
         </li>
     </ul>
@@ -355,7 +355,7 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
     <ol>
 
            <span class="types"><span class="type">jls.lang.Promise</span></span>
-        a promise that resolves once the server is closed.
+        a promise that resolves once the server is closed
     </ol>
 
 
@@ -406,8 +406,8 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
         </li>
         <li><span class="parameter">handler</span>
             <span class="types"><span class="type">function</span></span>
-         the context handler
-   the function takes one argument which is an <a href="../modules/jls.net.http.HttpExchange.html">HttpExchange</a>.
+         the context handler,
+   the function takes one argument which is an <a href="../modules/jls.net.http.HttpExchange.html">HttpExchange</a>
          (<em>optional</em>)
         </li>
     </ul>
@@ -432,7 +432,7 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the context path.
+        the context path
     </ol>
 
 
@@ -538,7 +538,7 @@ s:bind(<span class="string">'127.0.0.1'</span>, <span class="number">80</span>)<
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the first captured value or the whole path, nil if the path does not match.
+        the first captured value or the whole path, nil if the path does not match
     </ol>
 
 

@@ -123,11 +123,7 @@
 	<td class="summary">Returns the specified Lua module if already loaded.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#singleRequirer">singleRequirer (name)</a></td>
-	<td class="summary">Returns a funtion that will try to require the specified Lua module only once.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#lazyMethod">lazyMethod (m, key, providerFn)</a></td>
+	<td class="name" nowrap><a href="#lazyMethod">lazyMethod (mod, name, providerFn[, ...])</a></td>
 	<td class="summary">Adds a method by requiring its dependencies on first call.</td>
 	</tr>
 	<tr>
@@ -137,14 +133,6 @@
 	<tr>
 	<td class="name" nowrap><a href="#requireByPath">requireByPath (path[, try])</a></td>
 	<td class="summary">Requires the Lua object specified by its path.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#unload">unload (name)</a></td>
-	<td class="summary">Unloads the specified Lua module.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#unloadAll">unloadAll (pattern)</a></td>
-	<td class="summary">Unloads all the specified Lua modules.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#load">load (name[, path[, try[, asRequire]]])</a></td>
@@ -197,6 +185,7 @@
     </dt>
     <dd>
     Requires the specified Lua modules.
+ You could pass the module names as arguments with the optional try mode as first argument.
 
     </ul>
     </ul>
@@ -253,41 +242,12 @@
 
 </dd>
     <dt>
-    <a name = "singleRequirer"></a>
-    <strong>singleRequirer (name)</strong>
-    </dt>
-    <dd>
-    Returns a funtion that will try to require the specified Lua module only once.
-
-    </ul>
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the name of the module to load
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">funtion</span></span>
-        a function that will return the specified module or nil if an error occured
-    </ol>
-
-
-
-
-</dd>
-    <dt>
     <a name = "lazyMethod"></a>
-    <strong>lazyMethod (m, key, providerFn)</strong>
+    <strong>lazyMethod (mod, name, providerFn[, ...])</strong>
     </dt>
     <dd>
     Adds a method by requiring its dependencies on first call.
- Lazy method allows cycling dependencies.
+ Lazy method allows cycling dependencies between modules.
  The module method will be replaced on the first call, caching the boot method works but is not recommended.
 
     </ul>
@@ -295,17 +255,21 @@
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">m</span>
+        <li><span class="parameter">mod</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
          the module owning the method
         </li>
-        <li><span class="parameter">key</span>
+        <li><span class="parameter">name</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the method name
         </li>
         <li><span class="parameter">providerFn</span>
             <span class="types"><span class="type">function</span></span>
-         A function which will be called only once with the loaded modules or nil values when modules are not found.
+         A function which will be called only once with the loaded modules or nil values when modules are not found
+        </li>
+        <li><span class="parameter">...</span>
+         a list of module names to require and pass to the provider function
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -313,7 +277,7 @@
     <ol>
 
            <span class="types"><span class="type">funtion</span></span>
-        the function returned by the providerFn parameter.
+        the function returned by the providerFn parameter
     </ol>
 
 
@@ -337,6 +301,7 @@ If there is only one module then the base module shall be the same.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">...</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the ordered names of the module eligible to load
         </li>
     </ul>
@@ -361,6 +326,8 @@ If there is only one module then the base module shall be the same.
     </dt>
     <dd>
     Requires the Lua object specified by its path.
+ If the full path cannot be required then each part of the path, separated by a dot '.',
+ is required and the remaining part of the path are accessed in the module table.
 
     </ul>
     </ul>
@@ -389,58 +356,6 @@ If there is only one module then the base module shall be the same.
 
 </dd>
     <dt>
-    <a name = "unload"></a>
-    <strong>unload (name)</strong>
-    </dt>
-    <dd>
-    Unloads the specified Lua module.
- The module is removed from the loaded modules and will be loaded again on a require.
- This is not the opposite of the require and bad things could happen.
-
-    </ul>
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the name of the module to unload
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "unloadAll"></a>
-    <strong>unloadAll (pattern)</strong>
-    </dt>
-    <dd>
-    Unloads all the specified Lua modules.
-
-    </ul>
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">pattern</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the pattern of the module names to unload
-        </li>
-    </ul>
-
-
-
-
-    <h3>Usage:</h3>
-    <ul>
-        <pre class="example"><span class="global">require</span>(<span class="string">'jls.lang.loader'</span>).unloadAll(<span class="string">'^jls%.'</span>)</pre>
-    </ul>
-
-</dd>
-    <dt>
     <a name = "load"></a>
     <strong>load (name[, path[, try[, asRequire]]])</strong>
     </dt>
@@ -458,7 +373,7 @@ If there is only one module then the base module shall be the same.
         </li>
         <li><span class="parameter">path</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the path of the module to load, could be package.path
+         the path of the module to load, could be <a href="https://www.lua.org/manual/5.4/manual.html#pdf-package.path">package.path</a>
          (<em>optional</em>)
         </li>
         <li><span class="parameter">try</span>
@@ -468,7 +383,7 @@ If there is only one module then the base module shall be the same.
         </li>
         <li><span class="parameter">asRequire</span>
             <span class="types"><span class="type">boolean</span></span>
-         true to be compatible with require by using package.loaded
+         true to be compatible with require by using <a href="https://www.lua.org/manual/5.4/manual.html#pdf-package.loaded">package.loaded</a>
          (<em>optional</em>)
         </li>
     </ul>
@@ -500,7 +415,7 @@ If there is only one module then the base module shall be the same.
     <ul>
         <li><span class="parameter">name</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the name of the resource to load using slash as separator, for example "a/b.json"
+         the name of the resource to load using slash as separator, for example "<code>a/b.json</code>"
         </li>
         <li><span class="parameter">try</span>
             <span class="types"><span class="type">boolean</span></span>

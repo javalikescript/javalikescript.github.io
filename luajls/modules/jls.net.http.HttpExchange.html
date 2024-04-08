@@ -157,10 +157,6 @@
 	<td class="summary">Sets the status code for the response.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#httpExchange:applyKeepAlive">httpExchange:applyKeepAlive ()</a></td>
-	<td class="summary">Applies the connection header and returns true if keep alive applies.</td>
-	</tr>
-	<tr>
 	<td class="name" nowrap><a href="#HttpExchange.ok">HttpExchange.ok (exchange[, body[, contentType]])</a></td>
 	<td class="summary">Updates the response with the OK status code, 200.</td>
 	</tr>
@@ -213,7 +209,7 @@
     <ol>
 
            <span class="types"><span class="type">HttpContext</span></span>
-        the HTTP context.
+        the HTTP context
     </ol>
 
 
@@ -235,7 +231,7 @@
     <ol>
 
            <span class="types"><span class="type">HttpSession</span></span>
-        the HTTP session.
+        the HTTP session
     </ol>
 
 
@@ -257,7 +253,7 @@
     <ol>
 
            <span class="types"><span class="type">HttpMessage</span></span>
-        the HTTP request.
+        the HTTP request
     </ol>
 
 
@@ -279,7 +275,7 @@
     <ol>
 
            <span class="types"><span class="type">HttpMessage</span></span>
-        the HTTP response.
+        the HTTP response
     </ol>
 
 
@@ -301,7 +297,7 @@
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the HTTP method.
+        the HTTP method
     </ol>
 
 
@@ -323,7 +319,7 @@
     <ol>
 
            <span class="types"><span class="type">HttpHeaders</span></span>
-        the HTTP request.
+        the HTTP request
     </ol>
 
 
@@ -345,7 +341,7 @@
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the first captured value, nil if there is no captured value.
+        the first captured value, nil if there is no captured value
     </ol>
 
 
@@ -367,7 +363,7 @@
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the request path.
+        the request path
     </ol>
 
 
@@ -389,7 +385,7 @@
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-        the query parameters.
+        the query parameters
     </ol>
 
 
@@ -411,7 +407,7 @@
     <ol>
 
            <span class="types"><span class="type">jls.lang.Promise</span></span>
-        a promise that resolves once the exchange is closed.
+        a promise that resolves once the exchange is closed
     </ol>
 
 
@@ -432,44 +428,20 @@
     <ul>
         <li><span class="parameter">status</span>
             <span class="types"><span class="type">number</span></span>
-         the status code.
+         the status code
         </li>
         <li><span class="parameter">reason</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the reason phrase.
+         the reason phrase
          (<em>optional</em>)
         </li>
         <li><span class="parameter">body</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the response body.
+         the response body
          (<em>optional</em>)
         </li>
     </ul>
 
-
-
-
-
-</dd>
-    <dt>
-    <a name = "httpExchange:applyKeepAlive"></a>
-    <strong>httpExchange:applyKeepAlive ()</strong>
-    </dt>
-    <dd>
-    Applies the connection header and returns true if keep alive applies.
- Use the response connection header if any or the request one if any
- otherwise default to close in version 1.0 and keep-alive in 1.1.
-
-    </ul>
-    </ul>
-
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><span class="type">boolean</span></span>
-        true if keep alive applies to the response
-    </ol>
 
 
 
@@ -493,12 +465,12 @@
         </li>
         <li><span class="parameter">body</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the response content.
+         the response content
          (<em>optional</em>)
         </li>
         <li><span class="parameter">contentType</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the response content type.
+         the response content type
          (<em>optional</em>)
         </li>
     </ul>
@@ -526,7 +498,7 @@
         </li>
         <li><span class="parameter">reason</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the response reason phrase.
+         the response reason phrase
          (<em>optional</em>)
         </li>
     </ul>
@@ -554,7 +526,7 @@
         </li>
         <li><span class="parameter">reason</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the response reason phrase.
+         the response reason phrase
          (<em>optional</em>)
         </li>
     </ul>
@@ -628,7 +600,7 @@
         </li>
         <li><span class="parameter">reason</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         the response reason phrase.
+         the response reason phrase
          (<em>optional</em>)
         </li>
     </ul>

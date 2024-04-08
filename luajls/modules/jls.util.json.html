@@ -130,7 +130,7 @@
 	<td class="summary">Returns the JSON encoded string representing the specified value.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#json.require">json.require (name)</a></td>
+	<td class="name" nowrap><a href="#json.require">json.require (name[, try])</a></td>
 	<td class="summary">Loads the JSON resource for the specified name.</td>
 	</tr>
 </table>
@@ -286,7 +286,7 @@ json.decode(<span class="string">'{"aString":"Hello world !"}'</span>) <span cla
 </dd>
     <dt>
     <a name = "json.require"></a>
-    <strong>json.require (name)</strong>
+    <strong>json.require (name[, try])</strong>
     </dt>
     <dd>
     Loads the JSON resource for the specified name.
@@ -300,6 +300,11 @@ json.decode(<span class="string">'{"aString":"Hello world !"}'</span>) <span cla
         <li><span class="parameter">name</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
          the JSON name.
+        </li>
+        <li><span class="parameter">try</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true to return nil in place of raising an error
+         (<em>optional</em>)
         </li>
     </ul>
 

@@ -39,6 +39,8 @@
 <li><a href="#Namespace_and_Modules">Namespace and Modules </a></li>
 <li><a href="#Object_Oriented_Programming">Object-Oriented Programming </a></li>
 <li><a href="#Exception">Exception </a></li>
+<li><a href="#Modules_and_Resources">Modules and Resources </a></li>
+<li><a href="#Logging">Logging </a></li>
 <li><a href="#Concurrent_Programming">Concurrent Programming </a></li>
 <li><a href="#File_System">File System </a></li>
 <li><a href="#Data_Transformation">Data Transformation </a></li>
@@ -359,6 +361,60 @@ With the exception, the caller could later decide to use only the error message 
 <p>An exception may have a cause, allowing to preserve this information when you do not want to rethrow the exception.</p>
 
 <p>Additionnaly, it is possible to create specialized sub class of exception.</p>
+
+
+<p><a name="Modules_and_Resources"></a></p>
+<h2>Modules and Resources</h2>
+
+<p>The loader module provides functions to help loading modules and resources.</p>
+
+<p>The function <code>lazyMethod</code> allows to defer the declaration of a function.
+This enables to create module method that will require its dependencies on the first call.
+It allows indirect cycling dependencies between modules.</p>
+
+<p>The function <code>loadResource</code> allows to retrieve the content of a file in the Lua path or in the table <code>package.resource</code>.
+A resource is a read-only data string required by the application at runtime.
+A resource name uses the slash '/' as separator and has an extension, for example "<code>a/b.json</code>".
+The resource could be located with the Lua script and bundled using package as with <a href="https://www.lua.org/manual/5.4/manual.html#pdf-package.preload">package.preload</a>.</p>
+
+<p>The function <code>requireOne</code> allows to require the first available module.
+This enables to support multiple implementations of a module.</p>
+
+
+<p><a name="Logging"></a></p>
+<h2>Logging</h2>
+
+<p>The logger module provides the root logger instance.
+The logger helps to debug and troubleshoot by recording execution information.</p>
+
+<p>The logging levels are <code>ERROR</code>, <code>WARN</code>, <code>INFO</code>, <code>CONFIG</code>, <code>DEBUG</code>, <code>FINE</code>, <code>FINER</code>, <code>FINEST</code>.
+The log information consists in a message string, additional arguments could be passed to be formated in the message as for <a href="https://www.lua.org/manual/5.4/manual.html#pdf-string.format">string.format</a>.</p>
+
+
+<pre>
+<span class="keyword">local</span> logger = <span class="global">require</span>(<span class="string">'jls.lang.logger'</span>)
+logger:info(<span class="string">'Hello from %s !'</span>, <span class="string">'Lua'</span>)
+</pre>
+
+
+<p>It is recommended to use a logger instance for each module using the module name as logger name.</p>
+
+
+<pre>
+<span class="keyword">local</span> logger = <span class="global">require</span>(<span class="string">'jls.lang.logger'</span>):get(...) <span class="comment">-- require will pass the module name
+</span>logger:info(<span class="string">'Some usefull information message'</span>)
+</pre>
+
+
+<p>You can condition the creation of the message by the logger level.</p>
+
+
+<pre>
+<span class="keyword">if</span> logger:isLoggable(logger.FINE) <span class="keyword">then</span>
+  logger:fine(<span class="string">'Some fine message %s'</span>, costlyMethod())
+<span class="keyword">end</span>
+</pre>
+
 
 
 <p><a name="Concurrent_Programming"></a></p>

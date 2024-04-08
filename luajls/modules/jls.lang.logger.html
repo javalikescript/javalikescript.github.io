@@ -114,7 +114,8 @@ This default implementation could be configured to redirect log messages to anot
 The default formatting consists in prefixing the message by the date time as ISO 8601, the module name and the log level.
 The default writing consists in printing the log message to the standard error stream, adding a new line and flushing.</p>
 
-<p>The JLS_LOGGER_LEVEL environment variable could be used to indicate the log level to use.</p>
+<p>The <code>JLS_LOGGER_LEVEL</code> environment variable could be used to indicate the log level to use.
+You could use comma separated values of module name and associated level, "<code>INFO,jls.net:FINE</code>".</p>
     <h3>Usage:</h3>
     <ul>
         <pre class="example">local logger = require(&apos;jls.lang.logger&apos;):get(...) -- require will pass the module name
@@ -191,6 +192,14 @@ end
 	<tr>
 	<td class="name" nowrap><a href="#logger:finest">logger:finest (message)</a></td>
 	<td class="summary">Logs the specified message with the FINEST level.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:setConfig">logger:setConfig (config)</a></td>
+	<td class="summary">Sets the specified logger level configuration.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#logger:getConfig">logger:getConfig ()</a></td>
+	<td class="summary">Returns the logger level configuration.</td>
 	</tr>
 </table>
 
@@ -300,6 +309,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     </dt>
     <dd>
     Returns the logger for the specified name.
+ The returned logger inherits from this logger configuration.
 
     </ul>
     </ul>
@@ -342,6 +352,7 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
     <h3>Returns:</h3>
     <ol>
 
+           <span class="types"><span class="type">number</span></span>
         the log level for this logger.
     </ol>
 
@@ -600,6 +611,53 @@ console:info(<span class="string">'Some usefull information message'</span>)</pr
         </li>
     </ul>
 
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:setConfig"></a>
+    <strong>logger:setConfig (config)</strong>
+    </dt>
+    <dd>
+    Sets the specified logger level configuration.
+ The configuration is a list of comma separated values of module name and associated level.
+ The configuration is applied in the specified order on this logger and all its sub loggers.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">config</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The log configuration.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "logger:getConfig"></a>
+    <strong>logger:getConfig ()</strong>
+    </dt>
+    <dd>
+    Returns the logger level configuration.
+
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        the configuration
+    </ol>
 
 
 

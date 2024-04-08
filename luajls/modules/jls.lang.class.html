@@ -201,14 +201,14 @@ local dave = User:new(&apos;Dave&apos;, 2012)
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">instance</span>
-         The instance to get the class from.
+         The instance to get the class from
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        the class of the specified class or nil if there is no such class.
+        The class of the specified class or nil if there is no such class
     </ol>
 
 
@@ -235,14 +235,14 @@ This method performs a shallow copy, field-by-field copy, not a deep copy.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">instance</span>
-         the instance to clone.
+         The instance to clone
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        a copy of the specified instance, or nil if the instance has no class.
+        A copy of the specified instance, or nil if the instance has no class
     </ol>
 
 
@@ -268,17 +268,17 @@ This method performs a shallow copy, field-by-field copy, not a deep copy.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">class</span>
-         the class to instantiate.
+         The class to instantiate
         </li>
         <li><span class="parameter">...</span>
-         parameters passed to the initialize method.
+         The parameters passed to the initialize method
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        a new instance
+        A new instance
     </ol>
 
 
@@ -311,7 +311,7 @@ car:getColor() <span class="comment">-- Returns 'blue'</span></pre>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">class</span>
-         the class to look for.
+         The class to look for
         </li>
     </ul>
 
@@ -319,7 +319,7 @@ car:getColor() <span class="comment">-- Returns 'blue'</span></pre>
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-        the class name or nil if the class is not in package.loaded
+        The class name or nil if the class is not found in <a href="https://www.lua.org/manual/5.4/manual.html#pdf-package.loaded">package.loaded</a>
     </ol>
 
 
@@ -339,17 +339,17 @@ car:getColor() <span class="comment">-- Returns 'blue'</span></pre>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">class</span>
-         The class to check with.
+         The class to check with
         </li>
         <li><span class="parameter">subclass</span>
-         The class to be checked.
+         The class to be checked
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        true if the subclass is the same or a sub class of the class, false otherwise.
+        true if the subclass is the same or a sub class of the class, false otherwise
     </ol>
 
 
@@ -376,14 +376,14 @@ Vehicle:isAssignableFrom(Bus) <span class="comment">-- Returns true</span></pre>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">value</span>
-         The class to check.
+         The class to check
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        true if the specified value is a class, false otherwise.
+        true if the specified value is a class, false otherwise
     </ol>
 
 
@@ -403,17 +403,17 @@ Vehicle:isAssignableFrom(Bus) <span class="comment">-- Returns true</span></pre>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">class</span>
-         The class to check with.
+         The class to check with
         </li>
         <li><span class="parameter">instance</span>
-         The instance to be checked.
+         The instance to be checked
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        true if the instance is an instance of the class, false otherwise.
+        true if the instance is an instance of the class, false otherwise
     </ol>
 
 
@@ -439,17 +439,17 @@ Vehicle:isInstance(car) <span class="comment">-- Returns true</span></pre>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">class</span>
-         The class from which an instance is expected.
+         The class from which an instance is expected
         </li>
         <li><span class="parameter">...</span>
-         The instance to be checked or the creation parameters.
+         The instance to be checked or the creation parameters
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        an instance.
+        An instance
     </ol>
 
 
@@ -471,7 +471,7 @@ The following methods are automatically set in the metatable:
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">class</span>
-         The class to implement.
+         The class to implement
         </li>
         <li><span class="parameter">defineInstanceFn</span>
             <span class="types"><span class="type">function</span></span>
@@ -488,7 +488,7 @@ The following methods are automatically set in the metatable:
     <h3>Returns:</h3>
     <ol>
 
-        the class
+        The class
     </ol>
 
 
@@ -536,18 +536,18 @@ This method allows to override class methods for a specific instance.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">instance</span>
-         the instance to modify.
+         The instance to modify
         </li>
         <li><span class="parameter">fn</span>
             <span class="types"><span class="type">function</span></span>
-         the function that will be called with the instance and its prototype
+         The function that will be called with the instance and its prototype
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        the modified instance
+        The modified instance
     </ol>
 
 
@@ -587,7 +587,7 @@ The class has a <a href="../modules/jls.lang.class.html#newInstance">new</a> met
     <h3>Returns:</h3>
     <ol>
 
-        a new class
+        A new class
     </ol>
 
 

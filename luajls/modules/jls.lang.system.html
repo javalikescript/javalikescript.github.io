@@ -129,6 +129,10 @@ Operation such as the exit method and the garbage collection.</p>
 	<td class="summary">Gets a specific environnement property.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#system.createArgumentTable">system.createArgumentTable ([options[, arguments]])</a></td>
+	<td class="summary">Returns a table containing an entry for each argument name, see <a href="../modules/jls.util.tables.html#">jls.util.tables</a>.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#system.getArguments">system.getArguments ()</a></td>
 	<td class="summary">Returns the arguments used when calling the Lua standalone executable.</td>
 	</tr>
@@ -139,6 +143,10 @@ Operation such as the exit method and the garbage collection.</p>
 	<tr>
 	<td class="name" nowrap><a href="#system.execute">system.execute (command[, anyCode[, callback]])</a></td>
 	<td class="summary">Executes the specified command line in a separate thread.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#system.findExecutablePath">system.findExecutablePath (name)</a></td>
+	<td class="summary">Returns the executable path based on the <code>PATH</code> environment variable.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#system.exit">system.exit (code)</a></td>
@@ -195,7 +203,7 @@ Operation such as the exit method and the garbage collection.</p>
     <h3>Returns:</h3>
     <ol>
 
-        the current time in seconds.
+        The current time in seconds
     </ol>
 
 
@@ -216,7 +224,7 @@ Operation such as the exit method and the garbage collection.</p>
     <h3>Returns:</h3>
     <ol>
 
-        The current time in milliseconds.
+        The current time in milliseconds
     </ol>
 
 
@@ -236,7 +244,7 @@ Operation such as the exit method and the garbage collection.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">millis</span>
-         The length of time to sleep in milliseconds.
+         The length of time to sleep in milliseconds
         </li>
     </ul>
 
@@ -258,14 +266,49 @@ Operation such as the exit method and the garbage collection.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">name</span>
-         The name of the property to get.
+         The name of the property to get
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        The environnement property.
+        The environnement property
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "system.createArgumentTable"></a>
+    <strong>system.createArgumentTable ([options[, arguments]])</strong>
+    </dt>
+    <dd>
+    Returns a table containing an entry for each argument name, see <a href="../modules/jls.util.tables.html#">jls.util.tables</a>.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+         The options
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">arguments</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The command line containing the arguments
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
+        The arguments as a table
     </ol>
 
 
@@ -287,7 +330,7 @@ Operation such as the exit method and the garbage collection.</p>
     <ol>
 
            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-        The arguments.
+        The arguments
     </ol>
 
 
@@ -316,7 +359,7 @@ Operation such as the exit method and the garbage collection.</p>
         </li>
         <li><span class="parameter">dir</span>
          The working directory of the subprocess, or undefined
- if the subprocess should inherit the working directory of the current process.
+ if the subprocess should inherit the working directory of the current process
         </li>
     </ul>
 
@@ -324,7 +367,7 @@ Operation such as the exit method and the garbage collection.</p>
     <ol>
 
            <span class="types"><span class="type">jls.lang.ProcessHandle</span></span>
-        a handle of the new process
+        A handle of the new process
     </ol>
 
 
@@ -347,16 +390,16 @@ Operation such as the exit method and the garbage collection.</p>
     <ul>
         <li><span class="parameter">command</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
-         The command-line to execute.
+         The command-line to execute
         </li>
         <li><span class="parameter">anyCode</span>
             <span class="types"><span class="type">boolean</span></span>
-         true to resolve the promise with any exit code.
+         true to resolve the promise with any exit code
          (<em>optional</em>)
         </li>
         <li><span class="parameter">callback</span>
             <span class="types"><span class="type">function</span></span>
-         an optional callback function to use in place of promise.
+         An optional callback function to use in place of promise
          (<em>optional</em>)
         </li>
     </ul>
@@ -365,7 +408,36 @@ Operation such as the exit method and the garbage collection.</p>
     <ol>
 
            <span class="types"><span class="type">jls.lang.Promise</span></span>
-        a promise that resolves once the command has been executed.
+        A promise that resolves once the command has been executed
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "system.findExecutablePath"></a>
+    <strong>system.findExecutablePath (name)</strong>
+    </dt>
+    <dd>
+    Returns the executable path based on the <code>PATH</code> environment variable.
+
+    </ul>
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+         The executable name, without the extension <code>.exe</code>
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.4">string</a></span>
+        The executable path or nil
     </ol>
 
 
@@ -385,7 +457,7 @@ Operation such as the exit method and the garbage collection.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">code</span>
-         The exit code to return to the OS.
+         The exit code to return to the OS
         </li>
     </ul>
 
@@ -423,7 +495,7 @@ Operation such as the exit method and the garbage collection.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">code</span>
-         The exit code to return to the OS.
+         The exit code to return to the OS
         </li>
     </ul>
 

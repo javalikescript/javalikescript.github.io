@@ -164,8 +164,12 @@ or to its original settled value if the promise was not handled.</td>
 	<td class="summary">Return true if the specified value is a promise.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Promise.createWithCallback">Promise.createWithCallback ()</a></td>
+	<td class="name" nowrap><a href="#Promise.withCallback">Promise.withCallback ()</a></td>
 	<td class="summary">Returns a new promise and its associated callback.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Promise.withResolvers">Promise.withResolvers ()</a></td>
+	<td class="summary">Returns a new promise and two functions to resolve or reject it.</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#Promise.ensureCallback">Promise.ensureCallback (callback)</a></td>
@@ -197,7 +201,7 @@ or to its original settled value if the promise was not handled.</td>
     <ul>
         <li><span class="parameter">executor</span>
             <span class="types"><span class="type">function</span></span>
-         A function that is passed with the arguments resolve and reject.
+         A function that is passed with the arguments resolve and reject
         </li>
     </ul>
 
@@ -248,7 +252,7 @@ or returns any other value, then returns a resolved Promise.
     <ol>
 
            <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
-        A new promise.
+        A new promise
     </ol>
 
 
@@ -271,7 +275,7 @@ or returns any other value, then returns a resolved Promise.
     <ul>
         <li><span class="parameter">onRejected</span>
             <span class="types"><span class="type">function</span></span>
-         A Function called when the Promise is rejected.
+         A Function called when the Promise is rejected
         </li>
     </ul>
 
@@ -279,7 +283,7 @@ or returns any other value, then returns a resolved Promise.
     <ol>
 
            <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
-        A new promise.
+        A new promise
     </ol>
 
 
@@ -303,7 +307,7 @@ or returns any other value, then returns a resolved Promise.
     <ul>
         <li><span class="parameter">onFinally</span>
             <span class="types"><span class="type">function</span></span>
-         A Function called when the Promise is either fulfilled or rejected.
+         A Function called when the Promise is either fulfilled or rejected
         </li>
     </ul>
 
@@ -311,7 +315,7 @@ or returns any other value, then returns a resolved Promise.
     <ol>
 
            <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
-        A new promise.
+        A new promise
     </ol>
 
 
@@ -334,7 +338,7 @@ or returns any other value, then returns a resolved Promise.
     <ul>
         <li><span class="parameter">promises</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-         The promises list.
+         The promises list
         </li>
     </ul>
 
@@ -342,7 +346,7 @@ or returns any other value, then returns a resolved Promise.
     <ol>
 
            <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
-        A promise.
+        A promise
     </ol>
 
 
@@ -365,7 +369,7 @@ or returns any other value, then returns a resolved Promise.
     <ul>
         <li><span class="parameter">promises</span>
             <span class="types"><a class="type" href="https://www.lua.org/manual/5.4/manual.html#6.6">table</a></span>
-         The promises list.
+         The promises list
         </li>
     </ul>
 
@@ -373,7 +377,7 @@ or returns any other value, then returns a resolved Promise.
     <ol>
 
            <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
-        A promise.
+        A promise
     </ol>
 
 
@@ -393,7 +397,7 @@ or returns any other value, then returns a resolved Promise.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">reason</span>
-         The reason for the rejection.
+         The reason for the rejection
         </li>
     </ul>
 
@@ -401,7 +405,7 @@ or returns any other value, then returns a resolved Promise.
     <ol>
 
            <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
-        A rejected promise.
+        A rejected promise
     </ol>
 
 
@@ -424,7 +428,7 @@ or returns any other value, then returns a resolved Promise.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">value</span>
-         The resolving value.
+         The resolving value
         </li>
     </ul>
 
@@ -432,7 +436,7 @@ or returns any other value, then returns a resolved Promise.
     <ol>
 
            <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
-        A resolved promise.
+        A resolved promise
     </ol>
 
 
@@ -464,10 +468,10 @@ You could use the traditional <a href="https://www.lua.org/manual/5.4/manual.htm
     <ul>
         <li><span class="parameter">fn</span>
             <span class="types"><span class="type">function</span></span>
-         the async function to call.
+         The async function to call
         </li>
         <li><span class="parameter">...</span>
-         the optional parameters to pass to the function after the <code>await</code> function.
+         The optional parameters to pass to the function after the <code>await</code> function
          (<em>optional</em>)
         </li>
     </ul>
@@ -476,7 +480,7 @@ You could use the traditional <a href="https://www.lua.org/manual/5.4/manual.htm
     <ol>
 
            <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
-        a promise that resolves once the coroutine ends.
+        A promise that resolves once the coroutine ends
     </ol>
 
 
@@ -510,7 +514,7 @@ Promise.async(<span class="keyword">function</span>(await)
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">promise</span>
-         The value to test.
+         The value to test
         </li>
     </ul>
 
@@ -518,7 +522,7 @@ Promise.async(<span class="keyword">function</span>(await)
     <ol>
 
            <span class="types"><span class="type">boolean</span></span>
-        true if the specified value is a promise.
+        true if the specified value is a promise
     </ol>
 
 
@@ -526,8 +530,8 @@ Promise.async(<span class="keyword">function</span>(await)
 
 </dd>
     <dt>
-    <a name = "Promise.createWithCallback"></a>
-    <strong>Promise.createWithCallback ()</strong>
+    <a name = "Promise.withCallback"></a>
+    <strong>Promise.withCallback ()</strong>
     </dt>
     <dd>
     Returns a new promise and its associated callback.
@@ -540,17 +544,49 @@ Promise.async(<span class="keyword">function</span>(await)
     <ol>
         <li>
            <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
-        a new promise.</li>
+        A new promise</li>
         <li>
            <span class="types"><span class="type">function</span></span>
-        the associated callback.</li>
+        The associated callback</li>
     </ol>
 
 
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example"><span class="keyword">local</span> promise, cb = Promise.createWithCallback()</pre>
+        <pre class="example"><span class="keyword">local</span> promise, cb = Promise.withCallback()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Promise.withResolvers"></a>
+    <strong>Promise.withResolvers ()</strong>
+    </dt>
+    <dd>
+    Returns a new promise and two functions to resolve or reject it.
+
+    </ul>
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
+        A new promise</li>
+        <li>
+           <span class="types"><span class="type">function</span></span>
+        The function that resolves the promise</li>
+        <li>
+           <span class="types"><span class="type">function</span></span>
+        The function that rejects the promise</li>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> promise, resolve, reject = Promise.withResolvers()</pre>
     </ul>
 
 </dd>
@@ -568,7 +604,7 @@ Promise.async(<span class="keyword">function</span>(await)
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">callback</span>
-         An optional existing callback or false to indicate that no promise is expected.
+         An optional existing callback or false to indicate that no promise is expected
         </li>
     </ul>
 
@@ -576,10 +612,10 @@ Promise.async(<span class="keyword">function</span>(await)
     <ol>
         <li>
            <span class="types"><span class="type">function</span></span>
-        the callback.</li>
+        The callback</li>
         <li>
            <span class="types"><a class="type" href="../modules/jls.lang.Promise.html#Promise">Promise</a></span>
-        an associated promise if necessary.</li>
+        An associated promise if necessary</li>
     </ol>
 
 
