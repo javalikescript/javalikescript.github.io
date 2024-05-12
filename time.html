@@ -42,61 +42,31 @@ body {
   </style>
 </head><body>
   <div class="container">
-    <div class="display-date">
-      <span id="day">day</span>,
-      <span id="daynum">00</span>
-      <span id="month">month</span>
-      <span id="year">0000</span>
-    </div>
+    <div class="display-date"></div>
     <div class="display-time"></div>
   </div>
   <script type="text/javascript">
-function updateDate(date) {
-  var dayName = date.getDay(),
-    dayNum = date.getDate(),
-    month = date.getMonth(),
-    year = date.getFullYear();
-  var months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  var dayWeek = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  var IDCollection = ["day", "daynum", "month", "year"];
-  var val = [dayWeek[dayName], dayNum, months[month], year];
-  for (var i = 0; i < IDCollection.length; i++) {
-    document.getElementById(IDCollection[i]).firstChild.nodeValue = val[i];
-  }
-}
+var timeOptions = {timeStyle: location.hash == '#medium' ? 'medium' : 'short'};
+var dateOptions = {dateStyle: location.hash == '#short' ? 'short' : 'full'};
 var lastDate;
+var displayDate = document.querySelector(".display-date");
 var displayTime = document.querySelector(".display-time");
-function showTime() {
-  var time = new Date();
-  displayTime.innerText = time.toLocaleTimeString("en-US", { hour12: false });
-  setTimeout(showTime, 1000);
-  var d = time.getDate();
+function refreshDateTime() {
+  var datetime = new Date();
+  displayTime.innerText = datetime.toLocaleTimeString(undefined, timeOptions);
+  var d = datetime.getDate();
   if (d !== lastDate) {
     lastDate = d;
-    updateDate(time);
+    displayDate.innerText = datetime.toLocaleDateString(undefined, dateOptions);
   }
 }
-showTime();
+refreshDateTime();
+var ms = 1000 - (Date.now() % 1000);
+setTimeout(function() {
+  refreshDateTime();
+  setInterval(function() {
+    refreshDateTime();
+  }, 1000);
+}, ms);
   </script>
 </body></html>
