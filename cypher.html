@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Cypher</title>
 <style>
 html {
@@ -114,7 +112,7 @@ const tools = {
           reject(e);
         }
       };
-      reader.readAsBinaryString(file);
+      reader.readAsArrayBuffer(file);
     });
   },
   createBlob: function (data, type, charset) {
@@ -211,7 +209,7 @@ const tools = {
     return a.buffer;
   },
   // see https://www.w3.org/TR/WebCryptoAPI/
-  encrypt : async function(plainText, plainKey) {
+  encrypt : async function(plainText, plainKey, binary) {
     if (!(window.crypto && window.crypto.subtle)) {
       return '/!\\ No crypto available';
     }
@@ -220,25 +218,26 @@ const tools = {
       const iv = window.crypto.getRandomValues(new Uint8Array(12)); // never reuse the same IV with the same key
       const alg = { name: 'AES-GCM', iv: iv };
       const key = await window.crypto.subtle.importKey('raw', keyHash, alg, false, ['encrypt']);
-      const ptUtf8 = new TextEncoder().encode(plainText);
-      const cipherTextBuffer = await window.crypto.subtle.encrypt(alg, key, ptUtf8);
-      return this.btoa(this.abtob(this.abconcat(iv, cipherTextBuffer)));
+      const data = typeof plainText === 'string' ? new TextEncoder().encode(plainText) : plainText;
+      const cipherTextBuffer = await window.crypto.subtle.encrypt(alg, key, data);
+      const res = this.abconcat(iv, cipherTextBuffer);
+      return binary ? res : this.btoa(this.abtob(res));
     } catch (e) {
       return '/!\\ Failed';
     }
   },
-  decrypt : async function(cipherTextBase64, plainKey) {
+  decrypt : async function(cipherTextBase64, plainKey, binary) {
     if (!(window.crypto && window.crypto.subtle)) {
       return '/!\\ No crypto available';
     }
     try {
       const keyHash = await window.crypto.subtle.digest('SHA-256', this.stoab(plainKey));
-      const cipherTextBuffer = this.btoab(this.atob(cipherTextBase64))
-      const iv = cipherTextBuffer.slice(0, 12);
+      const data = typeof cipherTextBase64 === 'string' ? this.btoab(this.atob(cipherTextBase64)) : cipherTextBase64;
+      const iv = data.slice(0, 12);
       const alg = { name: 'AES-GCM', iv: iv };
       const key = await window.crypto.subtle.importKey('raw', keyHash, alg, false, ['decrypt']);
-      const plainTextBuffer = await window.crypto.subtle.decrypt(alg, key, cipherTextBuffer.slice(12));
-      return new TextDecoder().decode(plainTextBuffer);
+      const plainTextBuffer = await window.crypto.subtle.decrypt(alg, key, data.slice(12));
+      return binary ? plainTextBuffer : new TextDecoder().decode(plainTextBuffer);
     } catch (e) {
       return '/!\\ Failed';
     }
@@ -267,12 +266,23 @@ function onFileChange() {
   const cb = fileContentCallback;
   fileContentCallback = undefined;
   if (typeof cb === 'function') {
-    tools.readFile(document.getElementById('file').files[0]).then(cb);
+    const file = document.getElementById('file').files[0];
+    tools.readFile(file).then(function(content) {
+      cb(undefined, content, file.name);
+    }).catch(function(reason) {
+      cb(reason || 'unknown failure');
+    });
   }
 }
 function readFile() {
-  return new Promise(function(resolve) {
-    fileContentCallback = resolve;
+  return new Promise(function(resolve, reject) {
+    fileContentCallback = function(reason, content, filename) {
+      if (reason !== undefined) {
+        reject(reason);
+      } else {
+        resolve({content: content, filename: filename});
+      }
+    };
     document.getElementById('file').click();
   });
 }
@@ -294,20 +304,29 @@ function clearAll() {
   })
 }
 async function crypt(plainKey, decrypt) {
-  let c;
-  if (tools.val('use-file')) {
-    c = await readFile();
+  const b = tools.val('use-file');
+  let c, n;
+  if (b) {
+    const r = await readFile();
+    c = r.content;
+    n = r.filename;
   } else {
     c = tools.val('input');
   }
   let r;
   if (decrypt) {
-    r = await tools.decrypt(c, plainKey);
+    r = await tools.decrypt(c, plainKey, b);
   } else {
-    r = await tools.encrypt(c, plainKey);
+    r = await tools.encrypt(c, plainKey, b);
   }
-  if (tools.val('use-file')) {
-    tools.saveOrOpenBlob(tools.createBlob(r, 'application/base64'), 'clear.bin');
+  if (b) {
+    if (n) {
+      n = decrypt ? (n.endsWith('.enc') ? n.substring(0, n.length - 4) : (n + '.dec')) : (n + '.enc');
+    } else {
+      n = decrypt ? 'clear.bin' : 'opaque.b64';
+    }
+    var t = decrypt ? 'application/base64' : 'application/octet-stream';
+    tools.saveOrOpenBlob(tools.createBlob(r, t), n);
   } else {
     tools.val('output', r);
   }
